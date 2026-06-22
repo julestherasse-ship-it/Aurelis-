@@ -1,0 +1,1654 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Aurelis — Agence web premium. Sites internet haut de gamme pour restaurants, salons, instituts et commerces locaux.">
+  <title>Aurelis — Agence Web Premium</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --noir: #080808;
+      --noir-soft: #121212;
+      --noir-card: #0f0f0f;
+      --noir-elevated: #181818;
+      --blanc-casse: #f5f2eb;
+      --blanc-muted: #e8e4db;
+      --or: #c9a962;
+      --or-light: #dfc88a;
+      --or-dim: rgba(201, 169, 98, 0.12);
+      --text-muted: #86817c;
+      --font-display: 'Cormorant Garamond', Georgia, serif;
+      --font-body: 'Outfit', system-ui, sans-serif;
+      --ease: cubic-bezier(0.22, 1, 0.36, 1);
+      --transition: 0.5s var(--ease);
+      --header-h: 86px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--noir);
+      color: var(--blanc-casse);
+      line-height: 1.7;
+      font-weight: 300;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      opacity: 0.022;
+      pointer-events: none;
+      z-index: 9999;
+    }
+
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    button { font-family: inherit; cursor: pointer; border: none; background: none; }
+    ul { list-style: none; }
+
+    .container { width: min(1200px, 90%); margin: 0 auto; }
+
+    .label {
+      display: inline-flex;
+      align-items: center;
+      gap: 1rem;
+      font-size: 0.68rem;
+      letter-spacing: 0.38em;
+      text-transform: uppercase;
+      color: var(--or);
+      font-weight: 500;
+      margin-bottom: 1.25rem;
+    }
+
+    .label::before {
+      content: '';
+      width: 36px;
+      height: 1px;
+      background: var(--or);
+    }
+
+    .label-center { justify-content: center; }
+    .label-center::before { display: none; }
+
+    .title {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 5.5vw, 4rem);
+      font-weight: 400;
+      line-height: 1.1;
+      margin-bottom: 1.25rem;
+    }
+
+    .title em { font-style: italic; color: var(--or-light); }
+
+    .desc {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      line-height: 1.85;
+      max-width: 540px;
+    }
+
+    .desc-center { margin-inline: auto; text-align: center; }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.7rem;
+      padding: 1.05rem 2.5rem;
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      font-weight: 500;
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-gold { background: var(--or); color: var(--noir); }
+    .btn-gold::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(110deg, transparent 35%, rgba(255,255,255,0.28) 50%, transparent 65%);
+      transform: translateX(-130%);
+      transition: transform 0.7s ease;
+    }
+    .btn-gold:hover::after { transform: translateX(130%); }
+    .btn-gold:hover {
+      background: var(--or-light);
+      transform: translateY(-2px);
+      box-shadow: 0 20px 50px rgba(201, 169, 98, 0.2);
+    }
+
+    .btn-ghost {
+      border: 1px solid rgba(245, 242, 235, 0.18);
+      color: var(--blanc-casse);
+    }
+    .btn-ghost:hover {
+      border-color: var(--or);
+      color: var(--or);
+      background: rgba(201, 169, 98, 0.05);
+    }
+
+    .btn svg { width: 14px; height: 14px; transition: transform var(--transition); }
+    .btn:hover svg { transform: translateX(4px); }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 1s ease, transform 1s var(--ease);
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .d1 { transition-delay: 0.1s; }
+    .d2 { transition-delay: 0.2s; }
+    .d3 { transition-delay: 0.3s; }
+    .d4 { transition-delay: 0.4s; }
+
+    /* Header */
+    .header {
+      position: fixed;
+      inset: 0 0 auto;
+      z-index: 1000;
+      height: var(--header-h);
+      display: flex;
+      align-items: center;
+      border-bottom: 1px solid transparent;
+      transition: background var(--transition), border-color var(--transition);
+    }
+
+    .header.scrolled {
+      background: rgba(8, 8, 8, 0.94);
+      backdrop-filter: blur(20px);
+      border-color: rgba(201, 169, 98, 0.07);
+    }
+
+    .header-inner {
+      width: min(1200px, 90%);
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-family: var(--font-display);
+      font-size: 1.8rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+    }
+    .logo span { color: var(--or); }
+
+    .nav { display: flex; align-items: center; gap: 2rem; }
+
+    .nav a {
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      position: relative;
+      transition: color var(--transition);
+    }
+
+    .nav a::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: var(--or);
+      transition: width var(--transition);
+    }
+
+    .nav a:hover { color: var(--or); }
+    .nav a:hover::after { width: 100%; }
+
+    .nav-cta {
+      padding: 0.75rem 1.6rem !important;
+      background: var(--or);
+      color: var(--noir) !important;
+      font-weight: 500 !important;
+    }
+    .nav-cta::after { display: none !important; }
+    .nav-cta:hover { background: var(--or-light); color: var(--noir) !important; }
+
+    .burger {
+      display: none;
+      flex-direction: column;
+      gap: 6px;
+      padding: 4px;
+      z-index: 1001;
+    }
+    .burger span {
+      display: block;
+      width: 26px;
+      height: 1.5px;
+      background: var(--blanc-casse);
+      transition: var(--transition);
+    }
+    .burger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+    .burger.active span:nth-child(2) { opacity: 0; }
+    .burger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+    /* Hero */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 70% 55% at 75% 15%, rgba(201, 169, 98, 0.09) 0%, transparent 55%),
+        radial-gradient(ellipse 45% 35% at 5% 85%, rgba(201, 169, 98, 0.04) 0%, transparent 50%),
+        linear-gradient(160deg, #0a0908 0%, var(--noir) 45%, #0c0b09 100%);
+    }
+
+    .hero-lines {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(201, 169, 98, 0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(201, 169, 98, 0.035) 1px, transparent 1px);
+      background-size: 72px 72px;
+      mask-image: radial-gradient(ellipse 65% 65% at 50% 45%, black 15%, transparent 72%);
+    }
+
+    .hero-orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(90px);
+      animation: float 14s ease-in-out infinite alternate;
+    }
+    .hero-orb-1 { width: 480px; height: 480px; background: rgba(201,169,98,0.06); top: 5%; right: -8%; }
+    .hero-orb-2 { width: 320px; height: 320px; background: rgba(201,169,98,0.04); bottom: 10%; left: 0; animation-delay: -5s; }
+
+    @keyframes float {
+      from { transform: translate(0, 0) scale(1); }
+      to { transform: translate(-24px, 32px) scale(1.06); }
+    }
+
+    .hero-grid {
+      position: relative;
+      z-index: 2;
+      padding-top: var(--header-h);
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.65rem;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: var(--or);
+      margin-bottom: 2rem;
+      opacity: 0;
+      animation: up 1s ease 0.15s forwards;
+    }
+    .hero-badge::before { content: ''; width: 32px; height: 1px; background: var(--or); }
+
+    .hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.8rem, 6.5vw, 5.5rem);
+      font-weight: 400;
+      line-height: 1.04;
+      margin-bottom: 1.75rem;
+      opacity: 0;
+      animation: up 1s ease 0.35s forwards;
+    }
+
+    .hero-sub {
+      font-size: clamp(1rem, 1.8vw, 1.15rem);
+      color: var(--text-muted);
+      max-width: 480px;
+      line-height: 1.9;
+      margin-bottom: 2.75rem;
+      opacity: 0;
+      animation: up 1s ease 0.55s forwards;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      opacity: 0;
+      animation: up 1s ease 0.75s forwards;
+    }
+
+    .hero-metrics {
+      display: flex;
+      gap: 3rem;
+      margin-top: 3.5rem;
+      padding-top: 2.5rem;
+      border-top: 1px solid rgba(201, 169, 98, 0.1);
+      opacity: 0;
+      animation: up 1s ease 0.95s forwards;
+    }
+
+    .metric-num {
+      font-family: var(--font-display);
+      font-size: 2.4rem;
+      color: var(--or);
+      line-height: 1;
+    }
+    .metric-label {
+      font-size: 0.65rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-top: 0.4rem;
+    }
+
+    .hero-visual { opacity: 0; animation: up 1.2s ease 0.85s forwards; }
+
+    .hero-frame {
+      position: relative;
+      border: 1px solid rgba(201, 169, 98, 0.14);
+      padding: 0.85rem;
+      background: var(--noir-card);
+      box-shadow: 0 50px 100px rgba(0, 0, 0, 0.55);
+    }
+
+    .hero-frame::before {
+      content: '';
+      position: absolute;
+      top: -1px;
+      left: 18%;
+      right: 18%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--or), transparent);
+    }
+
+    .hero-frame img {
+      width: 100%;
+      aspect-ratio: 5/4;
+      object-fit: cover;
+      filter: saturate(0.88) contrast(1.04);
+    }
+
+    .hero-chip {
+      position: absolute;
+      bottom: -1.25rem;
+      left: -1.25rem;
+      background: var(--noir-elevated);
+      border: 1px solid rgba(201, 169, 98, 0.22);
+      padding: 1.1rem 1.4rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .hero-chip-icon {
+      width: 44px;
+      height: 44px;
+      border: 1px solid var(--or-dim);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--or);
+    }
+
+    .hero-chip strong {
+      display: block;
+      font-family: var(--font-display);
+      font-size: 1.35rem;
+      color: var(--or);
+      line-height: 1.15;
+    }
+
+    .hero-chip span {
+      font-size: 0.65rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .scroll-hint {
+      position: absolute;
+      bottom: 2.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+      font-size: 0.6rem;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.6rem;
+      animation: bob 2.5s ease infinite;
+    }
+
+    .scroll-hint::after {
+      content: '';
+      width: 1px;
+      height: 44px;
+      background: linear-gradient(to bottom, var(--or), transparent);
+    }
+
+    @keyframes up {
+      from { opacity: 0; transform: translateY(28px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes bob {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(10px); }
+    }
+
+    /* Marquee */
+    .marquee {
+      padding: 1.5rem 0;
+      border-block: 1px solid rgba(201, 169, 98, 0.08);
+      background: var(--noir-soft);
+      overflow: hidden;
+    }
+
+    .marquee-track {
+      display: flex;
+      gap: 4rem;
+      animation: marquee 30s linear infinite;
+      width: max-content;
+    }
+
+    .marquee-track span {
+      font-size: 0.68rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      white-space: nowrap;
+    }
+
+    .marquee-track span::before {
+      content: '◆';
+      color: var(--or);
+      margin-right: 1.5rem;
+      font-size: 0.5rem;
+    }
+
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    /* Sections */
+    .section { padding: 9rem 0; position: relative; }
+    .section-alt { background: var(--noir-soft); }
+
+    .section-head {
+      text-align: center;
+      margin-bottom: 5rem;
+    }
+
+    .section-head .desc { margin-inline: auto; }
+
+    /* About */
+    .about-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.75rem;
+    }
+
+    .about-card {
+      padding: 2.75rem 2.25rem;
+      background: var(--noir-card);
+      border: 1px solid rgba(201, 169, 98, 0.07);
+      transition: var(--transition);
+      position: relative;
+    }
+
+    .about-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 2rem;
+      right: 2rem;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--or), transparent);
+      opacity: 0;
+      transition: opacity var(--transition);
+    }
+
+    .about-card:hover {
+      border-color: rgba(201, 169, 98, 0.18);
+      transform: translateY(-5px);
+    }
+
+    .about-card:hover::before { opacity: 1; }
+
+    .about-num {
+      font-family: var(--font-display);
+      font-size: 3.2rem;
+      color: rgba(201, 169, 98, 0.12);
+      line-height: 1;
+      margin-bottom: 1.5rem;
+    }
+
+    .about-card h3 {
+      font-family: var(--font-display);
+      font-size: 1.7rem;
+      font-weight: 500;
+      margin-bottom: 1rem;
+    }
+
+    .about-card p { color: var(--text-muted); font-size: 0.94rem; line-height: 1.85; }
+
+    /* Why */
+    .why-layout {
+      display: grid;
+      grid-template-columns: 0.85fr 1.15fr;
+      gap: 5rem;
+      align-items: start;
+    }
+
+    .why-list { display: flex; flex-direction: column; }
+
+    .why-item {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 1.5rem;
+      padding: 2rem 0;
+      border-bottom: 1px solid rgba(201, 169, 98, 0.07);
+      transition: var(--transition);
+    }
+
+    .why-item:first-child { padding-top: 0; }
+
+    .why-icon {
+      width: 54px;
+      height: 54px;
+      border: 1px solid rgba(201, 169, 98, 0.18);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--or);
+      flex-shrink: 0;
+      transition: var(--transition);
+    }
+
+    .why-item:hover .why-icon {
+      background: var(--or-dim);
+      border-color: var(--or);
+    }
+
+    .why-item h3 {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      font-weight: 500;
+      margin-bottom: 0.35rem;
+    }
+
+    .why-item p { color: var(--text-muted); font-size: 0.92rem; line-height: 1.78; }
+
+    /* Portfolio */
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2.5rem;
+    }
+
+    .work-card { position: relative; }
+
+    .work-img {
+      position: relative;
+      overflow: hidden;
+      aspect-ratio: 16/10;
+      margin-bottom: 1.75rem;
+    }
+
+    .work-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.9s var(--ease);
+    }
+
+    .work-card:hover .work-img img { transform: scale(1.07); }
+
+    .work-img::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border: 1px solid transparent;
+      transition: var(--transition);
+      pointer-events: none;
+    }
+
+    .work-card:hover .work-img::after {
+      border-color: rgba(201, 169, 98, 0.35);
+      inset: 14px;
+    }
+
+    .work-tag {
+      position: absolute;
+      top: 1.25rem;
+      left: 1.25rem;
+      z-index: 2;
+      font-size: 0.62rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      background: rgba(8, 8, 8, 0.78);
+      backdrop-filter: blur(10px);
+      padding: 0.5rem 1rem;
+      border: 1px solid rgba(201, 169, 98, 0.18);
+      color: var(--or);
+    }
+
+    .work-card h3 {
+      font-family: var(--font-display);
+      font-size: 1.9rem;
+      font-weight: 500;
+      margin-bottom: 0.65rem;
+    }
+
+    .work-card p {
+      color: var(--text-muted);
+      font-size: 0.94rem;
+      line-height: 1.8;
+      margin-bottom: 1.25rem;
+      max-width: 440px;
+    }
+
+    .work-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.7rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--or);
+      font-weight: 500;
+      transition: var(--transition);
+    }
+
+    .work-link:hover { gap: 1rem; color: var(--or-light); }
+
+    /* Demo sections */
+    .demo {
+      padding: 7rem 0;
+      border-top: 1px solid rgba(201, 169, 98, 0.06);
+    }
+
+    .demo-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+
+    .demo-layout.reverse { direction: rtl; }
+    .demo-layout.reverse > * { direction: ltr; }
+
+    .demo-screen {
+      position: relative;
+    }
+
+    .demo-browser {
+      border: 1px solid rgba(201, 169, 98, 0.12);
+      background: var(--noir-card);
+      overflow: hidden;
+      box-shadow: 0 40px 80px rgba(0, 0, 0, 0.45);
+    }
+
+    .demo-bar {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.85rem 1.25rem;
+      background: var(--noir-elevated);
+      border-bottom: 1px solid rgba(201, 169, 98, 0.08);
+    }
+
+    .demo-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: rgba(201, 169, 98, 0.25);
+    }
+
+    .demo-dot:first-child { background: rgba(201, 169, 98, 0.5); }
+
+    .demo-url {
+      flex: 1;
+      margin-left: 0.75rem;
+      font-size: 0.65rem;
+      letter-spacing: 0.06em;
+      color: var(--text-muted);
+      background: rgba(0, 0, 0, 0.3);
+      padding: 0.35rem 0.85rem;
+      border-radius: 2px;
+    }
+
+    .demo-browser img {
+      width: 100%;
+      aspect-ratio: 16/10;
+      object-fit: cover;
+      object-position: top;
+    }
+
+    .demo-float {
+      position: absolute;
+      bottom: -1.5rem;
+      right: -1.5rem;
+      width: 38%;
+      border: 1px solid rgba(201, 169, 98, 0.2);
+      box-shadow: 0 24px 48px rgba(0, 0, 0, 0.5);
+      animation: float 8s ease-in-out infinite alternate;
+    }
+
+    .demo-float img { aspect-ratio: 9/16; object-fit: cover; object-position: top; }
+
+    .demo-content .label::before { display: none; }
+
+    .demo-features {
+      margin: 2rem 0 2.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+    }
+
+    .demo-features li {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.92rem;
+      color: var(--blanc-muted);
+    }
+
+    .demo-features li::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      background: var(--or);
+      transform: rotate(45deg);
+      flex-shrink: 0;
+    }
+
+    /* Method */
+    .method-steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      position: relative;
+    }
+
+    .method-steps::before {
+      content: '';
+      position: absolute;
+      top: 38px;
+      left: 10%;
+      right: 10%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(201, 169, 98, 0.22), transparent);
+    }
+
+    .method-step {
+      text-align: center;
+      padding: 0 1.25rem;
+    }
+
+    .method-circle {
+      width: 76px;
+      height: 76px;
+      margin: 0 auto 2rem;
+      border: 1px solid rgba(201, 169, 98, 0.22);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-size: 1.55rem;
+      color: var(--or);
+      background: var(--noir);
+      position: relative;
+      z-index: 1;
+      transition: var(--transition);
+    }
+
+    .method-step:hover .method-circle {
+      background: var(--or);
+      color: var(--noir);
+      box-shadow: 0 0 50px rgba(201, 169, 98, 0.22);
+    }
+
+    .method-step h3 {
+      font-family: var(--font-display);
+      font-size: 1.45rem;
+      font-weight: 500;
+      margin-bottom: 0.7rem;
+    }
+
+    .method-step p { color: var(--text-muted); font-size: 0.9rem; line-height: 1.75; }
+
+    /* Testimonials */
+    .testi-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.75rem;
+    }
+
+    .testi-card {
+      padding: 2.5rem 2rem;
+      background: var(--noir-card);
+      border: 1px solid rgba(201, 169, 98, 0.07);
+      transition: var(--transition);
+    }
+
+    .testi-card:hover {
+      border-color: rgba(201, 169, 98, 0.16);
+      transform: translateY(-4px);
+    }
+
+    .testi-stars { display: flex; gap: 3px; color: var(--or); margin-bottom: 1.25rem; }
+
+    .testi-quote {
+      font-family: var(--font-display);
+      font-size: 4rem;
+      line-height: 1;
+      color: rgba(201, 169, 98, 0.15);
+      margin-bottom: -0.75rem;
+    }
+
+    .testi-text {
+      color: var(--blanc-muted);
+      font-size: 0.94rem;
+      line-height: 1.85;
+      font-style: italic;
+      margin-bottom: 2rem;
+    }
+
+    .testi-author {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(201, 169, 98, 0.07);
+    }
+
+    .testi-avatar {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      border: 1px solid rgba(201, 169, 98, 0.18);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      color: var(--or);
+      background: var(--noir-elevated);
+    }
+
+    .testi-name { font-weight: 500; font-size: 0.88rem; }
+    .testi-role { font-size: 0.76rem; color: var(--text-muted); margin-top: 0.1rem; }
+
+    /* FAQ */
+    .faq-layout {
+      display: grid;
+      grid-template-columns: 0.85fr 1.15fr;
+      gap: 5rem;
+      align-items: start;
+    }
+
+    .faq-item { border-bottom: 1px solid rgba(201, 169, 98, 0.08); }
+
+    .faq-q {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1.5rem;
+      padding: 1.75rem 0;
+      text-align: left;
+      color: var(--blanc-casse);
+      font-family: var(--font-display);
+      font-size: 1.28rem;
+      font-weight: 500;
+      transition: color var(--transition);
+    }
+
+    .faq-q:hover { color: var(--or); }
+
+    .faq-icon {
+      width: 30px;
+      height: 30px;
+      border: 1px solid rgba(201, 169, 98, 0.22);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--or);
+      flex-shrink: 0;
+      transition: var(--transition);
+      font-size: 1.1rem;
+    }
+
+    .faq-item.open .faq-icon {
+      background: var(--or);
+      color: var(--noir);
+      border-color: var(--or);
+      transform: rotate(45deg);
+    }
+
+    .faq-a {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.55s ease;
+    }
+
+    .faq-item.open .faq-a { max-height: 220px; }
+
+    .faq-a p {
+      padding-bottom: 1.75rem;
+      color: var(--text-muted);
+      font-size: 0.94rem;
+      line-height: 1.85;
+      max-width: 520px;
+    }
+
+    /* Contact */
+    .contact-layout {
+      display: grid;
+      grid-template-columns: 1fr 1.1fr;
+      gap: 5rem;
+      align-items: start;
+    }
+
+    .contact-block { margin-bottom: 2rem; }
+
+    .contact-block:last-of-type { margin-bottom: 0; }
+
+    .contact-label {
+      font-size: 0.65rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 0.35rem;
+    }
+
+    .contact-value {
+      font-size: 1rem;
+      color: var(--blanc-casse);
+    }
+
+    .contact-value a { transition: color var(--transition); }
+    .contact-value a:hover { color: var(--or); }
+
+    .contact-founder {
+      font-family: var(--font-display);
+      font-size: 1.35rem;
+      font-weight: 500;
+      margin-bottom: 2rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid rgba(201, 169, 98, 0.08);
+    }
+
+    .form {
+      background: var(--noir-card);
+      border: 1px solid rgba(201, 169, 98, 0.08);
+      padding: 3rem;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+
+    .field { margin-bottom: 1.5rem; }
+
+    .field label {
+      display: block;
+      font-size: 0.65rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 0.55rem;
+    }
+
+    .field input,
+    .field textarea {
+      width: 100%;
+      background: var(--noir);
+      border: 1px solid rgba(201, 169, 98, 0.1);
+      color: var(--blanc-casse);
+      padding: 1rem 1.2rem;
+      font-family: inherit;
+      font-size: 0.94rem;
+      font-weight: 300;
+      transition: border-color var(--transition), box-shadow var(--transition);
+    }
+
+    .field input:focus,
+    .field textarea:focus {
+      outline: none;
+      border-color: rgba(201, 169, 98, 0.38);
+      box-shadow: 0 0 0 3px rgba(201, 169, 98, 0.06);
+    }
+
+    .field textarea { min-height: 148px; resize: vertical; }
+
+    .form-submit { width: 100%; margin-top: 0.25rem; }
+
+    .form-ok {
+      display: none;
+      text-align: center;
+      padding: 3rem 2rem;
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      color: var(--or);
+    }
+
+    .form-ok.show { display: block; }
+    .form.hidden { display: none; }
+
+    /* Footer */
+    .footer {
+      padding: 5rem 0 2.5rem;
+      border-top: 1px solid rgba(201, 169, 98, 0.08);
+      background: var(--noir);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr 1fr;
+      gap: 3rem;
+      margin-bottom: 4rem;
+    }
+
+    .footer-brand p {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      line-height: 1.82;
+      margin-top: 1.25rem;
+      max-width: 290px;
+    }
+
+    .footer-col h4 {
+      font-size: 0.65rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--or);
+      margin-bottom: 1.4rem;
+    }
+
+    .footer-col a,
+    .footer-col span {
+      display: block;
+      color: var(--text-muted);
+      font-size: 0.86rem;
+      margin-bottom: 0.7rem;
+      transition: color var(--transition);
+    }
+
+    .footer-col a:hover { color: var(--blanc-casse); }
+
+    .footer-social {
+      display: flex;
+      gap: 0.65rem;
+      margin-top: 0.25rem;
+    }
+
+    .footer-social a {
+      width: 40px;
+      height: 40px;
+      border: 1px solid rgba(201, 169, 98, 0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 0;
+      transition: var(--transition);
+    }
+
+    .footer-social a:hover {
+      border-color: var(--or);
+      color: var(--or);
+      background: var(--or-dim);
+    }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(201, 169, 98, 0.06);
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .footer-bottom p {
+      font-size: 0.76rem;
+      color: var(--text-muted);
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .hero-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .hero-visual { max-width: 540px; }
+      .about-grid { grid-template-columns: 1fr; max-width: 520px; margin-inline: auto; }
+      .why-layout { grid-template-columns: 1fr; gap: 3rem; }
+      .portfolio-grid { grid-template-columns: 1fr; }
+      .demo-layout, .demo-layout.reverse { grid-template-columns: 1fr; direction: ltr; gap: 3rem; }
+      .demo-float { width: 30%; right: 0; }
+      .method-steps { grid-template-columns: repeat(2, 1fr); gap: 3rem; }
+      .method-steps::before { display: none; }
+      .testi-grid { grid-template-columns: 1fr; max-width: 520px; margin-inline: auto; }
+      .faq-layout { grid-template-columns: 1fr; gap: 3rem; }
+      .contact-layout { grid-template-columns: 1fr; gap: 3rem; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 768px) {
+      .nav {
+        position: fixed;
+        inset: 0;
+        background: rgba(8, 8, 8, 0.98);
+        flex-direction: column;
+        justify-content: center;
+        gap: 2rem;
+        opacity: 0;
+        visibility: hidden;
+        transition: var(--transition);
+      }
+      .nav.open { opacity: 1; visibility: visible; }
+      .nav a { font-size: 0.82rem; }
+      .burger { display: flex; }
+      .hero-metrics { flex-wrap: wrap; gap: 1.5rem 2.5rem; }
+      .hero-chip { left: 0; bottom: -1rem; padding: 0.9rem 1.1rem; }
+      .scroll-hint { display: none; }
+      .method-steps { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+      .form { padding: 2rem 1.5rem; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="header" id="header">
+    <div class="header-inner">
+      <a href="#" class="logo">Aure<span>lis</span></a>
+      <nav class="nav" id="nav">
+        <a href="#aurelis">Aurelis</a>
+        <a href="#realisations">Réalisations</a>
+        <a href="#demos">Démonstrations</a>
+        <a href="#methode">Méthode</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contact" class="nav-cta">Contact</a>
+      </nav>
+      <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </header>
+
+  <section class="hero" id="accueil">
+    <div class="hero-bg"></div>
+    <div class="hero-lines"></div>
+    <div class="hero-orb hero-orb-1"></div>
+    <div class="hero-orb hero-orb-2"></div>
+    <div class="container hero-grid">
+      <div>
+        <div class="hero-badge">Agence web premium</div>
+        <h1>Une présence en ligne à la hauteur de votre <em>savoir-faire</em>.</h1>
+        <p class="hero-sub">Aurelis crée des sites web élégants, rapides et modernes pour les entreprises qui souhaitent inspirer confiance, valoriser leur image et attirer de nouveaux clients.</p>
+        <div class="hero-actions">
+          <a href="#realisations" class="btn btn-gold">
+            Découvrir nos réalisations
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+          <a href="#contact" class="btn btn-ghost">Prendre rendez-vous</a>
+        </div>
+        <div class="hero-metrics">
+          <div><div class="metric-num">50+</div><div class="metric-label">Sites livrés</div></div>
+          <div><div class="metric-num">98%</div><div class="metric-label">Clients satisfaits</div></div>
+          <div><div class="metric-num">14j</div><div class="metric-label">Délai moyen</div></div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-frame">
+          <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=900&q=85" alt="Site web premium conçu par Aurelis">
+          <div class="hero-chip">
+            <div class="hero-chip-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+            </div>
+            <div><strong>Sur mesure</strong><span>Design &amp; performance</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="scroll-hint">Défiler</div>
+  </section>
+
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+      <span>Restaurants</span><span>Salons de coiffure</span><span>Instituts de beauté</span><span>Artisans</span><span>Commerces locaux</span><span>Design premium</span><span>SEO local</span><span>Mobile first</span>
+      <span>Restaurants</span><span>Salons de coiffure</span><span>Instituts de beauté</span><span>Artisans</span><span>Commerces locaux</span><span>Design premium</span><span>SEO local</span><span>Mobile first</span>
+    </div>
+  </div>
+
+  <section class="section" id="aurelis">
+    <div class="container">
+      <div class="section-head reveal">
+        <div class="label label-center">À propos</div>
+        <h2 class="title">L'excellence digitale au service des <em>commerces locaux</em></h2>
+        <p class="desc desc-center">Nous croyons que chaque entreprise locale mérite une présence en ligne à la hauteur de son savoir-faire — sans compromis sur l'esthétique ni la performance.</p>
+      </div>
+      <div class="about-grid">
+        <div class="about-card reveal d1">
+          <div class="about-num">01</div>
+          <h3>Qui est Aurelis</h3>
+          <p>Aurelis est une agence web spécialisée dans la création de sites internet haut de gamme pour les entreprises locales. Restaurants, salons, instituts, artisans — nous accompagnons ceux qui veulent se démarquer en ligne avec la même exigence qu'ils portent à leur métier.</p>
+        </div>
+        <div class="about-card reveal d2">
+          <div class="about-num">02</div>
+          <h3>Notre mission</h3>
+          <p>Donner à chaque commerce local les outils digitaux d'une grande marque. Nous transformons votre identité en une expérience web mémorable qui convertit les visiteurs en clients et renforce la confiance dès la première seconde.</p>
+        </div>
+        <div class="about-card reveal d3">
+          <div class="about-num">03</div>
+          <h3>Notre approche</h3>
+          <p>Pas de templates génériques. Chaque projet débute par une écoute attentive de votre univers, suivi d'une conception sur mesure, d'un développement optimisé et d'un accompagnement humain jusqu'à la mise en ligne — et au-delà.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt" id="pourquoi">
+    <div class="container why-layout">
+      <div class="reveal">
+        <div class="label">Pourquoi nous choisir</div>
+        <h2 class="title">Ce qui fait la <em>différence</em></h2>
+        <p class="desc">Chaque détail compte. De la typographie au temps de chargement, nous construisons des sites qui reflètent votre standing et performent concrètement.</p>
+      </div>
+      <div class="why-list">
+        <div class="why-item reveal d1">
+          <div class="why-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+          <div><h3>Design premium</h3><p>Identité visuelle raffinée, typographies soignées et mise en page élégante — votre site respire le professionnalisme.</p></div>
+        </div>
+        <div class="why-item reveal d2">
+          <div class="why-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12" y2="18.01"/></svg></div>
+          <div><h3>Optimisé mobile</h3><p>Plus de 70 % de vos visiteurs consultent depuis leur téléphone. Votre site s'adapte parfaitement à chaque écran.</p></div>
+        </div>
+        <div class="why-item reveal d3">
+          <div class="why-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
+          <div><h3>Chargement rapide</h3><p>Code optimisé, images compressées, performances mesurées. Un site lent fait fuir vos clients — le nôtre les retient.</p></div>
+        </div>
+        <div class="why-item reveal">
+          <div class="why-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+          <div><h3>Référencement local</h3><p>Structure SEO, balises optimisées et contenu pensé pour Google. Vos futurs clients vous trouvent près de chez eux.</p></div>
+        </div>
+        <div class="why-item reveal d1">
+          <div class="why-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div>
+          <div><h3>Accompagnement personnalisé</h3><p>Un interlocuteur dédié, disponible et à l'écoute. De la première réunion à la mise en ligne, vous n'êtes jamais seul.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="realisations">
+    <div class="container">
+      <div class="section-head reveal">
+        <div class="label label-center">Portfolio</div>
+        <h2 class="title">Nos <em>réalisations</em></h2>
+        <p class="desc desc-center">Des sites conçus pour des entreprises exigeantes, où chaque détail reflète leur standing.</p>
+      </div>
+      <div class="portfolio-grid">
+        <article class="work-card reveal d1">
+          <div class="work-img">
+            <span class="work-tag">Restauration</span>
+            <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=900&q=85" alt="Restaurant haut de gamme">
+          </div>
+          <h3>Restaurant haut de gamme</h3>
+          <p>Ambiance raffinée, menu en ligne et réservations simplifiées. Un site qui reflète l'expérience gastronomique et incite à réserver.</p>
+          <a href="#demo-restaurant" class="work-link">Voir la démonstration <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        </article>
+        <article class="work-card reveal d2">
+          <div class="work-img">
+            <span class="work-tag">Coiffure</span>
+            <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?w=900&q=85" alt="Salon de coiffure premium">
+          </div>
+          <h3>Salon de coiffure premium</h3>
+          <p>Prestations, galerie immersive et prise de rendez-vous fluide. Un site élégant qui fidélise une clientèle exigeante.</p>
+          <a href="#demo-coiffeur" class="work-link">Voir la démonstration <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="demo section-alt" id="demos">
+    <div class="container">
+      <div id="demo-coiffeur" class="demo-layout reveal">
+        <div class="demo-screen">
+          <div class="demo-browser">
+            <div class="demo-bar">
+              <span class="demo-dot"></span><span class="demo-dot"></span><span class="demo-dot"></span>
+              <span class="demo-url">maison-elegance.fr</span>
+            </div>
+            <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?w=1200&q=85" alt="Démonstration salon de coiffure">
+          </div>
+          <div class="demo-float demo-browser">
+            <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=400&q=85" alt="Version mobile coiffure">
+          </div>
+        </div>
+        <div class="demo-content">
+          <div class="label">Démonstration</div>
+          <h2 class="title">Salon de coiffure <em>premium</em></h2>
+          <p class="desc">Maison Élégance — un site qui capture l'atmosphère d'un salon haut de gamme et simplifie la prise de rendez-vous en ligne.</p>
+          <ul class="demo-features">
+            <li>Design élégant noir, or et blanc cassé</li>
+            <li>Galerie de prestations immersive</li>
+            <li>Formulaire de réservation intégré</li>
+            <li>Optimisé mobile et référencement local</li>
+          </ul>
+          <a href="https://aurelis-demo-coiffeur-hzng7c525-julestherasse-9969s-projects.vercel.app/" class="btn btn-gold" target="_blank" rel="noopener">
+            Voir la démonstration
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div id="demo-restaurant" class="demo-layout reverse reveal" style="margin-top: 7rem;">
+        <div class="demo-screen">
+          <div class="demo-browser">
+            <div class="demo-bar">
+              <span class="demo-dot"></span><span class="demo-dot"></span><span class="demo-dot"></span>
+              <span class="demo-url">le-jardin-secret.fr</span>
+            </div>
+            <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1200&q=85" alt="Démonstration restaurant">
+          </div>
+          <div class="demo-float demo-browser">
+            <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=400&q=85" alt="Version mobile restaurant">
+          </div>
+        </div>
+        <div class="demo-content">
+          <div class="label">Démonstration</div>
+          <h2 class="title">Restaurant <em>haut de gamme</em></h2>
+          <p class="desc">Le Jardin Secret — une expérience digitale qui évoque la gastronomie raffinée et facilite les réservations de table.</p>
+          <ul class="demo-features">
+            <li>Ambiance visuelle immersive et chaleureuse</li>
+            <li>Carte et menu présentés avec élégance</li>
+            <li>Réservation en ligne simplifiée</li>
+            <li>Performance et SEO local optimisés</li>
+          </ul>
+          <a href="#" class="btn btn-gold">
+            Voir la démonstration
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="methode">
+    <div class="container">
+      <div class="section-head reveal">
+        <div class="label label-center">Processus</div>
+        <h2 class="title">Notre <em>méthode</em></h2>
+        <p class="desc desc-center">Un parcours clair et structuré, de la première conversation à l'accompagnement post-lancement.</p>
+      </div>
+      <div class="method-steps">
+        <div class="method-step reveal d1">
+          <div class="method-circle">01</div>
+          <h3>Découverte</h3>
+          <p>Nous échangeons sur votre activité, vos objectifs et votre clientèle pour définir une direction créative alignée.</p>
+        </div>
+        <div class="method-step reveal d2">
+          <div class="method-circle">02</div>
+          <h3>Conception</h3>
+          <p>Maquettes sur mesure, validation étape par étape. Chaque pixel reflète votre standing et convertit vos visiteurs.</p>
+        </div>
+        <div class="method-step reveal d3">
+          <div class="method-circle">03</div>
+          <h3>Mise en ligne</h3>
+          <p>Développement optimisé, tests multi-appareils et déploiement sécurisé. Votre site est prêt à accueillir vos visiteurs.</p>
+        </div>
+        <div class="method-step reveal d4">
+          <div class="method-circle">04</div>
+          <h3>Accompagnement</h3>
+          <p>Formation, modifications et conseils SEO. Nous restons à vos côtés pour faire évoluer votre présence en ligne.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt" id="temoignages">
+    <div class="container">
+      <div class="section-head reveal">
+        <div class="label label-center">Témoignages</div>
+        <h2 class="title">Ils nous font <em>confiance</em></h2>
+      </div>
+      <div class="testi-grid">
+        <div class="testi-card reveal d1">
+          <div class="testi-stars">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          <div class="testi-quote">&ldquo;</div>
+          <p class="testi-text">Depuis la mise en ligne de notre site, nos réservations en ligne ont doublé. Aurelis a parfaitement capté l'ambiance de notre restaurant.</p>
+          <div class="testi-author">
+            <div class="testi-avatar">ML</div>
+            <div><div class="testi-name">Marc Lefèvre</div><div class="testi-role">Le Jardin Secret — Restaurant, Lyon</div></div>
+          </div>
+        </div>
+        <div class="testi-card reveal d2">
+          <div class="testi-stars">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          <div class="testi-quote">&ldquo;</div>
+          <p class="testi-text">Enfin un site à la hauteur de notre salon. Élégant, rapide, et mes clientes adorent prendre rendez-vous directement en ligne.</p>
+          <div class="testi-author">
+            <div class="testi-avatar">SB</div>
+            <div><div class="testi-name">Sophie Bernard</div><div class="testi-role">Maison Élégance — Coiffure, Paris</div></div>
+          </div>
+        </div>
+        <div class="testi-card reveal d3">
+          <div class="testi-stars">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          <div class="testi-quote">&ldquo;</div>
+          <p class="testi-text">Je cherchais une agence qui comprenne les artisans. Aurelis a créé un site qui met en valeur mon savoir-faire et me positionne en tête sur Google.</p>
+          <div class="testi-author">
+            <div class="testi-avatar">PD</div>
+            <div><div class="testi-name">Pierre Dubois</div><div class="testi-role">Atelier Dubois — Ébénisterie, Bordeaux</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="faq">
+    <div class="container faq-layout">
+      <div class="reveal">
+        <div class="label">Questions fréquentes</div>
+        <h2 class="title">Vous avez des <em>questions</em> ?</h2>
+        <p class="desc">Les réponses aux interrogations les plus courantes. Pour toute autre demande, contactez-nous directement.</p>
+      </div>
+      <div class="reveal d1">
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">Combien coûte un site ?<span class="faq-icon">+</span></button>
+          <div class="faq-a"><p>Chaque projet est unique. Nos sites premium démarrent à partir de 2 500 €. Nous établissons un devis transparent après un premier échange gratuit.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">Combien de temps faut-il ?<span class="faq-icon">+</span></button>
+          <div class="faq-a"><p>Comptez 2 à 4 semaines entre la validation du design et la mise en ligne, incluant conception, développement, retours et tests.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">Puis-je modifier mon site ?<span class="faq-icon">+</span></button>
+          <div class="faq-a"><p>Absolument. Nous vous formons à la gestion de votre contenu et restons disponibles pour les modifications plus techniques.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">Le site est-il adapté aux téléphones ?<span class="faq-icon">+</span></button>
+          <div class="faq-a"><p>C'est une priorité absolue. Chaque site Aurelis est conçu mobile-first : navigation fluide et boutons d'action accessibles sur tous les appareils.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt" id="contact">
+    <div class="container contact-layout">
+      <div class="reveal">
+        <div class="label">Contact</div>
+        <h2 class="title">Parlons de <em>votre projet</em></h2>
+        <p class="desc" style="margin-bottom: 2.5rem;">Prenez rendez-vous pour un échange gratuit et sans engagement.</p>
+        <div class="contact-founder">Jules Therasse — Fondateur d'Aurelis</div>
+        <div class="contact-block">
+          <div class="contact-label">Téléphone</div>
+          <div class="contact-value"><a href="tel:+32495380329">0495 38 03 29</a></div>
+        </div>
+        <div class="contact-block">
+          <div class="contact-label">Email</div>
+          <div class="contact-value"><a href="mailto:julestherasse@gmail.com">julestherasse@gmail.com</a></div>
+        </div>
+        <div class="contact-block">
+          <div class="contact-label">Disponibilité</div>
+          <div class="contact-value">Lun – Ven, 9h – 18h</div>
+        </div>
+      </div>
+      <div class="reveal d1">
+        <form class="form" id="form">
+          <div class="form-row">
+            <div class="field"><label for="nom">Nom</label><input type="text" id="nom" name="nom" required placeholder="Votre nom"></div>
+            <div class="field"><label for="entreprise">Entreprise</label><input type="text" id="entreprise" name="entreprise" required placeholder="Nom de votre commerce"></div>
+          </div>
+          <div class="form-row">
+            <div class="field"><label for="tel">Téléphone</label><input type="tel" id="tel" name="tel" required placeholder="04XX XX XX XX"></div>
+            <div class="field"><label for="email">Email</label><input type="email" id="email" name="email" required placeholder="vous@exemple.fr"></div>
+          </div>
+          <div class="field"><label for="msg">Message</label><textarea id="msg" name="msg" required placeholder="Décrivez votre projet, vos objectifs et vos attentes…"></textarea></div>
+          <button type="submit" class="btn btn-gold form-submit">Envoyer ma demande</button>
+        </form>
+        <div class="form-ok" id="formOk">Merci pour votre message. Nous vous recontactons sous 24 heures.</div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="#" class="logo">Aure<span>lis</span></a>
+          <p>Agence web premium spécialisée dans la création de sites internet haut de gamme pour les entreprises locales exigeantes.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <span>Jules Therasse — Fondateur d'Aurelis</span>
+          <a href="tel:+32495380329">Téléphone : 0495 38 03 29</a>
+          <a href="mailto:julestherasse@gmail.com">Email : julestherasse@gmail.com</a>
+        </div>
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <a href="#aurelis">À propos</a>
+          <a href="#realisations">Réalisations</a>
+          <a href="#demos">Démonstrations</a>
+          <a href="#methode">Méthode</a>
+          <a href="#contact">Contact</a>
+        </div>
+        <div class="footer-col">
+          <h4>Réseaux sociaux</h4>
+          <div class="footer-social">
+            <a href="#" aria-label="Instagram"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+            <a href="#" aria-label="LinkedIn"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg></a>
+            <a href="#" aria-label="Facebook"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
+          </div>
+          <a href="#" style="margin-top: 1.25rem;">Mentions légales</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Aurelis. Tous droits réservés.</p>
+        <p>Conçu avec exigence, pour les commerces exigeants.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var header = document.getElementById('header');
+      var burger = document.getElementById('burger');
+      var nav = document.getElementById('nav');
+
+      window.addEventListener('scroll', function () {
+        header.classList.toggle('scrolled', window.scrollY > 50);
+      });
+
+      burger.addEventListener('click', function () {
+        burger.classList.toggle('active');
+        nav.classList.toggle('open');
+        document.body.style.overflow = nav.classList.contains('open') ? 'hidden' : '';
+      });
+
+      nav.querySelectorAll('a').forEach(function (a) {
+        a.addEventListener('click', function () {
+          burger.classList.remove('active');
+          nav.classList.remove('open');
+          document.body.style.overflow = '';
+        });
+      });
+
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+        });
+      }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+      document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
+
+      document.querySelectorAll('.faq-item').forEach(function (item) {
+        item.querySelector('.faq-q').addEventListener('click', function () {
+          var open = item.classList.contains('open');
+          document.querySelectorAll('.faq-item.open').forEach(function (i) {
+            i.classList.remove('open');
+            i.querySelector('.faq-q').setAttribute('aria-expanded', 'false');
+          });
+          if (!open) { item.classList.add('open'); this.setAttribute('aria-expanded', 'true'); }
+        });
+      });
+
+      document.getElementById('form').addEventListener('submit', function (e) {
+        e.preventDefault();
+        this.classList.add('hidden');
+        document.getElementById('formOk').classList.add('show');
+      });
+
+      document.querySelectorAll('a[href^="#"]').forEach(function (a) {
+        a.addEventListener('click', function (e) {
+          var t = document.querySelector(this.getAttribute('href'));
+          if (t) {
+            e.preventDefault();
+            var h = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--header-h')) || 86;
+            window.scrollTo({ top: t.getBoundingClientRect().top + window.scrollY - h, behavior: 'smooth' });
+          }
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
