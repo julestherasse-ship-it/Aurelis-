@@ -599,80 +599,518 @@
 
     .why-item p { color: var(--text-muted); font-size: 0.92rem; line-height: 1.78; }
 
-    /* Portfolio */
-    .portfolio-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 2.5rem;
-    }
-
-    .work-card { position: relative; }
-
-    .work-img {
-      position: relative;
+    /* ── Sector Roulette (Réalisations) ── */
+    #realisations {
       overflow: hidden;
-      aspect-ratio: 16/10;
-      margin-bottom: 1.75rem;
+      isolation: isolate;
     }
 
-    .work-img img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.9s var(--ease);
-    }
-
-    .work-card:hover .work-img img { transform: scale(1.07); }
-
-    .work-img::after {
+    #realisations::before {
       content: '';
       position: absolute;
-      inset: 0;
-      border: 1px solid transparent;
-      transition: var(--transition);
+      inset: 10% -20% auto;
+      height: 55%;
+      background:
+        radial-gradient(ellipse 45% 55% at 50% 40%, rgba(201, 169, 98, 0.09), transparent 70%),
+        radial-gradient(ellipse 30% 40% at 20% 60%, rgba(201, 169, 98, 0.04), transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .roulette-wrap {
+      position: relative;
+      z-index: 1;
+      margin-top: 1rem;
+    }
+
+    .roulette-stage {
+      position: relative;
+      height: clamp(220px, 32vw, 300px);
+      perspective: 1200px;
+      touch-action: pan-y;
+      user-select: none;
+      -webkit-user-select: none;
+      cursor: grab;
+    }
+
+    .roulette-stage.is-dragging { cursor: grabbing; }
+
+    .roulette-stage::before,
+    .roulette-stage::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: min(18%, 140px);
+      z-index: 4;
       pointer-events: none;
     }
 
-    .work-card:hover .work-img::after {
-      border-color: rgba(201, 169, 98, 0.35);
-      inset: 14px;
+    .roulette-stage::before {
+      left: 0;
+      background: linear-gradient(90deg, var(--noir) 0%, transparent 100%);
     }
 
-    .work-tag {
+    .roulette-stage::after {
+      right: 0;
+      background: linear-gradient(270deg, var(--noir) 0%, transparent 100%);
+    }
+
+    .roulette-floor {
       position: absolute;
-      top: 1.25rem;
-      left: 1.25rem;
-      z-index: 2;
-      font-size: 0.62rem;
-      letter-spacing: 0.22em;
+      left: 10%;
+      right: 10%;
+      bottom: 8%;
+      height: 42%;
+      background: radial-gradient(ellipse 70% 55% at 50% 100%, rgba(201, 169, 98, 0.14), transparent 72%);
+      filter: blur(18px);
+      pointer-events: none;
+      z-index: 0;
+      transition: opacity 0.45s var(--ease);
+    }
+
+    .roulette-focus {
+      position: absolute;
+      left: 50%;
+      bottom: 6%;
+      transform: translateX(-50%);
+      width: min(200px, 42%);
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--or), transparent);
+      box-shadow: 0 0 18px rgba(201, 169, 98, 0.55), 0 0 40px rgba(201, 169, 98, 0.2);
+      z-index: 3;
+      pointer-events: none;
+      opacity: 0.85;
+      transition: opacity 0.35s var(--ease), width 0.45s var(--ease);
+    }
+
+    .roulette-wrap.is-switching .roulette-focus {
+      animation: focusTick 0.55s var(--ease);
+    }
+
+    @keyframes focusTick {
+      0% { opacity: 0.35; width: min(120px, 28%); }
+      40% { opacity: 1; width: min(220px, 48%); }
+      100% { opacity: 0.85; width: min(200px, 42%); }
+    }
+
+    .roulette-focus::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      bottom: 0;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--or-light);
+      transform: translate(-50%, 50%);
+      box-shadow: 0 0 12px rgba(201, 169, 98, 0.8);
+    }
+
+    .roulette-track {
+      position: absolute;
+      inset: 0;
+      transform-style: preserve-3d;
+    }
+
+    .roulette-item {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: clamp(108px, 16vw, 148px);
+      height: clamp(128px, 19vw, 172px);
+      margin: 0;
+      padding: 0;
+      border: none;
+      background: transparent;
+      color: inherit;
+      font: inherit;
+      cursor: pointer;
+      transform-style: preserve-3d;
+      will-change: transform, opacity, filter;
+      transition:
+        transform 0.65s var(--ease),
+        opacity 0.5s var(--ease),
+        filter 0.5s var(--ease);
+      z-index: 1;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .roulette-item:focus-visible {
+      outline: 1px solid rgba(201, 169, 98, 0.55);
+      outline-offset: 6px;
+    }
+
+    .roulette-item.is-active {
+      z-index: 5;
+      transition-duration: 0.55s;
+    }
+
+    .roulette-card {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.85rem;
+      padding: 1.1rem 0.75rem;
+      border-radius: 4px;
+      background:
+        linear-gradient(165deg, rgba(28, 26, 22, 0.95) 0%, rgba(12, 12, 12, 0.98) 100%);
+      border: 1px solid rgba(201, 169, 98, 0.12);
+      box-shadow:
+        0 18px 40px rgba(0, 0, 0, 0.45),
+        inset 0 1px 0 rgba(255, 255, 255, 0.04);
+      overflow: hidden;
+      transition:
+        border-color 0.5s var(--ease),
+        box-shadow 0.5s var(--ease),
+        background 0.5s var(--ease);
+    }
+
+    .roulette-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(201, 169, 98, 0.08), transparent 45%, transparent 55%, rgba(201, 169, 98, 0.04));
+      opacity: 0.55;
+      pointer-events: none;
+    }
+
+    .roulette-card::after {
+      content: '';
+      position: absolute;
+      top: -40%;
+      left: -30%;
+      width: 70%;
+      height: 70%;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.08), transparent 65%);
+      pointer-events: none;
+      transition: opacity 0.45s var(--ease);
+    }
+
+    .roulette-item.is-active .roulette-card {
+      border-color: rgba(201, 169, 98, 0.45);
+      background:
+        linear-gradient(165deg, rgba(42, 36, 24, 0.98) 0%, rgba(14, 13, 11, 0.99) 100%);
+      box-shadow:
+        0 22px 50px rgba(0, 0, 0, 0.55),
+        0 0 0 1px rgba(201, 169, 98, 0.12),
+        0 0 36px rgba(201, 169, 98, 0.18),
+        inset 0 1px 0 rgba(255, 242, 210, 0.08);
+    }
+
+    .roulette-item.is-active .roulette-card::after { opacity: 1; }
+
+    .roulette-icon {
+      width: clamp(36px, 5vw, 46px);
+      height: clamp(36px, 5vw, 46px);
+      display: grid;
+      place-items: center;
+      color: rgba(232, 228, 219, 0.55);
+      transition: color 0.45s var(--ease), transform 0.55s var(--ease), filter 0.45s var(--ease);
+    }
+
+    .roulette-icon svg {
+      width: 100%;
+      height: 100%;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 1.35;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .roulette-item.is-active .roulette-icon {
+      color: var(--or-light);
+      transform: scale(1.08);
+      filter: drop-shadow(0 0 10px rgba(201, 169, 98, 0.45));
+    }
+
+    .roulette-name {
+      position: relative;
+      z-index: 1;
+      font-size: clamp(0.58rem, 1.1vw, 0.68rem);
+      letter-spacing: 0.16em;
       text-transform: uppercase;
-      background: rgba(8, 8, 8, 0.78);
+      text-align: center;
+      color: rgba(232, 228, 219, 0.45);
+      font-weight: 500;
+      line-height: 1.35;
+      max-width: 11ch;
+      transition: color 0.45s var(--ease);
+    }
+
+    .roulette-item.is-active .roulette-name {
+      color: var(--blanc-casse);
+    }
+
+    .roulette-pulse {
+      position: absolute;
+      inset: -2px;
+      border-radius: 5px;
+      border: 1px solid rgba(201, 169, 98, 0.35);
+      opacity: 0;
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    .roulette-item.is-active.is-pulsing .roulette-pulse {
+      animation: roulettePulse 0.7s var(--ease);
+    }
+
+    @keyframes roulettePulse {
+      0% { opacity: 0.85; transform: scale(1); }
+      100% { opacity: 0; transform: scale(1.18); }
+    }
+
+    .roulette-controls {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1.25rem;
+      margin-top: 0.5rem;
+    }
+
+    .roulette-btn {
+      width: 48px;
+      height: 48px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      border: 1px solid rgba(201, 169, 98, 0.22);
+      background: rgba(15, 15, 15, 0.85);
+      color: var(--or);
+      cursor: pointer;
+      transition: var(--transition);
+      backdrop-filter: blur(8px);
+    }
+
+    .roulette-btn:hover {
+      border-color: rgba(201, 169, 98, 0.55);
+      background: rgba(201, 169, 98, 0.08);
+      box-shadow: 0 0 22px rgba(201, 169, 98, 0.15);
+      color: var(--or-light);
+    }
+
+    .roulette-btn:active { transform: scale(0.94); }
+
+    .roulette-btn svg {
+      width: 18px;
+      height: 18px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 1.6;
+    }
+
+    .roulette-dots {
+      display: flex;
+      gap: 0.45rem;
+      align-items: center;
+    }
+
+    .roulette-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      border: none;
+      padding: 0;
+      background: rgba(232, 228, 219, 0.22);
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .roulette-dot.is-active {
+      width: 22px;
+      border-radius: 999px;
+      background: var(--or);
+      box-shadow: 0 0 12px rgba(201, 169, 98, 0.45);
+    }
+
+    .roulette-meta {
+      text-align: center;
+      margin: 2.25rem auto 0;
+      max-width: 560px;
+      min-height: 7.5rem;
+    }
+
+    .roulette-meta-kicker {
+      font-size: 0.65rem;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: var(--or);
+      margin-bottom: 0.85rem;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity 0.45s var(--ease), transform 0.45s var(--ease);
+    }
+
+    .roulette-meta-kicker.is-in {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .roulette-meta h3 {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4vw, 2.85rem);
+      font-weight: 500;
+      line-height: 1.15;
+      margin-bottom: 0.85rem;
+      opacity: 0;
+      transform: translateY(14px);
+      transition: opacity 0.5s var(--ease) 0.05s, transform 0.5s var(--ease) 0.05s;
+    }
+
+    .roulette-meta h3 em {
+      font-style: italic;
+      color: var(--or-light);
+    }
+
+    .roulette-meta h3.is-in,
+    .roulette-meta p.is-in {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .roulette-meta p {
+      color: var(--text-muted);
+      font-size: 0.98rem;
+      line-height: 1.75;
+      opacity: 0;
+      transform: translateY(14px);
+      transition: opacity 0.5s var(--ease) 0.1s, transform 0.5s var(--ease) 0.1s;
+    }
+
+    .project-panel {
+      margin-top: 3.5rem;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.75rem;
+    }
+
+    .project-card {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      background: linear-gradient(180deg, rgba(18, 18, 18, 0.95), rgba(10, 10, 10, 0.98));
+      border: 1px solid rgba(201, 169, 98, 0.1);
+      overflow: hidden;
+      opacity: 0;
+      transform: translateY(28px) scale(0.98);
+      transition:
+        opacity 0.55s var(--ease),
+        transform 0.55s var(--ease),
+        border-color 0.4s var(--ease),
+        box-shadow 0.4s var(--ease);
+    }
+
+    .project-card.is-in {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+
+    .project-card:hover {
+      border-color: rgba(201, 169, 98, 0.32);
+      box-shadow: 0 24px 50px rgba(0, 0, 0, 0.4), 0 0 30px rgba(201, 169, 98, 0.08);
+    }
+
+    .project-card.is-coming {
+      background:
+        linear-gradient(180deg, rgba(16, 16, 16, 0.9), rgba(8, 8, 8, 0.95));
+    }
+
+    .project-media {
+      position: relative;
+      aspect-ratio: 16 / 10;
+      overflow: hidden;
+      background: #0c0c0c;
+    }
+
+    .project-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.9s var(--ease), filter 0.5s var(--ease);
+    }
+
+    .project-card:hover .project-media img { transform: scale(1.06); }
+
+    .project-card.is-coming .project-media img {
+      filter: grayscale(0.35) brightness(0.55);
+    }
+
+    .project-media::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 45%, rgba(8, 8, 8, 0.75) 100%);
+      pointer-events: none;
+    }
+
+    .project-badge {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      z-index: 2;
+      font-size: 0.58rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      padding: 0.45rem 0.8rem;
+      border: 1px solid rgba(201, 169, 98, 0.28);
+      background: rgba(8, 8, 8, 0.72);
       backdrop-filter: blur(10px);
-      padding: 0.5rem 1rem;
-      border: 1px solid rgba(201, 169, 98, 0.18);
       color: var(--or);
     }
 
-    .work-card h3 {
-      font-family: var(--font-display);
-      font-size: 1.9rem;
-      font-weight: 500;
+    .project-badge.client {
+      border-color: rgba(245, 242, 235, 0.18);
+      color: var(--blanc-muted);
+    }
+
+    .project-badge.soon {
+      border-color: rgba(201, 169, 98, 0.15);
+      color: rgba(232, 228, 219, 0.55);
+    }
+
+    .project-body {
+      padding: 1.5rem 1.4rem 1.6rem;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .project-sector {
+      font-size: 0.62rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--or);
       margin-bottom: 0.65rem;
     }
 
-    .work-card p {
-      color: var(--text-muted);
-      font-size: 0.94rem;
-      line-height: 1.8;
-      margin-bottom: 1.25rem;
-      max-width: 440px;
+    .project-body h4 {
+      font-family: var(--font-display);
+      font-size: 1.65rem;
+      font-weight: 500;
+      margin-bottom: 0.7rem;
+      line-height: 1.2;
     }
 
-    .work-link {
+    .project-body p {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      line-height: 1.7;
+      margin-bottom: 1.4rem;
+      flex: 1;
+    }
+
+    .project-cta {
       display: inline-flex;
       align-items: center;
-      gap: 0.6rem;
-      font-size: 0.7rem;
+      gap: 0.65rem;
+      align-self: flex-start;
+      font-size: 0.68rem;
       letter-spacing: 0.18em;
       text-transform: uppercase;
       color: var(--or);
@@ -680,7 +1118,76 @@
       transition: var(--transition);
     }
 
-    .work-link:hover { gap: 1rem; color: var(--or-light); }
+    .project-cta svg {
+      width: 14px;
+      height: 14px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 2;
+      transition: transform 0.35s var(--ease);
+    }
+
+    .project-card:hover .project-cta { color: var(--or-light); }
+    .project-card:hover .project-cta svg { transform: translateX(4px); }
+
+    .project-cta.is-disabled {
+      color: rgba(232, 228, 219, 0.35);
+      pointer-events: none;
+      letter-spacing: 0.14em;
+    }
+
+    .project-soon-mark {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    .project-soon-mark span {
+      font-family: var(--font-display);
+      font-size: 1.35rem;
+      font-style: italic;
+      color: rgba(245, 242, 235, 0.72);
+      letter-spacing: 0.08em;
+      text-shadow: 0 8px 30px rgba(0, 0, 0, 0.65);
+      border: 1px solid rgba(201, 169, 98, 0.25);
+      padding: 0.65rem 1.2rem;
+      background: rgba(8, 8, 8, 0.35);
+      backdrop-filter: blur(6px);
+    }
+
+    .roulette-hint {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      margin-top: 1.25rem;
+      font-size: 0.62rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(134, 129, 124, 0.75);
+    }
+
+    .roulette-hint span {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .roulette-hint kbd {
+      display: inline-grid;
+      place-items: center;
+      min-width: 1.4rem;
+      height: 1.4rem;
+      padding: 0 0.35rem;
+      border: 1px solid rgba(201, 169, 98, 0.2);
+      border-radius: 3px;
+      color: rgba(201, 169, 98, 0.7);
+      font-family: inherit;
+      font-size: 0.58rem;
+    }
 
     /* Demo sections */
     .demo {
@@ -1145,7 +1652,8 @@
       .hero-visual { max-width: 540px; }
       .about-grid { grid-template-columns: 1fr; max-width: 520px; margin-inline: auto; }
       .why-layout { grid-template-columns: 1fr; gap: 3rem; }
-      .portfolio-grid { grid-template-columns: 1fr; }
+      .project-panel { grid-template-columns: 1fr 1fr; }
+      .roulette-hint { display: none; }
       .demo-layout, .demo-layout.reverse { grid-template-columns: 1fr; direction: ltr; gap: 3rem; }
       .demo-float { width: 30%; right: 0; }
       .method-steps { grid-template-columns: repeat(2, 1fr); gap: 3rem; }
@@ -1179,6 +1687,10 @@
       .form { padding: 2rem 1.5rem; }
       .footer-grid { grid-template-columns: 1fr; }
       .footer-bottom { flex-direction: column; text-align: center; }
+      .project-panel { grid-template-columns: 1fr; }
+      .roulette-stage { height: 240px; }
+      .roulette-meta { min-height: 8.5rem; margin-top: 1.5rem; }
+      .roulette-btn { width: 44px; height: 44px; }
     }
   </style>
 </head>
@@ -1239,8 +1751,8 @@
 
   <div class="marquee" aria-hidden="true">
     <div class="marquee-track">
-      <span>Restaurants</span><span>Salons de coiffure</span><span>Instituts de beauté</span><span>Artisans</span><span>Commerces locaux</span><span>Design premium</span><span>SEO local</span><span>Mobile first</span>
-      <span>Restaurants</span><span>Salons de coiffure</span><span>Instituts de beauté</span><span>Artisans</span><span>Commerces locaux</span><span>Design premium</span><span>SEO local</span><span>Mobile first</span>
+      <span>Restaurants</span><span>Fast-food</span><span>Salons de coiffure</span><span>Instituts de beauté</span><span>Transport</span><span>Design premium</span><span>SEO local</span><span>Mobile first</span>
+      <span>Restaurants</span><span>Fast-food</span><span>Salons de coiffure</span><span>Instituts de beauté</span><span>Transport</span><span>Design premium</span><span>SEO local</span><span>Mobile first</span>
     </div>
   </div>
 
@@ -1308,27 +1820,39 @@
       <div class="section-head reveal">
         <div class="label label-center">Portfolio</div>
         <h2 class="title">Nos <em>réalisations</em></h2>
-        <p class="desc desc-center">Des sites conçus pour des entreprises exigeantes, où chaque détail reflète leur standing.</p>
+        <p class="desc desc-center">Sélectionnez un univers pour explorer les projets conçus pour chaque métier — une expérience de sélection digne d'un menu premium.</p>
       </div>
-      <div class="portfolio-grid">
-        <article class="work-card reveal d1">
-          <div class="work-img">
-            <span class="work-tag">Restauration</span>
-            <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=900&q=85" alt="Restaurant haut de gamme">
-          </div>
-          <h3>Restaurant haut de gamme</h3>
-          <p>Ambiance raffinée, menu en ligne et réservations simplifiées. Un site qui reflète l'expérience gastronomique et incite à réserver.</p>
-          <a href="#demo-restaurant" class="work-link">Voir la démonstration <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-        </article>
-        <article class="work-card reveal d2">
-          <div class="work-img">
-            <span class="work-tag">Coiffure</span>
-            <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?w=900&q=85" alt="Salon de coiffure premium">
-          </div>
-          <h3>Salon de coiffure premium</h3>
-          <p>Prestations, galerie immersive et prise de rendez-vous fluide. Un site élégant qui fidélise une clientèle exigeante.</p>
-          <a href="#demo-coiffeur" class="work-link">Voir la démonstration <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-        </article>
+
+      <div class="roulette-wrap reveal" id="sectorRoulette" tabindex="0" aria-roledescription="carrousel" aria-label="Sélection de secteurs">
+        <div class="roulette-stage" id="rouletteStage">
+          <div class="roulette-floor" aria-hidden="true"></div>
+          <div class="roulette-track" id="rouletteTrack"></div>
+          <div class="roulette-focus" aria-hidden="true"></div>
+        </div>
+
+        <div class="roulette-controls">
+          <button type="button" class="roulette-btn" id="roulettePrev" aria-label="Secteur précédent">
+            <svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
+          </button>
+          <div class="roulette-dots" id="rouletteDots" role="tablist" aria-label="Secteurs"></div>
+          <button type="button" class="roulette-btn" id="rouletteNext" aria-label="Secteur suivant">
+            <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
+          </button>
+        </div>
+
+        <div class="roulette-hint" aria-hidden="true">
+          <span><kbd>←</kbd><kbd>→</kbd> naviguer</span>
+          <span>·</span>
+          <span>glisser pour explorer</span>
+        </div>
+
+        <div class="roulette-meta">
+          <div class="roulette-meta-kicker" id="sectorKicker">Secteur sélectionné</div>
+          <h3 id="sectorTitle"></h3>
+          <p id="sectorDesc"></p>
+        </div>
+
+        <div class="project-panel" id="projectPanel" aria-live="polite"></div>
       </div>
     </div>
   </section>
@@ -1370,18 +1894,18 @@
           <div class="demo-browser">
             <div class="demo-bar">
               <span class="demo-dot"></span><span class="demo-dot"></span><span class="demo-dot"></span>
-              <span class="demo-url">le-jardin-secret.fr</span>
+              <span class="demo-url">maison-rivage.fr</span>
             </div>
-            <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1200&q=85" alt="Démonstration restaurant">
+            <img src="https://images.unsplash.com/photo-1550966871-3ed3cdb5ed0c?w=1200&q=85" alt="Démonstration restaurant Maison Rivage">
           </div>
           <div class="demo-float demo-browser">
-            <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=400&q=85" alt="Version mobile restaurant">
+            <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=400&q=85" alt="Version mobile Maison Rivage">
           </div>
         </div>
         <div class="demo-content">
           <div class="label">Démonstration</div>
           <h2 class="title">Restaurant <em>haut de gamme</em></h2>
-          <p class="desc">Le Jardin Secret — une expérience digitale qui évoque la gastronomie raffinée et facilite les réservations de table.</p>
+          <p class="desc">Maison Rivage — une expérience digitale qui évoque la gastronomie raffinée et facilite les réservations de table.</p>
           <ul class="demo-features">
             <li>Ambiance visuelle immersive et chaleureuse</li>
             <li>Carte et menu présentés avec élégance</li>
@@ -1648,6 +2172,409 @@
           }
         });
       });
+
+      /* ── Sector Roulette ── */
+      (function initSectorRoulette() {
+        var root = document.getElementById('sectorRoulette');
+        if (!root) return;
+
+        var DEMO_COIFFEUR = 'https://aurelis-demo-coiffeur-hzng7c525-julestherasse-9969s-projects.vercel.app/';
+        var DEMO_BRYAN = 'https://bryan-burger.vercel.app/';
+        var DEMO_TRANS = 'https://transport-delivery.vercel.app/';
+        var ARROW_SVG = '<svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>';
+
+        var ICONS = {
+          restaurant: '<svg viewBox="0 0 24 24"><path d="M8 3v8a2 2 0 002 2h0a2 2 0 002-2V3"/><path d="M10 13v8"/><path d="M16 3v18"/><path d="M14 7h4"/></svg>',
+          fastfood: '<svg viewBox="0 0 24 24"><path d="M4 16c2 1 4 1.5 8 1.5s6-.5 8-1.5"/><path d="M5 12c.8-3.5 3.2-6 7-6s6.2 2.5 7 6"/><path d="M8 12v2M12 11v3M16 12v2"/><path d="M7 19h10"/></svg>',
+          coiffure: '<svg viewBox="0 0 24 24"><path d="M6 3v7a3 3 0 006 0V3"/><path d="M9 13v8"/><path d="M15 3c2.5 2 3.5 5 2 8-1.2 2.4-3.2 3.2-5 3"/><path d="M17 14l2 7"/><circle cx="9" cy="21" r="0.6" fill="currentColor" stroke="none"/></svg>',
+          beaute: '<svg viewBox="0 0 24 24"><path d="M12 3c-2.5 3.5-6 6.2-6 10a6 6 0 0012 0c0-3.8-3.5-6.5-6-10z"/><path d="M9.5 14.5c.8 1.2 2 1.8 2.5 1.8s1.7-.6 2.5-1.8"/></svg>',
+          transport: '<svg viewBox="0 0 24 24"><rect x="1" y="8" width="15" height="9" rx="1.5"/><path d="M16 11h4l3 3v3h-7v-6z"/><circle cx="6.5" cy="17.5" r="1.8"/><circle cx="18.5" cy="17.5" r="1.8"/></svg>'
+        };
+
+        var PLACEHOLDER_IMG = 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=900&q=70';
+
+        function soonCard(sector, image) {
+          return {
+            name: 'Projet à venir',
+            sector: sector,
+            desc: 'Un prochain site premium est en préparation pour cet univers. Contactez-nous pour en faire le vôtre.',
+            image: image || PLACEHOLDER_IMG,
+            href: '#contact',
+            badge: 'Bientôt',
+            badgeClass: 'soon',
+            coming: true,
+            cta: 'Parler de ce projet'
+          };
+        }
+
+        var sectors = [
+          {
+            id: 'restaurant',
+            name: 'Restaurants',
+            short: 'Restaurants',
+            title: 'Restaurants <em>gastronomiques</em>',
+            desc: 'Des sites qui capturent l’ambiance d’une table d’exception et transforment la visite en réservation.',
+            icon: ICONS.restaurant,
+            projects: [
+              {
+                name: 'Maison Rivage',
+                sector: 'Restaurant',
+                desc: 'Expérience gastronomique raffinée — ambiance immersive, carte élégante et réservation simplifiée.',
+                image: 'https://images.unsplash.com/photo-1550966871-3ed3cdb5ed0c?w=900&q=85',
+                href: '#demo-restaurant',
+                badge: 'Démo',
+                badgeClass: ''
+              },
+              {
+                name: 'Le Jardin Secret',
+                sector: 'Restaurant',
+                desc: 'Univers chaleureux et gastronomique, pensé pour le SEO local et la conversion mobile.',
+                image: 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=900&q=85',
+                href: '#demo-restaurant',
+                badge: 'Démo',
+                badgeClass: ''
+              },
+              soonCard('Restaurant', 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=900&q=80')
+            ]
+          },
+          {
+            id: 'fastfood',
+            name: 'Fast-food',
+            short: 'Fast-food',
+            title: 'Fast-food & <em>street food</em>',
+            desc: 'Des expériences digitales percutantes pour burger houses et concepts street food — menu, commande et identité forte.',
+            icon: ICONS.fastfood,
+            projects: [
+              {
+                name: 'Bryan Burger',
+                sector: 'Fast-food',
+                desc: 'Site complet pour burger house : menu immersif, commande en ligne et univers visuel premium très appétissant.',
+                image: 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=900&q=85',
+                href: DEMO_BRYAN,
+                external: true,
+                badge: 'Client réel',
+                badgeClass: 'client'
+              },
+              soonCard('Fast-food', 'https://images.unsplash.com/photo-1550547660-d9450f859349?w=900&q=80'),
+              soonCard('Fast-food', 'https://images.unsplash.com/photo-1571091718767-18b5b1457add?w=900&q=80')
+            ]
+          },
+          {
+            id: 'coiffure',
+            name: 'Salons de coiffure',
+            short: 'Coiffure',
+            title: 'Salons de <em>coiffure</em>',
+            desc: 'Des expériences digitales élégantes pour salons exigeants — galerie, prestations et prise de rendez-vous fluide.',
+            icon: ICONS.coiffure,
+            projects: [
+              {
+                name: 'Maison Élégance',
+                sector: 'Salon de coiffure',
+                desc: 'Site premium noir, or et blanc cassé. Prestations, galerie immersive et réservation en ligne.',
+                image: 'https://images.unsplash.com/photo-1560066984-138dadb4c035?w=900&q=85',
+                href: DEMO_COIFFEUR,
+                external: true,
+                badge: 'Démo',
+                badgeClass: ''
+              },
+              soonCard('Salon de coiffure', 'https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=900&q=80'),
+              soonCard('Salon de coiffure', 'https://images.unsplash.com/photo-1633681926022-84c23e8cb2d6?w=900&q=80')
+            ]
+          },
+          {
+            id: 'beaute',
+            name: 'Instituts de beauté',
+            short: 'Beauté',
+            title: 'Instituts de <em>beauté</em>',
+            desc: 'Une présence en ligne douce et précise pour instituts qui misent sur le soin, l’image et la fidélisation.',
+            icon: ICONS.beaute,
+            projects: [
+              soonCard('Institut de beauté', 'https://images.unsplash.com/photo-1560750588-73207b1ef5b6?w=900&q=80'),
+              soonCard('Institut de beauté', 'https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=900&q=80'),
+              soonCard('Institut de beauté', 'https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?w=900&q=80')
+            ]
+          },
+          {
+            id: 'transport',
+            name: 'Transport',
+            short: 'Transport',
+            title: 'Transport & <em>logistique</em>',
+            desc: 'Des sites professionnels qui inspirent confiance — services, zones desservies et prise de contact immédiate.',
+            icon: ICONS.transport,
+            projects: [
+              {
+                name: 'Trans Delivery',
+                sector: 'Transport',
+                desc: 'Site corporate pour transporteur belge : livraison express, froids et couverture nationale, pensé conversion.',
+                image: 'https://images.unsplash.com/photo-1519003722824-194d4455a60c?w=900&q=85',
+                href: DEMO_TRANS,
+                external: true,
+                badge: 'Client réel',
+                badgeClass: 'client'
+              },
+              soonCard('Transport', 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=900&q=80'),
+              soonCard('Transport', 'https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?w=900&q=80')
+            ]
+          }
+        ];
+
+        var stage = document.getElementById('rouletteStage');
+        var track = document.getElementById('rouletteTrack');
+        var dotsEl = document.getElementById('rouletteDots');
+        var panel = document.getElementById('projectPanel');
+        var titleEl = document.getElementById('sectorTitle');
+        var descEl = document.getElementById('sectorDesc');
+        var kickerEl = document.getElementById('sectorKicker');
+        var prevBtn = document.getElementById('roulettePrev');
+        var nextBtn = document.getElementById('rouletteNext');
+
+        var index = 0;
+        var itemEls = [];
+        var drag = { active: false, startX: 0, lastX: 0, moved: false };
+        var wheelLock = false;
+        var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+        function wrapOffset(offset, len) {
+          var half = Math.floor(len / 2);
+          if (offset > half) offset -= len;
+          if (offset < -half) offset += len;
+          return offset;
+        }
+
+        function layout() {
+          var n = sectors.length;
+          var isMobile = stage.clientWidth < 640;
+          var radius = Math.min(stage.clientWidth * (isMobile ? 0.42 : 0.38), isMobile ? 220 : 340);
+          var depth = Math.min(stage.clientWidth * (isMobile ? 0.28 : 0.22), isMobile ? 140 : 180);
+
+          itemEls.forEach(function (el, i) {
+            var offset = wrapOffset(i - index, n);
+            var abs = Math.abs(offset);
+            var angle = offset * (isMobile ? 0.62 : 0.52);
+            var x = Math.sin(angle) * radius;
+            var z = Math.cos(angle) * depth - depth;
+            var scale = Math.max(isMobile ? 0.58 : 0.62, 1 - abs * (isMobile ? 0.18 : 0.16));
+            var opacity = Math.max(0.25, 1 - abs * 0.22);
+            var blur = abs > 1 ? Math.min(2.4, (abs - 1) * 1.15) : 0;
+            var rotateY = offset * (isMobile ? -14 : -18);
+
+            el.style.transform =
+              'translate(-50%, -54%) translateX(' + x + 'px) translateZ(' + z + 'px) rotateY(' + rotateY + 'deg) scale(' + scale + ')';
+            el.style.opacity = String(opacity);
+            el.style.filter = blur ? 'blur(' + blur + 'px)' : 'none';
+            el.style.zIndex = String(20 - abs);
+            el.classList.toggle('is-active', i === index);
+            el.setAttribute('aria-selected', i === index ? 'true' : 'false');
+            el.tabIndex = i === index ? 0 : -1;
+          });
+
+          Array.prototype.forEach.call(dotsEl.children, function (dot, i) {
+            dot.classList.toggle('is-active', i === index);
+            dot.setAttribute('aria-selected', i === index ? 'true' : 'false');
+          });
+        }
+
+        function pulseActive() {
+          var active = itemEls[index];
+          if (!active || reduceMotion) return;
+          active.classList.remove('is-pulsing');
+          void active.offsetWidth;
+          active.classList.add('is-pulsing');
+          window.setTimeout(function () {
+            active.classList.remove('is-pulsing');
+          }, 700);
+        }
+
+        function renderMeta() {
+          var sector = sectors[index];
+          kickerEl.classList.remove('is-in');
+          titleEl.classList.remove('is-in');
+          descEl.classList.remove('is-in');
+
+          window.requestAnimationFrame(function () {
+            titleEl.innerHTML = sector.title;
+            descEl.textContent = sector.desc;
+            kickerEl.classList.add('is-in');
+            titleEl.classList.add('is-in');
+            descEl.classList.add('is-in');
+          });
+        }
+
+        function renderProjects() {
+          var sector = sectors[index];
+          panel.innerHTML = '';
+
+          sector.projects.forEach(function (project, i) {
+            var card = document.createElement('article');
+            card.className = 'project-card' + (project.coming ? ' is-coming' : '');
+            card.style.transitionDelay = (reduceMotion ? 0 : i * 0.08) + 's';
+
+            var badgeClass = 'project-badge' + (project.badgeClass ? ' ' + project.badgeClass : '');
+            var ctaLabel = project.cta || (project.coming ? 'Parler de ce projet' : 'Voir le projet');
+            var targetAttrs = project.external ? ' target="_blank" rel="noopener"' : '';
+            var soonMark = project.coming
+              ? '<div class="project-soon-mark"><span>À venir</span></div>'
+              : '';
+
+            card.innerHTML =
+              '<div class="project-media">' +
+                '<span class="' + badgeClass + '">' + project.badge + '</span>' +
+                soonMark +
+                '<img src="' + project.image + '" alt="' + project.name + '" loading="lazy">' +
+              '</div>' +
+              '<div class="project-body">' +
+                '<div class="project-sector">' + project.sector + '</div>' +
+                '<h4>' + project.name + '</h4>' +
+                '<p>' + project.desc + '</p>' +
+                '<a class="project-cta" href="' + project.href + '"' + targetAttrs + '>' +
+                  ctaLabel + ARROW_SVG +
+                '</a>' +
+              '</div>';
+
+            panel.appendChild(card);
+
+            window.requestAnimationFrame(function () {
+              window.requestAnimationFrame(function () {
+                card.classList.add('is-in');
+              });
+            });
+          });
+
+          // Re-bind smooth scroll for newly injected anchors
+          panel.querySelectorAll('a[href^="#"]').forEach(function (a) {
+            a.addEventListener('click', function (e) {
+              var t = document.querySelector(this.getAttribute('href'));
+              if (t) {
+                e.preventDefault();
+                var h = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--header-h')) || 86;
+                window.scrollTo({ top: t.getBoundingClientRect().top + window.scrollY - h, behavior: 'smooth' });
+              }
+            });
+          });
+        }
+
+        function select(next, opts) {
+          opts = opts || {};
+          var n = sectors.length;
+          var wrapped = ((next % n) + n) % n;
+          if (wrapped === index && !opts.force) return;
+          index = wrapped;
+          layout();
+          renderMeta();
+          renderProjects();
+          if (!opts.silent) {
+            pulseActive();
+            root.classList.remove('is-switching');
+            void root.offsetWidth;
+            root.classList.add('is-switching');
+            window.setTimeout(function () { root.classList.remove('is-switching'); }, 560);
+          }
+        }
+
+        function build() {
+          track.innerHTML = '';
+          dotsEl.innerHTML = '';
+          itemEls = [];
+
+          sectors.forEach(function (sector, i) {
+            var btn = document.createElement('button');
+            btn.type = 'button';
+            btn.className = 'roulette-item';
+            btn.setAttribute('role', 'tab');
+            btn.setAttribute('aria-label', sector.name);
+            btn.innerHTML =
+              '<span class="roulette-card">' +
+                '<span class="roulette-pulse" aria-hidden="true"></span>' +
+                '<span class="roulette-icon">' + sector.icon + '</span>' +
+                '<span class="roulette-name">' + sector.short + '</span>' +
+              '</span>';
+            btn.addEventListener('click', function () {
+              if (drag.moved) return;
+              select(i);
+            });
+            track.appendChild(btn);
+            itemEls.push(btn);
+
+            var dot = document.createElement('button');
+            dot.type = 'button';
+            dot.className = 'roulette-dot';
+            dot.setAttribute('role', 'tab');
+            dot.setAttribute('aria-label', sector.name);
+            dot.addEventListener('click', function () { select(i); });
+            dotsEl.appendChild(dot);
+          });
+
+          select(0, { force: true, silent: true });
+        }
+
+        prevBtn.addEventListener('click', function () { select(index - 1); });
+        nextBtn.addEventListener('click', function () { select(index + 1); });
+
+        function onPointerDown(e) {
+          if (e.pointerType === 'mouse' && e.button !== 0) return;
+          drag.active = true;
+          drag.moved = false;
+          drag.startX = e.clientX;
+          drag.lastX = e.clientX;
+          stage.classList.add('is-dragging');
+          if (stage.setPointerCapture) {
+            try { stage.setPointerCapture(e.pointerId); } catch (err) { /* noop */ }
+          }
+        }
+
+        function onPointerMove(e) {
+          if (!drag.active) return;
+          if (Math.abs(e.clientX - drag.startX) > 8) drag.moved = true;
+          drag.lastX = e.clientX;
+
+          var threshold = stage.clientWidth < 640 ? 42 : 56;
+          if (Math.abs(e.clientX - drag.startX) > threshold) {
+            var dir = e.clientX < drag.startX ? 1 : -1;
+            drag.startX = e.clientX;
+            select(index + dir);
+          } else {
+            var tilt = (e.clientX - drag.startX) * 0.05;
+            track.style.transform = 'rotateY(' + (tilt * 0.18) + 'deg)';
+          }
+        }
+
+        function onPointerUp() {
+          if (!drag.active) return;
+          drag.active = false;
+          stage.classList.remove('is-dragging');
+          track.style.transform = '';
+          window.setTimeout(function () { drag.moved = false; }, 40);
+        }
+
+        stage.addEventListener('pointerdown', onPointerDown);
+        stage.addEventListener('pointermove', onPointerMove);
+        stage.addEventListener('pointerup', onPointerUp);
+        stage.addEventListener('pointercancel', onPointerUp);
+        stage.addEventListener('pointerleave', function () {
+          if (drag.active) onPointerUp();
+        });
+
+        stage.addEventListener('wheel', function (e) {
+          if (Math.abs(e.deltaX) < 6 && Math.abs(e.deltaY) < 10) return;
+          // Prefer horizontal intent; allow vertical wheel over the roulette
+          if (Math.abs(e.deltaX) < Math.abs(e.deltaY) && Math.abs(e.deltaY) < 18) return;
+          e.preventDefault();
+          if (wheelLock) return;
+          wheelLock = true;
+          var delta = Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : e.deltaY;
+          select(index + (delta > 0 ? 1 : -1));
+          window.setTimeout(function () { wheelLock = false; }, 320);
+        }, { passive: false });
+
+        root.addEventListener('keydown', function (e) {
+          if (e.key === 'ArrowLeft') { e.preventDefault(); select(index - 1); }
+          if (e.key === 'ArrowRight') { e.preventDefault(); select(index + 1); }
+        });
+
+        window.addEventListener('resize', function () { layout(); });
+
+        build();
+      })();
     })();
   </script>
 </body>

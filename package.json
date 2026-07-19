@@ -1,0 +1,11 @@
+{
+  "name": "aurelis",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Aurelis — Agence web premium",
+  "scripts": {
+    "dev": "npx --yes serve -l 3000 .",
+    "build": "node scripts/build.mjs",
+    "start": "npx --yes serve -l 3000 ."
+  }
+}
