@@ -3,16 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Aurelis — Expériences digitales d'exception</title>
-  <meta name="description" content="Aurelis crée des sites web premium, expériences immersives et solutions digitales sur mesure pour les marques ambitieuses. Offres transparentes de 990 € à 7 490 € HTVA.">
+  <title>Aurelis — Création de sites internet premium dès 990 € HTVA</title>
+  <meta name="description" content="Aurelis crée des sites internet modernes, rapides et sur mesure. Site professionnel dès 990 € HTVA. Offres Essential, Signature, Prestige et Elite.">
   <link rel="canonical" href="https://aurelis.ink/">
   <link rel="alternate" hreflang="fr" href="https://aurelis.ink/">
   <link rel="alternate" hreflang="en" href="https://aurelis.ink/en/">
   <link rel="alternate" hreflang="x-default" href="https://aurelis.ink/">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="fr_BE">
-  <meta property="og:title" content="Aurelis — Expériences digitales d'exception">
-  <meta property="og:description" content="Sites web premium, expériences immersives et solutions sur mesure pour les marques ambitieuses.">
+  <meta property="og:title" content="Aurelis — Création de sites internet premium">
+  <meta property="og:description" content="Sites internet modernes et sur mesure. Votre site professionnel dès 990 € HTVA.">
   <meta property="og:url" content="https://aurelis.ink/">
   <meta name="robots" content="index,follow">
   <meta name="theme-color" content="#080808">
@@ -33,11 +33,11 @@
       --noir-card: #0f0f0f;
       --noir-elevated: #181818;
       --blanc-casse: #f5f2eb;
-      --blanc-muted: #e8e4db;
-      --or: #c9a962;
-      --or-light: #dfc88a;
-      --or-dim: rgba(201, 169, 98, 0.12);
-      --text-muted: #86817c;
+      --blanc-muted: #f0ebe3;
+      --or: #d4b56a;
+      --or-light: #e8d09a;
+      --or-dim: rgba(212, 181, 106, 0.14);
+      --text-muted: #b0aaa2;
       --font-display: 'Cormorant Garamond', Georgia, serif;
       --font-body: 'Outfit', system-ui, sans-serif;
       --ease: cubic-bezier(0.22, 1, 0.36, 1);
@@ -130,7 +130,7 @@
       overflow: hidden;
     }
 
-    .btn-gold { background: var(--or); color: var(--noir); }
+    .btn-gold { background: var(--or); color: var(--noir); font-weight: 600; }
     .btn-gold::after {
       content: '';
       position: absolute;
@@ -143,7 +143,14 @@
     .btn-gold:hover {
       background: var(--or-light);
       transform: translateY(-2px);
-      box-shadow: 0 20px 50px rgba(201, 169, 98, 0.2);
+      box-shadow: 0 20px 50px rgba(212, 181, 106, 0.28);
+    }
+
+    .btn-cta-xl {
+      padding: 1.15rem 2.75rem;
+      font-size: 0.78rem;
+      letter-spacing: 0.16em;
+      box-shadow: 0 12px 36px rgba(212, 181, 106, 0.28);
     }
 
     .btn-ghost {
@@ -178,14 +185,15 @@
       height: var(--header-h);
       display: flex;
       align-items: center;
-      border-bottom: 1px solid transparent;
+      background: rgba(8, 8, 8, 0.72);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(212, 181, 106, 0.08);
       transition: background var(--transition), border-color var(--transition);
     }
 
     .header.scrolled {
-      background: rgba(8, 8, 8, 0.94);
-      backdrop-filter: blur(20px);
-      border-color: rgba(201, 169, 98, 0.07);
+      background: rgba(8, 8, 8, 0.96);
+      border-color: rgba(212, 181, 106, 0.12);
     }
 
     .header-inner {
@@ -255,30 +263,33 @@
     .burger.active span:nth-child(2) { opacity: 0; }
     .burger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
 
-    /* Hero — plein cadre cinématographique */
+    /* Hero — conversion claire (3 secondes) */
     .hero {
       position: relative;
       min-height: 100vh;
       min-height: 100dvh;
       display: flex;
-      align-items: flex-end;
+      align-items: center;
       overflow: hidden;
-      padding: calc(var(--header-h) + 2.5rem) 0 4.5rem;
+      padding: calc(var(--header-h) + 2rem) 0 3.5rem;
     }
 
     .hero-media {
       position: absolute;
       inset: 0;
       z-index: 0;
+      background:
+        radial-gradient(ellipse 55% 50% at 85% 20%, rgba(212,181,106,.16), transparent 55%),
+        radial-gradient(ellipse 40% 40% at 10% 80%, rgba(212,181,106,.06), transparent 50%),
+        linear-gradient(165deg, #0c0b09 0%, var(--noir) 45%, #0a0908 100%);
     }
 
     .hero-media img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transform: scale(1.06);
-      animation: heroZoom 18s var(--ease) forwards;
-      filter: saturate(0.85) contrast(1.05);
+      opacity: 0.28;
+      filter: saturate(0.7) contrast(1.05);
     }
 
     .hero-media::after {
@@ -286,142 +297,365 @@
       position: absolute;
       inset: 0;
       background:
-        linear-gradient(180deg, rgba(8,8,8,.55) 0%, rgba(8,8,8,.35) 35%, rgba(8,8,8,.82) 72%, rgba(8,8,8,.96) 100%),
-        radial-gradient(ellipse 55% 45% at 70% 30%, rgba(201,169,98,.14), transparent 60%);
+        linear-gradient(105deg, rgba(8,8,8,.94) 0%, rgba(8,8,8,.78) 42%, rgba(8,8,8,.55) 100%),
+        linear-gradient(180deg, rgba(8,8,8,.35) 0%, transparent 30%, rgba(8,8,8,.9) 100%);
     }
 
     .hero-grain {
       position: absolute;
       inset: 0;
       z-index: 1;
-      opacity: 0.04;
+      opacity: 0.035;
       pointer-events: none;
       background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
     }
 
-    .hero-orb {
-      position: absolute;
-      border-radius: 50%;
-      filter: blur(100px);
-      z-index: 1;
-      pointer-events: none;
-      animation: float 16s ease-in-out infinite alternate;
-    }
-    .hero-orb-1 { width: 420px; height: 420px; background: rgba(201,169,98,0.1); top: 12%; right: -6%; }
-    .hero-orb-2 { width: 280px; height: 280px; background: rgba(201,169,98,0.05); bottom: 18%; left: -4%; animation-delay: -6s; }
-
-    @keyframes float {
-      from { transform: translate(0, 0) scale(1); }
-      to { transform: translate(-20px, 28px) scale(1.05); }
-    }
-
-    @keyframes heroZoom {
-      from { transform: scale(1.06); }
-      to { transform: scale(1); }
-    }
-
     @keyframes up {
-      from { opacity: 0; transform: translateY(28px); }
+      from { opacity: 0; transform: translateY(22px); }
       to { opacity: 1; transform: none; }
     }
 
-    @keyframes heroLine {
-      from { transform: scaleX(0); }
-      to { transform: scaleX(1); }
-    }
-
-    .hero-content {
+    .hero-shell {
       position: relative;
       z-index: 2;
-      width: min(920px, 90%);
-      margin: 0 auto 0 5vw;
+      width: min(1200px, 90%);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 3rem;
+      align-items: center;
     }
 
-    .hero-brand {
-      font-family: var(--font-display);
-      font-size: clamp(2rem, 4vw, 2.75rem);
-      font-weight: 500;
-      letter-spacing: 0.02em;
-      color: var(--blanc-casse);
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--or);
       margin-bottom: 1.35rem;
       opacity: 0;
-      animation: up 1s var(--ease) 0.1s forwards;
+      animation: up 0.8s var(--ease) 0.05s forwards;
     }
 
-    .hero-brand span { color: var(--or); }
-
-    .hero-brand-line {
-      display: block;
-      width: 72px;
+    .hero-eyebrow::before {
+      content: '';
+      width: 28px;
       height: 1px;
-      background: linear-gradient(90deg, var(--or), transparent);
-      margin: 0.85rem 0 0;
-      transform-origin: left;
-      transform: scaleX(0);
-      animation: heroLine 1.1s var(--ease) 0.35s forwards;
+      background: var(--or);
     }
 
     .hero h1 {
       font-family: var(--font-display);
-      font-size: clamp(2.55rem, 6.2vw, 5.1rem);
-      font-weight: 400;
-      line-height: 1.05;
-      max-width: 14ch;
-      margin-bottom: 1.5rem;
+      font-size: clamp(2.7rem, 5.8vw, 4.6rem);
+      font-weight: 500;
+      line-height: 1.06;
+      max-width: 12ch;
+      margin-bottom: 1.25rem;
+      color: var(--blanc-casse);
       opacity: 0;
-      animation: up 1.05s var(--ease) 0.35s forwards;
+      animation: up 0.9s var(--ease) 0.15s forwards;
     }
 
     .hero h1 em {
       font-style: italic;
       color: var(--or-light);
+      display: block;
     }
 
     .hero-sub {
-      font-size: clamp(1.02rem, 1.7vw, 1.18rem);
+      font-size: clamp(1.05rem, 1.6vw, 1.2rem);
       color: var(--blanc-muted);
-      max-width: 42ch;
-      line-height: 1.85;
-      margin-bottom: 2.4rem;
+      max-width: 38ch;
+      line-height: 1.75;
+      margin-bottom: 1.5rem;
       opacity: 0;
-      animation: up 1s var(--ease) 0.55s forwards;
+      animation: up 0.9s var(--ease) 0.28s forwards;
+    }
+
+    .hero-price {
+      display: inline-flex;
+      align-items: baseline;
+      gap: 0.55rem;
+      flex-wrap: wrap;
+      margin-bottom: 1.85rem;
+      padding: 0.85rem 1.15rem;
+      border: 1px solid rgba(212, 181, 106, 0.35);
+      background: rgba(212, 181, 106, 0.08);
+      opacity: 0;
+      animation: up 0.9s var(--ease) 0.38s forwards;
+    }
+
+    .hero-price strong {
+      font-family: var(--font-display);
+      font-size: clamp(1.35rem, 2.2vw, 1.7rem);
+      font-weight: 500;
+      color: var(--or-light);
+      letter-spacing: 0.01em;
+    }
+
+    .hero-price span {
+      font-size: 0.78rem;
+      color: var(--blanc-muted);
+      letter-spacing: 0.04em;
     }
 
     .hero-actions {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.9rem;
+      gap: 0.85rem;
       opacity: 0;
-      animation: up 1s var(--ease) 0.75s forwards;
+      animation: up 0.9s var(--ease) 0.48s forwards;
     }
 
-    .scroll-hint {
+    .hero-devices {
+      position: relative;
+      opacity: 0;
+      animation: up 1s var(--ease) 0.4s forwards;
+      min-height: 340px;
+    }
+
+    .device {
       position: absolute;
-      bottom: 2rem;
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 2;
-      font-size: 0.6rem;
-      letter-spacing: 0.24em;
-      text-transform: uppercase;
-      color: var(--text-muted);
+      background: #141414;
+      border: 1px solid rgba(212, 181, 106, 0.22);
+      box-shadow: 0 28px 60px rgba(0,0,0,.55);
+      overflow: hidden;
+      transition: transform 0.45s var(--ease), border-color 0.35s;
+    }
+
+    .device:hover {
+      border-color: rgba(212, 181, 106, 0.45);
+      z-index: 5 !important;
+    }
+
+    .device-bar {
       display: flex;
-      flex-direction: column;
       align-items: center;
-      gap: 0.6rem;
-      animation: bob 2.5s ease infinite;
+      gap: 0.35rem;
+      padding: 0.55rem 0.75rem;
+      background: #1a1a1a;
+      border-bottom: 1px solid rgba(245,242,235,0.06);
     }
 
-    .scroll-hint::after {
-      content: '';
-      width: 1px;
-      height: 44px;
-      background: linear-gradient(to bottom, var(--or), transparent);
+    .device-bar i {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #3a3a3a;
+      display: block;
     }
 
-    @keyframes bob {
-      0%, 100% { transform: translateX(-50%) translateY(0); }
-      50% { transform: translateX(-50%) translateY(10px); }
+    .device-bar i:nth-child(1) { background: #c97b7b; }
+    .device-bar i:nth-child(2) { background: #c9a962; }
+    .device-bar i:nth-child(3) { background: #7bc98a; }
+
+    .device-url {
+      margin-left: 0.5rem;
+      font-size: 0.58rem;
+      letter-spacing: 0.06em;
+      color: var(--text-muted);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .device img {
+      width: 100%;
+      aspect-ratio: 16/10;
+      object-fit: cover;
+      display: block;
+    }
+
+    .device-main {
+      width: min(100%, 420px);
+      right: 8%;
+      top: 8%;
+      z-index: 3;
+      transform: rotate(-1.5deg);
+    }
+
+    .device-side {
+      width: min(58%, 250px);
+      left: 0;
+      bottom: 0;
+      z-index: 2;
+      transform: rotate(2deg);
+    }
+
+    .device-phone {
+      width: 92px;
+      right: 0;
+      bottom: 6%;
+      z-index: 4;
+      border-radius: 14px;
+      transform: rotate(4deg);
+    }
+
+    .device-phone .device-bar { display: none; }
+    .device-phone img { aspect-ratio: 9/16; }
+
+    .device-caption {
+      position: absolute;
+      left: 0;
+      top: -0.25rem;
+      font-size: 0.62rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--or);
+    }
+
+    /* Bandeau qualité immédiat */
+    .quality-strip {
+      padding: 4.5rem 0 2rem;
+      background: var(--noir-soft);
+      border-top: 1px solid rgba(212, 181, 106, 0.1);
+    }
+
+    .quality-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+    }
+
+    .quality-card {
+      display: block;
+      border: 1px solid rgba(212, 181, 106, 0.14);
+      background: #0d0d0d;
+      overflow: hidden;
+      transition: border-color 0.35s, transform 0.35s var(--ease);
+    }
+
+    .quality-card:hover {
+      border-color: rgba(212, 181, 106, 0.4);
+      transform: translateY(-4px);
+    }
+
+    .quality-card .device-bar { position: relative; }
+    .quality-card img {
+      width: 100%;
+      aspect-ratio: 16/10;
+      object-fit: cover;
+    }
+
+    .quality-meta {
+      padding: 1.15rem 1.2rem 1.35rem;
+    }
+
+    .quality-meta .kicker {
+      font-size: 0.6rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--or);
+      margin-bottom: 0.4rem;
+    }
+
+    .quality-meta h3 {
+      font-family: var(--font-display);
+      font-size: 1.45rem;
+      font-weight: 500;
+      margin-bottom: 0.35rem;
+    }
+
+    .quality-meta p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: 0.85rem;
+    }
+
+    .quality-meta .link {
+      font-size: 0.68rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--or-light);
+      font-weight: 500;
+    }
+
+    .audience {
+      display: inline-block;
+      font-size: 0.62rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--or);
+      margin-bottom: 0.75rem;
+      font-weight: 500;
+    }
+
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      counter-reset: step;
+    }
+
+    .step-card {
+      position: relative;
+      padding: 2rem 1.5rem;
+      border: 1px solid rgba(212, 181, 106, 0.14);
+      background: linear-gradient(175deg, rgba(18,18,18,.98), rgba(10,10,10,.99));
+    }
+
+    .step-card::before {
+      counter-increment: step;
+      content: "0" counter(step);
+      display: block;
+      font-family: var(--font-display);
+      font-size: 2rem;
+      color: var(--or);
+      margin-bottom: 1rem;
+      line-height: 1;
+    }
+
+    .step-card h3 {
+      font-family: var(--font-display);
+      font-size: 1.55rem;
+      font-weight: 500;
+      margin-bottom: 0.65rem;
+    }
+
+    .step-card p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      line-height: 1.7;
+    }
+
+    .why-grid-4 {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.15rem;
+    }
+
+    .why-card {
+      padding: 1.75rem 1.4rem;
+      border: 1px solid rgba(212, 181, 106, 0.12);
+      background: rgba(12,12,12,.9);
+      transition: border-color 0.3s;
+    }
+
+    .why-card:hover { border-color: rgba(212, 181, 106, 0.35); }
+
+    .why-card .num {
+      font-size: 0.62rem;
+      letter-spacing: 0.24em;
+      color: var(--or);
+      margin-bottom: 0.85rem;
+      font-weight: 600;
+    }
+
+    .why-card h3 {
+      font-family: var(--font-display);
+      font-size: 1.35rem;
+      margin-bottom: 0.55rem;
+      font-weight: 500;
+    }
+
+    .why-card p {
+      color: var(--text-muted);
+      font-size: 0.92rem;
+      line-height: 1.65;
     }
 
     /* Portfolio showcase */
@@ -1970,7 +2204,12 @@
     }
 
     @media (max-width: 1024px) {
-      .hero-content { margin-left: auto; margin-right: auto; width: min(920px, 90%); }
+      .hero-shell { grid-template-columns: 1fr; gap: 2.5rem; }
+      .hero-devices { min-height: 280px; max-width: 520px; }
+      .hero h1 { max-width: none; }
+      .quality-grid { grid-template-columns: 1fr; max-width: 520px; margin-inline: auto; }
+      .why-grid-4 { grid-template-columns: 1fr 1fr; }
+      .steps-grid { grid-template-columns: 1fr; max-width: 480px; margin-inline: auto; }
       .showcase-card,
       .showcase-card--alt { grid-template-columns: 1fr; }
       .showcase-card--alt .showcase-media { order: 0; }
@@ -2021,8 +2260,10 @@
       .nav.open { opacity: 1; visibility: visible; }
       .nav a { font-size: 0.82rem; }
       .burger { display: flex; }
-      .scroll-hint { display: none; }
-      .hero { align-items: center; padding-bottom: 3rem; }
+      .hero { padding-bottom: 2.5rem; min-height: auto; }
+      .hero-devices { display: none; }
+      .why-grid-4 { grid-template-columns: 1fr; }
+      .nav-cta { margin-top: 0.5rem; }
       .method-steps { grid-template-columns: 1fr; }
       .form-row { grid-template-columns: 1fr; }
       .form { padding: 2rem 1.5rem; }
@@ -2043,12 +2284,12 @@
     <div class="header-inner">
       <a href="/" class="logo">Aure<span>lis</span></a>
       <nav class="nav" id="nav">
-        <a href="#aurelis">Aurelis</a>
+        <a href="#accueil">Accueil</a>
+        <a href="#offres">Nos offres</a>
         <a href="#realisations">Réalisations</a>
-        <a href="/offres">Offres</a>
-        <a href="/creation-site-web-entreprise/">Entreprises</a>
-        <a href="#faq">FAQ</a>
-        <a href="#contact" class="nav-cta">Contact</a>
+        <a href="#services">Services</a>
+        <a href="#contact">Contact</a>
+        <a href="#offres" class="nav-cta" data-lead-open="1" data-track-cta="nav_creer_mon_site">Créer mon site</a>
       </nav>
       <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
     </div>
@@ -2056,88 +2297,113 @@
 
   <section class="hero" id="accueil">
     <div class="hero-media" aria-hidden="true">
-      <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=2000&q=75" alt="" width="2000" height="1333" fetchpriority="high" decoding="async">
+      <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=2000&q=70" alt="" width="2000" height="1333" fetchpriority="high" decoding="async">
     </div>
     <div class="hero-grain" aria-hidden="true"></div>
-    <div class="hero-orb hero-orb-1" aria-hidden="true"></div>
-    <div class="hero-orb hero-orb-2" aria-hidden="true"></div>
-    <div class="hero-content">
-      <div class="hero-brand">Aure<span>lis</span><span class="hero-brand-line" aria-hidden="true"></span></div>
-      <h1>Nous créons des expériences digitales <em>d'exception</em>.</h1>
-      <p class="hero-sub">Sites web premium, expériences immersives et solutions digitales sur mesure pour les marques ambitieuses.</p>
-      <div class="hero-actions">
-        <a href="#realisations" class="btn btn-gold">
-          Découvrir nos réalisations
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    <div class="hero-shell">
+      <div class="hero-copy">
+        <p class="hero-eyebrow">Agence de création de sites web premium</p>
+        <h1>Votre site internet.<em>Notre expertise.</em></h1>
+        <p class="hero-sub">Nous créons des sites internet modernes, rapides et sur mesure pour donner à votre entreprise une longueur d'avance.</p>
+        <div class="hero-price" role="status">
+          <strong>Votre site professionnel dès 990&nbsp;€ HTVA</strong>
+          <span>Offres claires · Sans paiement en ligne pour l’instant</span>
+        </div>
+        <div class="hero-actions">
+          <a href="#offres" class="btn btn-gold btn-cta-xl" data-lead-open="1" data-track-cta="hero_creer_mon_site">
+            Créer mon site internet
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+          <a href="#vitrine" class="btn btn-ghost" data-track-cta="hero_realisations">Découvrir nos réalisations</a>
+        </div>
+      </div>
+      <div class="hero-devices" aria-hidden="true">
+        <p class="device-caption">Aperçus réels</p>
+        <a class="device device-main" href="https://bryan-burger.vercel.app/" target="_blank" rel="noopener noreferrer" tabindex="-1">
+          <div class="device-bar"><i></i><i></i><i></i><span class="device-url">bryan-burger.vercel.app</span></div>
+          <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=900&q=70" alt="" width="900" height="560" decoding="async">
         </a>
-        <a href="#offres" class="btn btn-ghost" data-lead-open="1">Démarrer mon projet</a>
+        <a class="device device-side" href="https://transport-delivery.vercel.app/" target="_blank" rel="noopener noreferrer" tabindex="-1">
+          <div class="device-bar"><i></i><i></i><i></i><span class="device-url">transport-delivery</span></div>
+          <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=700&q=70" alt="" width="700" height="440" decoding="async">
+        </a>
+        <a class="device device-phone" href="https://aurelis-demo-coiffeur-hzng7c525-julestherasse-9969s-projects.vercel.app/" target="_blank" rel="noopener noreferrer" tabindex="-1">
+          <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=400&q=70" alt="" width="400" height="700" decoding="async">
+        </a>
       </div>
     </div>
-    <div class="scroll-hint" aria-hidden="true">Défiler</div>
   </section>
 
-  <div class="marquee" aria-hidden="true">
-    <div class="marquee-track">
-      <span>Agence digitale internationale</span><span>Sites premium</span><span>Expériences immersives</span><span>Design sur mesure</span><span>SEO technique</span><span>FR / EN</span><span>Conversion</span><span>Accompagnement humain</span>
-      <span>Agence digitale internationale</span><span>Sites premium</span><span>Expériences immersives</span><span>Design sur mesure</span><span>SEO technique</span><span>FR / EN</span><span>Conversion</span><span>Accompagnement humain</span>
+  <section class="quality-strip" id="vitrine">
+    <div class="container">
+      <div class="section-head reveal" style="margin-bottom:2.5rem;">
+        <div class="label label-center">Qualité visible</div>
+        <h2 class="title">Des sites conçus pour <em>convaincre</em></h2>
+        <p class="desc desc-center">Consultez de vrais projets et démonstrations Aurelis. Aucun faux client inventé.</p>
+      </div>
+      <div class="quality-grid">
+        <a class="quality-card reveal" href="https://bryan-burger.vercel.app/" target="_blank" rel="noopener noreferrer" data-track-cta="demo_bryan">
+          <div class="device-bar"><i></i><i></i><i></i><span class="device-url">bryan-burger.vercel.app</span></div>
+          <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=1000&q=75" alt="Aperçu Bryan Burger" width="1000" height="625" loading="lazy" decoding="async">
+          <div class="quality-meta">
+            <div class="kicker">Réalisation en ligne</div>
+            <h3>Bryan Burger</h3>
+            <p>Restauration rapide — menu clair, mobile first, contact immédiat.</p>
+            <span class="link">Ouvrir le site →</span>
+          </div>
+        </a>
+        <a class="quality-card reveal d1" href="https://transport-delivery.vercel.app/" target="_blank" rel="noopener noreferrer" data-track-cta="demo_trans">
+          <div class="device-bar"><i></i><i></i><i></i><span class="device-url">transport-delivery.vercel.app</span></div>
+          <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1000&q=75" alt="Aperçu Trans Delivery" width="1000" height="625" loading="lazy" decoding="async">
+          <div class="quality-meta">
+            <div class="kicker">Réalisation en ligne</div>
+            <h3>Trans Delivery</h3>
+            <p>Transport &amp; logistique — crédibilité professionnelle et prise de contact.</p>
+            <span class="link">Ouvrir le site →</span>
+          </div>
+        </a>
+        <a class="quality-card reveal d2" href="https://aurelis-demo-coiffeur-hzng7c525-julestherasse-9969s-projects.vercel.app/" target="_blank" rel="noopener noreferrer" data-track-cta="demo_salon">
+          <div class="device-bar"><i></i><i></i><i></i><span class="device-url">démonstration aurelis</span></div>
+          <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=1000&q=75" alt="Démonstration salon Aurelis" width="1000" height="625" loading="lazy" decoding="async">
+          <div class="quality-meta">
+            <div class="kicker">Démonstration Aurelis</div>
+            <h3>Salon premium</h3>
+            <p>Site modèle coiffure — clairement présenté comme démonstration, pas comme client anonyme.</p>
+            <span class="link">Voir la démo →</span>
+          </div>
+        </a>
+      </div>
     </div>
-  </div>
+  </section>
 
-  <section class="section" id="aurelis">
+  <section class="section" id="services">
     <div class="container">
       <div class="section-head reveal">
-        <div class="label label-center">À propos</div>
-        <h2 class="title">Une agence digitale pour les <em>marques ambitieuses</em></h2>
-        <p class="desc desc-center">Aurelis conçoit des expériences web haut de gamme — esthétique, performance et parcours commercial clair, en français et en anglais.</p>
+        <div class="label label-center">Pourquoi Aurelis</div>
+        <h2 class="title">Pourquoi choisir <em>Aurelis</em> ?</h2>
+        <p class="desc desc-center">Quatre raisons concrètes — sans statistiques inventées, sans faux avis.</p>
       </div>
-      <div class="about-grid">
-        <div class="about-card reveal d1">
-          <div class="about-num">01</div>
-          <h3>Qui est Aurelis</h3>
-          <p>Aurelis est une agence web premium internationale. Nous créons des sites et des plateformes digitales pour les entreprises et les marques qui refusent le générique et exigent une présence en ligne à la hauteur de leur ambition.</p>
-        </div>
-        <div class="about-card reveal d2">
-          <div class="about-num">02</div>
-          <h3>Notre mission</h3>
-          <p>Transformer votre identité en une expérience digitale mémorable : design raffiné, interactions fluides, structure orientée conversion, et un accompagnement humain jusqu’à la mise en ligne — et au-delà.</p>
-        </div>
-        <div class="about-card reveal d3">
-          <div class="about-num">03</div>
-          <h3>Notre approche</h3>
-          <p>Pas de templates génériques. Chaque projet commence par une écoute précise, puis une direction artistique sur mesure, un développement optimisé et un tunnel commercial transparent — offres claires, devis après validation humaine.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section section-alt" id="pourquoi">
-    <div class="container why-layout">
-      <div class="reveal">
-        <div class="label">Pourquoi nous choisir</div>
-        <h2 class="title">Ce qui fait la <em>différence</em></h2>
-        <p class="desc">Chaque détail compte. De la typographie au temps de chargement, nous construisons des sites qui reflètent votre standing et performent concrètement.</p>
-      </div>
-      <div class="why-list">
-        <div class="why-item reveal d1">
-          <div class="why-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-          <div><h3>Design premium</h3><p>Identité visuelle raffinée, typographies soignées et mise en page élégante — votre site respire le professionnalisme.</p></div>
-        </div>
-        <div class="why-item reveal d2">
-          <div class="why-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12" y2="18.01"/></svg></div>
-          <div><h3>Optimisé mobile</h3><p>La majorité des visiteurs arrivent depuis un téléphone. Votre site s'adapte clairement à chaque écran.</p></div>
-        </div>
-        <div class="why-item reveal d3">
-          <div class="why-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
-          <div><h3>Chargement rapide</h3><p>Code optimisé, images compressées, performances mesurées. Un site lent fait fuir vos clients — le nôtre les retient.</p></div>
-        </div>
-        <div class="why-item reveal">
-          <div class="why-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
-          <div><h3>Référencement technique</h3><p>Structure SEO, balises optimisées et contenu pensé pour Google — bases solides pour votre croissance organique.</p></div>
-        </div>
-        <div class="why-item reveal d1">
-          <div class="why-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div>
-          <div><h3>Accompagnement personnalisé</h3><p>Un interlocuteur dédié, disponible et à l'écoute. De la première réunion à la mise en ligne, vous n'êtes jamais seul.</p></div>
-        </div>
+      <div class="why-grid-4">
+        <article class="why-card reveal">
+          <div class="num">01 — Design premium</div>
+          <h3>Design premium</h3>
+          <p>Des sites modernes et personnalisés, pensés pour votre identité — pas pour un template générique.</p>
+        </article>
+        <article class="why-card reveal d1">
+          <div class="num">02 — Performance</div>
+          <h3>Performance</h3>
+          <p>Des expériences rapides et adaptées à tous les appareils, de l’ordinateur au téléphone.</p>
+        </article>
+        <article class="why-card reveal d2">
+          <div class="num">03 — Accompagnement</div>
+          <h3>Accompagnement</h3>
+          <p>Un interlocuteur dédié pendant votre projet, de la première demande à la mise en ligne.</p>
+        </article>
+        <article class="why-card reveal d3">
+          <div class="num">04 — Évolution</div>
+          <h3>Évolution</h3>
+          <p>Des solutions pensées pour accompagner le développement de votre entreprise dans le temps.</p>
+        </article>
       </div>
     </div>
   </section>
@@ -2262,31 +2528,26 @@
   <section class="section" id="methode">
     <div class="container">
       <div class="section-head reveal">
-        <div class="label label-center">Processus</div>
-        <h2 class="title">Notre <em>méthode</em></h2>
-        <p class="desc desc-center">Un parcours clair et structuré, de la première conversation à l'accompagnement post-lancement.</p>
+        <div class="label label-center">Parcours client</div>
+        <h2 class="title">Votre nouveau site en <em>3 étapes</em>.</h2>
+        <p class="desc desc-center">Simple, même si vous ne connaissez rien au développement web. Aucun paiement en ligne tant que la commande n’est pas finalisée avec nous.</p>
       </div>
-      <div class="method-steps">
-        <div class="method-step reveal d1">
-          <div class="method-circle">01</div>
-          <h3>Découverte</h3>
-          <p>Nous échangeons sur votre activité, vos objectifs et votre clientèle pour définir une direction créative alignée.</p>
-        </div>
-        <div class="method-step reveal d2">
-          <div class="method-circle">02</div>
-          <h3>Conception</h3>
-          <p>Maquettes sur mesure, validation étape par étape. Chaque pixel reflète votre standing et convertit vos visiteurs.</p>
-        </div>
-        <div class="method-step reveal d3">
-          <div class="method-circle">03</div>
-          <h3>Mise en ligne</h3>
-          <p>Développement optimisé, tests multi-appareils et déploiement sécurisé. Votre site est prêt à accueillir vos visiteurs.</p>
-        </div>
-        <div class="method-step reveal d4">
-          <div class="method-circle">04</div>
-          <h3>Accompagnement</h3>
-          <p>Formation, modifications et conseils SEO. Nous restons à vos côtés pour faire évoluer votre présence en ligne.</p>
-        </div>
+      <div class="steps-grid">
+        <article class="step-card reveal">
+          <h3>Parlez-nous de votre projet.</h3>
+          <p>Vous choisissez une offre et expliquez vos besoins via le formulaire. Aurelis reçoit votre demande.</p>
+        </article>
+        <article class="step-card reveal d1">
+          <h3>Nous créons votre site.</h3>
+          <p>Après un échange humain, nous développons une expérience adaptée à votre entreprise.</p>
+        </article>
+        <article class="step-card reveal d2">
+          <h3>Votre site prend vie.</h3>
+          <p>Après validation et finalisation, votre site est mis en ligne et prêt à accueillir vos clients.</p>
+        </article>
+      </div>
+      <div style="text-align:center;margin-top:2.5rem;" class="reveal">
+        <a href="#offres" class="btn btn-gold btn-cta-xl" data-lead-open="1" data-track-cta="steps_creer_mon_site">Créer mon site internet</a>
       </div>
     </div>
   </section>
@@ -2321,9 +2582,9 @@
   <section class="section" id="offres">
     <div class="container">
       <div class="section-head reveal">
-        <div class="label label-center">Tarifs</div>
-        <h2 class="title">Quatre offres. Une même <em>exigence</em>.</h2>
-        <p class="desc desc-center">Choisissez la formule adaptée à votre ambition. Chaque offre Aurelis est conçue pour inspirer confiance et convertir vos visiteurs.</p>
+        <div class="label label-center">Nos offres</div>
+        <h2 class="title">Le site internet qu'il vous <em>faut</em>.</h2>
+        <p class="desc desc-center">Du site vitrine professionnel à l'expérience digitale entièrement sur mesure, nous donnons vie à vos ambitions.</p>
       </div>
 
       <div class="pricing-grid">
@@ -2331,7 +2592,8 @@
           <div class="pricing-tier">01</div>
           <h3 class="pricing-name">Aurelis Essential</h3>
           <div class="pricing-price">990 €<span>HTVA</span></div>
-          <p class="pricing-tagline">Pour indépendants et entreprises qui veulent une présence nette et crédible.</p>
+          <span class="audience">Indépendants &amp; petites entreprises</span>
+          <p class="pricing-tagline">Une présence nette et crédible en une page.</p>
           <ul class="pricing-features">
             <li>Site vitrine d'une page</li>
             <li>Design professionnel</li>
@@ -2341,14 +2603,15 @@
             <li>Réseaux sociaux</li>
             <li>Une série de corrections</li>
           </ul>
-          <a href="#" class="btn btn-ghost pricing-cta" data-offer="Aurelis Essential" data-price="990 € HTVA" data-lead-open="1">Démarrer mon projet</a>
+          <a href="#" class="btn btn-ghost pricing-cta" data-offer="Aurelis Essential" data-price="990 € HTVA" data-lead-open="1" data-track-cta="offer_essential">Choisir cette offre</a>
         </article>
 
         <article class="pricing-card reveal d2">
           <div class="pricing-tier">02</div>
           <h3 class="pricing-name">Aurelis Signature</h3>
           <div class="pricing-price">2 490 €<span>HTVA</span></div>
-          <p class="pricing-tagline">Pour entreprises ambitieuses qui souhaitent une image complète et distinctive.</p>
+          <span class="audience">Entreprises en croissance</span>
+          <p class="pricing-tagline">Une image plus complète, jusqu’à 5 pages.</p>
           <ul class="pricing-features">
             <li>Jusqu'à 5 pages</li>
             <li>Design personnalisé</li>
@@ -2358,7 +2621,7 @@
             <li>Outils d'analyse</li>
             <li>Deux séries de corrections</li>
           </ul>
-          <a href="#" class="btn btn-ghost pricing-cta" data-offer="Aurelis Signature" data-price="2 490 € HTVA" data-lead-open="1">Démarrer mon projet</a>
+          <a href="#" class="btn btn-ghost pricing-cta" data-offer="Aurelis Signature" data-price="2 490 € HTVA" data-lead-open="1" data-track-cta="offer_signature">Choisir cette offre</a>
         </article>
 
         <article class="pricing-card pricing-card--featured reveal d3">
@@ -2366,7 +2629,8 @@
           <div class="pricing-tier">03</div>
           <h3 class="pricing-name">Aurelis Prestige</h3>
           <div class="pricing-price">4 490 €<span>HTVA</span></div>
-          <p class="pricing-tagline">Pour marques premium qui exigent une expérience digitale d'exception.</p>
+          <span class="audience">Marques &amp; entreprises premium</span>
+          <p class="pricing-tagline">Expérience haut de gamme, jusqu’à 10 pages.</p>
           <ul class="pricing-features">
             <li>Jusqu'à 10 pages</li>
             <li>Design haut de gamme</li>
@@ -2377,7 +2641,7 @@
             <li>Intégrations métier définies au devis</li>
             <li>Trois séries de corrections</li>
           </ul>
-          <a href="#" class="btn btn-gold pricing-cta" data-offer="Aurelis Prestige" data-price="4 490 € HTVA" data-lead-open="1">Démarrer mon projet</a>
+          <a href="#" class="btn btn-gold pricing-cta" data-offer="Aurelis Prestige" data-price="4 490 € HTVA" data-lead-open="1" data-track-cta="offer_prestige">Choisir cette offre</a>
         </article>
 
         <article class="pricing-card reveal d4">
@@ -2385,7 +2649,8 @@
           <h3 class="pricing-name">Aurelis Elite</h3>
           <div class="pricing-price-prefix">À partir de</div>
           <div class="pricing-price">7 490 €<span>HTVA</span></div>
-          <p class="pricing-tagline">Pour projets complexes et internationaux nécessitant une architecture sur mesure.</p>
+          <span class="audience">E-commerce &amp; projets sur mesure</span>
+          <p class="pricing-tagline">Architecture complexe, plateforme ou boutique.</p>
           <ul class="pricing-features">
             <li>Développement sur mesure</li>
             <li>E-commerce ou plateforme web</li>
@@ -2395,11 +2660,11 @@
             <li>Automatisations</li>
             <li>Accompagnement personnalisé</li>
           </ul>
-          <a href="#" class="btn btn-ghost pricing-cta" data-offer="Aurelis Elite" data-price="À partir de 7 490 € HTVA" data-lead-open="1">Démarrer mon projet</a>
+          <a href="#" class="btn btn-ghost pricing-cta" data-offer="Aurelis Elite" data-price="À partir de 7 490 € HTVA" data-lead-open="1" data-track-cta="offer_elite">Choisir cette offre</a>
         </article>
       </div>
 
-      <p class="pricing-note reveal">Tarifs hors TVA. Hébergement, domaines, maintenance et services tiers facturés séparément selon devis.</p>
+      <p class="pricing-note reveal">Tarifs hors TVA. Hébergement, domaines, maintenance et services tiers facturés séparément selon devis. Aucun paiement en ligne sur ce site pour le moment — vous démarrez par une demande de projet.</p>
 
       <div class="comparator" id="comparateur" style="margin-top:4.5rem;">
         <div class="section-head reveal">
@@ -2536,7 +2801,11 @@
       <div class="reveal d1">
         <div class="faq-item">
           <button class="faq-q" aria-expanded="false">Combien coûte un site ?<span class="faq-icon">+</span></button>
-          <div class="faq-a"><p>Nos offres officielles démarrent à 990 € HTVA (Essential) et s'étendent jusqu'à Elite à partir de 7 490 € HTVA. Prestige à 4 490 € HTVA est notre sélection la plus demandée. <a href="/offres" style="color: var(--or);">Découvrir les 4 offres</a> — devis transparent après un premier échange gratuit.</p></div>
+          <div class="faq-a"><p>Nos offres officielles démarrent à 990 € HTVA (Essential) et s'étendent jusqu'à Elite à partir de 7 490 € HTVA. Prestige à 4 490 € HTVA est notre sélection. <a href="#offres" style="color: var(--or);">Voir les 4 offres</a> — devis après un échange humain.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">Puis-je payer en ligne maintenant ?<span class="faq-icon">+</span></button>
+          <div class="faq-a"><p>Pas encore. Vous démarrez par une demande de projet. Nous finalisons le périmètre et le paiement avec vous directement — aucun faux tunnel de commande.</p></div>
         </div>
         <div class="faq-item">
           <button class="faq-q" aria-expanded="false">Combien de temps faut-il ?<span class="faq-icon">+</span></button>
@@ -2577,8 +2846,8 @@
       <div class="reveal d1">
         <div class="form" id="form">
           <p style="color:var(--text-muted);margin-bottom:1.25rem;font-size:.95rem;">Le formulaire complet conserve l’offre choisie, le prix indicatif et votre langue, puis enregistre la demande de façon sécurisée.</p>
-          <a href="#" class="btn btn-gold form-submit" data-lead-open="1" data-appointment="1">Ouvrir le formulaire projet</a>
-          <p style="margin-top:1rem;font-size:.82rem;color:var(--text-muted);">Ou choisissez d’abord une <a href="/offres/" style="color:var(--or)">offre</a>.</p>
+          <a href="#" class="btn btn-gold btn-cta-xl form-submit" data-lead-open="1" data-track-cta="contact_creer_mon_site">Créer mon site internet</a>
+          <p style="margin-top:1rem;font-size:.82rem;color:var(--text-muted);">Choisissez d’abord une <a href="#offres" style="color:var(--or)">offre</a> si vous le souhaitez — réponse humaine sous 24&nbsp;h.</p>
         </div>
       </div>
     </div>
@@ -2599,10 +2868,10 @@
         </div>
         <div class="footer-col">
           <h4>Navigation</h4>
-          <a href="#aurelis">À propos</a>
+          <a href="#accueil">Accueil</a>
+          <a href="#offres">Nos offres</a>
           <a href="#realisations">Réalisations</a>
-          <a href="/offres">Offres</a>
-          <a href="#methode">Méthode</a>
+          <a href="#services">Services</a>
           <a href="#contact">Contact</a>
         </div>
         <div class="footer-col">
@@ -2670,6 +2939,17 @@
             var price = this.getAttribute('data-price') || '';
             if (price) sessionStorage.setItem('aurelis-offer-price', price);
           } catch (err) { /* noop */ }
+          if (window.AurelisAnalytics && this.getAttribute('data-offer')) {
+            window.AurelisAnalytics.offerClick(this.getAttribute('data-offer'));
+          }
+        });
+      });
+
+      document.querySelectorAll('[data-track-cta]').forEach(function (el) {
+        el.addEventListener('click', function () {
+          if (window.AurelisAnalytics && window.AurelisAnalytics.ctaClick) {
+            window.AurelisAnalytics.ctaClick(this.getAttribute('data-track-cta') || 'cta');
+          }
         });
       });
 

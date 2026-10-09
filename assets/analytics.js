@@ -115,6 +115,9 @@
     offerClick: function (offer) {
       track("offer_click", { offer_name: offer || "", engagement_type: "offer" });
     },
+    ctaClick: function (ctaId) {
+      track("cta_click", { cta_id: ctaId || "", engagement_type: "cta" });
+    },
     formStart: function (offer) {
       track("generate_lead_start", { offer_name: offer || "" });
     },
