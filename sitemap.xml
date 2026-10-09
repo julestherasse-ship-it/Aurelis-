@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://aurelis.ink/</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://aurelis.ink/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aurelis.ink/en"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aurelis.ink/"/>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://aurelis.ink/en</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://aurelis.ink/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aurelis.ink/en"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aurelis.ink/"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://aurelis.ink/offres</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://aurelis.ink/offres"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aurelis.ink/en/offers"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aurelis.ink/offres"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://aurelis.ink/en/offers</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://aurelis.ink/offres"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aurelis.ink/en/offers"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aurelis.ink/offres"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://aurelis.ink/creation-site-web-entreprise</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://aurelis.ink/creation-site-web-entreprise"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aurelis.ink/en/business-website"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aurelis.ink/creation-site-web-entreprise"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://aurelis.ink/en/business-website</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://aurelis.ink/creation-site-web-entreprise"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aurelis.ink/en/business-website"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aurelis.ink/creation-site-web-entreprise"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://aurelis.ink/refonte-site-web</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://aurelis.ink/refonte-site-web"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aurelis.ink/en/website-redesign"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aurelis.ink/refonte-site-web"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://aurelis.ink/en/website-redesign</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://aurelis.ink/refonte-site-web"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aurelis.ink/en/website-redesign"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aurelis.ink/refonte-site-web"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://aurelis.ink/creation-site-premium</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://aurelis.ink/creation-site-premium"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aurelis.ink/en/premium-website"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aurelis.ink/creation-site-premium"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://aurelis.ink/en/premium-website</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://aurelis.ink/creation-site-premium"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aurelis.ink/en/premium-website"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aurelis.ink/creation-site-premium"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://aurelis.ink/mentions-legales</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://aurelis.ink/en/legal-notice</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://aurelis.ink/politique-confidentialite</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://aurelis.ink/en/privacy-policy</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+</urlset>

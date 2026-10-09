@@ -3,11 +3,27 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Aurelis — Agence web premium. Sites internet haut de gamme pour restaurants, salons, instituts et commerces locaux.">
-  <title>Aurelis — Agence Web Premium</title>
+  <title>Aurelis — Création de sites web premium pour entreprises</title>
+  <meta name="description" content="Aurelis crée des sites web premium pour entreprises et commerces exigeants. Offres transparentes, réalisations vérifiables, réponse humaine sous 24 h.">
+  <link rel="canonical" href="https://aurelis.ink/">
+  <link rel="alternate" hreflang="fr" href="https://aurelis.ink/">
+  <link rel="alternate" hreflang="en" href="https://aurelis.ink/en/">
+  <link rel="alternate" hreflang="x-default" href="https://aurelis.ink/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="fr_BE">
+  <meta property="og:title" content="Aurelis — Création de sites web premium">
+  <meta property="og:description" content="Sites web premium pour entreprises exigeantes. Offres claires, formulaire de projet, accompagnement humain.">
+  <meta property="og:url" content="https://aurelis.ink/">
+  <meta name="robots" content="index,follow">
+  <meta name="theme-color" content="#080808">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/lead-funnel.css">
+  <link rel="stylesheet" href="/assets/site-ui.css">
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"Organization","name":"Aurelis","url":"https://aurelis.ink/","email":"julestherasse@gmail.com","telephone":"+32495380329","founder":{"@type":"Person","name":"Jules Therasse"},"areaServed":["BE","FR","EU"],"sameAs":[]}
+  </script>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -999,11 +1015,14 @@
       overflow: hidden;
       opacity: 0;
       transform: translateY(28px) scale(0.98);
+      color: inherit;
+      text-decoration: none;
       transition:
         opacity 0.55s var(--ease),
-        transform 0.55s var(--ease),
-        border-color 0.4s var(--ease),
-        box-shadow 0.4s var(--ease);
+        transform 0.35s var(--ease),
+        border-color 0.35s var(--ease),
+        box-shadow 0.35s var(--ease);
+      -webkit-tap-highlight-color: transparent;
     }
 
     .project-card.is-in {
@@ -1011,12 +1030,36 @@
       transform: translateY(0) scale(1);
     }
 
-    .project-card:hover {
-      border-color: rgba(201, 169, 98, 0.32);
-      box-shadow: 0 24px 50px rgba(0, 0, 0, 0.4), 0 0 30px rgba(201, 169, 98, 0.08);
+    a.project-card {
+      cursor: pointer;
+    }
+
+    a.project-card:focus-visible {
+      outline: 1px solid rgba(201, 169, 98, 0.45);
+      outline-offset: 3px;
+    }
+
+    @media (hover: hover) and (pointer: fine) {
+      a.project-card.is-in:hover {
+        transform: translateY(-8px) scale(1.02);
+        border-color: rgba(201, 169, 98, 0.38);
+        box-shadow:
+          0 28px 56px rgba(0, 0, 0, 0.5),
+          0 0 0 1px rgba(201, 169, 98, 0.1),
+          0 0 32px rgba(201, 169, 98, 0.12);
+      }
+
+      a.project-card.is-in:hover .project-media img {
+        transform: scale(1.05);
+      }
+
+      a.project-card.is-in:active {
+        transform: translateY(-4px) scale(1.01);
+      }
     }
 
     .project-card.is-coming {
+      cursor: default;
       background:
         linear-gradient(180deg, rgba(16, 16, 16, 0.9), rgba(8, 8, 8, 0.95));
     }
@@ -1032,10 +1075,8 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: transform 0.9s var(--ease), filter 0.5s var(--ease);
+      transition: transform 0.4s var(--ease), filter 0.35s var(--ease);
     }
-
-    .project-card:hover .project-media img { transform: scale(1.06); }
 
     .project-card.is-coming .project-media img {
       filter: grayscale(0.35) brightness(0.55);
@@ -1075,7 +1116,7 @@
     }
 
     .project-body {
-      padding: 1.5rem 1.4rem 1.6rem;
+      padding: 1.5rem 1.4rem 1.75rem;
       display: flex;
       flex-direction: column;
       flex: 1;
@@ -1101,61 +1142,8 @@
       color: var(--text-muted);
       font-size: 0.9rem;
       line-height: 1.7;
-      margin-bottom: 1.4rem;
+      margin-bottom: 0;
       flex: 1;
-    }
-
-    .project-cta {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.65rem;
-      align-self: flex-start;
-      font-size: 0.68rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--or);
-      font-weight: 500;
-      transition: var(--transition);
-    }
-
-    .project-cta svg {
-      width: 14px;
-      height: 14px;
-      stroke: currentColor;
-      fill: none;
-      stroke-width: 2;
-      transition: transform 0.35s var(--ease);
-    }
-
-    .project-card:hover .project-cta { color: var(--or-light); }
-    .project-card:hover .project-cta svg { transform: translateX(4px); }
-
-    .project-cta.is-disabled {
-      color: rgba(232, 228, 219, 0.35);
-      pointer-events: none;
-      letter-spacing: 0.14em;
-    }
-
-    .project-soon-mark {
-      position: absolute;
-      inset: 0;
-      display: grid;
-      place-items: center;
-      z-index: 2;
-      pointer-events: none;
-    }
-
-    .project-soon-mark span {
-      font-family: var(--font-display);
-      font-size: 1.35rem;
-      font-style: italic;
-      color: rgba(245, 242, 235, 0.72);
-      letter-spacing: 0.08em;
-      text-shadow: 0 8px 30px rgba(0, 0, 0, 0.65);
-      border: 1px solid rgba(201, 169, 98, 0.25);
-      padding: 0.65rem 1.2rem;
-      background: rgba(8, 8, 8, 0.35);
-      backdrop-filter: blur(6px);
     }
 
     .roulette-hint {
@@ -1646,7 +1634,208 @@
       color: var(--text-muted);
     }
 
+    /* ── Pricing / Offres ── */
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.25rem;
+      align-items: stretch;
+      margin-top: 1rem;
+    }
+
+    .pricing-card {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      padding: 2.1rem 1.55rem 1.75rem;
+      background: linear-gradient(175deg, rgba(18, 18, 18, 0.98), rgba(10, 10, 10, 0.99));
+      border: 1px solid rgba(201, 169, 98, 0.12);
+      transition: transform 0.35s var(--ease), border-color 0.35s var(--ease), box-shadow 0.35s var(--ease);
+    }
+
+    .pricing-card:hover {
+      border-color: rgba(201, 169, 98, 0.28);
+      box-shadow: 0 24px 48px rgba(0, 0, 0, 0.35), 0 0 28px rgba(201, 169, 98, 0.06);
+      transform: translateY(-4px);
+    }
+
+    .pricing-card--featured {
+      border-color: rgba(201, 169, 98, 0.42);
+      background:
+        linear-gradient(175deg, rgba(38, 32, 22, 0.98), rgba(12, 11, 9, 0.99));
+      box-shadow:
+        0 28px 60px rgba(0, 0, 0, 0.45),
+        0 0 0 1px rgba(201, 169, 98, 0.12),
+        0 0 40px rgba(201, 169, 98, 0.1);
+      transform: translateY(-10px);
+      z-index: 2;
+    }
+
+    .pricing-card--featured:hover {
+      transform: translateY(-14px);
+      border-color: rgba(201, 169, 98, 0.55);
+      box-shadow:
+        0 32px 70px rgba(0, 0, 0, 0.5),
+        0 0 48px rgba(201, 169, 98, 0.14);
+    }
+
+    .pricing-ribbon {
+      position: absolute;
+      top: 1.1rem;
+      right: 1.1rem;
+      font-size: 0.56rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--noir);
+      background: linear-gradient(90deg, var(--or), var(--or-light));
+      padding: 0.4rem 0.75rem;
+      font-weight: 600;
+    }
+
+    .pricing-tier {
+      font-size: 0.62rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--or);
+      margin-bottom: 0.85rem;
+      font-weight: 500;
+    }
+
+    .pricing-name {
+      font-family: var(--font-display);
+      font-size: clamp(1.55rem, 2vw, 1.85rem);
+      font-weight: 500;
+      line-height: 1.15;
+      margin-bottom: 1rem;
+    }
+
+    .pricing-price {
+      font-family: var(--font-display);
+      font-size: clamp(2.1rem, 2.6vw, 2.55rem);
+      font-weight: 500;
+      color: var(--blanc-casse);
+      line-height: 1;
+      margin-bottom: 0.35rem;
+    }
+
+    .pricing-price span {
+      display: inline-block;
+      font-family: var(--font-body);
+      font-size: 0.68rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--or);
+      font-weight: 500;
+      margin-left: 0.35rem;
+      vertical-align: middle;
+    }
+
+    .pricing-price-prefix {
+      display: block;
+      font-family: var(--font-body);
+      font-size: 0.62rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 0.35rem;
+    }
+
+    .pricing-tagline {
+      color: var(--text-muted);
+      font-size: 0.88rem;
+      line-height: 1.65;
+      margin: 1rem 0 1.35rem;
+      min-height: 2.9em;
+    }
+
+    .pricing-features {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+      margin-bottom: 1.75rem;
+      flex: 1;
+      padding-top: 1.15rem;
+      border-top: 1px solid rgba(201, 169, 98, 0.1);
+    }
+
+    .pricing-features li {
+      position: relative;
+      padding-left: 1.35rem;
+      font-size: 0.84rem;
+      line-height: 1.5;
+      color: rgba(232, 228, 219, 0.82);
+    }
+
+    .pricing-features li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.55em;
+      width: 7px;
+      height: 1px;
+      background: var(--or);
+    }
+
+    .pricing-card .pricing-cta {
+      width: 100%;
+      margin-top: auto;
+      padding-inline: 1rem;
+      text-align: center;
+    }
+
+    .pricing-card--featured .pricing-cta {
+      background: var(--or);
+      color: var(--noir);
+      border: none;
+    }
+
+    .pricing-card--featured .pricing-cta:hover {
+      background: var(--or-light);
+      color: var(--noir);
+    }
+
+    .pricing-note {
+      margin-top: 2.5rem;
+      text-align: center;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      letter-spacing: 0.02em;
+      line-height: 1.7;
+      max-width: 640px;
+      margin-inline: auto;
+    }
+
+    .pricing-more {
+      display: flex;
+      justify-content: center;
+      margin-top: 1.75rem;
+    }
+
+    .pricing-more a {
+      font-size: 0.68rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--or);
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      transition: var(--transition);
+    }
+
+    .pricing-more a:hover {
+      color: var(--or-light);
+      gap: 0.85rem;
+    }
+
     /* Responsive */
+    @media (max-width: 1100px) {
+      .pricing-grid { grid-template-columns: repeat(2, 1fr); gap: 1.35rem; }
+      .pricing-card--featured { transform: none; }
+      .pricing-card--featured:hover { transform: translateY(-4px); }
+    }
+
     @media (max-width: 1024px) {
       .hero-grid { grid-template-columns: 1fr; gap: 3rem; }
       .hero-visual { max-width: 540px; }
@@ -1662,6 +1851,16 @@
       .faq-layout { grid-template-columns: 1fr; gap: 3rem; }
       .contact-layout { grid-template-columns: 1fr; gap: 3rem; }
       .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+      .reveal { opacity: 1; transform: none; }
     }
 
     @media (max-width: 768px) {
@@ -1691,6 +1890,8 @@
       .roulette-stage { height: 240px; }
       .roulette-meta { min-height: 8.5rem; margin-top: 1.5rem; }
       .roulette-btn { width: 44px; height: 44px; }
+      .pricing-grid { grid-template-columns: 1fr; max-width: 420px; margin-inline: auto; }
+      .pricing-tagline { min-height: 0; }
     }
   </style>
 </head>
@@ -1698,12 +1899,12 @@
 
   <header class="header" id="header">
     <div class="header-inner">
-      <a href="#" class="logo">Aure<span>lis</span></a>
+      <a href="/" class="logo">Aure<span>lis</span></a>
       <nav class="nav" id="nav">
         <a href="#aurelis">Aurelis</a>
         <a href="#realisations">Réalisations</a>
-        <a href="#demos">Démonstrations</a>
-        <a href="#methode">Méthode</a>
+        <a href="/offres">Offres</a>
+        <a href="/creation-site-web-entreprise/">Entreprises</a>
         <a href="#faq">FAQ</a>
         <a href="#contact" class="nav-cta">Contact</a>
       </nav>
@@ -1726,17 +1927,17 @@
             Découvrir nos réalisations
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </a>
-          <a href="#contact" class="btn btn-ghost">Prendre rendez-vous</a>
+          <a href="#contact" class="btn btn-ghost" data-lead-open="1" data-appointment="1">Prendre rendez-vous</a>
         </div>
         <div class="hero-metrics">
-          <div><div class="metric-num">50+</div><div class="metric-label">Sites livrés</div></div>
-          <div><div class="metric-num">98%</div><div class="metric-label">Clients satisfaits</div></div>
-          <div><div class="metric-num">14j</div><div class="metric-label">Délai moyen</div></div>
+          <div><div class="metric-num">4</div><div class="metric-label">Offres claires</div></div>
+          <div><div class="metric-num">24h</div><div class="metric-label">Réponse humaine</div></div>
+          <div><div class="metric-num">FR/EN</div><div class="metric-label">Parcours international</div></div>
         </div>
       </div>
       <div class="hero-visual">
         <div class="hero-frame">
-          <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=900&q=85" alt="Site web premium conçu par Aurelis">
+          <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=900&q=75" alt="Site web premium conçu par Aurelis" width="900" height="600" fetchpriority="high" decoding="async">
           <div class="hero-chip">
             <div class="hero-chip-icon">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
@@ -1797,7 +1998,7 @@
         </div>
         <div class="why-item reveal d2">
           <div class="why-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12" y2="18.01"/></svg></div>
-          <div><h3>Optimisé mobile</h3><p>Plus de 70 % de vos visiteurs consultent depuis leur téléphone. Votre site s'adapte parfaitement à chaque écran.</p></div>
+          <div><h3>Optimisé mobile</h3><p>La majorité des visiteurs arrivent depuis un téléphone. Votre site s'adapte clairement à chaque écran.</p></div>
         </div>
         <div class="why-item reveal d3">
           <div class="why-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
@@ -1866,21 +2067,21 @@
               <span class="demo-dot"></span><span class="demo-dot"></span><span class="demo-dot"></span>
               <span class="demo-url">maison-elegance.fr</span>
             </div>
-            <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?w=1200&q=85" alt="Démonstration salon de coiffure">
+            <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=1200&q=75" alt="Démonstration salon de coiffure Aurelis" width="1200" height="750" loading="lazy" decoding="async">
           </div>
           <div class="demo-float demo-browser">
-            <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=400&q=85" alt="Version mobile coiffure">
+            <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=400&q=70" alt="Aperçu mobile démonstration coiffure" width="400" height="700" loading="lazy" decoding="async">
           </div>
         </div>
         <div class="demo-content">
           <div class="label">Démonstration</div>
           <h2 class="title">Salon de coiffure <em>premium</em></h2>
-          <p class="desc">Maison Élégance — un site qui capture l'atmosphère d'un salon haut de gamme et simplifie la prise de rendez-vous en ligne.</p>
+          <p class="desc">Démonstration Aurelis — un site modèle pour salon haut de gamme, pensé pour l’image et la prise de rendez-vous. Ce n’est pas un client publié anonymement.</p>
           <ul class="demo-features">
             <li>Design élégant noir, or et blanc cassé</li>
             <li>Galerie de prestations immersive</li>
-            <li>Formulaire de réservation intégré</li>
-            <li>Optimisé mobile et référencement local</li>
+            <li>Parcours de contact clair</li>
+            <li>Optimisé mobile</li>
           </ul>
           <a href="https://aurelis-demo-coiffeur-hzng7c525-julestherasse-9969s-projects.vercel.app/" class="btn btn-gold" target="_blank" rel="noopener">
             Voir la démonstration
@@ -1894,26 +2095,26 @@
           <div class="demo-browser">
             <div class="demo-bar">
               <span class="demo-dot"></span><span class="demo-dot"></span><span class="demo-dot"></span>
-              <span class="demo-url">maison-rivage.fr</span>
+              <span class="demo-url">bryan-burger.vercel.app</span>
             </div>
-            <img src="https://images.unsplash.com/photo-1550966871-3ed3cdb5ed0c?w=1200&q=85" alt="Démonstration restaurant Maison Rivage">
+            <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=1200&q=75" alt="Projet Bryan Burger" width="1200" height="750" loading="lazy" decoding="async">
           </div>
           <div class="demo-float demo-browser">
-            <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=400&q=85" alt="Version mobile Maison Rivage">
+            <img src="https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=400&q=70" alt="Aperçu mobile Bryan Burger" width="400" height="700" loading="lazy" decoding="async">
           </div>
         </div>
         <div class="demo-content">
-          <div class="label">Démonstration</div>
-          <h2 class="title">Restaurant <em>haut de gamme</em></h2>
-          <p class="desc">Maison Rivage — une expérience digitale qui évoque la gastronomie raffinée et facilite les réservations de table.</p>
+          <div class="label">Réalisation</div>
+          <h2 class="title">Bryan <em>Burger</em></h2>
+          <p class="desc">Site restauration rapide — clarté de l’offre, expérience mobile et prise de contact. Projet accessible en ligne.</p>
           <ul class="demo-features">
-            <li>Ambiance visuelle immersive et chaleureuse</li>
-            <li>Carte et menu présentés avec élégance</li>
-            <li>Réservation en ligne simplifiée</li>
-            <li>Performance et SEO local optimisés</li>
+            <li>Parcours menu lisible</li>
+            <li>Design adapté au mobile</li>
+            <li>Appels à l’action visibles</li>
+            <li>Livré et consultable publiquement</li>
           </ul>
-          <a href="#" class="btn btn-gold">
-            Voir la démonstration
+          <a href="https://bryan-burger.vercel.app/" class="btn btn-gold" target="_blank" rel="noopener">
+            Voir le projet
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg>
           </a>
         </div>
@@ -1953,63 +2154,125 @@
     </div>
   </section>
 
-  <section class="section section-alt" id="temoignages">
+  <section class="section section-alt" id="confiance">
     <div class="container">
       <div class="section-head reveal">
-        <div class="label label-center">Témoignages</div>
-        <h2 class="title">Ils nous font <em>confiance</em></h2>
+        <div class="label label-center">Confiance</div>
+        <h2 class="title">Des preuves <em>vérifiables</em></h2>
+        <p class="desc desc-center">Pas de témoignages inventés ni de statistiques non sourcées. Consultez des réalisations en ligne et les pages métier préparées pour vos campagnes.</p>
       </div>
-      <div class="testi-grid">
-        <div class="testi-card reveal d1">
-          <div class="testi-stars">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          </div>
-          <div class="testi-quote">&ldquo;</div>
-          <p class="testi-text">Depuis la mise en ligne de notre site, nos réservations en ligne ont doublé. Aurelis a parfaitement capté l'ambiance de notre restaurant.</p>
-          <div class="testi-author">
-            <div class="testi-avatar">ML</div>
-            <div><div class="testi-name">Marc Lefèvre</div><div class="testi-role">Le Jardin Secret — Restaurant, Lyon</div></div>
-          </div>
+      <div class="about-grid">
+        <div class="about-card reveal d1">
+          <div class="about-num">01</div>
+          <h3>Réalisations en ligne</h3>
+          <p>Bryan Burger, Trans Delivery et la démo salon sont accessibles depuis la section Réalisations — des sites réels, pas des captures décoratives.</p>
         </div>
-        <div class="testi-card reveal d2">
-          <div class="testi-stars">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          </div>
-          <div class="testi-quote">&ldquo;</div>
-          <p class="testi-text">Enfin un site à la hauteur de notre salon. Élégant, rapide, et mes clientes adorent prendre rendez-vous directement en ligne.</p>
-          <div class="testi-author">
-            <div class="testi-avatar">SB</div>
-            <div><div class="testi-name">Sophie Bernard</div><div class="testi-role">Maison Élégance — Coiffure, Paris</div></div>
-          </div>
+        <div class="about-card reveal d2">
+          <div class="about-num">02</div>
+          <h3>Pages de destination</h3>
+          <p><a href="/creation-site-web-entreprise/" style="color:var(--or)">Création site entreprise</a> · <a href="/refonte-site-web/" style="color:var(--or)">Refonte</a> · <a href="/creation-site-premium/" style="color:var(--or)">Site premium</a></p>
         </div>
-        <div class="testi-card reveal d3">
-          <div class="testi-stars">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          </div>
-          <div class="testi-quote">&ldquo;</div>
-          <p class="testi-text">Je cherchais une agence qui comprenne les artisans. Aurelis a créé un site qui met en valeur mon savoir-faire et me positionne en tête sur Google.</p>
-          <div class="testi-author">
-            <div class="testi-avatar">PD</div>
-            <div><div class="testi-name">Pierre Dubois</div><div class="testi-role">Atelier Dubois — Ébénisterie, Bordeaux</div></div>
-          </div>
+        <div class="about-card reveal d3">
+          <div class="about-num">03</div>
+          <h3>Contact direct</h3>
+          <p>Jules Therasse — <a href="tel:+32495380329" style="color:var(--or)">0495 38 03 29</a> · <a href="mailto:julestherasse@gmail.com" style="color:var(--or)">julestherasse@gmail.com</a>. Réponse humaine sous 24 h.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="section" id="faq">
+  <section class="section" id="offres">
+    <div class="container">
+      <div class="section-head reveal">
+        <div class="label label-center">Tarifs</div>
+        <h2 class="title">Quatre offres. Une même <em>exigence</em>.</h2>
+        <p class="desc desc-center">Choisissez la formule adaptée à votre ambition. Chaque offre Aurelis est conçue pour inspirer confiance et convertir vos visiteurs.</p>
+      </div>
+
+      <div class="pricing-grid">
+        <article class="pricing-card reveal d1">
+          <div class="pricing-tier">01</div>
+          <h3 class="pricing-name">Aurelis Essential</h3>
+          <div class="pricing-price">990 €<span>HTVA</span></div>
+          <p class="pricing-tagline">Pour petits commerces et indépendants qui veulent une présence nette et crédible.</p>
+          <ul class="pricing-features">
+            <li>Site vitrine d'une page</li>
+            <li>Structure professionnelle personnalisée</li>
+            <li>Design responsive</li>
+            <li>Formulaire de contact</li>
+            <li>SEO technique de base</li>
+            <li>Intégration des coordonnées et réseaux sociaux</li>
+            <li>Une série de corrections</li>
+          </ul>
+          <a href="#" class="btn btn-ghost pricing-cta" data-offer="Aurelis Essential" data-price="990 € HTVA" data-lead-open="1">Démarrer mon projet</a>
+        </article>
+
+        <article class="pricing-card reveal d2">
+          <div class="pricing-tier">02</div>
+          <h3 class="pricing-name">Aurelis Signature</h3>
+          <div class="pricing-price">2 490 €<span>HTVA</span></div>
+          <p class="pricing-tagline">Pour entreprises ambitieuses qui souhaitent une image plus complète et distinctive.</p>
+          <ul class="pricing-features">
+            <li>Jusqu'à 5 pages</li>
+            <li>Design entièrement personnalisé</li>
+            <li>Animations élégantes</li>
+            <li>SEO initial optimisé</li>
+            <li>Formulaires personnalisés</li>
+            <li>Installation des outils d'analyse</li>
+            <li>Deux séries de corrections</li>
+          </ul>
+          <a href="#" class="btn btn-ghost pricing-cta" data-offer="Aurelis Signature" data-price="2 490 € HTVA" data-lead-open="1">Démarrer mon projet</a>
+        </article>
+
+        <article class="pricing-card pricing-card--featured reveal d3">
+          <div class="pricing-ribbon">Notre sélection</div>
+          <div class="pricing-tier">03</div>
+          <h3 class="pricing-name">Aurelis Prestige</h3>
+          <div class="pricing-price">4 490 €<span>HTVA</span></div>
+          <p class="pricing-tagline">Pour entreprises et marques premium qui exigent une expérience digitale d'exception.</p>
+          <ul class="pricing-features">
+            <li>Jusqu'à 10 pages</li>
+            <li>Direction artistique haut de gamme</li>
+            <li>Animations avancées</li>
+            <li>Interactions immersives</li>
+            <li>Optimisation de l'expérience utilisateur</li>
+            <li>SEO technique approfondi</li>
+            <li>Intégrations métier définies au devis</li>
+            <li>Trois séries de corrections</li>
+          </ul>
+          <a href="#" class="btn btn-gold pricing-cta" data-offer="Aurelis Prestige" data-price="4 490 € HTVA" data-lead-open="1">Démarrer mon projet</a>
+        </article>
+
+        <article class="pricing-card reveal d4">
+          <div class="pricing-tier">04</div>
+          <h3 class="pricing-name">Aurelis Elite</h3>
+          <div class="pricing-price-prefix">À partir de</div>
+          <div class="pricing-price">7 490 €<span>HTVA</span></div>
+          <p class="pricing-tagline">Pour projets complexes et internationaux nécessitant une architecture sur mesure.</p>
+          <ul class="pricing-features">
+            <li>Architecture sur mesure</li>
+            <li>E-commerce ou application web</li>
+            <li>Espace administrateur selon les besoins</li>
+            <li>Paiements sécurisés si nécessaires</li>
+            <li>Automatisations et intégrations IA</li>
+            <li>Fonctionnalités définies au cahier des charges</li>
+            <li>Accompagnement personnalisé</li>
+          </ul>
+          <a href="#" class="btn btn-ghost pricing-cta" data-offer="Aurelis Elite" data-price="À partir de 7 490 € HTVA" data-lead-open="1">Démarrer mon projet</a>
+        </article>
+      </div>
+
+      <p class="pricing-note reveal">Tarifs hors TVA. Hébergement, domaine, maintenance et services tiers selon devis.</p>
+      <div class="pricing-more reveal">
+        <a href="/offres">
+          Voir la page Offres détaillée
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt" id="faq">
     <div class="container faq-layout">
       <div class="reveal">
         <div class="label">Questions fréquentes</div>
@@ -2019,7 +2282,7 @@
       <div class="reveal d1">
         <div class="faq-item">
           <button class="faq-q" aria-expanded="false">Combien coûte un site ?<span class="faq-icon">+</span></button>
-          <div class="faq-a"><p>Chaque projet est unique. Nos sites premium démarrent à partir de 2 500 €. Nous établissons un devis transparent après un premier échange gratuit.</p></div>
+          <div class="faq-a"><p>Nos offres officielles démarrent à 990 € HTVA (Essential) et s'étendent jusqu'à Elite à partir de 7 490 € HTVA. Prestige à 4 490 € HTVA est notre sélection la plus demandée. <a href="/offres" style="color: var(--or);">Découvrir les 4 offres</a> — devis transparent après un premier échange gratuit.</p></div>
         </div>
         <div class="faq-item">
           <button class="faq-q" aria-expanded="false">Combien de temps faut-il ?<span class="faq-icon">+</span></button>
@@ -2037,7 +2300,7 @@
     </div>
   </section>
 
-  <section class="section section-alt" id="contact">
+  <section class="section" id="contact">
     <div class="container contact-layout">
       <div class="reveal">
         <div class="label">Contact</div>
@@ -2058,19 +2321,11 @@
         </div>
       </div>
       <div class="reveal d1">
-        <form class="form" id="form">
-          <div class="form-row">
-            <div class="field"><label for="nom">Nom</label><input type="text" id="nom" name="nom" required placeholder="Votre nom"></div>
-            <div class="field"><label for="entreprise">Entreprise</label><input type="text" id="entreprise" name="entreprise" required placeholder="Nom de votre commerce"></div>
-          </div>
-          <div class="form-row">
-            <div class="field"><label for="tel">Téléphone</label><input type="tel" id="tel" name="tel" required placeholder="04XX XX XX XX"></div>
-            <div class="field"><label for="email">Email</label><input type="email" id="email" name="email" required placeholder="vous@exemple.fr"></div>
-          </div>
-          <div class="field"><label for="msg">Message</label><textarea id="msg" name="msg" required placeholder="Décrivez votre projet, vos objectifs et vos attentes…"></textarea></div>
-          <button type="submit" class="btn btn-gold form-submit">Envoyer ma demande</button>
-        </form>
-        <div class="form-ok" id="formOk">Merci pour votre message. Nous vous recontactons sous 24 heures.</div>
+        <div class="form" id="form">
+          <p style="color:var(--text-muted);margin-bottom:1.25rem;font-size:.95rem;">Le formulaire complet conserve l’offre choisie, le prix indicatif et votre langue, puis enregistre la demande de façon sécurisée.</p>
+          <a href="#" class="btn btn-gold form-submit" data-lead-open="1" data-appointment="1">Ouvrir le formulaire projet</a>
+          <p style="margin-top:1rem;font-size:.82rem;color:var(--text-muted);">Ou choisissez d’abord une <a href="/offres/" style="color:var(--or)">offre</a>.</p>
+        </div>
       </div>
     </div>
   </section>
@@ -2079,7 +2334,7 @@
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
-          <a href="#" class="logo">Aure<span>lis</span></a>
+          <a href="/" class="logo">Aure<span>lis</span></a>
           <p>Agence web premium spécialisée dans la création de sites internet haut de gamme pour les entreprises locales exigeantes.</p>
         </div>
         <div class="footer-col">
@@ -2092,18 +2347,16 @@
           <h4>Navigation</h4>
           <a href="#aurelis">À propos</a>
           <a href="#realisations">Réalisations</a>
-          <a href="#demos">Démonstrations</a>
+          <a href="/offres">Offres</a>
           <a href="#methode">Méthode</a>
           <a href="#contact">Contact</a>
         </div>
         <div class="footer-col">
-          <h4>Réseaux sociaux</h4>
-          <div class="footer-social">
-            <a href="#" aria-label="Instagram"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
-            <a href="#" aria-label="LinkedIn"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg></a>
-            <a href="#" aria-label="Facebook"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
-          </div>
-          <a href="#" style="margin-top: 1.25rem;">Mentions légales</a>
+          <h4>Légal &amp; langue</h4>
+          <a href="/mentions-legales/">Mentions légales</a>
+          <a href="/politique-confidentialite/">Confidentialité</a>
+          <a href="/en/">English version</a>
+          <a href="/creation-site-web-entreprise/">Site entreprise</a>
         </div>
       </div>
       <div class="footer-bottom">
@@ -2156,10 +2409,14 @@
         });
       });
 
-      document.getElementById('form').addEventListener('submit', function (e) {
-        e.preventDefault();
-        this.classList.add('hidden');
-        document.getElementById('formOk').classList.add('show');
+      document.querySelectorAll('[data-offer]').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          try {
+            sessionStorage.setItem('aurelis-offer', this.getAttribute('data-offer') || '');
+            var price = this.getAttribute('data-price') || '';
+            if (price) sessionStorage.setItem('aurelis-offer-price', price);
+          } catch (err) { /* noop */ }
+        });
       });
 
       document.querySelectorAll('a[href^="#"]').forEach(function (a) {
@@ -2181,7 +2438,6 @@
         var DEMO_COIFFEUR = 'https://aurelis-demo-coiffeur-hzng7c525-julestherasse-9969s-projects.vercel.app/';
         var DEMO_BRYAN = 'https://bryan-burger.vercel.app/';
         var DEMO_TRANS = 'https://transport-delivery.vercel.app/';
-        var ARROW_SVG = '<svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>';
 
         var ICONS = {
           restaurant: '<svg viewBox="0 0 24 24"><path d="M8 3v8a2 2 0 002 2h0a2 2 0 002-2V3"/><path d="M10 13v8"/><path d="M16 3v18"/><path d="M14 7h4"/></svg>',
@@ -2199,11 +2455,10 @@
             sector: sector,
             desc: 'Un prochain site premium est en préparation pour cet univers. Contactez-nous pour en faire le vôtre.',
             image: image || PLACEHOLDER_IMG,
-            href: '#contact',
-            badge: 'Bientôt',
+            href: null,
+            badge: 'Bientôt disponible',
             badgeClass: 'soon',
-            coming: true,
-            cta: 'Parler de ce projet'
+            coming: true
           };
         }
 
@@ -2216,25 +2471,9 @@
             desc: 'Des sites qui capturent l’ambiance d’une table d’exception et transforment la visite en réservation.',
             icon: ICONS.restaurant,
             projects: [
-              {
-                name: 'Maison Rivage',
-                sector: 'Restaurant',
-                desc: 'Expérience gastronomique raffinée — ambiance immersive, carte élégante et réservation simplifiée.',
-                image: 'https://images.unsplash.com/photo-1550966871-3ed3cdb5ed0c?w=900&q=85',
-                href: '#demo-restaurant',
-                badge: 'Démo',
-                badgeClass: ''
-              },
-              {
-                name: 'Le Jardin Secret',
-                sector: 'Restaurant',
-                desc: 'Univers chaleureux et gastronomique, pensé pour le SEO local et la conversion mobile.',
-                image: 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=900&q=85',
-                href: '#demo-restaurant',
-                badge: 'Démo',
-                badgeClass: ''
-              },
-              soonCard('Restaurant', 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=900&q=80')
+              soonCard('Restaurant', 'https://images.unsplash.com/photo-1550966871-3ed3cdb5ed0c?auto=format&fit=crop&w=900&q=70'),
+              soonCard('Restaurant', 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=900&q=70'),
+              soonCard('Restaurant', 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=900&q=70')
             ]
           },
           {
@@ -2248,15 +2487,15 @@
               {
                 name: 'Bryan Burger',
                 sector: 'Fast-food',
-                desc: 'Site complet pour burger house : menu immersif, commande en ligne et univers visuel premium très appétissant.',
-                image: 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=900&q=85',
+                desc: 'Site restauration rapide : menu clair, expérience mobile et prise de contact. Projet consultable en ligne.',
+                image: 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=900&q=70',
                 href: DEMO_BRYAN,
                 external: true,
-                badge: 'Client réel',
+                badge: 'Projet en ligne',
                 badgeClass: 'client'
               },
-              soonCard('Fast-food', 'https://images.unsplash.com/photo-1550547660-d9450f859349?w=900&q=80'),
-              soonCard('Fast-food', 'https://images.unsplash.com/photo-1571091718767-18b5b1457add?w=900&q=80')
+              soonCard('Fast-food', 'https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=900&q=70'),
+              soonCard('Fast-food', 'https://images.unsplash.com/photo-1571091718767-18b5b1457add?auto=format&fit=crop&w=900&q=70')
             ]
           },
           {
@@ -2268,17 +2507,17 @@
             icon: ICONS.coiffure,
             projects: [
               {
-                name: 'Maison Élégance',
+                name: 'Démo salon Aurelis',
                 sector: 'Salon de coiffure',
-                desc: 'Site premium noir, or et blanc cassé. Prestations, galerie immersive et réservation en ligne.',
-                image: 'https://images.unsplash.com/photo-1560066984-138dadb4c035?w=900&q=85',
+                desc: 'Démonstration Aurelis — site modèle premium pour salon. Accessible en ligne, clairement présenté comme démo.',
+                image: 'https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=900&q=70',
                 href: DEMO_COIFFEUR,
                 external: true,
                 badge: 'Démo',
                 badgeClass: ''
               },
-              soonCard('Salon de coiffure', 'https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=900&q=80'),
-              soonCard('Salon de coiffure', 'https://images.unsplash.com/photo-1633681926022-84c23e8cb2d6?w=900&q=80')
+              soonCard('Salon de coiffure', 'https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=900&q=70'),
+              soonCard('Salon de coiffure', 'https://images.unsplash.com/photo-1633681926022-84c23e8cb2d6?auto=format&fit=crop&w=900&q=70')
             ]
           },
           {
@@ -2305,15 +2544,15 @@
               {
                 name: 'Trans Delivery',
                 sector: 'Transport',
-                desc: 'Site corporate pour transporteur belge : livraison express, froids et couverture nationale, pensé conversion.',
-                image: 'https://images.unsplash.com/photo-1519003722824-194d4455a60c?w=900&q=85',
+                desc: 'Site transport & livraison — crédibilité, services et prise de contact. Projet consultable en ligne.',
+                image: 'https://images.unsplash.com/photo-1519003722824-194d4455a60c?auto=format&fit=crop&w=900&q=70',
                 href: DEMO_TRANS,
                 external: true,
-                badge: 'Client réel',
+                badge: 'Projet en ligne',
                 badgeClass: 'client'
               },
-              soonCard('Transport', 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=900&q=80'),
-              soonCard('Transport', 'https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?w=900&q=80')
+              soonCard('Transport', 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=900&q=70'),
+              soonCard('Transport', 'https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?auto=format&fit=crop&w=900&q=70')
             ]
           }
         ];
@@ -2405,31 +2644,48 @@
           panel.innerHTML = '';
 
           sector.projects.forEach(function (project, i) {
-            var card = document.createElement('article');
-            card.className = 'project-card' + (project.coming ? ' is-coming' : '');
+            var hasLink = !!(project.href && !project.coming);
+            var card = document.createElement(hasLink ? 'a' : 'article');
+            card.className = 'project-card' + (project.coming || !hasLink ? ' is-coming' : '');
             card.style.transitionDelay = (reduceMotion ? 0 : i * 0.08) + 's';
 
+            if (hasLink) {
+              card.href = project.href;
+              if (project.external) {
+                card.target = '_blank';
+                card.rel = 'noopener';
+              }
+              card.setAttribute('aria-label', project.name + ' — ouvrir le projet');
+            } else {
+              card.setAttribute('aria-label', project.name + ' — bientôt disponible');
+            }
+
             var badgeClass = 'project-badge' + (project.badgeClass ? ' ' + project.badgeClass : '');
-            var ctaLabel = project.cta || (project.coming ? 'Parler de ce projet' : 'Voir le projet');
-            var targetAttrs = project.external ? ' target="_blank" rel="noopener"' : '';
-            var soonMark = project.coming
-              ? '<div class="project-soon-mark"><span>À venir</span></div>'
-              : '';
+            var badgeText = project.coming || !hasLink
+              ? (project.badge || 'Bientôt disponible')
+              : project.badge;
 
             card.innerHTML =
               '<div class="project-media">' +
-                '<span class="' + badgeClass + '">' + project.badge + '</span>' +
-                soonMark +
+                '<span class="' + badgeClass + '">' + badgeText + '</span>' +
                 '<img src="' + project.image + '" alt="' + project.name + '" loading="lazy">' +
               '</div>' +
               '<div class="project-body">' +
                 '<div class="project-sector">' + project.sector + '</div>' +
                 '<h4>' + project.name + '</h4>' +
                 '<p>' + project.desc + '</p>' +
-                '<a class="project-cta" href="' + project.href + '"' + targetAttrs + '>' +
-                  ctaLabel + ARROW_SVG +
-                '</a>' +
               '</div>';
+
+            if (hasLink && project.href.charAt(0) === '#') {
+              card.addEventListener('click', function (e) {
+                var t = document.querySelector(project.href);
+                if (t) {
+                  e.preventDefault();
+                  var h = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--header-h')) || 86;
+                  window.scrollTo({ top: t.getBoundingClientRect().top + window.scrollY - h, behavior: 'smooth' });
+                }
+              });
+            }
 
             panel.appendChild(card);
 
@@ -2437,18 +2693,6 @@
               window.requestAnimationFrame(function () {
                 card.classList.add('is-in');
               });
-            });
-          });
-
-          // Re-bind smooth scroll for newly injected anchors
-          panel.querySelectorAll('a[href^="#"]').forEach(function (a) {
-            a.addEventListener('click', function (e) {
-              var t = document.querySelector(this.getAttribute('href'));
-              if (t) {
-                e.preventDefault();
-                var h = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--header-h')) || 86;
-                window.scrollTo({ top: t.getBoundingClientRect().top + window.scrollY - h, behavior: 'smooth' });
-              }
             });
           });
         }
@@ -2577,5 +2821,10 @@
       })();
     })();
   </script>
+  <script src="/assets/config.js" defer></script>
+  <script src="/assets/locale.js" defer></script>
+  <script src="/assets/analytics.js" defer></script>
+  <script src="/assets/consent.js" defer></script>
+  <script src="/assets/lead-funnel.js" defer></script>
 </body>
 </html>

@@ -1,0 +1,304 @@
+/* Tunnel de conversion — formulaire premium offre → Aurelis AI */
+.lead-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.25rem;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.35s var(--ease, cubic-bezier(0.22, 1, 0.36, 1)), visibility 0.35s;
+}
+
+.lead-modal.is-open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.lead-modal__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(4, 4, 4, 0.78);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.lead-modal__panel {
+  position: relative;
+  width: min(640px, 100%);
+  max-height: min(92vh, 900px);
+  overflow: auto;
+  background:
+    radial-gradient(ellipse 80% 50% at 10% 0%, rgba(201, 169, 98, 0.14), transparent 55%),
+    linear-gradient(165deg, #161616 0%, #0c0c0c 55%, #101010 100%);
+  border: 1px solid rgba(201, 169, 98, 0.22);
+  box-shadow: 0 28px 80px rgba(0, 0, 0, 0.55);
+  padding: clamp(1.5rem, 4vw, 2.25rem);
+  transform: translateY(18px) scale(0.98);
+  transition: transform 0.4s var(--ease, cubic-bezier(0.22, 1, 0.36, 1));
+}
+
+.lead-modal.is-open .lead-modal__panel {
+  transform: none;
+}
+
+.lead-modal__close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 2.25rem;
+  height: 2.25rem;
+  display: grid;
+  place-items: center;
+  color: var(--text-muted, #86817c);
+  border: 1px solid rgba(245, 242, 235, 0.12);
+  transition: color 0.25s, border-color 0.25s;
+}
+
+.lead-modal__close:hover,
+.lead-modal__close:focus-visible {
+  color: var(--or, #c9a962);
+  border-color: rgba(201, 169, 98, 0.45);
+  outline: none;
+}
+
+.lead-modal__eyebrow {
+  font-size: 0.68rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--or, #c9a962);
+  font-weight: 500;
+  margin-bottom: 0.65rem;
+}
+
+.lead-modal__title {
+  font-family: var(--font-display, 'Cormorant Garamond', Georgia, serif);
+  font-size: clamp(1.75rem, 4vw, 2.35rem);
+  font-weight: 500;
+  line-height: 1.15;
+  color: var(--blanc-casse, #f5f2eb);
+  margin-bottom: 0.5rem;
+}
+
+.lead-modal__title em {
+  font-style: italic;
+  color: var(--or-light, #dfc88a);
+}
+
+.lead-modal__lead {
+  color: var(--text-muted, #86817c);
+  font-size: 0.95rem;
+  margin-bottom: 1.35rem;
+  max-width: 38ch;
+}
+
+.lead-modal__summary {
+  display: grid;
+  gap: 0.35rem;
+  padding: 0.95rem 1.1rem;
+  margin-bottom: 1.5rem;
+  border-left: 2px solid var(--or, #c9a962);
+  background: rgba(201, 169, 98, 0.06);
+}
+
+.lead-modal__summary strong {
+  font-weight: 500;
+  color: var(--blanc-casse, #f5f2eb);
+  font-size: 1.05rem;
+}
+
+.lead-modal__summary span {
+  font-size: 0.82rem;
+  color: var(--text-muted, #86817c);
+  letter-spacing: 0.02em;
+}
+
+.lead-form {
+  display: grid;
+  gap: 0.95rem;
+}
+
+.lead-form__row {
+  display: grid;
+  gap: 0.95rem;
+}
+
+@media (min-width: 560px) {
+  .lead-form__row--2 {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.lead-field label {
+  display: block;
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-muted, #86817c);
+  margin-bottom: 0.4rem;
+}
+
+.lead-field input,
+.lead-field select,
+.lead-field textarea {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(245, 242, 235, 0.12);
+  color: var(--blanc-casse, #f5f2eb);
+  font-family: inherit;
+  font-size: 0.95rem;
+  font-weight: 300;
+  padding: 0.75rem 0.9rem;
+  transition: border-color 0.25s, background 0.25s;
+}
+
+.lead-field textarea {
+  min-height: 110px;
+  resize: vertical;
+  line-height: 1.55;
+}
+
+.lead-field select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='none' stroke='%86817c' stroke-width='1.5' d='M1 1l5 5 5-5'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.9rem center;
+  padding-right: 2.2rem;
+}
+
+.lead-field input:focus,
+.lead-field select:focus,
+.lead-field textarea:focus {
+  outline: none;
+  border-color: rgba(201, 169, 98, 0.55);
+  background: rgba(201, 169, 98, 0.04);
+}
+
+.lead-field input.is-invalid,
+.lead-field select.is-invalid,
+.lead-field textarea.is-invalid {
+  border-color: rgba(200, 90, 80, 0.7);
+}
+
+.lead-hp {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.lead-consent {
+  display: flex;
+  gap: 0.65rem;
+  align-items: flex-start;
+  font-size: 0.82rem;
+  color: var(--text-muted, #86817c);
+  line-height: 1.5;
+}
+
+.lead-consent input {
+  margin-top: 0.2rem;
+  accent-color: var(--or, #c9a962);
+  flex-shrink: 0;
+}
+
+.lead-form__error {
+  display: none;
+  font-size: 0.88rem;
+  color: #e8a090;
+  padding: 0.65rem 0.85rem;
+  border: 1px solid rgba(200, 90, 80, 0.35);
+  background: rgba(200, 90, 80, 0.08);
+}
+
+.lead-form__error.is-visible {
+  display: block;
+}
+
+.lead-form__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: center;
+  margin-top: 0.35rem;
+}
+
+.lead-form__actions .btn[disabled] {
+  opacity: 0.55;
+  cursor: wait;
+}
+
+.lead-form__hint {
+  font-size: 0.75rem;
+  color: var(--text-muted, #86817c);
+}
+
+.lead-success {
+  display: none;
+  text-align: center;
+  padding: 1.5rem 0.5rem 0.5rem;
+}
+
+.lead-success.is-visible {
+  display: block;
+  animation: leadFadeIn 0.45s var(--ease, cubic-bezier(0.22, 1, 0.36, 1));
+}
+
+.lead-success__mark {
+  width: 3rem;
+  height: 3rem;
+  margin: 0 auto 1.1rem;
+  border: 1px solid rgba(201, 169, 98, 0.45);
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  color: var(--or, #c9a962);
+}
+
+.lead-success__mark svg {
+  width: 1.25rem;
+  height: 1.25rem;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 2;
+}
+
+.lead-success h3 {
+  font-family: var(--font-display, 'Cormorant Garamond', Georgia, serif);
+  font-size: 1.85rem;
+  font-weight: 500;
+  margin-bottom: 0.55rem;
+}
+
+.lead-success p {
+  color: var(--text-muted, #86817c);
+  font-size: 0.95rem;
+  max-width: 36ch;
+  margin: 0 auto 1.4rem;
+  line-height: 1.6;
+}
+
+@keyframes leadFadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: none; }
+}
+
+body.lead-modal-open {
+  overflow: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lead-modal,
+  .lead-modal__panel,
+  .lead-success {
+    transition: none;
+    animation: none;
+  }
+}

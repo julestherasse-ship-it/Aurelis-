@@ -1,0 +1,169 @@
+/* Pages landing + légales — partage le look Aurelis */
+.lp-hero {
+  position: relative;
+  min-height: min(88vh, 820px);
+  display: flex;
+  align-items: flex-end;
+  padding: calc(var(--header-h, 86px) + 2.5rem) 0 4rem;
+  overflow: hidden;
+}
+
+.lp-hero__bg {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(8, 8, 8, 0.35) 0%, rgba(8, 8, 8, 0.82) 55%, #080808 100%),
+    center / cover no-repeat var(--lp-image);
+}
+
+.lp-hero__content {
+  position: relative;
+  z-index: 1;
+  width: min(720px, 90%);
+  margin: 0 auto 0 5vw;
+}
+
+.lp-hero h1 {
+  font-family: var(--font-display, 'Cormorant Garamond', Georgia, serif);
+  font-size: clamp(2.4rem, 6vw, 4rem);
+  font-weight: 500;
+  line-height: 1.12;
+  margin: 0.6rem 0 1rem;
+}
+
+.lp-hero h1 em {
+  font-style: italic;
+  color: var(--or-light, #dfc88a);
+}
+
+.lp-hero p {
+  color: var(--blanc-muted, #e8e4db);
+  font-size: 1.05rem;
+  max-width: 42ch;
+  margin-bottom: 1.5rem;
+}
+
+.lp-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.lp-section {
+  padding: 5rem 0;
+}
+
+.lp-section--alt {
+  background: var(--noir-soft, #121212);
+}
+
+.lp-grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+@media (min-width: 800px) {
+  .lp-grid--3 { grid-template-columns: repeat(3, 1fr); }
+  .lp-grid--2 { grid-template-columns: 1.1fr 0.9fr; gap: 3rem; align-items: start; }
+}
+
+.lp-card h3 {
+  font-family: var(--font-display, 'Cormorant Garamond', Georgia, serif);
+  font-size: 1.45rem;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+.lp-card p {
+  color: var(--text-muted, #86817c);
+  font-size: 0.95rem;
+}
+
+.lp-work a {
+  display: block;
+  border: 1px solid rgba(245, 242, 235, 0.1);
+  padding: 1.25rem;
+  transition: border-color 0.3s, transform 0.3s;
+}
+
+.lp-work a:hover {
+  border-color: rgba(201, 169, 98, 0.45);
+  transform: translateY(-2px);
+}
+
+.lp-work strong {
+  display: block;
+  color: var(--blanc-casse, #f5f2eb);
+  margin-bottom: 0.25rem;
+}
+
+.lp-work span {
+  color: var(--text-muted, #86817c);
+  font-size: 0.88rem;
+}
+
+.lp-offers .pricing-card {
+  padding: 1.5rem;
+  border: 1px solid rgba(245, 242, 235, 0.1);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.lp-offers .pricing-name {
+  font-family: var(--font-display, 'Cormorant Garamond', Georgia, serif);
+  font-size: 1.5rem;
+  margin: 0.4rem 0;
+}
+
+.lp-offers .pricing-price {
+  color: var(--or, #c9a962);
+  font-size: 1.35rem;
+  margin-bottom: 0.75rem;
+}
+
+.lp-offers .pricing-price span {
+  font-size: 0.75rem;
+  color: var(--text-muted, #86817c);
+  margin-left: 0.25rem;
+}
+
+.legal-page {
+  padding: calc(var(--header-h, 86px) + 3rem) 0 5rem;
+}
+
+.legal-page h1 {
+  font-family: var(--font-display, 'Cormorant Garamond', Georgia, serif);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 500;
+  margin-bottom: 1.5rem;
+}
+
+.legal-page h2 {
+  font-family: var(--font-display, 'Cormorant Garamond', Georgia, serif);
+  font-size: 1.45rem;
+  font-weight: 500;
+  margin: 2rem 0 0.75rem;
+  color: var(--or-light, #dfc88a);
+}
+
+.legal-page p,
+.legal-page li {
+  color: var(--text-muted, #86817c);
+  max-width: 68ch;
+  margin-bottom: 0.85rem;
+}
+
+.legal-page ul {
+  padding-left: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+.legal-page li {
+  list-style: disc;
+}
+
+.reveal { opacity: 0; transform: translateY(16px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.reveal.visible { opacity: 1; transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+}

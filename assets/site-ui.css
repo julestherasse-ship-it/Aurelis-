@@ -1,0 +1,115 @@
+/* Sélecteur de langue + bannière consentement */
+.lang-switch {
+  display: inline-flex;
+  align-items: center;
+  gap: 0;
+  margin-left: 0.75rem;
+  border: 1px solid rgba(201, 169, 98, 0.28);
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.lang-switch__btn {
+  font-family: var(--font-body, Outfit, system-ui, sans-serif);
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 0.45rem 0.65rem;
+  color: var(--text-muted, #86817c);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: color 0.25s, background 0.25s;
+}
+
+.lang-switch__btn:hover,
+.lang-switch__btn:focus-visible {
+  color: var(--or, #c9a962);
+  outline: none;
+}
+
+.lang-switch__btn.is-active {
+  color: var(--noir, #080808);
+  background: var(--or, #c9a962);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+}
+
+.consent-banner {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 10050;
+  padding: 1rem;
+  transform: translateY(110%);
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  pointer-events: none;
+}
+
+.consent-banner.is-visible {
+  transform: none;
+  pointer-events: auto;
+}
+
+.consent-banner__inner {
+  width: min(920px, 100%);
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.1rem 1.25rem;
+  background: linear-gradient(165deg, #161616, #0c0c0c);
+  border: 1px solid rgba(201, 169, 98, 0.28);
+  box-shadow: 0 -12px 40px rgba(0, 0, 0, 0.45);
+}
+
+.consent-banner__copy {
+  flex: 1 1 280px;
+  font-size: 0.86rem;
+  color: var(--text-muted, #86817c);
+  line-height: 1.55;
+}
+
+.consent-banner__copy strong {
+  display: block;
+  color: var(--blanc-casse, #f5f2eb);
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-size: 0.72rem;
+  margin-bottom: 0.35rem;
+}
+
+.consent-banner__copy a {
+  color: var(--or, #c9a962);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.consent-banner__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+}
+
+@media (max-width: 720px) {
+  .lang-switch {
+    margin-left: 0.4rem;
+  }
+  .lang-switch__btn {
+    padding: 0.4rem 0.5rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .consent-banner {
+    transition: none;
+  }
+}
