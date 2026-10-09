@@ -9,18 +9,19 @@ const html = `<!DOCTYPE html>
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Aurelis — Premium website design for ambitious businesses</title>
-  <meta name="description" content="Aurelis designs premium websites for demanding businesses. Clear offers, verifiable work, human reply within 24 hours. Available in French and English.">
+  <title>Aurelis — Exceptional digital experiences</title>
+  <meta name="description" content="Aurelis designs premium websites, immersive experiences and bespoke digital solutions for ambitious brands. Clear offers from €990 to €7,490 excl. VAT.">
   <link rel="canonical" href="https://aurelis.ink/en/">
   <link rel="alternate" hreflang="en" href="https://aurelis.ink/en/">
   <link rel="alternate" hreflang="fr" href="https://aurelis.ink/">
   <link rel="alternate" hreflang="x-default" href="https://aurelis.ink/">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="en_GB">
-  <meta property="og:title" content="Aurelis — Premium website design">
-  <meta property="og:description" content="Premium websites for demanding businesses. Clear offers, verifiable work, human follow-up.">
+  <meta property="og:title" content="Aurelis — Exceptional digital experiences">
+  <meta property="og:description" content="Premium websites, immersive experiences and bespoke solutions for ambitious brands.">
   <meta property="og:url" content="https://aurelis.ink/en/">
   <meta name="robots" content="index,follow">
+  <meta name="theme-color" content="#080808">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -30,7 +31,7 @@ const html = `<!DOCTYPE html>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Aurelis","url":"https://aurelis.ink/","email":"julestherasse@gmail.com","telephone":"+32495380329","founder":{"@type":"Person","name":"Jules Therasse"}}</script>
   <style>
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-    :root{--noir:#080808;--noir-soft:#121212;--blanc-casse:#f5f2eb;--blanc-muted:#e8e4db;--or:#c9a962;--or-light:#dfc88a;--text-muted:#86817c;--font-display:'Cormorant Garamond',Georgia,serif;--font-body:Outfit,system-ui,sans-serif;--header-h:86px}
+    :root{--noir:#080808;--noir-soft:#121212;--blanc-casse:#f5f2eb;--blanc-muted:#e8e4db;--or:#c9a962;--or-light:#dfc88a;--text-muted:#86817c;--font-display:'Cormorant Garamond',Georgia,serif;--font-body:Outfit,system-ui,sans-serif;--header-h:86px;--ease:cubic-bezier(0.22,1,0.36,1)}
     body{font-family:var(--font-body);background:var(--noir);color:var(--blanc-casse);line-height:1.7;font-weight:300;-webkit-font-smoothing:antialiased}
     a{color:inherit;text-decoration:none}button{font-family:inherit;cursor:pointer;border:none;background:none}
     .container{width:min(1100px,90%);margin:0 auto}
@@ -47,26 +48,39 @@ const html = `<!DOCTYPE html>
     .title em{font-style:italic;color:var(--or-light)}
     .desc{color:var(--text-muted);max-width:48ch}.desc-center{margin:0 auto;text-align:center}
     .section{padding:5rem 0}.section-alt{background:var(--noir-soft)}.section-head{text-align:center;margin-bottom:2.5rem}
-    .hero{min-height:92vh;display:flex;align-items:center;padding:calc(var(--header-h) + 2rem) 0 4rem;position:relative;overflow:hidden}
-    .hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 70% 40%,rgba(201,169,98,.12),transparent 60%),linear-gradient(180deg,#0c0c0c,#080808)}
-    .hero-grid{position:relative}
-    .hero-badge{display:inline-block;font-size:.68rem;letter-spacing:.28em;text-transform:uppercase;color:var(--or);margin-bottom:1rem}
-    .hero h1{font-family:var(--font-display);font-size:clamp(2.4rem,5.5vw,3.8rem);font-weight:500;line-height:1.12;margin-bottom:1rem}
+    .hero{position:relative;min-height:100vh;min-height:100dvh;display:flex;align-items:flex-end;overflow:hidden;padding:calc(var(--header-h) + 2.5rem) 0 4.5rem}
+    .hero-media{position:absolute;inset:0}.hero-media img{width:100%;height:100%;object-fit:cover;transform:scale(1.06);animation:heroZoom 18s var(--ease) forwards;filter:saturate(.85) contrast(1.05)}
+    .hero-media::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,8,8,.55) 0%,rgba(8,8,8,.35) 35%,rgba(8,8,8,.82) 72%,rgba(8,8,8,.96) 100%),radial-gradient(ellipse 55% 45% at 70% 30%,rgba(201,169,98,.14),transparent 60%)}
+    .hero-content{position:relative;z-index:2;width:min(920px,90%);margin:0 auto 0 5vw}
+    .hero-brand{font-family:var(--font-display);font-size:clamp(2rem,4vw,2.75rem);font-weight:500;margin-bottom:1.2rem;opacity:0;animation:up 1s var(--ease) .1s forwards}
+    .hero-brand span{color:var(--or)}
+    .hero h1{font-family:var(--font-display);font-size:clamp(2.4rem,5.8vw,4.6rem);font-weight:400;line-height:1.08;max-width:16ch;margin-bottom:1.35rem;opacity:0;animation:up 1.05s var(--ease) .35s forwards}
     .hero h1 em{font-style:italic;color:var(--or-light)}
-    .hero-sub{color:var(--blanc-muted);max-width:42ch;margin-bottom:1.5rem}
-    .hero-actions{display:flex;flex-wrap:wrap;gap:.75rem;margin-bottom:2rem}
-    .hero-metrics{display:flex;gap:1.5rem;flex-wrap:wrap}.metric-num{font-family:var(--font-display);font-size:1.6rem;color:var(--or)}.metric-label{font-size:.75rem;color:var(--text-muted);letter-spacing:.08em;text-transform:uppercase}
-    .about-grid,.lp-grid{display:grid;gap:1.25rem}@media(min-width:800px){.about-grid,.lp-grid--3{grid-template-columns:repeat(3,1fr)}}
-    .about-card{padding:1.4rem;border:1px solid rgba(245,242,235,.08)}.about-num{color:var(--or);font-size:.75rem;letter-spacing:.2em;margin-bottom:.6rem}
-    .about-card h3{font-family:var(--font-display);font-size:1.35rem;font-weight:500;margin-bottom:.5rem}.about-card p{color:var(--text-muted);font-size:.92rem}
-    .pricing-card{padding:1.5rem;border:1px solid rgba(245,242,235,.1)}.pricing-name{font-family:var(--font-display);font-size:1.45rem;margin:.35rem 0}.pricing-price{color:var(--or);margin-bottom:1rem}.pricing-tier{font-size:.7rem;letter-spacing:.2em;color:var(--text-muted)}
+    .hero-sub{color:var(--blanc-muted);max-width:42ch;margin-bottom:2rem;opacity:0;animation:up 1s var(--ease) .55s forwards}
+    .hero-actions{display:flex;flex-wrap:wrap;gap:.75rem;opacity:0;animation:up 1s var(--ease) .75s forwards}
+    @keyframes up{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+    @keyframes heroZoom{from{transform:scale(1.06)}to{transform:scale(1)}}
+    .about-grid,.lp-grid,.pricing-grid{display:grid;gap:1.25rem}
+    @media(min-width:800px){.about-grid,.lp-grid--3{grid-template-columns:repeat(3,1fr)}.pricing-grid{grid-template-columns:repeat(4,1fr)}}
+    .about-card,.pricing-card,.work-card{padding:1.4rem;border:1px solid rgba(245,242,235,.08)}
+    .about-num{color:var(--or);font-size:.75rem;letter-spacing:.2em;margin-bottom:.6rem}
+    .about-card h3,.work-card h3{font-family:var(--font-display);font-size:1.35rem;font-weight:500;margin-bottom:.5rem}
+    .about-card p,.work-card p{color:var(--text-muted);font-size:.92rem}
+    .pricing-name{font-family:var(--font-display);font-size:1.45rem;margin:.35rem 0}.pricing-price{color:var(--or);margin-bottom:1rem}.pricing-tier{font-size:.7rem;letter-spacing:.2em;color:var(--text-muted)}
+    .pricing-card--featured{border-color:rgba(201,169,98,.45);background:linear-gradient(175deg,rgba(38,32,22,.98),rgba(12,11,9,.99))}
+    .pricing-ribbon{display:inline-block;font-size:.56rem;letter-spacing:.18em;text-transform:uppercase;color:#111;background:linear-gradient(90deg,var(--or),var(--or-light));padding:.35rem .65rem;margin-bottom:.6rem;font-weight:600}
+    .pricing-features{list-style:none;margin:0 0 1.25rem;padding:0;color:var(--text-muted);font-size:.88rem}
+    .pricing-features li{padding:.28rem 0;border-bottom:1px solid rgba(245,242,235,.05)}
+    .pricing-note{text-align:center;color:var(--text-muted);font-size:.8rem;margin-top:1.75rem;max-width:52ch;margin-inline:auto}
     .footer{border-top:1px solid rgba(245,242,235,.08);padding:3rem 0 2rem}.footer-grid{display:grid;gap:1.25rem}@media(min-width:800px){.footer-grid{grid-template-columns:1.4fr 1fr 1fr 1fr}}
     .footer-col h4{font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--or);margin-bottom:.7rem}
     .footer-col a,.footer-col span,.footer-brand p{display:block;color:var(--text-muted);font-size:.9rem;margin-bottom:.3rem}
     .footer-bottom{margin-top:1.5rem;padding-top:1rem;border-top:1px solid rgba(245,242,235,.06);color:var(--text-muted);font-size:.8rem;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
     .faq h3{font-family:var(--font-display);font-weight:500;color:var(--blanc-casse);margin:1.2rem 0 .4rem}.faq p{color:var(--text-muted)}
     .reveal{opacity:0;transform:translateY(14px);transition:.55s ease}.reveal.visible{opacity:1;transform:none}
-    @media(max-width:820px){.nav{display:none;position:absolute;top:var(--header-h);left:0;right:0;background:#0c0c0c;flex-direction:column;padding:1rem}.nav.open{display:flex}.burger{display:block;width:2rem;height:2rem}.burger span{display:block;height:1px;background:#fff;margin:6px 0}}
+    .work-card a{display:block}.work-meta{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--or);margin-bottom:.5rem}
+    @media(max-width:820px){.nav{display:none;position:absolute;top:var(--header-h);left:0;right:0;background:#0c0c0c;flex-direction:column;padding:1rem}.nav.open{display:flex}.burger{display:block;width:2rem;height:2rem}.burger span{display:block;height:1px;background:#fff;margin:6px 0}.hero{align-items:center}.hero-content{margin-inline:auto}.pricing-grid{grid-template-columns:1fr}}
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}.hero-media img{transform:none}}
   </style>
 </head>
 <body>
@@ -83,21 +97,16 @@ const html = `<!DOCTYPE html>
   </div></header>
 
   <section class="hero" id="top">
-    <div class="hero-bg" aria-hidden="true"></div>
-    <div class="container hero-grid">
-      <div>
-        <div class="hero-badge">Premium web studio</div>
-        <h1>An online presence worthy of your <em>craft</em>.</h1>
-        <p class="hero-sub">Aurelis designs elegant, fast websites for businesses that want to inspire trust, elevate their image and attract new clients — in French and English.</p>
-        <div class="hero-actions">
-          <a href="#work" class="btn btn-gold">View our work</a>
-          <a href="#contact" class="btn btn-ghost" data-lead-open="1" data-appointment="1">Book a call</a>
-        </div>
-        <div class="hero-metrics">
-          <div><div class="metric-num">4</div><div class="metric-label">Clear offers</div></div>
-          <div><div class="metric-num">24h</div><div class="metric-label">Human reply</div></div>
-          <div><div class="metric-num">FR/EN</div><div class="metric-label">International ready</div></div>
-        </div>
+    <div class="hero-media" aria-hidden="true">
+      <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=2000&q=75" alt="" width="2000" height="1333" fetchpriority="high" decoding="async">
+    </div>
+    <div class="hero-content">
+      <div class="hero-brand">Aure<span>lis</span></div>
+      <h1>We craft exceptional <em>digital experiences</em>.</h1>
+      <p class="hero-sub">Premium websites, immersive experiences and bespoke digital solutions for ambitious brands.</p>
+      <div class="hero-actions">
+        <a href="#work" class="btn btn-gold">Discover our work</a>
+        <a href="#offers-preview" class="btn btn-ghost" data-lead-open="1">Start my project</a>
       </div>
     </div>
   </section>
@@ -106,12 +115,12 @@ const html = `<!DOCTYPE html>
     <div class="container">
       <div class="section-head reveal">
         <div class="label">About</div>
-        <h2 class="title">Digital excellence for <em>demanding</em> businesses</h2>
-        <p class="desc desc-center">No invented testimonials. No unverifiable rankings. Real offers, real demos, human follow-up.</p>
+        <h2 class="title">A digital agency for <em>ambitious</em> brands</h2>
+        <p class="desc desc-center">Aurelis designs high-end web experiences — aesthetics, performance and a clear commercial path, in French and English.</p>
       </div>
       <div class="about-grid">
-        <article class="about-card reveal"><div class="about-num">01</div><h3>Who we are</h3><p>Aurelis is a premium web studio led by Jules Therasse, focused on high-end sites for local and international businesses.</p></article>
-        <article class="about-card reveal"><div class="about-num">02</div><h3>What we deliver</h3><p>Custom structure, refined design, mobile performance and a project form connected to our commercial system.</p></article>
+        <article class="about-card reveal"><div class="about-num">01</div><h3>Who we are</h3><p>Aurelis is an international premium web agency. We build sites and digital platforms for brands that refuse generic templates.</p></article>
+        <article class="about-card reveal"><div class="about-num">02</div><h3>What we deliver</h3><p>Refined design, fluid interactions, conversion-minded structure, and human support through launch — and beyond.</p></article>
         <article class="about-card reveal"><div class="about-num">03</div><h3>How we sell</h3><p>Transparent catalogue pricing. Draft quotes only after human validation. No automated contracts.</p></article>
       </div>
     </div>
@@ -119,24 +128,88 @@ const html = `<!DOCTYPE html>
 
   <section class="section section-alt" id="work">
     <div class="container">
-      <div class="section-head reveal"><div class="label">Work</div><h2 class="title">Verifiable <em>examples</em></h2></div>
+      <div class="section-head reveal"><div class="label">Work</div><h2 class="title">Verifiable <em>examples</em></h2><p class="desc desc-center">Live projects and demos — never presented as invented anonymous clients.</p></div>
       <div class="lp-grid lp-grid--3">
-        <article class="lp-work reveal"><a href="https://bryan-burger.vercel.app/" target="_blank" rel="noopener"><strong>Bryan Burger</strong><span>Fast-food website — menu clarity and mobile experience.</span></a></article>
-        <article class="lp-work reveal"><a href="https://transport-delivery.vercel.app/" target="_blank" rel="noopener"><strong>Trans Delivery</strong><span>Transport and delivery — credibility and contact.</span></a></article>
-        <article class="lp-work reveal"><a href="https://aurelis-demo-coiffeur-hzng7c525-julestherasse-9969s-projects.vercel.app/" target="_blank" rel="noopener"><strong>Salon demo</strong><span>Premium salon showcase — brand image and booking.</span></a></article>
+        <article class="work-card reveal"><a href="https://bryan-burger.vercel.app/" target="_blank" rel="noopener noreferrer"><div class="work-meta">Live project</div><h3>Bryan Burger</h3><p>Fast-food website — menu clarity and mobile experience.</p></a></article>
+        <article class="work-card reveal"><a href="https://transport-delivery.vercel.app/" target="_blank" rel="noopener noreferrer"><div class="work-meta">Live project</div><h3>Trans Delivery</h3><p>Transport and delivery — credibility and contact.</p></a></article>
+        <article class="work-card reveal"><a href="https://aurelis-demo-coiffeur-hzng7c525-julestherasse-9969s-projects.vercel.app/" target="_blank" rel="noopener noreferrer"><div class="work-meta">Aurelis demo</div><h3>Salon demo</h3><p>Premium salon showcase — brand image and booking. Explicitly a demonstration.</p></a></article>
       </div>
     </div>
   </section>
 
   <section class="section" id="offers-preview">
     <div class="container">
-      <div class="section-head reveal"><div class="label">Offers</div><h2 class="title">Four offers. One <em>standard</em>.</h2><p class="desc desc-center">Indicative prices excl. VAT. Hosting, domain and maintenance quoted separately.</p></div>
-      <div class="lp-grid lp-grid--3">
-        <article class="pricing-card reveal"><div class="pricing-tier">01</div><h3 class="pricing-name">Aurelis Essential</h3><div class="pricing-price">€990 excl. VAT</div><a href="#" class="btn btn-ghost pricing-cta" data-offer="Aurelis Essential" data-price="€990 excl. VAT" data-lead-open="1">Start my project</a></article>
-        <article class="pricing-card reveal"><div class="pricing-tier">02</div><h3 class="pricing-name">Aurelis Signature</h3><div class="pricing-price">€2,490 excl. VAT</div><a href="#" class="btn btn-ghost pricing-cta" data-offer="Aurelis Signature" data-price="€2,490 excl. VAT" data-lead-open="1">Start my project</a></article>
-        <article class="pricing-card reveal"><div class="pricing-tier">03</div><h3 class="pricing-name">Aurelis Prestige</h3><div class="pricing-price">€4,490 excl. VAT</div><a href="#" class="btn btn-gold pricing-cta" data-offer="Aurelis Prestige" data-price="€4,490 excl. VAT" data-lead-open="1">Start my project</a></article>
+      <div class="section-head reveal">
+        <div class="label">Offers</div>
+        <h2 class="title">Four offers. One <em>standard</em>.</h2>
+        <p class="desc desc-center">Choose the formula that matches your ambition. Prestige is our recommended selection.</p>
       </div>
-      <p style="text-align:center;margin-top:1.5rem"><a href="/en/offers/" style="color:var(--or)">Full offers page →</a></p>
+      <div class="pricing-grid">
+        <article class="pricing-card reveal">
+          <div class="pricing-tier">01</div>
+          <h3 class="pricing-name">Aurelis Essential</h3>
+          <div class="pricing-price">€990 excl. VAT</div>
+          <ul class="pricing-features">
+            <li>One-page showcase website</li>
+            <li>Professional design</li>
+            <li>Desktop, tablet and mobile</li>
+            <li>Contact form</li>
+            <li>Basic SEO</li>
+            <li>Social links</li>
+            <li>One round of revisions</li>
+          </ul>
+          <a href="#" class="btn btn-ghost pricing-cta" data-offer="Aurelis Essential" data-price="€990 excl. VAT" data-lead-open="1">Start my project</a>
+        </article>
+        <article class="pricing-card reveal">
+          <div class="pricing-tier">02</div>
+          <h3 class="pricing-name">Aurelis Signature</h3>
+          <div class="pricing-price">€2,490 excl. VAT</div>
+          <ul class="pricing-features">
+            <li>Up to 5 pages</li>
+            <li>Custom design</li>
+            <li>Elegant animations</li>
+            <li>Initial SEO</li>
+            <li>Custom forms</li>
+            <li>Analytics tools</li>
+            <li>Two rounds of revisions</li>
+          </ul>
+          <a href="#" class="btn btn-ghost pricing-cta" data-offer="Aurelis Signature" data-price="€2,490 excl. VAT" data-lead-open="1">Start my project</a>
+        </article>
+        <article class="pricing-card pricing-card--featured reveal">
+          <div class="pricing-ribbon">Our pick</div>
+          <div class="pricing-tier">03</div>
+          <h3 class="pricing-name">Aurelis Prestige</h3>
+          <div class="pricing-price">€4,490 excl. VAT</div>
+          <ul class="pricing-features">
+            <li>Up to 10 pages</li>
+            <li>High-end design</li>
+            <li>Advanced animations</li>
+            <li>Interactive experiences</li>
+            <li>In-depth technical SEO</li>
+            <li>Conversion optimisation</li>
+            <li>Business integrations (quote)</li>
+            <li>Three rounds of revisions</li>
+          </ul>
+          <a href="#" class="btn btn-gold pricing-cta" data-offer="Aurelis Prestige" data-price="€4,490 excl. VAT" data-lead-open="1">Start my project</a>
+        </article>
+        <article class="pricing-card reveal">
+          <div class="pricing-tier">04</div>
+          <h3 class="pricing-name">Aurelis Elite</h3>
+          <div class="pricing-price">From €7,490 excl. VAT</div>
+          <ul class="pricing-features">
+            <li>Bespoke development</li>
+            <li>E-commerce or web platform</li>
+            <li>Admin area as needed</li>
+            <li>Secure payments if required</li>
+            <li>AI integrations</li>
+            <li>Automations</li>
+            <li>Personalised support</li>
+          </ul>
+          <a href="#" class="btn btn-ghost pricing-cta" data-offer="Aurelis Elite" data-price="From €7,490 excl. VAT" data-lead-open="1">Start my project</a>
+        </article>
+      </div>
+      <p class="pricing-note">Prices exclude VAT. Hosting, domains, maintenance and third-party services are billed separately as quoted.</p>
+      <p style="text-align:center;margin-top:1.5rem"><a href="/en/offers/" style="color:var(--or)">Full offers &amp; comparator →</a></p>
     </div>
   </section>
 
@@ -145,7 +218,7 @@ const html = `<!DOCTYPE html>
       <div class="section-head reveal"><div class="label">FAQ</div><h2 class="title">Common <em>questions</em></h2></div>
       <div class="reveal">
         <h3>How much does a website cost?</h3>
-        <p>Official offers start at €990 excl. VAT (Essential) up to Elite from €7,490 excl. VAT. A transparent quote follows a first conversation.</p>
+        <p>Official offers start at €990 excl. VAT (Essential) up to Elite from €7,490 excl. VAT. Prestige at €4,490 excl. VAT is our most requested selection.</p>
         <h3>How long does it take?</h3>
         <p>Typically 2 to 4 weeks after design validation for Essential and Signature; longer for Prestige or Elite depending on scope.</p>
         <h3>Do you guarantee Google ranking?</h3>
@@ -165,15 +238,16 @@ const html = `<!DOCTYPE html>
 
   <footer class="footer"><div class="container">
     <div class="footer-grid">
-      <div class="footer-brand"><a href="/en/" class="logo">Aure<span>lis</span></a><p>Premium web studio for businesses that need a credible, fast website.</p></div>
+      <div class="footer-brand"><a href="/en/" class="logo">Aure<span>lis</span></a><p>International premium digital agency — websites, immersive experiences and bespoke solutions for ambitious brands.</p></div>
       <div class="footer-col"><h4>Contact</h4><span>Jules Therasse</span><a href="tel:+32495380329">0495 38 03 29</a><a href="mailto:julestherasse@gmail.com">julestherasse@gmail.com</a></div>
       <div class="footer-col"><h4>Explore</h4><a href="/en/offers/">Offers</a><a href="/en/business-website/">Business sites</a><a href="/en/website-redesign/">Redesign</a><a href="/en/premium-website/">Premium</a></div>
       <div class="footer-col"><h4>Legal</h4><a href="/en/legal-notice/">Legal notice</a><a href="/en/privacy-policy/">Privacy</a><a href="/">Version française</a></div>
     </div>
-    <div class="footer-bottom"><p>&copy; 2026 Aurelis</p><p>aurelis.ink</p></div>
+    <div class="footer-bottom"><p>&copy; 2026 Aurelis</p><p>Crafted for ambitious brands.</p></div>
   </div></footer>
 
   <script src="/assets/config.js" defer></script>
+  <script src="/assets/offers-catalog.js" defer></script>
   <script src="/assets/locale.js" defer></script>
   <script src="/assets/analytics.js" defer></script>
   <script src="/assets/consent.js" defer></script>

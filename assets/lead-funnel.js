@@ -12,6 +12,19 @@
     "Aurelis Elite": { fr: "À partir de 7 490 € HTVA", en: "From €7,490 excl. VAT" },
   };
 
+  /* Aligne les prix sur le catalogue central si présent */
+  if (typeof window !== "undefined" && window.AurelisOffers && window.AurelisOffers.byName) {
+    Object.keys(window.AurelisOffers.byName).forEach(function (name) {
+      var row = window.AurelisOffers.byName[name];
+      if (row && row.priceLabel) {
+        OFFERS[name] = {
+          fr: row.priceLabel.fr,
+          en: row.priceLabel.en,
+        };
+      }
+    });
+  }
+
   var I18N = {
     fr: {
       close: "Fermer",
