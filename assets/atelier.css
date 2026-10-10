@@ -1,68 +1,53 @@
 /**
- * Aurelis Atelier — direction artistique 2026
- * Crème éditoriale × noir profond × or discret
- * Inspiration niveau agence (Odysia / Awwwards), identité originale Aurelis
+ * Aurelis — identité noir / or (atelier 2026)
+ * Fond noir premium · or discret · blanc cassé pour la lisibilité.
+ * Pas de crème dominante, pas de violet, pas de dégradés multicolores.
  */
 
 :root {
-  --cream: #f3eee6;
-  --cream-deep: #e8e1d6;
-  --ink: #0c0b0a;
-  --ink-soft: #161412;
-  --ink-muted: #3a3632;
-  --paper: #faf7f2;
-  --gold: #b8964e;
-  --gold-soft: #c9ab6e;
-  --gold-line: rgba(184, 150, 78, 0.35);
+  --ink: #080808;
+  --ink-soft: #121212;
+  --ink-elevated: #181818;
+  --ink-muted: #b0aaa2;
+  --paper: #f5f2eb;
+  --gold: #d4b56a;
+  --gold-soft: #e8d09a;
+  --gold-line: rgba(212, 181, 106, 0.28);
   --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
   --ease-soft: cubic-bezier(0.33, 1, 0.68, 1);
 }
 
-/* ——— Header adaptatif ——— */
+/* ——— Header sombre premium ——— */
 body.atelier .header {
-  background: rgba(243, 238, 230, 0.78);
-  border-bottom: 1px solid rgba(12, 11, 10, 0.06);
-  backdrop-filter: blur(16px) saturate(1.1);
-  -webkit-backdrop-filter: blur(16px) saturate(1.1);
-}
-
-body.atelier .header.is-dark {
   background: rgba(8, 8, 8, 0.82);
-  border-bottom-color: rgba(212, 181, 106, 0.1);
+  border-bottom: 1px solid rgba(212, 181, 106, 0.1);
+  backdrop-filter: blur(16px) saturate(1.05);
+  -webkit-backdrop-filter: blur(16px) saturate(1.05);
 }
 
-body.atelier .header:not(.is-dark) .logo,
-body.atelier .header:not(.is-dark) .nav a {
-  color: var(--ink);
+body.atelier .header .logo,
+body.atelier .header .nav a {
+  color: var(--paper);
 }
 
-body.atelier .header:not(.is-dark) .nav a {
+body.atelier .header .nav a {
   color: var(--ink-muted);
 }
 
-body.atelier .header:not(.is-dark) .nav a:hover {
-  color: var(--ink);
+body.atelier .header .nav a:hover {
+  color: var(--gold-soft);
 }
 
-body.atelier .header:not(.is-dark) .burger span {
-  background: var(--ink);
+body.atelier .header .burger span {
+  background: var(--paper);
 }
 
-body.atelier .header.is-dark .logo,
-body.atelier .header.is-dark .nav a {
-  color: var(--blanc-casse, #f5f2eb);
-}
-
-body.atelier .header.is-dark .nav a {
-  color: var(--text-muted, #b0aaa2);
-}
-
-/* ——— HERO CINÉMATIQUE CRÈME ——— */
+/* ——— HERO NOIR / OR ——— */
 body.atelier .hero {
   min-height: 100vh;
   min-height: 100dvh;
-  background: var(--cream);
-  color: var(--ink);
+  background: var(--ink);
+  color: var(--paper);
   padding: calc(var(--header-h, 86px) + 2.5rem) 0 4rem;
   overflow: hidden;
   position: relative;
@@ -70,9 +55,9 @@ body.atelier .hero {
 
 body.atelier .hero-media {
   background:
-    radial-gradient(ellipse 70% 55% at 78% 42%, rgba(184, 150, 78, 0.12), transparent 60%),
-    radial-gradient(ellipse 45% 40% at 12% 80%, rgba(232, 225, 214, 0.9), transparent 55%),
-    linear-gradient(165deg, #f7f3ec 0%, var(--cream) 45%, #ebe4d8 100%) !important;
+    radial-gradient(ellipse 65% 50% at 78% 40%, rgba(212, 181, 106, 0.1), transparent 58%),
+    radial-gradient(ellipse 40% 35% at 12% 85%, rgba(24, 24, 24, 0.9), transparent 55%),
+    linear-gradient(165deg, #0c0c0c 0%, var(--ink) 48%, #101010 100%) !important;
 }
 
 body.atelier .hero-media img {
@@ -81,13 +66,13 @@ body.atelier .hero-media img {
 
 body.atelier .hero-media::after {
   background:
-    linear-gradient(105deg, rgba(243, 238, 230, 0.4) 0%, transparent 55%),
-    linear-gradient(180deg, transparent 60%, rgba(232, 225, 214, 0.65) 100%) !important;
+    linear-gradient(105deg, rgba(8, 8, 8, 0.55) 0%, transparent 55%),
+    linear-gradient(180deg, transparent 55%, rgba(8, 8, 8, 0.75) 100%) !important;
 }
 
 body.atelier .hero-grain {
-  opacity: 0.04;
-  mix-blend-mode: multiply;
+  opacity: 0.03;
+  mix-blend-mode: soft-light;
 }
 
 body.atelier .hero-shell {
@@ -109,14 +94,14 @@ body.atelier .hero h1 {
   font-size: clamp(2.85rem, 6.4vw, 5.35rem) !important;
   font-weight: 500 !important;
   line-height: 1.02 !important;
-  max-width: 11.5ch !important;
-  color: var(--ink) !important;
+  max-width: 14ch !important;
+  color: var(--paper) !important;
   letter-spacing: -0.02em;
 }
 
 body.atelier .hero h1 em {
   font-style: italic !important;
-  color: var(--ink) !important;
+  color: var(--gold-soft) !important;
   display: inline !important;
 }
 
@@ -126,7 +111,7 @@ body.atelier .hero h1 .hero-break {
 
 body.atelier .hero-sub {
   color: var(--ink-muted) !important;
-  max-width: 42ch !important;
+  max-width: 46ch !important;
   font-size: clamp(1.05rem, 1.55vw, 1.22rem) !important;
   line-height: 1.7 !important;
 }
@@ -144,7 +129,7 @@ body.atelier .hero-price {
 body.atelier .hero-price strong {
   font-family: var(--font-display, "Cormorant Garamond", Georgia, serif) !important;
   font-size: clamp(1.45rem, 2.4vw, 1.85rem) !important;
-  color: var(--ink) !important;
+  color: var(--paper) !important;
   font-weight: 500 !important;
   letter-spacing: -0.01em;
 }
@@ -162,29 +147,30 @@ body.atelier .hero-price span {
 }
 
 body.atelier .hero .btn-gold {
-  background: var(--ink);
-  color: var(--cream);
-  box-shadow: 0 18px 40px rgba(12, 11, 10, 0.18);
+  background: var(--gold);
+  color: var(--ink);
+  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.35);
 }
 
 body.atelier .hero .btn-gold:hover {
-  background: #1a1816;
-  box-shadow: 0 22px 48px rgba(12, 11, 10, 0.25);
+  background: var(--gold-soft);
+  box-shadow: 0 18px 42px rgba(0, 0, 0, 0.4);
   transform: translateY(-2px);
 }
 
 body.atelier .hero .btn-ghost {
-  border: 1px solid rgba(12, 11, 10, 0.18);
-  color: var(--ink);
+  border: 1px solid rgba(212, 181, 106, 0.35);
+  color: var(--paper);
   background: transparent;
 }
 
 body.atelier .hero .btn-ghost:hover {
-  border-color: var(--ink);
-  background: rgba(12, 11, 10, 0.04);
+  border-color: var(--gold);
+  color: var(--gold-soft);
+  background: rgba(212, 181, 106, 0.06);
 }
 
-/* Composition devices — perspective artistique */
+/* Devices — perspective légère */
 body.atelier .hero-devices {
   min-height: 420px;
   perspective: 1400px;
@@ -192,11 +178,11 @@ body.atelier .hero-devices {
 
 body.atelier .hero-devices .device {
   background: #111;
-  border: 1px solid rgba(12, 11, 10, 0.12);
+  border: 1px solid rgba(212, 181, 106, 0.18);
   border-radius: 10px;
   box-shadow:
-    0 40px 80px rgba(12, 11, 10, 0.22),
-    0 8px 24px rgba(12, 11, 10, 0.08);
+    0 40px 80px rgba(0, 0, 0, 0.45),
+    0 8px 24px rgba(0, 0, 0, 0.25);
 }
 
 body.atelier .hero-devices .device-main {
@@ -225,7 +211,7 @@ body.atelier .hero-devices .device-phone {
   border-radius: 18px;
   transform: rotate(5deg) translateY(0);
   animation: atelier-float 6.5s var(--ease-soft) 0.3s infinite alternate;
-  box-shadow: 0 30px 60px rgba(12, 11, 10, 0.28);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
 }
 
 body.atelier .device-caption {
@@ -239,42 +225,49 @@ body.atelier .device-caption {
   to { translate: 0 -10px; }
 }
 
-/* ——— Sections claires / sombres ——— */
-body.atelier .section-light {
-  background: var(--cream);
-  color: var(--ink);
+/* ——— Surfaces ——— */
+body.atelier .section-light,
+body.atelier .folio.section-light,
+body.atelier .offers-atelier.section-light {
+  background: var(--ink-soft);
+  color: var(--paper);
 }
 
 body.atelier .section-light .title,
 body.atelier .section-light h2,
-body.atelier .section-light h3 {
-  color: var(--ink);
+body.atelier .section-light h3,
+body.atelier .folio.section-light .title,
+body.atelier .offers-atelier .title {
+  color: var(--paper);
 }
 
 body.atelier .section-light .desc,
-body.atelier .section-light p {
+body.atelier .section-light p,
+body.atelier .folio.section-light .desc {
   color: var(--ink-muted);
 }
 
-body.atelier .section-light .label {
+body.atelier .section-light .label,
+body.atelier .folio.section-light .label {
   color: var(--gold);
 }
 
-body.atelier .section-light .title em {
-  color: var(--ink);
+body.atelier .section-light .title em,
+body.atelier .folio .title em {
+  color: var(--gold-soft);
   font-style: italic;
 }
 
 body.atelier .section-ink {
   background: var(--ink);
-  color: var(--cream);
+  color: var(--paper);
 }
 
 body.atelier .section-ink .title em {
   color: var(--gold-soft);
 }
 
-/* ——— PORTFOLIO IMMERSIF ——— */
+/* ——— PORTFOLIO ——— */
 body.atelier .folio {
   padding: clamp(5rem, 10vw, 8rem) 0;
 }
@@ -287,13 +280,13 @@ body.atelier .folio-head {
 
 body.atelier .folio-head .title {
   font-size: clamp(2.6rem, 5.5vw, 4.4rem);
-  max-width: 14ch;
+  max-width: 16ch;
   line-height: 1.05;
   margin-bottom: 1rem;
 }
 
 body.atelier .folio-head .desc {
-  max-width: 42ch;
+  max-width: 48ch;
   margin: 0;
 }
 
@@ -340,10 +333,11 @@ body.atelier .folio-project {
 body.atelier .folio-visual {
   position: relative;
   overflow: hidden;
-  border-radius: 4px;
-  background: #111;
+  border-radius: 8px;
+  background: #0a0a0a;
   aspect-ratio: 16 / 10;
-  box-shadow: 0 40px 90px rgba(12, 11, 10, 0.12);
+  box-shadow: 0 28px 70px rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(212, 181, 106, 0.12);
 }
 
 body.atelier .folio-project--feature .folio-visual {
@@ -362,7 +356,7 @@ body.atelier .folio-visual img {
 }
 
 body.atelier .folio-project:hover .folio-visual img {
-  transform: scale(1.04);
+  transform: scale(1.035);
 }
 
 body.atelier .folio-stack {
@@ -372,11 +366,12 @@ body.atelier .folio-stack {
   width: min(22%, 160px);
   border-radius: 18px;
   overflow: hidden;
-  border: 3px solid var(--cream);
-  box-shadow: 0 24px 50px rgba(12, 11, 10, 0.35);
+  border: 2px solid rgba(212, 181, 106, 0.35);
+  box-shadow: 0 24px 50px rgba(0, 0, 0, 0.5);
   aspect-ratio: 9 / 17;
   z-index: 2;
   transition: transform 0.7s var(--ease-out);
+  background: #111;
 }
 
 body.atelier .folio-project:hover .folio-stack {
@@ -399,344 +394,87 @@ body.atelier .folio-kicker {
   letter-spacing: 0.28em;
   text-transform: uppercase;
   color: var(--gold);
-  font-weight: 600;
-  margin-bottom: 0.85rem;
+  margin-bottom: 0.65rem;
 }
 
 body.atelier .folio-meta h3 {
   font-family: var(--font-display, "Cormorant Garamond", Georgia, serif);
-  font-size: clamp(2rem, 3.5vw, 3rem);
+  font-size: clamp(1.85rem, 3vw, 2.6rem);
   font-weight: 500;
-  line-height: 1.1;
-  margin-bottom: 0.45rem;
-  letter-spacing: -0.02em;
+  color: var(--paper);
+  margin-bottom: 0.35rem;
+  line-height: 1.15;
 }
 
 body.atelier .folio-sector {
-  font-size: 0.78rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--ink-muted);
-  margin-bottom: 1rem;
+  font-size: 0.88rem;
+  color: var(--gold-soft);
+  margin-bottom: 0.85rem;
 }
 
 body.atelier .folio-meta p {
-  font-size: 1.02rem;
-  line-height: 1.7;
-  max-width: 36ch;
-  margin-bottom: 1.5rem;
   color: var(--ink-muted);
+  max-width: 38ch;
+  line-height: 1.65;
+  margin-bottom: 1rem;
+}
+
+body.atelier .folio-deliverables {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem 0.65rem;
+  margin: 0 0 1.25rem;
+  padding: 0;
+}
+
+body.atelier .folio-deliverables li {
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  border: 1px solid rgba(212, 181, 106, 0.22);
+  border-radius: 4px;
+  padding: 0.35rem 0.75rem;
 }
 
 body.atelier .folio-cta {
   display: inline-flex;
   align-items: center;
-  gap: 0.65rem;
-  font-size: 0.78rem;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  font-weight: 600;
-  color: var(--ink);
-  border-bottom: 1px solid rgba(12, 11, 10, 0.25);
-  padding-bottom: 0.35rem;
-  transition: gap 0.35s var(--ease-out), border-color 0.35s;
+  gap: 0.5rem;
+  color: var(--gold);
+  font-size: 0.92rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  transition: color 0.35s var(--ease-out), gap 0.35s var(--ease-out);
 }
 
-body.atelier .folio-project:hover .folio-cta {
-  gap: 0.95rem;
-  border-color: var(--ink);
+body.atelier .folio-project:hover .folio-cta,
+body.atelier .folio-cta:hover {
+  color: var(--gold-soft);
+  gap: 0.75rem;
 }
 
-body.atelier .folio-ink .folio-visual {
-  box-shadow: 0 40px 90px rgba(0, 0, 0, 0.45);
-}
-
-body.atelier .folio-ink .folio-meta h3,
-body.atelier .folio-ink .folio-cta {
-  color: var(--cream);
-}
-
-body.atelier .folio-ink .folio-sector,
-body.atelier .folio-ink .folio-meta p {
-  color: rgba(243, 238, 230, 0.68);
-}
-
-body.atelier .folio-ink .folio-cta {
-  border-bottom-color: rgba(243, 238, 230, 0.3);
-}
-
-body.atelier .folio-ink .folio-stack {
-  border-color: var(--ink);
-}
-
-/* ——— OFFRES ÉDITORIALES ——— */
-body.atelier .offers-atelier {
-  padding: clamp(5rem, 10vw, 8rem) 0;
-}
-
-body.atelier .offers-atelier .section-head {
-  text-align: left;
-  width: min(1100px, 90%);
-  margin: 0 auto 3rem;
-}
-
-body.atelier .offers-atelier .section-head .title {
-  font-size: clamp(2.5rem, 5vw, 4rem);
-  max-width: 16ch;
-}
-
-body.atelier .pricing-grid {
-  width: min(1280px, 92%);
-  margin: 0 auto;
-  display: grid;
-  gap: 1px;
-  background: rgba(12, 11, 10, 0.08);
-  border: 1px solid rgba(12, 11, 10, 0.08);
-}
-
-@media (min-width: 960px) {
-  body.atelier .pricing-grid {
-    grid-template-columns: repeat(4, 1fr);
-  }
-}
-
+/* Offres / cartes */
+body.atelier .offers-atelier .pricing-card,
 body.atelier .pricing-card {
-  background: var(--paper);
-  border: none !important;
-  padding: 2rem 1.5rem 1.75rem !important;
-  margin: 0;
-  border-radius: 0 !important;
-  box-shadow: none !important;
-  display: flex;
-  flex-direction: column;
-  min-height: 100%;
-  transition: background 0.4s var(--ease-out), transform 0.4s var(--ease-out);
-}
-
-body.atelier .pricing-card:hover {
-  background: #fff;
-  transform: translateY(-4px);
-  z-index: 2;
-  box-shadow: 0 24px 50px rgba(12, 11, 10, 0.08) !important;
+  background: var(--ink-elevated);
+  border: 1px solid rgba(212, 181, 106, 0.14);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.28);
 }
 
 body.atelier .pricing-card--featured {
-  background: var(--ink) !important;
-  color: var(--cream);
+  border-color: rgba(212, 181, 106, 0.38);
 }
 
-body.atelier .pricing-card--featured:hover {
-  background: #161412 !important;
-}
-
-body.atelier .pricing-card--featured .pricing-name,
-body.atelier .pricing-card--featured .pricing-price,
-body.atelier .pricing-card--featured .pricing-tagline,
-body.atelier .pricing-card--featured .pricing-features,
-body.atelier .pricing-card--featured .audience,
-body.atelier .pricing-card--featured .pricing-tier {
-  color: var(--cream);
-}
-
-body.atelier .pricing-card--featured .pricing-features li {
-  border-bottom-color: rgba(243, 238, 230, 0.1);
-  color: rgba(243, 238, 230, 0.78);
-}
-
-body.atelier .pricing-card--featured .pricing-price {
-  color: var(--gold-soft) !important;
-}
-
-body.atelier .pricing-card--featured .audience,
-body.atelier .pricing-card--featured .pricing-tier {
-  color: var(--gold-soft) !important;
-}
-
-body.atelier .pricing-name {
-  font-size: clamp(1.45rem, 2vw, 1.7rem) !important;
-  color: var(--ink);
-}
-
-body.atelier .pricing-price {
-  font-size: clamp(2rem, 3vw, 2.45rem) !important;
-  color: var(--ink) !important;
-  margin: 0.5rem 0 0.75rem !important;
-}
-
-body.atelier .pricing-price span {
-  font-size: 0.7rem;
-  letter-spacing: 0.12em;
-  margin-left: 0.35rem;
-  color: inherit;
-  opacity: 0.55;
-}
-
-body.atelier .pricing-price-prefix {
-  font-size: 0.72rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--ink-muted);
-  margin-bottom: -0.25rem;
-}
-
-body.atelier .pricing-card--featured .pricing-price-prefix {
-  color: rgba(243, 238, 230, 0.55);
-}
-
-body.atelier .pricing-features {
-  flex: 1;
-  margin-bottom: 1.5rem !important;
-}
-
-body.atelier .pricing-features li {
-  color: var(--ink-muted);
-  border-bottom-color: rgba(12, 11, 10, 0.06) !important;
-}
-
-body.atelier .pricing-card .btn-ghost {
-  border-color: rgba(12, 11, 10, 0.2);
-  color: var(--ink);
-  margin-top: auto;
-}
-
-body.atelier .pricing-card .btn-ghost:hover {
-  background: var(--ink);
-  color: var(--cream);
-  border-color: var(--ink);
-}
-
-body.atelier .pricing-card--featured .btn-gold {
-  background: var(--cream);
-  color: var(--ink);
-}
-
-body.atelier .pricing-card--featured .btn-gold:hover {
-  background: #fff;
-}
-
-body.atelier .pricing-ribbon {
-  background: var(--gold) !important;
-  color: var(--ink) !important;
-}
-
-body.atelier .pricing-note {
-  color: var(--ink-muted) !important;
-  width: min(1280px, 92%);
-  margin: 2rem auto 0 !important;
-  text-align: left !important;
-}
-
-body.atelier .comparator {
-  width: min(1280px, 92%);
-  margin-left: auto;
-  margin-right: auto;
-}
-
-body.atelier .compare-table {
-  background: var(--paper);
-  color: var(--ink);
-}
-
-body.atelier .compare-table th,
-body.atelier .compare-table td {
-  border-color: rgba(12, 11, 10, 0.08);
-  color: var(--ink-muted);
-}
-
-body.atelier .compare-table thead th {
-  color: var(--ink);
-}
-
-body.atelier .compare-table .col-featured {
-  background: rgba(184, 150, 78, 0.08);
-  color: var(--ink);
-}
-
-/* ——— Why / steps light polish ——— */
-body.atelier #services.section-light .why-card,
-body.atelier #methode.section-light .step-card {
-  background: transparent;
-  border: none;
-  border-top: 1px solid rgba(12, 11, 10, 0.12);
-  border-radius: 0;
-  padding: 1.75rem 0 1rem;
-  box-shadow: none;
-}
-
-body.atelier #services .why-card h3,
-body.atelier #methode .step-card h3 {
-  color: var(--ink);
-}
-
-body.atelier #services .why-card p,
-body.atelier #methode .step-card p {
-  color: var(--ink-muted);
-}
-
-body.atelier #services .why-card .num {
-  color: var(--gold);
-}
-
-/* Reveal cinéma */
-body.atelier .reveal {
-  opacity: 0;
-  transform: translateY(28px);
-  transition: opacity 0.9s var(--ease-out), transform 0.9s var(--ease-out);
-}
-
-body.atelier .reveal.visible {
-  opacity: 1;
-  transform: none;
-}
-
-body.atelier .reveal.d1 { transition-delay: 0.08s; }
-body.atelier .reveal.d2 { transition-delay: 0.16s; }
-body.atelier .reveal.d3 { transition-delay: 0.24s; }
-
-/* CTA band */
-body.atelier .cta-band {
-  padding: clamp(4rem, 8vw, 6rem) 0;
-  text-align: center;
-  background: var(--ink);
-  color: var(--cream);
-}
-
-body.atelier .cta-band h2 {
-  font-family: var(--font-display, "Cormorant Garamond", Georgia, serif);
-  font-size: clamp(2.2rem, 4.5vw, 3.6rem);
-  font-weight: 500;
-  line-height: 1.1;
-  margin-bottom: 1rem;
-  max-width: 16ch;
-  margin-inline: auto;
-}
-
-body.atelier .cta-band p {
-  color: rgba(243, 238, 230, 0.7);
-  margin-bottom: 2rem;
-  max-width: 40ch;
-  margin-inline: auto;
-}
-
-body.atelier .cta-band .btn-gold {
-  background: var(--cream);
-  color: var(--ink);
-}
-
-/* Quality strip legacy hide when folio present — keep featured styles usable */
-body.atelier .quality-strip {
-  display: none;
-}
-
-body.atelier #demos {
-  display: none;
-}
-
-/* Mobile */
+/* Mobile portfolio */
 @media (max-width: 900px) {
+  body.atelier .hero-shell {
+    grid-template-columns: 1fr;
+  }
+
   body.atelier .hero-devices {
-    display: block !important;
-    min-height: 280px;
+    min-height: 260px;
     margin-top: 1.5rem;
   }
 
@@ -750,51 +488,44 @@ body.atelier #demos {
     right: auto;
     top: auto;
     transform: none;
-    animation: none;
   }
 
   body.atelier .hero-devices .device-phone {
-    width: 78px;
+    width: 88px;
     right: 4%;
-    bottom: -6%;
-    animation: none;
+    bottom: -4%;
   }
 
   body.atelier .folio-project--feature .folio-visual {
     min-height: 0;
-    aspect-ratio: 4 / 3;
+    aspect-ratio: 16 / 11;
   }
 
   body.atelier .folio-stack {
-    width: 28%;
+    width: min(28%, 120px);
     bottom: -6%;
+    right: 5%;
   }
 
-  body.atelier .hero h1 {
-    max-width: none !important;
+  body.atelier .folio-meta h3 {
+    font-size: clamp(1.6rem, 7vw, 2.1rem);
   }
 
-  body.atelier .header:not(.is-dark) .nav {
-    background: var(--cream);
+  body.atelier .folio-meta p {
+    font-size: 0.98rem;
+    max-width: none;
   }
 
-  body.atelier .header:not(.is-dark) .nav a {
-    color: var(--ink-muted);
+  body.atelier .folio-deliverables li {
+    font-size: 0.68rem;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  body.atelier .hero-devices .device-main,
-  body.atelier .hero-devices .device-side,
-  body.atelier .hero-devices .device-phone,
+  body.atelier .hero-devices .device,
   body.atelier .folio-visual img,
   body.atelier .folio-stack {
     animation: none !important;
     transition: none !important;
-  }
-
-  body.atelier .reveal {
-    opacity: 1;
-    transform: none;
   }
 }

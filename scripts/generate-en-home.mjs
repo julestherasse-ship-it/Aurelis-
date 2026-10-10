@@ -21,7 +21,7 @@ const html = `<!DOCTYPE html>
   <meta property="og:description" content="High-end custom websites. Your professional site from €990 excl. VAT.">
   <meta property="og:url" content="https://aurelis.ink/en/">
   <meta name="robots" content="index,follow">
-  <meta name="theme-color" content="#f3eee6">
+  <meta name="theme-color" content="#080808">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -35,31 +35,31 @@ const html = `<!DOCTYPE html>
     body{font-family:var(--font-body);background:var(--noir);color:var(--blanc-casse);line-height:1.7;font-weight:300;-webkit-font-smoothing:antialiased}
     a{color:inherit;text-decoration:none}button{font-family:inherit;cursor:pointer;border:none;background:none}img{max-width:100%;display:block}
     .container{width:min(1200px,90%);margin:0 auto}
-    .header{position:fixed;inset:0 0 auto;z-index:100;background:rgba(243,238,230,.78);backdrop-filter:blur(14px);border-bottom:1px solid rgba(12,11,10,.06)}
+    .header{position:fixed;inset:0 0 auto;z-index:100;background:rgba(8,8,8,.82);backdrop-filter:blur(14px);border-bottom:1px solid rgba(12,11,10,.06)}
     .header-inner{width:min(1200px,92%);margin:0 auto;min-height:var(--header-h);display:flex;align-items:center;gap:1rem}
-    .logo{font-family:var(--font-display);font-size:1.55rem;color:#0c0b0a}.logo span{color:var(--or)}
+    .logo{font-family:var(--font-display);font-size:1.55rem;color:#f5f2eb}.logo span{color:var(--or)}
     .nav{margin-left:auto;display:flex;gap:1.1rem;align-items:center;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase}
-    .nav a{color:#3a3632}.nav-cta{color:#111!important;background:var(--or);padding:.55rem .95rem;font-weight:600}
+    .nav a{color:#b0aaa2}.nav-cta{color:#111!important;background:var(--or);padding:.55rem .95rem;font-weight:600}
     .burger{display:none;width:2rem;height:2rem}.burger span{display:block;height:1px;background:#0c0b0a;margin:6px 0}
     .btn{display:inline-flex;align-items:center;gap:.5rem;padding:.95rem 1.4rem;font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;font-weight:600}
-    .btn-gold{background:#0c0b0a;color:#f3eee6}.btn-ghost{border:1px solid rgba(12,11,10,.18);color:#0c0b0a}
+    .btn-gold{background:var(--or);color:#080808}.btn-ghost{border:1px solid rgba(212,181,106,.35);color:#f5f2eb}
     .btn-cta-xl{padding:1.1rem 2.2rem}
-    .label{display:inline-flex;align-items:center;gap:.8rem;font-size:.68rem;letter-spacing:.28em;text-transform:uppercase;color:#b8964e;margin-bottom:1rem;font-weight:600}
-    .title{font-family:var(--font-display);font-size:clamp(1.9rem,4vw,2.9rem);font-weight:500;line-height:1.15;margin-bottom:.75rem;color:#0c0b0a}
+    .label{display:inline-flex;align-items:center;gap:.8rem;font-size:.68rem;letter-spacing:.28em;text-transform:uppercase;color:#d4b56a;margin-bottom:1rem;font-weight:600}
+    .title{font-family:var(--font-display);font-size:clamp(1.9rem,4vw,2.9rem);font-weight:500;line-height:1.15;margin-bottom:.75rem;color:#f5f2eb}
     .title em{font-style:italic}
-    .desc{color:#3a3632;max-width:48ch}.desc-center{margin:0 auto;text-align:center}
+    .desc{color:#b0aaa2;max-width:48ch}.desc-center{margin:0 auto;text-align:center}
     .section{padding:4.5rem 0}.section-alt{background:var(--noir-soft);color:var(--blanc-casse)}.section-alt .title,.section-alt h3{color:var(--blanc-casse)}.section-alt .desc,.section-alt p{color:var(--text-muted)}.section-head{margin-bottom:2.25rem}
     .hero{position:relative;min-height:100vh;min-height:100dvh;display:flex;align-items:center;overflow:hidden;padding:calc(var(--header-h) + 2rem) 0 3rem}
     .hero-media{position:absolute;inset:0}
     .hero-shell{position:relative;z-index:2;width:min(1280px,92%);margin:0 auto;display:grid;grid-template-columns:1.05fr .95fr;gap:2.5rem;align-items:center}
-    .hero-eyebrow{font-size:.68rem;letter-spacing:.28em;text-transform:uppercase;color:#b8964e;font-weight:600;margin-bottom:1.2rem}
-    .hero h1{font-family:var(--font-display);font-size:clamp(2.5rem,5.5vw,4.8rem);font-weight:500;line-height:1.04;max-width:12ch;margin-bottom:1.1rem;color:#0c0b0a}
+    .hero-eyebrow{font-size:.68rem;letter-spacing:.28em;text-transform:uppercase;color:#d4b56a;font-weight:600;margin-bottom:1.2rem}
+    .hero h1{font-family:var(--font-display);font-size:clamp(2.5rem,5.5vw,4.8rem);font-weight:500;line-height:1.04;max-width:12ch;margin-bottom:1.1rem;color:#f5f2eb}
     .hero h1 em{font-style:italic}.hero-break{display:block}
-    .hero-sub{color:#3a3632;max-width:42ch;margin-bottom:1.35rem;font-size:1.08rem}
+    .hero-sub{color:#b0aaa2;max-width:42ch;margin-bottom:1.35rem;font-size:1.08rem}
     .hero-price{display:flex;flex-direction:column;gap:.35rem;margin-bottom:1.6rem}
-    .hero-price strong{font-family:var(--font-display);font-size:1.55rem;color:#0c0b0a;font-weight:500}
-    .hero-price strong span{color:#b8964e;font-style:italic}
-    .hero-price span{font-size:.78rem;color:#3a3632;letter-spacing:.06em;text-transform:uppercase}
+    .hero-price strong{font-family:var(--font-display);font-size:1.55rem;color:#f5f2eb;font-weight:500}
+    .hero-price strong span{color:#d4b56a;font-style:italic}
+    .hero-price span{font-size:.78rem;color:#b0aaa2;letter-spacing:.06em;text-transform:uppercase}
     .hero-actions{display:flex;flex-wrap:wrap;gap:.8rem}
     .hero-devices{position:relative;min-height:360px}
     .device{position:absolute;background:#141414;border:1px solid rgba(12,11,10,.12);box-shadow:0 28px 60px rgba(12,11,10,.22);overflow:hidden;border-radius:10px}
@@ -74,19 +74,19 @@ const html = `<!DOCTYPE html>
     @media(min-width:960px){.pricing-grid{grid-template-columns:repeat(4,1fr)}.why-grid-4,.steps-grid{grid-template-columns:repeat(3,1fr)}}
     .why-grid-4,.steps-grid{display:grid;gap:1.15rem}
     @media(min-width:900px){.why-grid-4{grid-template-columns:repeat(4,1fr)}.steps-grid{grid-template-columns:repeat(3,1fr)}}
-    .pricing-card{background:#faf7f2;padding:1.5rem;display:flex;flex-direction:column}
-    .pricing-card--featured{background:#0c0b0a;color:#f3eee6}
-    .pricing-tier,.audience{font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:#b8964e;margin-bottom:.45rem;font-weight:600;display:block}
+    .pricing-card{background:#141414;padding:1.5rem;display:flex;flex-direction:column}
+    .pricing-card--featured{background:#181818;color:#f5f2eb;border:1px solid rgba(212,181,106,.35)}
+    .pricing-tier,.audience{font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:#d4b56a;margin-bottom:.45rem;font-weight:600;display:block}
     .pricing-name{font-family:var(--font-display);font-size:1.45rem;font-weight:500;margin-bottom:.35rem}
-    .pricing-price{font-family:var(--font-display);font-size:2rem;margin:.35rem 0 .5rem;color:#0c0b0a}
-    .pricing-card--featured .pricing-price{color:#c9ab6e}
-    .pricing-tagline,.pricing-features,.why-card p,.step-card p{color:#3a3632;font-size:.9rem}
+    .pricing-price{font-family:var(--font-display);font-size:2rem;margin:.35rem 0 .5rem;color:#f5f2eb}
+    .pricing-card--featured .pricing-price{color:#e8d09a}
+    .pricing-tagline,.pricing-features,.why-card p,.step-card p{color:#b0aaa2;font-size:.9rem}
     .pricing-card--featured .pricing-tagline,.pricing-card--featured .pricing-features,.pricing-card--featured .audience,.pricing-card--featured .pricing-name{color:rgba(243,238,230,.85)}
     .pricing-features{list-style:none;margin:0 0 1.1rem;padding:0;flex:1}.pricing-features li{padding:.28rem 0;border-bottom:1px solid rgba(12,11,10,.06)}
-    .pricing-ribbon{display:inline-block;font-size:.56rem;letter-spacing:.16em;text-transform:uppercase;color:#111;background:linear-gradient(90deg,#b8964e,#c9ab6e);padding:.35rem .65rem;margin-bottom:.55rem;font-weight:600}
-    .pricing-note{color:#3a3632;font-size:.8rem;margin-top:1.5rem;max-width:56ch}
+    .pricing-ribbon{display:inline-block;font-size:.56rem;letter-spacing:.16em;text-transform:uppercase;color:#111;background:linear-gradient(90deg,#d4b56a,#e8d09a);padding:.35rem .65rem;margin-bottom:.55rem;font-weight:600}
+    .pricing-note{color:#b0aaa2;font-size:.8rem;margin-top:1.5rem;max-width:56ch}
     .why-card,.step-card{border-top:1px solid rgba(12,11,10,.12);padding:1.5rem 0}
-    .why-card h3,.step-card h3{font-family:var(--font-display);font-size:1.4rem;font-weight:500;margin-bottom:.4rem;color:#0c0b0a}
+    .why-card h3,.step-card h3{font-family:var(--font-display);font-size:1.4rem;font-weight:500;margin-bottom:.4rem;color:#f5f2eb}
     .footer{border-top:1px solid rgba(245,242,235,.08);padding:3rem 0 2rem;background:#080808;color:var(--blanc-casse)}
     .footer-grid{display:grid;gap:1.25rem}@media(min-width:800px){.footer-grid{grid-template-columns:1.4fr 1fr 1fr 1fr}}
     .footer-col h4{font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--or);margin-bottom:.7rem}
@@ -95,7 +95,7 @@ const html = `<!DOCTYPE html>
     .footer .logo{color:var(--blanc-casse)}
     .faq h3{font-family:var(--font-display);font-weight:500;margin:1.2rem 0 .4rem;color:var(--blanc-casse)}.faq p{color:var(--text-muted)}
     .reveal{opacity:0;transform:translateY(18px);transition:.7s var(--ease)}.reveal.visible{opacity:1;transform:none}
-    @media(max-width:900px){.hero-shell{grid-template-columns:1fr}.hero-devices{min-height:260px}.device-side{display:none}.device-main{position:relative;width:100%;right:auto;top:auto}.nav{display:none;position:absolute;top:var(--header-h);left:0;right:0;background:#f3eee6;flex-direction:column;padding:1rem}.nav.open{display:flex}.burger{display:block;margin-left:auto}.hero{min-height:auto}}
+    @media(max-width:900px){.hero-shell{grid-template-columns:1fr}.hero-devices{min-height:260px}.device-side{display:none}.device-main{position:relative;width:100%;right:auto;top:auto}.nav{display:none;position:absolute;top:var(--header-h);left:0;right:0;background:#080808;flex-direction:column;padding:1rem}.nav.open{display:flex}.burger{display:block;margin-left:auto}.hero{min-height:auto}}
     @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
   </style>
 </head>
@@ -117,16 +117,16 @@ const html = `<!DOCTYPE html>
     <div class="hero-media" aria-hidden="true"></div>
     <div class="hero-shell">
       <div class="hero-copy">
-        <p class="hero-eyebrow">High-end website design</p>
-        <h1>Your next website<span class="hero-break">deserves the <em>exceptional.</em></span></h1>
-        <p class="hero-sub">We design high-end websites built to impress your visitors and grow your business.</p>
+        <p class="hero-eyebrow">Premium web agency</p>
+        <h1>Aurelis builds <em>premium</em> websites<span class="hero-break">for ambitious businesses.</span></h1>
+        <p class="hero-sub">High-end websites for brands and companies that care about craft, performance and human guidance. Request your project in minutes.</p>
         <div class="hero-price" role="status">
           <strong>Website design from <span>€990 excl. VAT</span></strong>
           <span>Clear offers · No online payment yet</span>
         </div>
         <div class="hero-actions">
           <a href="#offers" class="btn btn-gold btn-cta-xl" data-lead-open="1" data-track-cta="hero_create_site">Create my website</a>
-          <a href="#work" class="btn btn-ghost" data-track-cta="hero_work">Explore our work</a>
+          <a href="#work" class="btn btn-ghost" data-track-cta="hero_work">See our work</a>
         </div>
       </div>
       <div class="hero-devices" aria-hidden="true">
@@ -147,9 +147,9 @@ const html = `<!DOCTYPE html>
 
   <section class="folio section-light" id="work">
     <div class="folio-head reveal">
-      <div class="label">Work</div>
-      <h2 class="title">Projects that speak <em>for themselves.</em></h2>
-      <p class="desc">Large formats, real interfaces — no stock photography. Aurelis work takes centre stage.</p>
+      <div class="label">Our work</div>
+      <h2 class="title">Completed <em>projects.</em></h2>
+      <p class="desc">Only delivered, live websites — large formats, real interfaces, no stock photography.</p>
     </div>
     <div class="folio-stage">
       <article class="folio-project folio-project--feature reveal">
@@ -162,7 +162,8 @@ const html = `<!DOCTYPE html>
           <h3>Mr Gaston</h3>
           <div class="folio-sector">Artisan restaurant — Mons</div>
           <p>An immersive digital world for an artisan friterie: identity, menu, atmosphere and ordering — designed to convince in seconds.</p>
-          <a href="/en/work/mr-gaston/" class="folio-cta">Explore the project</a>
+          <ul class="folio-deliverables"><li>Identity &amp; design</li><li>Menu &amp; content</li><li>Mobile &amp; desktop</li><li>Ordering flow</li></ul>
+          <a href="/en/work/mr-gaston/" class="folio-cta">Discover the project</a>
         </div>
       </article>
       <a class="folio-project reveal" href="https://bryan-burger.vercel.app/" target="_blank" rel="noopener noreferrer">
@@ -172,7 +173,8 @@ const html = `<!DOCTYPE html>
           <h3>Bryan Burger</h3>
           <div class="folio-sector">Fast food — Mons</div>
           <p>Mobile-first website clarifying the menu and speeding up orders.</p>
-          <span class="folio-cta">Explore the project</span>
+          <ul class="folio-deliverables"><li>Clear menu</li><li>Mobile experience</li><li>Order path</li><li>Custom design</li></ul>
+          <span class="folio-cta">Discover the project</span>
         </div>
       </a>
       <a class="folio-project folio-project--alt reveal" href="https://transport-delivery.vercel.app/" target="_blank" rel="noopener noreferrer">
@@ -182,7 +184,8 @@ const html = `<!DOCTYPE html>
           <h3>Trans Delivery</h3>
           <div class="folio-sector">Transport &amp; logistics</div>
           <p>Professional credibility online: services, tracking and immediate contact.</p>
-          <span class="folio-cta">Explore the project</span>
+          <ul class="folio-deliverables"><li>Pro positioning</li><li>Services &amp; contact</li><li>Credibility</li><li>Responsive</li></ul>
+          <span class="folio-cta">Discover the project</span>
         </div>
       </a>
     </div>

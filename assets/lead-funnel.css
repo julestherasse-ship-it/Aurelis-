@@ -33,9 +33,9 @@
   max-height: min(92vh, 900px);
   overflow: auto;
   background:
-    radial-gradient(ellipse 80% 50% at 10% 0%, rgba(201, 169, 98, 0.14), transparent 55%),
+    radial-gradient(ellipse 80% 50% at 10% 0%, rgba(212, 181, 106, 0.14), transparent 55%),
     linear-gradient(165deg, #161616 0%, #0c0c0c 55%, #101010 100%);
-  border: 1px solid rgba(201, 169, 98, 0.22);
+  border: 1px solid rgba(212, 181, 106, 0.22);
   box-shadow: 0 28px 80px rgba(0, 0, 0, 0.55);
   padding: clamp(1.5rem, 4vw, 2.25rem);
   transform: translateY(18px) scale(0.98);
@@ -61,8 +61,8 @@
 
 .lead-modal__close:hover,
 .lead-modal__close:focus-visible {
-  color: var(--or, #c9a962);
-  border-color: rgba(201, 169, 98, 0.45);
+  color: var(--or, #d4b56a);
+  border-color: rgba(212, 181, 106, 0.45);
   outline: none;
 }
 
@@ -70,7 +70,7 @@
   font-size: 0.68rem;
   letter-spacing: 0.32em;
   text-transform: uppercase;
-  color: var(--or, #c9a962);
+  color: var(--or, #d4b56a);
   font-weight: 500;
   margin-bottom: 0.65rem;
 }
@@ -86,7 +86,7 @@
 
 .lead-modal__title em {
   font-style: italic;
-  color: var(--or-light, #dfc88a);
+  color: var(--or-light, #e8d09a);
 }
 
 .lead-modal__lead {
@@ -101,8 +101,8 @@
   gap: 0.35rem;
   padding: 0.95rem 1.1rem;
   margin-bottom: 1.5rem;
-  border-left: 2px solid var(--or, #c9a962);
-  background: rgba(201, 169, 98, 0.06);
+  border-left: 2px solid var(--or, #d4b56a);
+  background: rgba(212, 181, 106, 0.06);
 }
 
 .lead-modal__summary strong {
@@ -174,8 +174,8 @@
 .lead-field select:focus,
 .lead-field textarea:focus {
   outline: none;
-  border-color: rgba(201, 169, 98, 0.55);
-  background: rgba(201, 169, 98, 0.04);
+  border-color: rgba(212, 181, 106, 0.55);
+  background: rgba(212, 181, 106, 0.04);
 }
 
 .lead-field input.is-invalid,
@@ -205,7 +205,7 @@
 
 .lead-consent input {
   margin-top: 0.2rem;
-  accent-color: var(--or, #c9a962);
+  accent-color: var(--or, #d4b56a);
   flex-shrink: 0;
 }
 
@@ -255,11 +255,11 @@
   width: 3rem;
   height: 3rem;
   margin: 0 auto 1.1rem;
-  border: 1px solid rgba(201, 169, 98, 0.45);
+  border: 1px solid rgba(212, 181, 106, 0.45);
   border-radius: 50%;
   display: grid;
   place-items: center;
-  color: var(--or, #c9a962);
+  color: var(--or, #d4b56a);
 }
 
 .lead-success__mark svg {
