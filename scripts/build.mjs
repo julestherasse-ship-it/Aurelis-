@@ -15,6 +15,7 @@ function run(script) {
 
 run('generate-pages.mjs');
 run('generate-en-home.mjs');
+run('force-black-gold.mjs');
 
 const htmlPath = join(root, 'index.html');
 const offresPath = join(root, 'offres', 'index.html');
@@ -102,7 +103,9 @@ const requiredHome = [
   'data-lead-open',
   'id="confiance"',
   'id="audit"',
-  'content="#080808"',
+  'content="#060606"',
+  'aurelis-force-theme',
+  'FORCE BLACK & GOLD',
 ];
 
 const requiredOffres = [
@@ -129,7 +132,8 @@ const requiredEn = [
   '/assets/atelier.css',
   '/assets/consent.js',
   '/assets/offers-catalog.js',
-  'content="#080808"',
+  'content="#060606"',
+  'aurelis-force-theme',
 ];
 
 const forbidden = [

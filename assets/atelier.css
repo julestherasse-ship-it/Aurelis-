@@ -4,12 +4,68 @@
  * Retenue > spectacle. Pas de néon, pas de casino.
  */
 
-/* Tokens: charger /assets/aurelis-tokens.css avant ce fichier */
+/**
+ * Aurelis — design tokens (inlined into atelier for deploy reliability)
+ */
+:root {
+  --aurelis-black: #060606;
+  --aurelis-black-soft: #0b0b0b;
+  --aurelis-surface: #111111;
+  --aurelis-surface-elevated: #161616;
+  --aurelis-gold: #c9a96e;
+  --aurelis-gold-light: #dfc78f;
+  --aurelis-gold-dark: #8f7040;
+  --aurelis-ivory: #f5f2ea;
+  --aurelis-muted: #a7a29a;
+  --aurelis-gold-line: rgba(201, 169, 110, 0.18);
+  --aurelis-gold-line-strong: rgba(201, 169, 110, 0.32);
+  --aurelis-gold-glow: rgba(201, 169, 110, 0.12);
+  --aurelis-gold-metal: linear-gradient(115deg, #8f7040 0%, #c9a96e 28%, #e2c990 48%, #c9a96e 68%, #a3844f 100%);
+  --aurelis-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --aurelis-ease-soft: cubic-bezier(0.33, 1, 0.68, 1);
+  --aurelis-duration: 0.35s;
+  --aurelis-duration-slow: 0.55s;
+  --aurelis-radius: 6px;
+  --aurelis-radius-lg: 10px;
+  --aurelis-header-h: 86px;
+  --aurelis-header-h-compact: 72px;
+  --aurelis-font-display: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  --aurelis-font-body: "Outfit", system-ui, -apple-system, sans-serif;
+
+  --noir: #080808;
+  --noir-soft: #0b0b0b;
+  --noir-card: #111111;
+  --noir-elevated: #161616;
+  --blanc-casse: #f5f2ea;
+  --blanc-muted: #ebe6dc;
+  --or: #c9a96e;
+  --or-light: #dfc78f;
+  --or-dim: rgba(201, 169, 110, 0.12);
+  --text-muted: #a7a29a;
+  --font-display: var(--aurelis-font-display);
+  --font-body: var(--aurelis-font-body);
+  --ease: var(--aurelis-ease);
+  --transition: var(--aurelis-duration-slow) var(--aurelis-ease);
+  --header-h: var(--aurelis-header-h);
+
+  --ink: #060606;
+  --ink-soft: #0b0b0b;
+  --ink-elevated: #161616;
+  --ink-muted: #a7a29a;
+  --paper: #f5f2ea;
+  --gold: #c9a96e;
+  --gold-soft: #dfc78f;
+  --gold-line: rgba(201, 169, 110, 0.18);
+  --ease-out: var(--aurelis-ease);
+  --ease-soft: var(--aurelis-ease-soft);
+}
 
 /* ——— Base atmosphere ——— */
 body.atelier {
-  background: var(--aurelis-black);
-  color: var(--aurelis-ivory);
+  background: #060606;
+  background: var(--aurelis-black, #060606);
+  color: #f5f2ea;
+  color: var(--aurelis-ivory, #f5f2ea);
 }
 
 body.atelier::before {
@@ -18,7 +74,7 @@ body.atelier::before {
 
 /* ——— Navbar ——— */
 body.atelier .header {
-  background: rgba(6, 6, 6, 0.72);
+  background: rgba(6, 6, 6, 0.88) !important;
   border-bottom: 1px solid var(--aurelis-gold-line);
   backdrop-filter: blur(18px) saturate(1.08);
   -webkit-backdrop-filter: blur(18px) saturate(1.08);
@@ -201,8 +257,10 @@ body.atelier .desc {
 body.atelier .hero {
   min-height: 100vh;
   min-height: 100dvh;
-  background: var(--aurelis-black);
-  color: var(--aurelis-ivory);
+  background: #060606 !important;
+  background: var(--aurelis-black, #060606) !important;
+  color: #f5f2ea !important;
+  color: var(--aurelis-ivory, #f5f2ea) !important;
   padding: calc(var(--aurelis-header-h) + 3.5rem) 0 5rem;
   overflow: hidden;
   position: relative;
