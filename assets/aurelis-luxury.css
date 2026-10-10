@@ -1,0 +1,101 @@
+/**
+ * Aurelis luxury shell — pages hors homepage (offres, case studies, landings)
+ * Complète aurelis-tokens.css sans exiger body.atelier
+ */
+
+.header {
+  background: rgba(6, 6, 6, 0.78) !important;
+  border-bottom: 1px solid var(--aurelis-gold-line, rgba(201, 169, 110, 0.18)) !important;
+  backdrop-filter: blur(18px) saturate(1.08);
+  -webkit-backdrop-filter: blur(18px) saturate(1.08);
+}
+
+.header.scrolled {
+  background: rgba(6, 6, 6, 0.94) !important;
+}
+
+.logo span {
+  background: var(--aurelis-gold-metal, linear-gradient(115deg, #8f7040, #c9a96e, #e2c990, #c9a96e, #a3844f));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.nav-cta,
+.btn-gold {
+  background: var(--aurelis-gold-metal, linear-gradient(115deg, #8f7040, #c9a96e 35%, #d9bd82 50%, #c9a96e 70%, #8f7040)) !important;
+  color: #0a0908 !important;
+  border: 1px solid rgba(217, 189, 130, 0.35);
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), filter 0.35s ease, box-shadow 0.35s ease;
+}
+
+.nav-cta:hover,
+.btn-gold:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.05);
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.4);
+}
+
+.btn-ghost {
+  border: 1px solid var(--aurelis-gold-line-strong, rgba(201, 169, 110, 0.32)) !important;
+  color: var(--aurelis-ivory, #f5f2ea) !important;
+  background: transparent !important;
+}
+
+.btn-ghost:hover {
+  border-color: var(--aurelis-gold, #c9a96e) !important;
+  color: var(--aurelis-gold-light, #d9bd82) !important;
+  background: rgba(201, 169, 110, 0.05) !important;
+}
+
+.title em,
+h1 em,
+h2 em {
+  background: var(--aurelis-gold-metal, linear-gradient(115deg, #8f7040, #c9a96e, #e2c990, #c9a96e));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.label {
+  color: var(--aurelis-gold, #c9a96e) !important;
+}
+
+.pricing-card,
+.card,
+.lp-card,
+.compare-mobile-card {
+  background: var(--aurelis-card, #101010);
+  border: 1px solid var(--aurelis-gold-line, rgba(201, 169, 110, 0.18));
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.35s ease, box-shadow 0.35s ease;
+}
+
+.pricing-card:hover,
+.card:hover,
+.lp-card:hover,
+.compare-mobile-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--aurelis-gold-line-strong, rgba(201, 169, 110, 0.32));
+  box-shadow: 0 22px 48px rgba(0, 0, 0, 0.35);
+}
+
+.pricing-card--featured,
+.compare-mobile-card.is-featured {
+  border-color: var(--aurelis-gold-line-strong, rgba(201, 169, 110, 0.32));
+  background:
+    radial-gradient(ellipse 80% 50% at 50% 0%, rgba(201, 169, 110, 0.1), transparent 55%),
+    var(--aurelis-card-elevated, #141414);
+}
+
+.footer {
+  border-top: 1px solid var(--aurelis-gold-line, rgba(201, 169, 110, 0.18)) !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pricing-card,
+  .card,
+  .btn-gold,
+  .nav-cta {
+    transition: none !important;
+  }
+}

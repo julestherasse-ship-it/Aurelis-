@@ -1,0 +1,81 @@
+/**
+ * Aurelis — design tokens (identité luxury black & gold)
+ * Source unique pour palette, typo, motion.
+ */
+
+:root {
+  /* ——— Blacks ——— */
+  --aurelis-black: #060606;
+  --aurelis-black-deep: #080808;
+  --aurelis-surface: #0d0d0d;
+  --aurelis-surface-2: #111111;
+  --aurelis-card: #101010;
+  --aurelis-card-elevated: #141414;
+  --aurelis-anthracite: #1a1a1a;
+
+  /* ——— Gold champagne (jamais jaune vif) ——— */
+  --aurelis-gold: #c9a96e;
+  --aurelis-gold-light: #d9bd82;
+  --aurelis-gold-dark: #8f7040;
+  --aurelis-gold-line: rgba(201, 169, 110, 0.18);
+  --aurelis-gold-line-strong: rgba(201, 169, 110, 0.32);
+  --aurelis-gold-glow: rgba(201, 169, 110, 0.12);
+  --aurelis-gold-metal: linear-gradient(
+    115deg,
+    #8f7040 0%,
+    #c9a96e 28%,
+    #e2c990 48%,
+    #c9a96e 68%,
+    #a3844f 100%
+  );
+
+  /* ——— Ivory / muted ——— */
+  --aurelis-ivory: #f5f2ea;
+  --aurelis-ivory-soft: #ebe6dc;
+  --aurelis-muted: #aaa6a0;
+
+  /* ——— Motion ——— */
+  --aurelis-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --aurelis-ease-soft: cubic-bezier(0.33, 1, 0.68, 1);
+  --aurelis-duration: 0.35s;
+  --aurelis-duration-slow: 0.55s;
+
+  /* ——— Radius / space ——— */
+  --aurelis-radius: 6px;
+  --aurelis-radius-lg: 10px;
+  --aurelis-header-h: 86px;
+  --aurelis-header-h-compact: 72px;
+
+  /* ——— Fonts ——— */
+  --aurelis-font-display: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  --aurelis-font-body: "Outfit", system-ui, -apple-system, sans-serif;
+
+  /* ——— Legacy aliases (pages existantes) ——— */
+  --noir: var(--aurelis-black-deep);
+  --noir-soft: var(--aurelis-surface);
+  --noir-card: var(--aurelis-card);
+  --noir-elevated: var(--aurelis-card-elevated);
+  --blanc-casse: var(--aurelis-ivory);
+  --blanc-muted: var(--aurelis-ivory-soft);
+  --or: var(--aurelis-gold);
+  --or-light: var(--aurelis-gold-light);
+  --or-dim: var(--aurelis-gold-glow);
+  --text-muted: var(--aurelis-muted);
+  --font-display: var(--aurelis-font-display);
+  --font-body: var(--aurelis-font-body);
+  --ease: var(--aurelis-ease);
+  --transition: var(--aurelis-duration-slow) var(--aurelis-ease);
+  --header-h: var(--aurelis-header-h);
+
+  /* atelier aliases */
+  --ink: var(--aurelis-black-deep);
+  --ink-soft: var(--aurelis-surface);
+  --ink-elevated: var(--aurelis-card-elevated);
+  --ink-muted: var(--aurelis-muted);
+  --paper: var(--aurelis-ivory);
+  --gold: var(--aurelis-gold);
+  --gold-soft: var(--aurelis-gold-light);
+  --gold-line: var(--aurelis-gold-line);
+  --ease-out: var(--aurelis-ease);
+  --ease-soft: var(--aurelis-ease-soft);
+}

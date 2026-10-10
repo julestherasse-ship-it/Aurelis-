@@ -33,10 +33,11 @@
   max-height: min(92vh, 900px);
   overflow: auto;
   background:
-    radial-gradient(ellipse 80% 50% at 10% 0%, rgba(212, 181, 106, 0.14), transparent 55%),
-    linear-gradient(165deg, #161616 0%, #0c0c0c 55%, #101010 100%);
-  border: 1px solid rgba(212, 181, 106, 0.22);
-  box-shadow: 0 28px 80px rgba(0, 0, 0, 0.55);
+    radial-gradient(ellipse 70% 45% at 12% 0%, rgba(201, 169, 110, 0.1), transparent 55%),
+    linear-gradient(165deg, #141414 0%, #0a0a0a 55%, #101010 100%);
+  border: 1px solid rgba(201, 169, 110, 0.22);
+  box-shadow: 0 32px 90px rgba(0, 0, 0, 0.6);
+  border-radius: 10px;
   padding: clamp(1.5rem, 4vw, 2.25rem);
   transform: translateY(18px) scale(0.98);
   transition: transform 0.4s var(--ease, cubic-bezier(0.22, 1, 0.36, 1));
@@ -54,15 +55,15 @@
   height: 2.25rem;
   display: grid;
   place-items: center;
-  color: var(--text-muted, #86817c);
+  color: var(--text-muted, #aaa6a0);
   border: 1px solid rgba(245, 242, 235, 0.12);
   transition: color 0.25s, border-color 0.25s;
 }
 
 .lead-modal__close:hover,
 .lead-modal__close:focus-visible {
-  color: var(--or, #d4b56a);
-  border-color: rgba(212, 181, 106, 0.45);
+  color: var(--or, #c9a96e);
+  border-color: rgba(201, 169, 110, 0.45);
   outline: none;
 }
 
@@ -70,7 +71,7 @@
   font-size: 0.68rem;
   letter-spacing: 0.32em;
   text-transform: uppercase;
-  color: var(--or, #d4b56a);
+  color: var(--or, #c9a96e);
   font-weight: 500;
   margin-bottom: 0.65rem;
 }
@@ -86,11 +87,11 @@
 
 .lead-modal__title em {
   font-style: italic;
-  color: var(--or-light, #e8d09a);
+  color: var(--or-light, #d9bd82);
 }
 
 .lead-modal__lead {
-  color: var(--text-muted, #86817c);
+  color: var(--text-muted, #aaa6a0);
   font-size: 0.95rem;
   margin-bottom: 1.35rem;
   max-width: 38ch;
@@ -101,8 +102,8 @@
   gap: 0.35rem;
   padding: 0.95rem 1.1rem;
   margin-bottom: 1.5rem;
-  border-left: 2px solid var(--or, #d4b56a);
-  background: rgba(212, 181, 106, 0.06);
+  border-left: 2px solid var(--or, #c9a96e);
+  background: rgba(201, 169, 110, 0.06);
 }
 
 .lead-modal__summary strong {
@@ -113,7 +114,7 @@
 
 .lead-modal__summary span {
   font-size: 0.82rem;
-  color: var(--text-muted, #86817c);
+  color: var(--text-muted, #aaa6a0);
   letter-spacing: 0.02em;
 }
 
@@ -138,7 +139,7 @@
   font-size: 0.72rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--text-muted, #86817c);
+  color: var(--text-muted, #aaa6a0);
   margin-bottom: 0.4rem;
 }
 
@@ -146,14 +147,15 @@
 .lead-field select,
 .lead-field textarea {
   width: 100%;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(245, 242, 235, 0.12);
-  color: var(--blanc-casse, #f5f2eb);
+  background: #0a0a0a;
+  border: 1px solid rgba(170, 166, 160, 0.22);
+  color: var(--blanc-casse, #f5f2ea);
   font-family: inherit;
   font-size: 0.95rem;
   font-weight: 300;
-  padding: 0.75rem 0.9rem;
-  transition: border-color 0.25s, background 0.25s;
+  padding: 0.8rem 0.95rem;
+  border-radius: 4px;
+  transition: border-color 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
 }
 
 .lead-field textarea {
@@ -174,8 +176,9 @@
 .lead-field select:focus,
 .lead-field textarea:focus {
   outline: none;
-  border-color: rgba(212, 181, 106, 0.55);
-  background: rgba(212, 181, 106, 0.04);
+  border-color: rgba(201, 169, 110, 0.55);
+  background: #0c0c0c;
+  box-shadow: 0 0 0 3px rgba(201, 169, 110, 0.1);
 }
 
 .lead-field input.is-invalid,
@@ -199,13 +202,13 @@
   gap: 0.65rem;
   align-items: flex-start;
   font-size: 0.82rem;
-  color: var(--text-muted, #86817c);
+  color: var(--text-muted, #aaa6a0);
   line-height: 1.5;
 }
 
 .lead-consent input {
   margin-top: 0.2rem;
-  accent-color: var(--or, #d4b56a);
+  accent-color: var(--or, #c9a96e);
   flex-shrink: 0;
 }
 
@@ -237,7 +240,7 @@
 
 .lead-form__hint {
   font-size: 0.75rem;
-  color: var(--text-muted, #86817c);
+  color: var(--text-muted, #aaa6a0);
 }
 
 .lead-success {
@@ -255,11 +258,11 @@
   width: 3rem;
   height: 3rem;
   margin: 0 auto 1.1rem;
-  border: 1px solid rgba(212, 181, 106, 0.45);
+  border: 1px solid rgba(201, 169, 110, 0.45);
   border-radius: 50%;
   display: grid;
   place-items: center;
-  color: var(--or, #d4b56a);
+  color: var(--or, #c9a96e);
 }
 
 .lead-success__mark svg {
@@ -278,7 +281,7 @@
 }
 
 .lead-success p {
-  color: var(--text-muted, #86817c);
+  color: var(--text-muted, #aaa6a0);
   font-size: 0.95rem;
   max-width: 36ch;
   margin: 0 auto 1.4rem;

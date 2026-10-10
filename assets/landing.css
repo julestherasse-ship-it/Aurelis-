@@ -33,7 +33,7 @@
 
 .lp-hero h1 em {
   font-style: italic;
-  color: var(--or-light, #dfc88a);
+  color: var(--or-light, #d9bd82);
 }
 
 .lp-hero p {
@@ -75,7 +75,7 @@
 }
 
 .lp-card p {
-  color: var(--text-muted, #86817c);
+  color: var(--text-muted, #aaa6a0);
   font-size: 0.95rem;
 }
 
@@ -98,7 +98,7 @@
 }
 
 .lp-work span {
-  color: var(--text-muted, #86817c);
+  color: var(--text-muted, #aaa6a0);
   font-size: 0.88rem;
 }
 
@@ -122,7 +122,7 @@
 
 .lp-offers .pricing-price span {
   font-size: 0.75rem;
-  color: var(--text-muted, #86817c);
+  color: var(--text-muted, #aaa6a0);
   margin-left: 0.25rem;
 }
 
@@ -142,12 +142,12 @@
   font-size: 1.45rem;
   font-weight: 500;
   margin: 2rem 0 0.75rem;
-  color: var(--or-light, #dfc88a);
+  color: var(--or-light, #d9bd82);
 }
 
 .legal-page p,
 .legal-page li {
-  color: var(--text-muted, #86817c);
+  color: var(--text-muted, #aaa6a0);
   max-width: 68ch;
   margin-bottom: 0.85rem;
 }

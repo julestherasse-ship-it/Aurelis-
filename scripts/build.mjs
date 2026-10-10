@@ -48,6 +48,8 @@ const requiredFiles = [
   join(root, 'assets', 'portfolio', 'mr-gaston', 'capture-mobile.jpg'),
   join(root, 'assets', 'portfolio', 'mr-gaston', 'poivre.jpg'),
   join(root, 'assets', 'atelier.css'),
+  join(root, 'assets', 'aurelis-tokens.css'),
+  join(root, 'assets', 'aurelis-luxury.css'),
   join(root, 'assets', 'portfolio', 'bryan-burger', 'capture-desktop.jpg'),
   join(root, 'assets', 'portfolio', 'trans-delivery', 'capture-desktop.png'),
 ];
