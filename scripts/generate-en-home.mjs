@@ -67,6 +67,15 @@ const html = `<!DOCTYPE html>
     .device img{width:100%;aspect-ratio:16/10;object-fit:cover;display:block}
     .device-main{width:min(100%,400px);right:6%;top:6%;transform:rotate(-1.5deg);z-index:3}
     .device-side{width:min(55%,230px);left:0;bottom:0;transform:rotate(2deg);z-index:2}
+    .featured-project{display:grid;gap:1.5rem;margin-bottom:2rem;padding:1.15rem;border:1px solid rgba(212,181,106,.22);background:linear-gradient(145deg,rgba(28,24,16,.95),rgba(10,10,10,.98))}
+    @media(min-width:900px){.featured-project{grid-template-columns:1.15fr .85fr;align-items:center}}
+    .featured-desk{border:1px solid rgba(212,181,106,.2);overflow:hidden;background:#111}
+    .featured-desk img{width:100%;aspect-ratio:16/10;object-fit:cover;object-position:top}
+    .featured-copy .kicker{font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;color:var(--or);margin-bottom:.6rem;font-weight:600}
+    .featured-copy h3{font-family:var(--font-display);font-size:clamp(1.8rem,3vw,2.5rem);font-weight:500;margin-bottom:.4rem}
+    .featured-copy .sector{font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;color:var(--text-muted);margin-bottom:.85rem}
+    .featured-copy p{color:var(--blanc-muted);margin-bottom:1.25rem;max-width:40ch}
+    .featured-actions{display:flex;flex-wrap:wrap;gap:.7rem}
     .quality-grid,.pricing-grid,.why-grid-4,.steps-grid{display:grid;gap:1.15rem}
     @media(min-width:900px){.quality-grid{grid-template-columns:repeat(3,1fr)}.pricing-grid{grid-template-columns:repeat(4,1fr)}.why-grid-4{grid-template-columns:repeat(4,1fr)}.steps-grid{grid-template-columns:repeat(3,1fr)}}
     .quality-card,.pricing-card,.why-card,.step-card{border:1px solid rgba(212,181,106,.14);background:#0d0d0d;padding:0;overflow:hidden}
@@ -135,10 +144,23 @@ const html = `<!DOCTYPE html>
   <section class="section section-alt" id="work">
     <div class="container">
       <div class="section-head reveal"><div class="label">Visible quality</div><h2 class="title">Websites built to <em>convince</em></h2><p class="desc desc-center">Real Aurelis projects and demos — never invented anonymous clients.</p></div>
+      <article class="featured-project reveal">
+        <div class="featured-desk"><div class="device-bar"><i></i><i></i><i></i></div><img src="/assets/portfolio/mr-gaston/capture-desktop.jpg" alt="Mr Gaston website desktop capture" width="1600" height="1000" fetchpriority="high"></div>
+        <div class="featured-copy">
+          <div class="kicker">Flagship project</div>
+          <h3>Mr Gaston</h3>
+          <div class="sector">Restaurant — Custom website</div>
+          <p>Discover the digital world of Mr Gaston: a modern, immersive web experience designed to showcase its identity, products and craft.</p>
+          <div class="featured-actions">
+            <a href="/en/work/mr-gaston/" class="btn btn-gold">View the project</a>
+            <a href="https://mr-gaston.vercel.app/" class="btn btn-ghost" target="_blank" rel="noopener noreferrer">Open the site</a>
+          </div>
+        </div>
+      </article>
       <div class="quality-grid">
+        <a class="quality-card reveal" href="/en/work/mr-gaston/"><div class="device-bar"><i></i><i></i><i></i></div><img src="/assets/portfolio/mr-gaston/poivre.jpg" alt="Mr Gaston" width="1000" height="625" loading="lazy"><div class="quality-meta"><div class="kicker">Live project</div><h3>Mr Gaston</h3><p>Artisan friterie in Mons — premium identity, menu and ordering.</p></div></a>
         <a class="quality-card reveal" href="https://bryan-burger.vercel.app/" target="_blank" rel="noopener noreferrer"><div class="device-bar"><i></i><i></i><i></i></div><img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=1000&q=75" alt="Bryan Burger" width="1000" height="625" loading="lazy"><div class="quality-meta"><div class="kicker">Live project</div><h3>Bryan Burger</h3><p>Fast food — clear menu, mobile-first, instant contact.</p></div></a>
         <a class="quality-card reveal" href="https://transport-delivery.vercel.app/" target="_blank" rel="noopener noreferrer"><div class="device-bar"><i></i><i></i><i></i></div><img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1000&q=75" alt="Trans Delivery" width="1000" height="625" loading="lazy"><div class="quality-meta"><div class="kicker">Live project</div><h3>Trans Delivery</h3><p>Transport &amp; logistics — professional credibility and contact.</p></div></a>
-        <a class="quality-card reveal" href="https://aurelis-demo-coiffeur-hzng7c525-julestherasse-9969s-projects.vercel.app/" target="_blank" rel="noopener noreferrer"><div class="device-bar"><i></i><i></i><i></i></div><img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=1000&q=75" alt="Salon demo" width="1000" height="625" loading="lazy"><div class="quality-meta"><div class="kicker">Aurelis demo</div><h3>Premium salon</h3><p>Model site for a high-end salon — clearly labelled as a demonstration.</p></div></a>
       </div>
     </div>
   </section>

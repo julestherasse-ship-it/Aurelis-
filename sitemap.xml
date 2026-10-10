@@ -82,6 +82,22 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://aurelis.ink/realisations/mr-gaston</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://aurelis.ink/realisations/mr-gaston"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aurelis.ink/en/work/mr-gaston"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aurelis.ink/realisations/mr-gaston"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://aurelis.ink/en/work/mr-gaston</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://aurelis.ink/realisations/mr-gaston"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aurelis.ink/en/work/mr-gaston"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aurelis.ink/realisations/mr-gaston"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
     <loc>https://aurelis.ink/mentions-legales</loc>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>

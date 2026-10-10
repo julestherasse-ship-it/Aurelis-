@@ -42,6 +42,11 @@ const requiredFiles = [
   join(root, 'en', 'premium-website', 'index.html'),
   join(root, 'mentions-legales', 'index.html'),
   join(root, 'politique-confidentialite', 'index.html'),
+  join(root, 'realisations', 'mr-gaston', 'index.html'),
+  join(root, 'en', 'work', 'mr-gaston', 'index.html'),
+  join(root, 'assets', 'portfolio', 'mr-gaston', 'capture-desktop.jpg'),
+  join(root, 'assets', 'portfolio', 'mr-gaston', 'capture-mobile.jpg'),
+  join(root, 'assets', 'portfolio', 'mr-gaston', 'poivre.jpg'),
 ];
 
 for (const file of requiredFiles) {
@@ -63,6 +68,7 @@ const requiredHome = [
   "id: 'transport'",
   'Bryan Burger',
   'Trans Delivery',
+  'Mr Gaston',
   'id="offres"',
   'Aurelis Essential',
   'Votre site internet.',
@@ -74,6 +80,7 @@ const requiredHome = [
   'Choisir cette offre',
   'Pourquoi choisir',
   '3 étapes',
+  '/realisations/mr-gaston/',
   'hreflang="en"',
   '/assets/locale.js',
   '/assets/offers-catalog.js',
@@ -97,7 +104,9 @@ const requiredEn = [
   'Your website.',
   '€990',
   'Aurelis Elite',
+  'Mr Gaston',
   'Bryan Burger',
+  '/en/work/mr-gaston/',
   '/assets/consent.js',
   '/assets/offers-catalog.js',
 ];

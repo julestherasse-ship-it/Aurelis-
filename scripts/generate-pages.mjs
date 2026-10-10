@@ -11,6 +11,13 @@ const SITE = "https://aurelis.ink";
 
 const WORKS = [
   {
+    nameFr: "Mr Gaston",
+    nameEn: "Mr Gaston",
+    fr: "Restauration sur mesure — identité immersive, carte & commande.",
+    en: "Custom restaurant site — immersive brand, menu & ordering.",
+    href: "/realisations/mr-gaston/",
+  },
+  {
     nameFr: "Bryan Burger",
     nameEn: "Bryan Burger",
     fr: "Site restauration rapide — offre & expérience mobile.",
@@ -23,13 +30,6 @@ const WORKS = [
     fr: "Site transport & livraison — crédibilité et prise de contact.",
     en: "Transport & delivery site — credibility and contact.",
     href: "https://transport-delivery.vercel.app/",
-  },
-  {
-    nameFr: "Démo salon Aurelis",
-    nameEn: "Aurelis salon demo",
-    fr: "Démonstration Aurelis — vitrine premium pour salon.",
-    en: "Aurelis demonstration — premium salon showcase.",
-    href: "https://aurelis-demo-coiffeur-hzng7c525-julestherasse-9969s-projects.vercel.app/",
   },
 ];
 

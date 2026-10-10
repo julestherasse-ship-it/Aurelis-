@@ -11,6 +11,8 @@
     { fr: "/", en: "/en/" },
     { fr: "/offres/", en: "/en/offers/" },
     { fr: "/offres", en: "/en/offers" },
+    { fr: "/realisations/mr-gaston/", en: "/en/work/mr-gaston/" },
+    { fr: "/realisations/mr-gaston", en: "/en/work/mr-gaston" },
     { fr: "/creation-site-web-entreprise/", en: "/en/business-website/" },
     { fr: "/creation-site-web-entreprise", en: "/en/business-website" },
     { fr: "/refonte-site-web/", en: "/en/website-redesign/" },

@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mr Gaston — Réalisation Aurelis | Site restauration sur mesure</title>
+  <meta name="description" content="Présentation du site Mr Gaston conçu par Aurelis : expérience web immersive pour une friterie artisanale à Mons — identité, carte, commande et contact.">
+  <link rel="canonical" href="https://aurelis.ink/realisations/mr-gaston/">
+  <link rel="alternate" hreflang="fr" href="https://aurelis.ink/realisations/mr-gaston/">
+  <link rel="alternate" hreflang="en" href="https://aurelis.ink/en/work/mr-gaston/">
+  <link rel="alternate" hreflang="x-default" href="https://aurelis.ink/realisations/mr-gaston/">
+  <meta property="og:title" content="Mr Gaston — Réalisation Aurelis">
+  <meta property="og:description" content="Site internet sur mesure pour Mr Gaston, friterie artisanale à Mons.">
+  <meta property="og:url" content="https://aurelis.ink/realisations/mr-gaston/">
+  <meta property="og:image" content="https://aurelis.ink/assets/portfolio/mr-gaston/capture-desktop.jpg">
+  <meta name="robots" content="index,follow">
+  <meta name="theme-color" content="#080808">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/lead-funnel.css">
+  <link rel="stylesheet" href="/assets/site-ui.css">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{--noir:#080808;--noir-soft:#121212;--blanc:#f5f2eb;--muted:#b0aaa2;--or:#d4b56a;--or-light:#e8d09a;--font-d:'Cormorant Garamond',Georgia,serif;--font-b:Outfit,system-ui,sans-serif;--header-h:86px;--ease:cubic-bezier(.22,1,.36,1)}
+    body{font-family:var(--font-b);background:var(--noir);color:var(--blanc);line-height:1.7;font-weight:300;-webkit-font-smoothing:antialiased}
+    a{color:inherit;text-decoration:none}img{max-width:100%;display:block}
+    .container{width:min(1100px,90%);margin:0 auto}
+    .header{position:fixed;inset:0 0 auto;z-index:100;height:var(--header-h);display:flex;align-items:center;background:rgba(8,8,8,.85);backdrop-filter:blur(14px);border-bottom:1px solid rgba(212,181,106,.1)}
+    .header-inner{width:min(1200px,92%);margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:1rem}
+    .logo{font-family:var(--font-d);font-size:1.6rem}.logo span{color:var(--or)}
+    .nav{display:flex;gap:1.2rem;align-items:center;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase}
+    .nav a{color:var(--muted)}.nav-cta{background:var(--or);color:#111!important;padding:.55rem .9rem;font-weight:600}
+    .burger{display:none;flex-direction:column;gap:6px}.burger span{display:block;width:24px;height:1px;background:#fff}
+    .btn{display:inline-flex;align-items:center;gap:.5rem;padding:1rem 1.6rem;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;font-weight:600}
+    .btn-gold{background:var(--or);color:#111}.btn-ghost{border:1px solid rgba(245,242,235,.22)}
+    .hero{padding:calc(var(--header-h) + 3rem) 0 3rem;position:relative;overflow:hidden}
+    .hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 50% 45% at 80% 20%,rgba(212,181,106,.14),transparent 55%),linear-gradient(180deg,#0c0b09,var(--noir))}
+    .hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:1fr 1.05fr;gap:2.5rem;align-items:center}
+    .eyebrow{font-size:.65rem;letter-spacing:.28em;text-transform:uppercase;color:var(--or);font-weight:600;margin-bottom:1rem}
+    h1{font-family:var(--font-d);font-size:clamp(2.6rem,5vw,4rem);font-weight:500;line-height:1.08;margin-bottom:1rem}
+    h1 em{font-style:italic;color:var(--or-light)}
+    .lead{color:var(--muted);max-width:40ch;font-size:1.05rem;margin-bottom:1.5rem}
+    .meta{display:flex;flex-wrap:wrap;gap:.6rem;margin-bottom:1.75rem}
+    .chip{font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;border:1px solid rgba(212,181,106,.3);color:var(--or-light);padding:.4rem .7rem}
+    .mock{position:relative}
+    .mock-desk{border:1px solid rgba(212,181,106,.2);background:#111;box-shadow:0 40px 80px rgba(0,0,0,.55);overflow:hidden;transform:perspective(1200px) rotateY(-4deg) rotateX(2deg);transition:transform .5s var(--ease)}
+    .mock:hover .mock-desk{transform:perspective(1200px) rotateY(-1deg) rotateX(0)}
+    .mock-bar{display:flex;gap:.35rem;padding:.55rem .75rem;background:#1a1a1a;border-bottom:1px solid rgba(255,255,255,.05)}
+    .mock-bar i{width:7px;height:7px;border-radius:50%;background:#444;display:block}
+    .mock-desk img{width:100%;aspect-ratio:16/10;object-fit:cover;object-position:top}
+    .mock-phone{position:absolute;right:-4%;bottom:-8%;width:28%;border:1px solid rgba(212,181,106,.25);border-radius:18px;overflow:hidden;box-shadow:0 24px 50px rgba(0,0,0,.55);background:#0a0a0a}
+    .mock-phone img{width:100%;aspect-ratio:9/16;object-fit:cover;object-position:top}
+    .section{padding:4.5rem 0}.section-alt{background:var(--noir-soft)}
+    .label{font-size:.65rem;letter-spacing:.28em;text-transform:uppercase;color:var(--or);font-weight:600;margin-bottom:.85rem}
+    h2{font-family:var(--font-d);font-size:clamp(1.9rem,3.5vw,2.6rem);font-weight:500;margin-bottom:1rem}
+    h2 em{font-style:italic;color:var(--or-light)}
+    p{color:var(--muted)}
+    .grid-2{display:grid;gap:1.5rem}@media(min-width:800px){.grid-2{grid-template-columns:1fr 1fr}}
+    .card{border:1px solid rgba(212,181,106,.14);padding:1.5rem;background:rgba(12,12,12,.9)}
+    .card h3{font-family:var(--font-d);font-size:1.4rem;margin-bottom:.55rem;color:var(--blanc);font-weight:500}
+    .feats{list-style:none;display:grid;gap:.7rem;margin-top:1.25rem}
+    .feats li{padding:.85rem 1rem;border:1px solid rgba(212,181,106,.12);color:var(--blanc);font-size:.95rem}
+    .feats li span{display:block;font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--or);margin-bottom:.25rem}
+    .gallery{display:grid;gap:1rem;grid-template-columns:1.2fr .8fr}
+    .gallery img{width:100%;height:100%;object-fit:cover;border:1px solid rgba(212,181,106,.12);min-height:220px}
+    .gallery .tall{grid-row:span 2}
+    .cta-band{text-align:center;padding:4rem 0;border-top:1px solid rgba(212,181,106,.1)}
+    .footer{border-top:1px solid rgba(245,242,235,.08);padding:2.5rem 0;color:var(--muted);font-size:.85rem}
+    .footer a{color:var(--or)}
+    .reveal{opacity:0;transform:translateY(16px);transition:.55s ease}.reveal.visible{opacity:1;transform:none}
+    @media(max-width:900px){
+      .hero-grid{grid-template-columns:1fr}.mock-desk{transform:none}.mock-phone{width:34%;right:4%;bottom:-6%}
+      .gallery{grid-template-columns:1fr}.gallery .tall{grid-row:auto}
+      .nav{display:none;position:absolute;top:var(--header-h);left:0;right:0;background:#0c0c0c;flex-direction:column;padding:1.25rem}.nav.open{display:flex}.burger{display:flex}
+    }
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}.mock-desk{transform:none!important}}
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="header-inner">
+      <a href="/" class="logo">Aure<span>lis</span></a>
+      <nav class="nav" id="nav">
+        <a href="/#realisations">Réalisations</a>
+        <a href="/#offres">Nos offres</a>
+        <a href="/#contact">Contact</a>
+        <a href="/#offres" class="nav-cta" data-lead-open="1">Créer mon site</a>
+      </nav>
+      <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-bg" aria-hidden="true"></div>
+    <div class="container hero-grid">
+      <div>
+        <p class="eyebrow">Réalisation Aurelis</p>
+        <h1>Mr Gaston<em> — restauration sur mesure</em></h1>
+        <p class="lead">Découvrez l'univers digital de Mr Gaston, une expérience web moderne et immersive, conçue pour mettre en valeur son identité, ses produits et son savoir-faire.</p>
+        <div class="meta">
+          <span class="chip">Restauration</span>
+          <span class="chip">Site internet sur mesure</span>
+          <span class="chip">Mons, Belgique</span>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:.75rem">
+          <a href="https://mr-gaston.vercel.app/" class="btn btn-gold" target="_blank" rel="noopener noreferrer">Découvrir le projet</a>
+          <a href="/#offres" class="btn btn-ghost" data-lead-open="1">Créer mon site</a>
+        </div>
+      </div>
+      <div class="mock">
+        <div class="mock-desk">
+          <div class="mock-bar"><i></i><i></i><i></i></div>
+          <img src="/assets/portfolio/mr-gaston/capture-desktop.jpg" alt="Capture desktop du site Mr Gaston" width="1600" height="1000" fetchpriority="high">
+        </div>
+        <div class="mock-phone">
+          <img src="/assets/portfolio/mr-gaston/capture-mobile.jpg" alt="Capture mobile du site Mr Gaston" width="780" height="1400" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container grid-2">
+      <article class="card reveal">
+        <div class="label">Présentation</div>
+        <h2>Qui est <em>Mr Gaston</em> ?</h2>
+        <p>Mr Gaston est une friterie artisanale à Mons (Chaussée de Binche 141). Depuis 2018, l’établissement propose frites, burgers et snacks préparés à partir de produits locaux — sur place, à emporter ou en commande en ligne.</p>
+      </article>
+      <article class="card reveal">
+        <div class="label">Objectifs du site</div>
+        <h2>Ce que le site devait <em>accomplir</em></h2>
+        <p>Mettre en avant l’identité artisanale, présenter la carte de façon claire, faciliter la commande en ligne et rendre l’adresse, les horaires et le contact immédiatement accessibles — sur ordinateur comme sur mobile.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container">
+      <div class="reveal" style="max-width:640px;margin-bottom:2rem">
+        <div class="label">Direction artistique</div>
+        <h2>Noir profond, or et <em>photographie produit</em></h2>
+        <p>Une atmosphère sombre et premium, typographie expressive, mise en avant du burger signature «&nbsp;Le Poivré&nbsp;», et une navigation simple orientée conversion (menu, commander, contact).</p>
+      </div>
+      <div class="gallery reveal">
+        <img class="tall" src="/assets/portfolio/mr-gaston/poivre.jpg" alt="Burger Poivré — photographie produit Mr Gaston" width="900" height="1200" loading="lazy">
+        <img src="/assets/portfolio/mr-gaston/burger.webp" alt="Burger maison Mr Gaston" width="800" height="600" loading="lazy">
+        <img src="/assets/portfolio/mr-gaston/plate.webp" alt="Assiette signature Mr Gaston" width="800" height="600" loading="lazy">
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="reveal" style="margin-bottom:1.5rem">
+        <div class="label">Fonctionnalités</div>
+        <h2>Ce qui a réellement été <em>développé</em></h2>
+        <p>Liste basée sur le site livré — sans inventer de résultats commerciaux.</p>
+      </div>
+      <ul class="feats reveal">
+        <li><span>Hero signature</span>Mise en avant du burger «&nbsp;Le Poivré&nbsp;» avec prix, description et appels à l’action.</li>
+        <li><span>Carte / menu</span>Présentation structurée des burgers, snacks, frites, sauces et formats.</li>
+        <li><span>Commande en ligne</span>Lien vers le parcours de commande externe (Foodbooking).</li>
+        <li><span>Galerie</span>Galerie visuelle avec lightbox pour les photographies produit.</li>
+        <li><span>Localisation</span>Adresse, horaires du jour, carte et itinéraire.</li>
+        <li><span>Confiance</span>Sections maison / services / avis, FAQ et CTA final.</li>
+        <li><span>Technique</span>Site Next.js responsive, SEO (JSON-LD restaurant), analytics optionnels.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container grid-2" style="align-items:center">
+      <div class="reveal">
+        <div class="label">Aperçu mobile</div>
+        <h2>Pensé pour le <em>téléphone</em></h2>
+        <p>La majorité des clients cherchent une adresse ou commandent depuis un smartphone. Le parcours mobile reprend le hero, le menu et les CTA Commander / Voir le menu.</p>
+        <p style="margin-top:1.25rem"><a href="https://mr-gaston.vercel.app/" class="btn btn-gold" target="_blank" rel="noopener noreferrer">Ouvrir le site</a></p>
+        <p style="margin-top:.85rem;font-size:.82rem">Domaine client&nbsp;: <a href="https://mrgaston.be/" style="color:var(--or)" target="_blank" rel="noopener noreferrer">mrgaston.be</a> · Version Aurelis consultable&nbsp;: <a href="https://mr-gaston.vercel.app/" style="color:var(--or)" target="_blank" rel="noopener noreferrer">mr-gaston.vercel.app</a></p>
+      </div>
+      <div class="reveal" style="max-width:280px;margin-inline:auto;border:1px solid rgba(212,181,106,.25);border-radius:22px;overflow:hidden;box-shadow:0 30px 60px rgba(0,0,0,.45)">
+        <img src="/assets/portfolio/mr-gaston/capture-mobile.jpg" alt="Aperçu mobile Mr Gaston" width="780" height="1400" loading="lazy">
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-band">
+    <div class="container reveal">
+      <div class="label" style="justify-content:center;display:flex">Votre établissement</div>
+      <h2 style="margin-bottom:1rem">Envie d’un site aussi soigné pour <em>votre</em> restaurant&nbsp;?</h2>
+      <p style="max-width:42ch;margin:0 auto 1.75rem">Offres Aurelis dès 990&nbsp;€ HTVA. Décrivez votre projet — réponse humaine sous 24&nbsp;h.</p>
+      <a href="/#offres" class="btn btn-gold" data-lead-open="1">Créer mon site internet</a>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container" style="display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap">
+      <p><a href="/">← Retour à Aurelis</a></p>
+      <p>&copy; 2026 Aurelis · Réalisation Mr Gaston</p>
+    </div>
+  </footer>
+
+  <script src="/assets/config.js" defer></script>
+  <script src="/assets/offers-catalog.js" defer></script>
+  <script src="/assets/locale.js" defer></script>
+  <script src="/assets/analytics.js" defer></script>
+  <script src="/assets/consent.js" defer></script>
+  <script src="/assets/lead-funnel.js" defer></script>
+  <script>
+    document.getElementById('burger')?.addEventListener('click', function () {
+      document.getElementById('nav').classList.toggle('open');
+    });
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
+  </script>
+</body>
+</html>
