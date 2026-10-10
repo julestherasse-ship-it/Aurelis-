@@ -30,7 +30,7 @@
       close: "Fermer",
       eyebrow: "Démarrer un projet",
       title: "Parlez-nous de votre <em>ambition</em>",
-      lead: "Quelques précisions pour préparer un échange sérieux. Aucun devis définitif n’est envoyé automatiquement.",
+      lead: "Quelques précisions pour préparer un échange sérieux. Devis après validation humaine.",
       metaFallback: "Prix indicatif",
       name: "Nom",
       namePh: "Votre nom",
@@ -70,12 +70,21 @@
       errNetwork: "Connexion impossible. Vérifiez votre réseau puis réessayez.",
       errGeneric: "L’envoi a échoué. Réessayez dans un instant.",
       langLabel: "Langue",
+      auditEyebrow: "Audit gratuit",
+      auditTitle: "Analysons votre site <em>ensemble</em>",
+      auditLead:
+        "Indiquez l’URL de votre site et vos objectifs. Nous préparons un regard clair sur ce qui peut être amélioré — sans engagement.",
+      auditNeeds: "URL du site & points à analyser",
+      auditNeedsPh: "https://votre-site.be — ce que vous aimeriez améliorer…",
+      auditSubmit: "Demander mon audit gratuit",
+      auditSuccess: "Merci. Votre demande d’audit est enregistrée. Nous vous recontactons sous 24 heures.",
+      auditType: "Refonte de site",
     },
     en: {
       close: "Close",
       eyebrow: "Start a project",
       title: "Tell us about your <em>ambition</em>",
-      lead: "A few details to prepare a serious conversation. No final quote is sent automatically.",
+      lead: "A few details to prepare a serious conversation. Quotes follow human validation.",
       metaFallback: "Indicative price",
       name: "Name",
       namePh: "Your name",
@@ -115,8 +124,19 @@
       errNetwork: "Connection failed. Check your network and try again.",
       errGeneric: "Sending failed. Please try again shortly.",
       langLabel: "Language",
+      auditEyebrow: "Free audit",
+      auditTitle: "Let’s review your website <em>together</em>",
+      auditLead:
+        "Share your site URL and goals. We’ll prepare a clear view of what can be improved — no commitment.",
+      auditNeeds: "Website URL & focus areas",
+      auditNeedsPh: "https://your-site.com — what you’d like to improve…",
+      auditSubmit: "Request my free audit",
+      auditSuccess: "Thank you. Your audit request is recorded. We will contact you within 24 hours.",
+      auditType: "Website redesign",
     },
   };
+
+  var auditMode = false;
 
   var STORAGE_OFFER = "aurelis-offer";
   var STORAGE_PRICE = "aurelis-offer-price";
@@ -366,13 +386,31 @@
     }
   }
 
+  function applyAuditChrome(isAudit) {
+    var copy = t();
+    var eyebrow = document.querySelector("#leadModal .lead-modal__eyebrow");
+    var title = document.getElementById("leadModalTitle");
+    var lead = document.querySelector("#leadModal .lead-modal__lead");
+    var needsLabel = document.querySelector('label[for="leadNeeds"]');
+    var needs = document.getElementById("leadNeeds");
+    var submit = document.getElementById("leadSubmit");
+    if (eyebrow) eyebrow.textContent = isAudit ? copy.auditEyebrow : copy.eyebrow;
+    if (title) title.innerHTML = isAudit ? copy.auditTitle : copy.title;
+    if (lead) lead.textContent = isAudit ? copy.auditLead : copy.lead;
+    if (needsLabel) needsLabel.textContent = isAudit ? copy.auditNeeds : copy.needs;
+    if (needs) needs.placeholder = isAudit ? copy.auditNeedsPh : copy.needsPh;
+    if (submit) submit.textContent = isAudit ? copy.auditSubmit : copy.submit;
+  }
+
   function openModal(offer, price, opts) {
     opts = opts || {};
+    auditMode = !!opts.audit;
     formStarted = false;
     var modal = ensureModal();
     lastFocus = document.activeElement;
     if (offer) persistOffer(offer, price);
     setSummary(offer || null, price || (offer ? priceFor(offer) : ""));
+    applyAuditChrome(auditMode);
 
     var formView = document.getElementById("leadFormView");
     var success = document.getElementById("leadSuccess");
@@ -386,6 +424,20 @@
     if (form) {
       form.reset();
       setSummary(offer || null, price || (offer ? priceFor(offer) : ""));
+      applyAuditChrome(auditMode);
+      if (auditMode) {
+        var typeEl = form.elements.projectType;
+        var budgetEl = form.elements.budget;
+        var dateEl = form.elements.desiredDate;
+        var offerEl = form.elements.offer;
+        if (typeEl) typeEl.value = t().auditType;
+        if (budgetEl && !budgetEl.value) budgetEl.value = t().budgets[t().budgets.length - 1];
+        if (dateEl && !dateEl.value) dateEl.value = lang() === "en" ? "As soon as possible" : "Dès que possible";
+        if (offerEl && !offer) {
+          offerEl.value = "Aurelis Signature";
+          setSummary("Aurelis Signature", priceFor("Aurelis Signature"));
+        }
+      }
       form.addEventListener(
         "focusin",
         function onStart() {
@@ -393,6 +445,11 @@
           formStarted = true;
           if (window.AurelisAnalytics) {
             window.AurelisAnalytics.formStart(offer || (form.elements.offer && form.elements.offer.value) || "");
+            if (auditMode && window.AurelisAnalytics.track) {
+              window.AurelisAnalytics.track("contact_start", { intent: "audit" });
+            } else if (window.AurelisAnalytics.track) {
+              window.AurelisAnalytics.track("contact_start", { intent: "project" });
+            }
           }
         },
         { once: true },
@@ -409,13 +466,17 @@
     if (offer && window.AurelisAnalytics) {
       window.AurelisAnalytics.offerClick(offer);
     }
+    if (auditMode && window.AurelisAnalytics && window.AurelisAnalytics.track) {
+      window.AurelisAnalytics.track("hero_free_audit", { engagement_type: "audit" });
+    }
 
     modal.hidden = false;
     requestAnimationFrame(function () {
       modal.classList.add("is-open");
     });
     document.body.classList.add("lead-modal-open");
-    var first = document.getElementById(offer ? "leadName" : "leadOfferSelect");
+    var first = document.getElementById(offer || auditMode ? "leadName" : "leadOfferSelect");
+    if (auditMode) first = document.getElementById("leadNeeds") || first;
     if (first) setTimeout(function () { first.focus(); }, 50);
   }
 
@@ -476,13 +537,18 @@
     }
 
     var offer = String(form.elements.offer.value).trim();
+    var needsRaw = String(form.elements.needs.value).trim();
+    if (auditMode && needsRaw && needsRaw.indexOf("[Audit gratuit]") !== 0 && needsRaw.indexOf("[Free audit]") !== 0) {
+      needsRaw =
+        (lang() === "en" ? "[Free audit] " : "[Audit gratuit] ") + needsRaw;
+    }
     var payload = {
       contactName: String(form.elements.contactName.value).trim(),
       company: String(form.elements.company.value).trim(),
       email: String(form.elements.email.value).trim().toLowerCase(),
       country: String(form.elements.country.value).trim(),
       projectType: String(form.elements.projectType.value).trim(),
-      needs: String(form.elements.needs.value).trim(),
+      needs: needsRaw,
       budget: String(form.elements.budget.value).trim(),
       desiredDate: String(form.elements.desiredDate.value).trim(),
       offer: offer,
@@ -490,7 +556,7 @@
       language: String(form.elements.language.value).trim() || detectLanguage(),
       consent: true,
       companyWebsiteConfirm: String(form.elements.companyWebsiteConfirm.value || ""),
-      idempotencyKey: getIdempotencyKey(form.elements.email.value, offer),
+      idempotencyKey: getIdempotencyKey(form.elements.email.value, offer + (auditMode ? ":audit" : "")),
     };
 
     submitting = true;
@@ -538,7 +604,12 @@
       if (formView) formView.style.display = "none";
       if (msg) {
         msg.textContent =
-          data.message || (data.duplicate ? copy.successDup : copy.successDefault);
+          data.message ||
+          (data.duplicate
+            ? copy.successDup
+            : auditMode
+              ? copy.auditSuccess
+              : copy.successDefault);
       }
       if (success) {
         success.hidden = false;
@@ -550,7 +621,14 @@
           id: data.id,
           duplicate: data.duplicate,
           qualified: !!(data.opportunityId || data.accepted),
+          intent: auditMode ? "audit" : "project",
         });
+        if (window.AurelisAnalytics.track) {
+          window.AurelisAnalytics.track(auditMode ? "audit_submit" : "lead_submit", {
+            offer_name: offer || "",
+            lead_id: data.id || "",
+          });
+        }
       }
       try {
         sessionStorage.removeItem(STORAGE_OFFER);
@@ -564,7 +642,7 @@
       submitting = false;
       if (btn) {
         btn.disabled = false;
-        btn.textContent = copy.submit;
+        btn.textContent = auditMode ? copy.auditSubmit : copy.submit;
       }
     }
   }
@@ -587,11 +665,12 @@
 
   function onCtaClick(e) {
     var target = e.target.closest(
-      ".pricing-cta, #selectionCta, #finalCta, [data-lead-open], [data-appointment]",
+      ".pricing-cta, #selectionCta, #finalCta, [data-lead-open], [data-appointment], [data-audit-open]",
     );
     if (!target) return;
+    var isAudit = target.hasAttribute("data-audit-open");
     var info = offerFromElement(target);
-    if (!info) {
+    if (!info && !isAudit) {
       var stored = readStoredOffer();
       if (stored.offer) info = stored;
     }
@@ -601,6 +680,7 @@
     }
     openModal(info && info.offer ? info.offer : null, info && info.price ? info.price : "", {
       appointment: target.hasAttribute("data-appointment") || target.id === "finalCta",
+      audit: isAudit,
     });
   }
 

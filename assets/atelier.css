@@ -467,6 +467,74 @@ body.atelier .pricing-card--featured {
   border-color: rgba(212, 181, 106, 0.38);
 }
 
+/* Audit band + dual conversion CTAs */
+body.atelier .audit-band {
+  padding: clamp(3.5rem, 7vw, 5.5rem) 0;
+  background:
+    radial-gradient(ellipse 50% 60% at 85% 40%, rgba(212, 181, 106, 0.08), transparent 60%),
+    var(--ink-soft);
+  border-top: 1px solid rgba(212, 181, 106, 0.1);
+  border-bottom: 1px solid rgba(212, 181, 106, 0.1);
+}
+
+body.atelier .audit-band__inner {
+  display: grid;
+  gap: 2rem;
+  align-items: end;
+}
+
+@media (min-width: 900px) {
+  body.atelier .audit-band__inner {
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 3rem;
+  }
+}
+
+body.atelier .audit-band__actions,
+body.atelier .dual-cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+  align-items: center;
+}
+
+body.atelier .dual-cta {
+  justify-content: center;
+}
+
+body.atelier .dual-cta--stack {
+  flex-direction: column;
+  align-items: stretch;
+}
+
+body.atelier .dual-cta--stack .btn {
+  justify-content: center;
+  text-align: center;
+}
+
+body.atelier .cta-final-band {
+  padding: clamp(3.5rem, 7vw, 5.5rem) 0;
+  background: var(--ink);
+}
+
+@media (max-width: 640px) {
+  body.atelier .audit-band__actions,
+  body.atelier .dual-cta {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  body.atelier .audit-band__actions .btn,
+  body.atelier .dual-cta .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  body.atelier .nav {
+    gap: 0.85rem;
+  }
+}
+
 /* Mobile portfolio */
 @media (max-width: 900px) {
   body.atelier .hero-shell {

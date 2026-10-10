@@ -116,10 +116,28 @@
       track("offer_click", { offer_name: offer || "", engagement_type: "offer" });
     },
     ctaClick: function (ctaId) {
-      track("cta_click", { cta_id: ctaId || "", engagement_type: "cta" });
+      var id = ctaId || "cta";
+      track("cta_click", { cta_id: id, engagement_type: "cta" });
+      // Alias événements conversion (même pipeline, pas de double système)
+      if (id === "hero_creer_mon_site" || id === "hero_create_site" || id === "nav_creer_mon_site") {
+        track("hero_create_site", { cta_id: id });
+      }
+      if (id.indexOf("audit") !== -1 || id === "hero_free_audit") {
+        track("hero_free_audit", { cta_id: id });
+      }
+      if (id.indexOf("folio_") === 0 || id.indexOf("portfolio_") === 0) {
+        track("portfolio_click", { cta_id: id });
+      }
+      if (id.indexOf("offer_") === 0) {
+        track("offer_click", { offer_name: id.replace(/^offer_/, ""), engagement_type: "offer" });
+      }
+      if (id.indexOf("contact_") === 0) {
+        track("contact_start", { cta_id: id });
+      }
     },
     formStart: function (offer) {
       track("generate_lead_start", { offer_name: offer || "" });
+      track("contact_start", { offer_name: offer || "" });
     },
     formSuccess: function (data) {
       data = data || {};
@@ -128,6 +146,11 @@
         lead_id: data.id || "",
         duplicate: !!data.duplicate,
         currency: "EUR",
+        intent: data.intent || "project",
+      });
+      track(data.intent === "audit" ? "audit_submit" : "lead_submit", {
+        offer_name: data.offer || "",
+        lead_id: data.id || "",
       });
       if (data.qualified) {
         track("qualified_lead", { lead_id: data.id || "", offer_name: data.offer || "" });
