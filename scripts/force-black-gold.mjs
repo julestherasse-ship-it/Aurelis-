@@ -21,15 +21,15 @@ const TOKENS = `/**
   --aurelis-black-soft: #0b0b0b;
   --aurelis-surface: #111111;
   --aurelis-surface-elevated: #161616;
-  --aurelis-gold: #c9a96e;
-  --aurelis-gold-light: #dfc78f;
+  --aurelis-gold: #D4AF37;
+  --aurelis-gold-light: #E8C76A;
   --aurelis-gold-dark: #8f7040;
   --aurelis-ivory: #f5f2ea;
   --aurelis-muted: #a7a29a;
-  --aurelis-gold-line: rgba(201, 169, 110, 0.18);
-  --aurelis-gold-line-strong: rgba(201, 169, 110, 0.32);
-  --aurelis-gold-glow: rgba(201, 169, 110, 0.12);
-  --aurelis-gold-metal: linear-gradient(115deg, #8f7040 0%, #c9a96e 28%, #e2c990 48%, #c9a96e 68%, #a3844f 100%);
+  --aurelis-gold-line: rgba(212, 175, 55, 0.18);
+  --aurelis-gold-line-strong: rgba(212, 175, 55, 0.32);
+  --aurelis-gold-glow: rgba(212, 175, 55, 0.12);
+  --aurelis-gold-metal: linear-gradient(115deg, #8f7040 0%, #D4AF37 28%, #e2c990 48%, #D4AF37 68%, #a3844f 100%);
   --aurelis-ease: cubic-bezier(0.22, 1, 0.36, 1);
   --aurelis-ease-soft: cubic-bezier(0.33, 1, 0.68, 1);
   --aurelis-duration: 0.35s;
@@ -47,9 +47,9 @@ const TOKENS = `/**
   --noir-elevated: #161616;
   --blanc-casse: #f5f2ea;
   --blanc-muted: #ebe6dc;
-  --or: #c9a96e;
-  --or-light: #dfc78f;
-  --or-dim: rgba(201, 169, 110, 0.12);
+  --or: #D4AF37;
+  --or-light: #E8C76A;
+  --or-dim: rgba(212, 175, 55, 0.12);
   --text-muted: #a7a29a;
   --font-display: var(--aurelis-font-display);
   --font-body: var(--aurelis-font-body);
@@ -62,9 +62,9 @@ const TOKENS = `/**
   --ink-elevated: #161616;
   --ink-muted: #a7a29a;
   --paper: #f5f2ea;
-  --gold: #c9a96e;
-  --gold-soft: #dfc78f;
-  --gold-line: rgba(201, 169, 110, 0.18);
+  --gold: #D4AF37;
+  --gold-soft: #E8C76A;
+  --gold-line: rgba(212, 175, 55, 0.18);
   --ease-out: var(--aurelis-ease);
   --ease-soft: var(--aurelis-ease-soft);
 }
@@ -82,7 +82,7 @@ body.atelier .header,
 .header:not(.is-dark),
 .header.is-dark {
   background: rgba(6, 6, 6, 0.88) !important;
-  border-bottom: 1px solid rgba(201, 169, 110, 0.18) !important;
+  border-bottom: 1px solid rgba(212, 175, 55, 0.18) !important;
   color: #f5f2ea !important;
 }
 body.atelier .header .logo,
@@ -97,17 +97,17 @@ body.atelier .header .logo,
 }
 body.atelier .header .logo span,
 .header .logo span {
-  color: #c9a96e !important;
+  color: #D4AF37 !important;
   background: none !important;
-  -webkit-text-fill-color: #c9a96e !important;
+  -webkit-text-fill-color: #D4AF37 !important;
 }
 body.atelier .header .nav a:hover,
 .header .nav a:hover {
-  color: #dfc78f !important;
+  color: #E8C76A !important;
 }
 body.atelier .header .nav-cta,
 .header .nav-cta {
-  background: #c9a96e !important;
+  background: #D4AF37 !important;
   color: #0a0908 !important;
   border: 1px solid rgba(223, 199, 143, 0.35) !important;
 }
@@ -126,9 +126,9 @@ body.atelier .hero h1,
 }
 body.atelier .hero h1 em,
 .hero h1 em {
-  color: #dfc78f !important;
+  color: #E8C76A !important;
   background: none !important;
-  -webkit-text-fill-color: #dfc78f !important;
+  -webkit-text-fill-color: #E8C76A !important;
 }
 body.atelier .hero-sub,
 .hero-sub {
@@ -137,7 +137,7 @@ body.atelier .hero-sub,
 body.atelier .hero-media,
 .hero-media {
   background:
-    radial-gradient(ellipse 55% 45% at 78% 35%, rgba(201,169,110,0.1), transparent 58%),
+    radial-gradient(ellipse 55% 45% at 78% 35%, rgba(212, 175, 55,0.1), transparent 58%),
     linear-gradient(165deg, #0a0a0a 0%, #060606 48%, #0e0e0e 100%) !important;
 }
 body.atelier .section-light,
@@ -166,19 +166,19 @@ body.atelier .section-ink,
 body.atelier .btn-gold,
 .btn-gold,
 .nav-cta {
-  background: #c9a96e !important;
+  background: #D4AF37 !important;
   color: #0a0908 !important;
 }
 body.atelier .btn-ghost,
 .btn-ghost {
   background: transparent !important;
-  border: 1px solid rgba(201,169,110,0.35) !important;
+  border: 1px solid rgba(212, 175, 55,0.35) !important;
   color: #f5f2ea !important;
 }
 body.atelier .footer,
 .footer {
   background: #060606 !important;
-  border-top: 1px solid rgba(201,169,110,0.18) !important;
+  border-top: 1px solid rgba(212, 175, 55,0.18) !important;
   color: #a7a29a !important;
 }
 `;

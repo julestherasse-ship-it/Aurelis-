@@ -143,6 +143,38 @@
     en: "Prices exclude VAT. Hosting, domains, maintenance and third-party services are billed separately as quoted.",
   };
 
+  var DEPOSIT = {
+    depositPercent: 50,
+    balancePercent: 50,
+    label: {
+      fr: "50 % à l’acceptation du devis · 50 % avant la livraison finale",
+      en: "50% on quote acceptance · 50% before final delivery",
+    },
+  };
+
+  var EXTRAS = [
+    {
+      id: "hosting",
+      fr: "Hébergement — facturé séparément selon devis",
+      en: "Hosting — billed separately as quoted",
+    },
+    {
+      id: "domain",
+      fr: "Nom de domaine — enregistrement / renouvellement au devis",
+      en: "Domain — registration / renewal as quoted",
+    },
+    {
+      id: "maintenance",
+      fr: "Maintenance — forfait optionnel après livraison",
+      en: "Maintenance — optional post-delivery plan",
+    },
+    {
+      id: "third_party",
+      fr: "Services tiers (outils, API, publicité) — hors catalogue",
+      en: "Third-party services (tools, APIs, ads) — outside catalogue",
+    },
+  ];
+
   var byName = {};
   OFFERS.forEach(function (o) {
     byName[o.name] = o;
@@ -152,6 +184,8 @@
     list: OFFERS,
     byName: byName,
     note: NOTE,
+    deposit: DEPOSIT,
+    extras: EXTRAS,
     priceFor: function (name, lang) {
       var row = byName[name];
       if (!row) return "";

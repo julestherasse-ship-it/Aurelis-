@@ -12,15 +12,15 @@
   --aurelis-black-soft: #0b0b0b;
   --aurelis-surface: #111111;
   --aurelis-surface-elevated: #161616;
-  --aurelis-gold: #c9a96e;
-  --aurelis-gold-light: #dfc78f;
+  --aurelis-gold: #D4AF37;
+  --aurelis-gold-light: #E8C76A;
   --aurelis-gold-dark: #8f7040;
   --aurelis-ivory: #f5f2ea;
   --aurelis-muted: #a7a29a;
-  --aurelis-gold-line: rgba(201, 169, 110, 0.18);
-  --aurelis-gold-line-strong: rgba(201, 169, 110, 0.32);
-  --aurelis-gold-glow: rgba(201, 169, 110, 0.12);
-  --aurelis-gold-metal: linear-gradient(115deg, #8f7040 0%, #c9a96e 28%, #e2c990 48%, #c9a96e 68%, #a3844f 100%);
+  --aurelis-gold-line: rgba(212, 175, 55, 0.18);
+  --aurelis-gold-line-strong: rgba(212, 175, 55, 0.32);
+  --aurelis-gold-glow: rgba(212, 175, 55, 0.12);
+  --aurelis-gold-metal: linear-gradient(115deg, #8f7040 0%, #D4AF37 28%, #e2c990 48%, #D4AF37 68%, #a3844f 100%);
   --aurelis-ease: cubic-bezier(0.22, 1, 0.36, 1);
   --aurelis-ease-soft: cubic-bezier(0.33, 1, 0.68, 1);
   --aurelis-duration: 0.35s;
@@ -38,9 +38,9 @@
   --noir-elevated: #161616;
   --blanc-casse: #f5f2ea;
   --blanc-muted: #ebe6dc;
-  --or: #c9a96e;
-  --or-light: #dfc78f;
-  --or-dim: rgba(201, 169, 110, 0.12);
+  --or: #D4AF37;
+  --or-light: #E8C76A;
+  --or-dim: rgba(212, 175, 55, 0.12);
   --text-muted: #a7a29a;
   --font-display: var(--aurelis-font-display);
   --font-body: var(--aurelis-font-body);
@@ -53,9 +53,9 @@
   --ink-elevated: #161616;
   --ink-muted: #a7a29a;
   --paper: #f5f2ea;
-  --gold: #c9a96e;
-  --gold-soft: #dfc78f;
-  --gold-line: rgba(201, 169, 110, 0.18);
+  --gold: #D4AF37;
+  --gold-soft: #E8C76A;
+  --gold-line: rgba(212, 175, 55, 0.18);
   --ease-out: var(--aurelis-ease);
   --ease-soft: var(--aurelis-ease-soft);
 }
@@ -197,7 +197,7 @@ body.atelier .btn-gold::after {
 body.atelier .btn-gold:hover {
   transform: translateY(-2px);
   filter: brightness(1.05);
-  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.42), 0 0 0 1px rgba(201, 169, 110, 0.2);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.42), 0 0 0 1px rgba(212, 175, 55, 0.2);
   background: var(--aurelis-gold-metal) !important;
 }
 
@@ -214,7 +214,7 @@ body.atelier .btn-ghost {
 body.atelier .btn-ghost:hover {
   border-color: var(--aurelis-gold) !important;
   color: var(--aurelis-gold-light) !important;
-  background: rgba(201, 169, 110, 0.05) !important;
+  background: rgba(212, 175, 55, 0.05) !important;
   transform: translateY(-1px);
 }
 
@@ -268,7 +268,7 @@ body.atelier .hero {
 
 body.atelier .hero-media {
   background:
-    radial-gradient(ellipse 55% 45% at 78% 35%, rgba(201, 169, 110, 0.09), transparent 58%),
+    radial-gradient(ellipse 55% 45% at 78% 35%, rgba(212, 175, 55, 0.09), transparent 58%),
     radial-gradient(ellipse 40% 35% at 8% 80%, rgba(20, 20, 20, 0.95), transparent 55%),
     linear-gradient(165deg, #0a0a0a 0%, var(--aurelis-black) 48%, #0e0e0e 100%) !important;
 }
@@ -389,7 +389,7 @@ body.atelier .section-light,
 body.atelier .folio,
 body.atelier .offers-atelier {
   background:
-    radial-gradient(ellipse 50% 40% at 50% 0%, rgba(201, 169, 110, 0.04), transparent 55%),
+    radial-gradient(ellipse 50% 40% at 50% 0%, rgba(212, 175, 55, 0.04), transparent 55%),
     var(--aurelis-surface) !important;
 }
 
@@ -596,9 +596,9 @@ body.atelier .pricing-card:hover {
 body.atelier .pricing-card--featured {
   border-color: var(--aurelis-gold-line-strong) !important;
   background:
-    radial-gradient(ellipse 80% 50% at 50% 0%, rgba(201, 169, 110, 0.1), transparent 55%),
+    radial-gradient(ellipse 80% 50% at 50% 0%, rgba(212, 175, 55, 0.1), transparent 55%),
     var(--aurelis-card-elevated) !important;
-  box-shadow: 0 24px 55px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(201, 169, 110, 0.12);
+  box-shadow: 0 24px 55px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(212, 175, 55, 0.12);
 }
 
 body.atelier .pricing-price,
@@ -615,7 +615,7 @@ body.atelier .audience {
 body.atelier .audit-band {
   padding: clamp(4rem, 8vw, 6rem) 0;
   background:
-    radial-gradient(ellipse 45% 55% at 88% 40%, rgba(201, 169, 110, 0.08), transparent 60%),
+    radial-gradient(ellipse 45% 55% at 88% 40%, rgba(212, 175, 55, 0.08), transparent 60%),
     var(--aurelis-surface-2);
   border-top: 1px solid var(--aurelis-gold-line);
   border-bottom: 1px solid var(--aurelis-gold-line);
@@ -658,7 +658,7 @@ body.atelier .dual-cta--stack .btn {
 body.atelier .cta-final-band {
   padding: clamp(4rem, 8vw, 6.5rem) 0;
   background:
-    radial-gradient(ellipse 40% 50% at 50% 0%, rgba(201, 169, 110, 0.06), transparent 55%),
+    radial-gradient(ellipse 40% 50% at 50% 0%, rgba(212, 175, 55, 0.06), transparent 55%),
     var(--aurelis-black);
 }
 
@@ -735,7 +735,7 @@ body.atelier .compare-mobile-card {
 
 body.atelier .compare-mobile-card.is-featured,
 body.atelier .compare-table .col-featured {
-  background: rgba(201, 169, 110, 0.06) !important;
+  background: rgba(212, 175, 55, 0.06) !important;
   border-color: var(--aurelis-gold-line-strong) !important;
 }
 
