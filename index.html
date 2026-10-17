@@ -25,6 +25,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/assets/lead-funnel.css?v=bg20261010c">
+  <link rel="stylesheet" href="/assets/conversion.css?v=cv20261017a">
   <link rel="stylesheet" href="/assets/aurelis-tokens.css?v=bg20261010c">
   <link rel="stylesheet" href="/assets/site-ui.css?v=bg20261010c">
   <link rel="stylesheet" href="/assets/atelier.css?v=bg20261010c">
@@ -2538,20 +2539,25 @@ body.atelier .footer,
     <div class="hero-grain" aria-hidden="true"></div>
     <div class="hero-shell">
       <div class="hero-copy">
-        <p class="hero-eyebrow">Agence web · Mons, Belgique</p>
-        <h1>Votre site internet mérite <em>l’exceptionnel.</em></h1>
-        <p class="hero-sub">Nous créons des sites web professionnels et haut de gamme pour les entreprises ambitieuses.</p>
+        <p class="hero-eyebrow">Agence de création de sites internet premium</p>
+        <h1>Votre entreprise mérite un site internet <em>exceptionnel.</em></h1>
+        <p class="hero-sub">Nous concevons des sites internet modernes, rapides et sur mesure pour valoriser votre entreprise et transformer vos visiteurs en clients.</p>
         <div class="hero-price" role="status">
           <strong>Votre site professionnel dès <span>990&nbsp;€ HTVA</span></strong>
-          <span>Offres transparentes · Acompte 50&nbsp;% à l’acceptation du devis</span>
+          <span>Offres transparentes · Devis après échange humain</span>
         </div>
         <div class="hero-actions">
           <a href="#offres" class="btn btn-gold btn-cta-xl" data-lead-open="1" data-track-cta="hero_creer_mon_site">
             Créer mon site
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </a>
-          <a href="#realisations" class="btn btn-ghost" data-track-cta="hero_realisations">Découvrir nos réalisations</a>
+          <a href="#realisations" class="btn btn-ghost" data-track-cta="hero_realisations">Voir nos réalisations</a>
         </div>
+        <ul class="hero-trust" aria-label="Engagements Aurelis">
+          <li>Devis personnalisé</li>
+          <li>Accompagnement humain</li>
+          <li>Site adapté aux mobiles</li>
+        </ul>
       </div>
       <div class="hero-devices" aria-hidden="true">
         <p class="device-caption">Interfaces Aurelis</p>
@@ -2573,8 +2579,8 @@ body.atelier .footer,
   <section class="folio section-light" id="realisations" aria-labelledby="folio-title">
     <div class="folio-head reveal">
       <div class="label">Nos réalisations</div>
-      <h2 class="title" id="folio-title">Projets <em>réalisés.</em></h2>
-      <p class="desc">Découvrez nos dernières réalisations — grands formats, interfaces réelles, sites consultables en ligne.</p>
+      <h2 class="title" id="folio-title">Imaginez ce que nous pourrions créer pour <em>votre entreprise.</em></h2>
+      <p class="desc">Des sites réellement livrés — preuves concrètes de qualité, pas des maquettes fictives.</p>
     </div>
 
     <div class="folio-stage">
@@ -2629,6 +2635,10 @@ body.atelier .footer,
         </div>
       </a>
     </div>
+    <div class="folio-proof-cta reveal">
+      <a href="#offres" class="btn btn-gold btn-cta-xl" data-lead-open="1" data-track-cta="folio_want_quality">Je veux un site de cette qualité</a>
+      <a href="#assistant" class="btn btn-ghost" data-track-cta="folio_help_choose">Aidez-moi à choisir</a>
+    </div>
   </section>
 
 
@@ -2642,6 +2652,36 @@ body.atelier .footer,
       <div class="audit-band__actions">
         <a href="#audit" class="btn btn-gold btn-cta-xl" data-audit-open="1" data-track-cta="mid_audit_gratuit">Analyser mon site gratuitement</a>
         <a href="#offres" class="btn btn-ghost" data-lead-open="1" data-track-cta="mid_creer_mon_site">Pas encore de site&nbsp;? Créer le mien</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-ink" id="benefices" aria-labelledby="benefices-title">
+    <div class="container">
+      <div class="section-head reveal">
+        <div class="label label-center">Bénéfices</div>
+        <h2 class="title" id="benefices-title">Ce qu’un site Aurelis apporte à <em>votre entreprise</em></h2>
+        <p class="desc desc-center">Nous ne vendons pas des fonctionnalités techniques. Nous résolvons des problèmes concrets.</p>
+      </div>
+      <div class="benefit-grid">
+        <article class="benefit-card reveal">
+          <p class="benefit-problem">Problème</p>
+          <h3>Votre site ne reflète pas la qualité de votre travail.</h3>
+          <p>Solution : une présence digitale professionnelle, adaptée à votre identité, pour inspirer confiance dès les premières secondes.</p>
+          <a href="#realisations" data-track-cta="benefit_proof">Voir nos réalisations</a>
+        </article>
+        <article class="benefit-card reveal d1">
+          <p class="benefit-problem">Problème</p>
+          <h3>Vos clients peinent à trouver l’essentiel sur mobile.</h3>
+          <p>Solution : une navigation claire, des informations importantes visibles, et un contact facilité sur téléphone comme sur ordinateur.</p>
+          <a href="#offres" data-track-cta="benefit_offers">Comparer les offres</a>
+        </article>
+        <article class="benefit-card reveal d2">
+          <p class="benefit-problem">Problème</p>
+          <h3>Vous ne savez pas par où commencer.</h3>
+          <p>Solution : un parcours simple — choisir une offre, décrire votre besoin, recevoir un devis après échange humain.</p>
+          <a href="#assistant" data-track-cta="benefit_assistant">Aidez-moi à choisir</a>
+        </article>
       </div>
     </div>
   </section>
@@ -2691,8 +2731,8 @@ body.atelier .footer,
   <section class="offers-atelier section-light" id="offres">
     <div class="section-head reveal">
         <div class="label">Nos offres</div>
-        <h2 class="title">Le site internet qu'il vous <em>faut</em>.</h2>
-        <p class="desc">Du site vitrine professionnel à l'expérience digitale entièrement sur mesure — comparez, choisissez, démarrez.</p>
+        <h2 class="title">Quatre offres claires, un seul objectif : <em>votre site</em>.</h2>
+        <p class="desc">Prix HTVA affichés. Choisissez selon votre besoin — ou laissez l’assistant vous guider.</p>
       </div>
     <div class="container" style="width:min(1280px,92%);max-width:none;padding:0;">
 
@@ -2701,15 +2741,16 @@ body.atelier .footer,
           <div class="pricing-tier">01</div>
           <h3 class="pricing-name">Aurelis Essential</h3>
           <div class="pricing-price">990 €<span>HTVA</span></div>
-          <span class="audience">Indépendants &amp; petites entreprises</span>
-          <p class="pricing-tagline">Une présence nette et crédible en une page.</p>
+          <p class="pricing-position">L’essentiel pour une présence professionnelle.</p>
+          <span class="audience">Indépendants et petites entreprises</span>
+          <p class="pricing-benefit">Un site vitrine clair et professionnel, sans investissement disproportionné.</p>
           <ul class="pricing-features">
-            <li>Site vitrine d'une page</li>
+            <li>Site vitrine d’une page</li>
             <li>Design professionnel</li>
-            <li>Adaptation ordinateur, tablette et mobile</li>
+            <li>Responsive mobile</li>
             <li>Formulaire de contact</li>
             <li>SEO de base</li>
-            <li>Réseaux sociaux</li>
+            <li>Intégration des réseaux sociaux</li>
             <li>Une série de corrections</li>
           </ul>
           <a href="#" class="btn btn-ghost pricing-cta" data-offer="Aurelis Essential" data-price="990 € HTVA" data-lead-open="1" data-track-cta="offer_essential">Choisir cette offre</a>
@@ -2719,35 +2760,37 @@ body.atelier .footer,
           <div class="pricing-tier">02</div>
           <h3 class="pricing-name">Aurelis Signature</h3>
           <div class="pricing-price">2 490 €<span>HTVA</span></div>
-          <span class="audience">Entreprises en croissance</span>
-          <p class="pricing-tagline">Une image plus complète, jusqu’à 5 pages.</p>
+          <p class="pricing-position">Donnez une nouvelle dimension à votre entreprise.</p>
+          <span class="audience">Entreprises souhaitant une présence plus complète</span>
+          <p class="pricing-benefit">Valoriser plusieurs services et construire une identité digitale plus forte.</p>
           <ul class="pricing-features">
-            <li>Jusqu'à 5 pages</li>
+            <li>Jusqu’à 5 pages</li>
             <li>Design personnalisé</li>
             <li>Animations élégantes</li>
             <li>SEO initial</li>
             <li>Formulaires personnalisés</li>
-            <li>Outils d'analyse</li>
+            <li>Outils d’analyse</li>
             <li>Deux séries de corrections</li>
           </ul>
           <a href="#" class="btn btn-ghost pricing-cta" data-offer="Aurelis Signature" data-price="2 490 € HTVA" data-lead-open="1" data-track-cta="offer_signature">Choisir cette offre</a>
         </article>
 
         <article class="pricing-card pricing-card--featured reveal d3">
-          <div class="pricing-ribbon">Notre sélection</div>
+          <div class="pricing-ribbon">Notre sélection premium</div>
           <div class="pricing-tier">03</div>
           <h3 class="pricing-name">Aurelis Prestige</h3>
           <div class="pricing-price">4 490 €<span>HTVA</span></div>
-          <span class="audience">Marques &amp; entreprises premium</span>
-          <p class="pricing-tagline">Expérience haut de gamme, jusqu’à 10 pages.</p>
+          <p class="pricing-position">Une expérience digitale à la hauteur de votre ambition.</p>
+          <span class="audience">Marques et entreprises qui veulent se différencier</span>
+          <p class="pricing-benefit">Une expérience plus immersive, pensée pour inspirer confiance et conversion.</p>
           <ul class="pricing-features">
-            <li>Jusqu'à 10 pages</li>
+            <li>Jusqu’à 10 pages</li>
             <li>Design haut de gamme</li>
             <li>Animations avancées</li>
-            <li>Expériences interactives</li>
+            <li>Interactions personnalisées</li>
             <li>SEO technique approfondi</li>
             <li>Optimisation des conversions</li>
-            <li>Intégrations métier définies au devis</li>
+            <li>Intégrations définies au devis</li>
             <li>Trois séries de corrections</li>
           </ul>
           <a href="#" class="btn btn-gold pricing-cta" data-offer="Aurelis Prestige" data-price="4 490 € HTVA" data-lead-open="1" data-track-cta="offer_prestige">Choisir cette offre</a>
@@ -2758,22 +2801,30 @@ body.atelier .footer,
           <h3 class="pricing-name">Aurelis Elite</h3>
           <div class="pricing-price-prefix">À partir de</div>
           <div class="pricing-price">7 490 €<span>HTVA</span></div>
-          <span class="audience">E-commerce &amp; projets sur mesure</span>
-          <p class="pricing-tagline">Architecture complexe, plateforme ou boutique.</p>
+          <p class="pricing-position">Votre projet, sans les limites d’une solution standard.</p>
+          <span class="audience">Entreprises aux besoins complexes</span>
+          <p class="pricing-benefit">Une solution sur mesure adaptée aux objectifs réels du projet. Devis avant tout engagement.</p>
           <ul class="pricing-features">
-            <li>Développement sur mesure</li>
+            <li>Architecture sur mesure</li>
             <li>E-commerce ou plateforme web</li>
-            <li>Espace administrateur selon les besoins</li>
-            <li>Paiements sécurisés si nécessaires</li>
+            <li>Fonctionnalités avancées</li>
             <li>Intégrations IA</li>
             <li>Automatisations</li>
+            <li>Espace administrateur selon les besoins</li>
             <li>Accompagnement personnalisé</li>
           </ul>
           <a href="#" class="btn btn-ghost pricing-cta" data-offer="Aurelis Elite" data-price="À partir de 7 490 € HTVA" data-lead-open="1" data-track-cta="offer_elite">Choisir cette offre</a>
         </article>
       </div>
 
-      <p class="pricing-note reveal">Tarifs hors TVA. Hébergement, domaines, maintenance et services tiers facturés séparément selon devis. Vous démarrez par une demande de projet — devis après échange humain.</p>
+      <p class="pricing-note reveal">Tarifs hors TVA. Hébergement, domaines, maintenance et services tiers facturés séparément selon devis. Acompte proposé : 50&nbsp;% à l’acceptation du devis, 50&nbsp;% avant livraison. Vous démarrez par une demande — devis après échange humain.</p>
+
+      <div class="offers-help reveal">
+        <h3>Vous ne savez pas quelle offre choisir&nbsp;?</h3>
+        <p>Répondez à quelques questions — nous recommandons une formule adaptée, sans pousser vers la plus chère.</p>
+        <a href="#assistant" class="btn btn-gold" data-track-cta="help_choose">Aidez-moi à choisir</a>
+        <a href="#comparateur" class="btn btn-ghost" style="margin-left:.5rem" data-track-cta="help_compare">Comparer les offres</a>
+      </div>
 
       <div class="comparator" id="comparateur" style="margin-top:4.5rem;">
         <div class="section-head reveal">
@@ -2897,6 +2948,17 @@ body.atelier .footer,
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </a>
       </div>
+    </div>
+  </section>
+
+  <section class="section section-ink" id="assistant" aria-labelledby="assistant-title">
+    <div class="container">
+      <div class="section-head reveal">
+        <div class="label label-center">Assistant</div>
+        <h2 class="title" id="assistant-title">Quel site internet est fait pour <em>votre entreprise</em>&nbsp;?</h2>
+        <p class="desc desc-center">Répondez à quelques questions et découvrez la solution adaptée à votre projet.</p>
+      </div>
+      <div class="oa-shell reveal" id="offerAssistant"></div>
     </div>
   </section>
 
@@ -3027,7 +3089,35 @@ body.atelier .footer,
         </div>
         <div class="faq-item">
           <button class="faq-q" aria-expanded="false">Le site est-il adapté aux téléphones ?<span class="faq-icon">+</span></button>
-          <div class="faq-a"><p>C'est une priorité absolue. Chaque site Aurelis est conçu mobile-first : navigation fluide et boutons d'action accessibles sur tous les appareils.</p></div>
+          <div class="faq-a"><p>Oui. Chaque site Aurelis est pensé pour mobile et ordinateur : lecture claire, boutons accessibles, parcours de contact simplifié.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">Et si je n’aime pas le résultat ?<span class="faq-icon">+</span></button>
+          <div class="faq-a"><p>Des séries de corrections sont incluses selon l’offre (1, 2 ou 3). Vous validez les étapes clés avant la mise en ligne. Nous travaillons avec vos retours — sans promesse magique du « premier coup parfait ».</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">Le prix peut-il augmenter en cours de route ?<span class="faq-icon">+</span></button>
+          <div class="faq-a"><p>Le devis fixe le périmètre. Toute demande hors périmètre est chiffrée avant réalisation. Hébergement, domaine, maintenance et services tiers restent séparés et annoncés clairement.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">Comment se déroule le paiement ?<span class="faq-icon">+</span></button>
+          <div class="faq-a"><p>Proposition : 50&nbsp;% à l’acceptation du devis, 50&nbsp;% avant livraison. Aucun paiement réel tant que Stripe et le mode commercial ne sont pas activés. Elite / sur mesure : jamais d’encaissement auto avant validation du périmètre.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">Qui s’occupe de l’hébergement et du domaine ?<span class="faq-icon">+</span></button>
+          <div class="faq-a"><p>Facturés séparément selon devis. Nous pouvons vous accompagner pour les mettre en place, sans les cacher dans le prix catalogue.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">Reste-je propriétaire de mon site ?<span class="faq-icon">+</span></button>
+          <div class="faq-a"><p>Oui : après paiement intégral des prestations convenues, vous restez propriétaire de votre site et de ses contenus. Les licences d’outils tiers restent soumises à leurs conditions.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">Puis-je travailler avec Aurelis depuis l’étranger ?<span class="faq-icon">+</span></button>
+          <div class="faq-a"><p>Oui. Belgique et international. Le régime de TVA applicable dépend de votre situation et sera précisé sur le devis.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">Dois-je tout gérer moi-même ?<span class="faq-icon">+</span></button>
+          <div class="faq-a"><p>Non. Un interlocuteur humain vous accompagne. Votre rôle : activité, contenus, validations. Notre rôle : conception, développement et mise en ligne selon le devis.</p></div>
         </div>
       </div>
     </div>
@@ -3539,10 +3629,21 @@ body.atelier .footer,
     })();
   </script>
   <script src="/assets/config.js" defer></script>
-  <script src="/assets/offers-catalog.js" defer></script>
+  <script src="/assets/offers-catalog.js?v=cv20261017a" defer></script>
   <script src="/assets/locale.js" defer></script>
-  <script src="/assets/analytics.js" defer></script>
+  <script src="/assets/analytics.js?v=cv20261017a" defer></script>
   <script src="/assets/consent.js" defer></script>
-  <script src="/assets/lead-funnel.js" defer></script>
+  <script src="/assets/lead-funnel.js?v=cv20261017a" defer></script>
+  <script src="/assets/offer-assistant.js?v=cv20261017a" defer></script>
+  <div class="mobile-cta-bar" aria-label="Action principale">
+    <a href="#offres" class="btn btn-gold" data-lead-open="1" data-track-cta="mobile_sticky_creer">Créer mon site</a>
+  </div>
+  <script>
+    (function () {
+      try {
+        if (window.matchMedia("(max-width:720px)").matches) document.body.classList.add("has-mobile-cta");
+      } catch (e) {}
+    })();
+  </script>
 </body>
 </html>

@@ -29,17 +29,19 @@
     fr: {
       close: "Fermer",
       eyebrow: "Démarrer un projet",
-      title: "Parlez-nous de votre <em>ambition</em>",
-      lead: "Quelques précisions pour préparer un échange sérieux. Devis après validation humaine.",
+      title: "Parlez-nous de votre <em>projet</em>",
+      lead: "Quelques informations suffisent. Nous préparons ensuite un devis après échange humain.",
       metaFallback: "Prix indicatif",
       name: "Nom",
       namePh: "Votre nom",
-      company: "Entreprise",
+      company: "Entreprise (optionnel)",
       companyPh: "Nom de l’entreprise",
+      companyDefault: "Indépendant / particulier",
       email: "E-mail",
       emailPh: "vous@entreprise.com",
       country: "Pays",
       countryPh: "Belgique, France…",
+      countryDefault: "Belgique",
       projectType: "Type de projet",
       choose: "Choisir…",
       types: ["Site vitrine", "Refonte de site", "E-commerce", "Application web", "Autre"],
@@ -52,21 +54,24 @@
         "Plus de 10 000 €",
         "À définir ensemble",
       ],
-      needs: "Description des besoins",
-      needsPh: "Objectifs, délais, éléments déjà en place…",
+      needs: "Description courte de vos besoins",
+      needsPh: "Ce que vous souhaitez, votre activité, un délai approximatif…",
       desiredDate: "Date souhaitée",
-      desiredPh: "Ex. dès que possible, octobre 2026…",
+      desiredPh: "Ex. dès que possible…",
+      desiredDefault: "À définir ensemble",
       offerLabel: "Offre",
+      advanced: "Précisions optionnelles (pays, budget, délai)",
       consent:
         "J’accepte que mes informations soient transmises à Aurelis pour être recontacté(e). Aucun devis définitif ni contrat ne sera envoyé sans validation humaine.",
       submit: "Envoyer ma demande",
       submitting: "Envoi en cours…",
       cancel: "Annuler",
-      hint: "Réponse humaine sous 24 h · Données traitées de façon confidentielle",
-      successTitle: "Demande bien reçue",
-      successDefault: "Merci. Votre projet est enregistré. Nous vous recontactons sous 24 heures.",
+      hint: "Réponse humaine sous 24 h · Aucun compte à créer · Données confidentielles",
+      successTitle: "Votre projet est entre de bonnes mains.",
+      successDefault:
+        "Nous avons bien reçu votre demande. Nous reviendrons vers vous pour discuter de votre projet et préparer votre devis.",
       successDup: "Votre demande était déjà enregistrée. Nous vous recontactons bientôt.",
-      errRequired: "Merci de compléter tous les champs obligatoires.",
+      errRequired: "Merci de compléter les champs obligatoires (nom, e-mail, type de projet, besoins).",
       errNetwork: "Connexion impossible. Vérifiez votre réseau puis réessayez.",
       errGeneric: "L’envoi a échoué. Réessayez dans un instant.",
       langLabel: "Langue",
@@ -83,17 +88,19 @@
     en: {
       close: "Close",
       eyebrow: "Start a project",
-      title: "Tell us about your <em>ambition</em>",
-      lead: "A few details to prepare a serious conversation. Quotes follow human validation.",
+      title: "Tell us about your <em>project</em>",
+      lead: "A few details are enough. We then prepare a quote after a human conversation.",
       metaFallback: "Indicative price",
       name: "Name",
       namePh: "Your name",
-      company: "Company",
+      company: "Company (optional)",
       companyPh: "Company name",
+      companyDefault: "Independent / individual",
       email: "Email",
       emailPh: "you@company.com",
       country: "Country",
       countryPh: "Belgium, France, UK…",
+      countryDefault: "Belgium",
       projectType: "Project type",
       choose: "Choose…",
       types: ["Brochure website", "Website redesign", "E-commerce", "Web application", "Other"],
@@ -106,21 +113,24 @@
         "Over €10,000",
         "To define together",
       ],
-      needs: "Needs description",
-      needsPh: "Goals, timing, assets already available…",
+      needs: "Short description of your needs",
+      needsPh: "What you want, your activity, an approximate timeline…",
       desiredDate: "Desired date",
-      desiredPh: "e.g. as soon as possible, October 2026…",
+      desiredPh: "e.g. as soon as possible…",
+      desiredDefault: "To define together",
       offerLabel: "Offer",
+      advanced: "Optional details (country, budget, timing)",
       consent:
         "I agree that my details may be sent to Aurelis so I can be contacted. No final quote or contract will be sent without human validation.",
       submit: "Send my request",
       submitting: "Sending…",
       cancel: "Cancel",
-      hint: "Human reply within 24h · Data handled confidentially",
-      successTitle: "Request received",
-      successDefault: "Thank you. Your project is recorded. We will contact you within 24 hours.",
+      hint: "Human reply within 24h · No account required · Confidential handling",
+      successTitle: "Your project is in good hands.",
+      successDefault:
+        "We received your request. We will get back to you to discuss your project and prepare your quote.",
       successDup: "Your request was already recorded. We will contact you soon.",
-      errRequired: "Please complete all required fields.",
+      errRequired: "Please complete the required fields (name, email, project type, needs).",
       errNetwork: "Connection failed. Check your network and try again.",
       errGeneric: "Sending failed. Please try again shortly.",
       langLabel: "Language",
@@ -279,7 +289,6 @@
       '<div class="lead-field"><label for="leadOfferSelect">' +
       copy.offerLabel +
       '</label><select id="leadOfferSelect" name="offer" required></select></div>' +
-      '<div class="lead-form__row lead-form__row--2">' +
       '<div class="lead-field"><label for="leadName">' +
       copy.name +
       '</label><input id="leadName" name="contactName" type="text" required maxlength="120" autocomplete="name" placeholder="' +
@@ -287,41 +296,47 @@
       '"></div>' +
       '<div class="lead-field"><label for="leadCompany">' +
       copy.company +
-      '</label><input id="leadCompany" name="company" type="text" required maxlength="120" autocomplete="organization" placeholder="' +
+      '</label><input id="leadCompany" name="company" type="text" maxlength="120" autocomplete="organization" placeholder="' +
       copy.companyPh +
-      '"></div></div>' +
-      '<div class="lead-form__row lead-form__row--2">' +
+      '"></div>' +
       '<div class="lead-field"><label for="leadEmail">' +
       copy.email +
       '</label><input id="leadEmail" name="email" type="email" required maxlength="160" autocomplete="email" placeholder="' +
       copy.emailPh +
       '"></div>' +
-      '<div class="lead-field"><label for="leadCountry">' +
-      copy.country +
-      '</label><input id="leadCountry" name="country" type="text" required maxlength="80" autocomplete="country-name" placeholder="' +
-      copy.countryPh +
-      '"></div></div>' +
-      '<div class="lead-form__row lead-form__row--2">' +
       '<div class="lead-field"><label for="leadProjectType">' +
       copy.projectType +
       '</label><select id="leadProjectType" name="projectType" required>' +
       optionsHtml(copy.types, copy) +
       "</select></div>" +
-      '<div class="lead-field"><label for="leadBudget">' +
-      copy.budget +
-      '</label><select id="leadBudget" name="budget" required>' +
-      optionsHtml(copy.budgets, copy) +
-      "</select></div></div>" +
       '<div class="lead-field"><label for="leadNeeds">' +
       copy.needs +
       '</label><textarea id="leadNeeds" name="needs" required maxlength="4000" placeholder="' +
       copy.needsPh +
       '"></textarea></div>' +
+      '<details class="lead-form__advanced"><summary>' +
+      copy.advanced +
+      "</summary>" +
+      '<div class="lead-form__row lead-form__row--2">' +
+      '<div class="lead-field"><label for="leadCountry">' +
+      copy.country +
+      '</label><input id="leadCountry" name="country" type="text" maxlength="80" autocomplete="country-name" placeholder="' +
+      copy.countryPh +
+      '" value="' +
+      copy.countryDefault +
+      '"></div>' +
+      '<div class="lead-field"><label for="leadBudget">' +
+      copy.budget +
+      '</label><select id="leadBudget" name="budget">' +
+      optionsHtml(copy.budgets, copy) +
+      "</select></div></div>" +
       '<div class="lead-field"><label for="leadDesiredDate">' +
       copy.desiredDate +
-      '</label><input id="leadDesiredDate" name="desiredDate" type="text" required maxlength="80" placeholder="' +
+      '</label><input id="leadDesiredDate" name="desiredDate" type="text" maxlength="80" placeholder="' +
       copy.desiredPh +
-      '"></div>' +
+      '" value="' +
+      copy.desiredDefault +
+      '"></div></details>' +
       '<label class="lead-consent"><input type="checkbox" name="consent" id="leadConsent" value="1" required><span>' +
       copy.consent +
       "</span></label>" +
@@ -498,18 +513,36 @@
     err.classList.add("is-visible");
   }
 
+  function budgetFromOffer(offerName, copy) {
+    var map = {
+      "Aurelis Essential": copy.budgets[1],
+      "Aurelis Signature": copy.budgets[2],
+      "Aurelis Prestige": copy.budgets[3],
+      "Aurelis Elite": copy.budgets[4],
+    };
+    return map[offerName] || copy.budgets[copy.budgets.length - 1];
+  }
+
+  function applyPayloadDefaults(form) {
+    var copy = t();
+    if (form.elements.company && !String(form.elements.company.value || "").trim()) {
+      form.elements.company.value = copy.companyDefault;
+    }
+    if (form.elements.country && !String(form.elements.country.value || "").trim()) {
+      form.elements.country.value = copy.countryDefault;
+    }
+    if (form.elements.desiredDate && !String(form.elements.desiredDate.value || "").trim()) {
+      form.elements.desiredDate.value = copy.desiredDefault;
+    }
+    var offer = String((form.elements.offer && form.elements.offer.value) || "").trim();
+    if (form.elements.budget && !String(form.elements.budget.value || "").trim()) {
+      form.elements.budget.value = budgetFromOffer(offer, copy);
+    }
+  }
+
   function validateForm(form) {
-    var required = [
-      "contactName",
-      "company",
-      "email",
-      "country",
-      "projectType",
-      "needs",
-      "budget",
-      "desiredDate",
-      "offer",
-    ];
+    applyPayloadDefaults(form);
+    var required = ["contactName", "email", "projectType", "needs", "offer", "company", "country", "budget", "desiredDate"];
     var ok = true;
     required.forEach(function (name) {
       var el = form.elements[name];
@@ -544,13 +577,13 @@
     }
     var payload = {
       contactName: String(form.elements.contactName.value).trim(),
-      company: String(form.elements.company.value).trim(),
+      company: String(form.elements.company.value).trim() || copy.companyDefault,
       email: String(form.elements.email.value).trim().toLowerCase(),
-      country: String(form.elements.country.value).trim(),
+      country: String(form.elements.country.value).trim() || copy.countryDefault,
       projectType: String(form.elements.projectType.value).trim(),
       needs: needsRaw,
-      budget: String(form.elements.budget.value).trim(),
-      desiredDate: String(form.elements.desiredDate.value).trim(),
+      budget: String(form.elements.budget.value).trim() || budgetFromOffer(offer, copy),
+      desiredDate: String(form.elements.desiredDate.value).trim() || copy.desiredDefault,
       offer: offer,
       priceLabel: String(form.elements.priceLabel.value).trim() || priceFor(offer),
       language: String(form.elements.language.value).trim() || detectLanguage(),
