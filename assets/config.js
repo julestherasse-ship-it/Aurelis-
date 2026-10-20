@@ -9,11 +9,14 @@ window.AURELIS_CONFIG = {
   siteUrl: "https://aurelis.ink",
   phone: "+32495380329",
   phoneDisplay: "0495 38 03 29",
+  /** Adresse opérationnelle actuelle — conserver jusqu’à vérification de l’e-mail pro */
   email: "julestherasse@gmail.com",
+  /** À renseigner après création / vérification DNS (ex. contact@aurelis.ink) — ne pas inventer */
+  emailProfessional: "",
   founder: "Jules Therasse",
 
   /**
-   * Identité légale — laisser vide jusqu’à obtention officielle.
+   * Identité légale — laisser vide jusqu’à obtention officielle (Securex).
    * Miroir des champs Aurelis AI → Paramètres → Entreprise.
    */
   company: {
@@ -21,12 +24,12 @@ window.AURELIS_CONFIG = {
     legalName: "",
     addressLine: "",
     postalCode: "",
-    city: "",
+    city: "Mons",
     country: "Belgique",
     companyNumber: "",
     vatNumber: "",
     iban: "",
-    paymentTerms: "",
+    paymentTerms: "50% à l’acceptation du devis · 50% avant livraison",
     /** true uniquement quand BCE + TVA + adresse sont officiels */
     legalReady: false,
   },
@@ -35,6 +38,8 @@ window.AURELIS_CONFIG = {
   ga4MeasurementId: "",
   googleAdsId: "",
   googleAdsConversionLabel: "",
+  /** Landing Ads principale (Search BE francophone) */
+  adsLandingPath: "/creation-site-internet/",
 
   /** Flags produit — ne pas activer en prod avant go-live validé */
   flags: {

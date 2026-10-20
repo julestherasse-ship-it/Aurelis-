@@ -49,6 +49,22 @@
         ],
       },
       budgetHint: { fr: "1 000 € – 2 500 €", en: "€1,000 – €2,500" },
+      limits: {
+        fr: [
+          "Une seule page",
+          "Pas d’animations avancées",
+          "Une seule série de corrections",
+        ],
+        en: [
+          "Single page only",
+          "No advanced animations",
+          "One revision round only",
+        ],
+      },
+      howToStart: {
+        fr: "Choisissez Essential → décrivez votre activité → nous vous recontactons sous 24 h.",
+        en: "Choose Essential → describe your business → we reply within 24 hours.",
+      },
     },
     {
       id: "signature",
@@ -93,6 +109,22 @@
         ],
       },
       budgetHint: { fr: "2 500 € – 5 000 €", en: "€2,500 – €5,000" },
+      limits: {
+        fr: [
+          "Maximum 5 pages",
+          "Hors e-commerce / plateforme complexe",
+          "Deux séries de corrections",
+        ],
+        en: [
+          "Up to 5 pages",
+          "No e-commerce / complex platform",
+          "Two revision rounds",
+        ],
+      },
+      howToStart: {
+        fr: "Choisissez Signature → précisez vos pages et objectifs → devis après échange.",
+        en: "Choose Signature → outline pages and goals → quote after a human call.",
+      },
     },
     {
       id: "prestige",
@@ -140,6 +172,22 @@
         ],
       },
       budgetHint: { fr: "5 000 € – 10 000 €", en: "€5,000 – €10,000" },
+      limits: {
+        fr: [
+          "Maximum 10 pages (extensions au devis)",
+          "Intégrations métier définies avant signature",
+          "Trois séries de corrections incluses",
+        ],
+        en: [
+          "Up to 10 pages (extensions quoted separately)",
+          "Business integrations defined before signature",
+          "Three revision rounds included",
+        ],
+      },
+      howToStart: {
+        fr: "Choisissez Prestige → décrivez l’expérience souhaitée → devis détaillé après audit.",
+        en: "Choose Prestige → describe the experience you want → detailed quote after review.",
+      },
     },
     {
       id: "elite",
@@ -188,6 +236,22 @@
       },
       budgetHint: { fr: "Plus de 10 000 €", en: "Over €10,000" },
       requiresCustomQuote: true,
+      limits: {
+        fr: [
+          "Périmètre défini sur devis uniquement",
+          "Délais et budget validés avant démarrage",
+          "Pas de prix catalogue fixe",
+        ],
+        en: [
+          "Scope defined by quote only",
+          "Timeline and budget approved before start",
+          "No fixed catalogue price",
+        ],
+      },
+      howToStart: {
+        fr: "Choisissez Elite → exposez vos contraintes → cadrage + devis sur mesure.",
+        en: "Choose Elite → share constraints → scoping workshop + custom quote.",
+      },
     },
   ];
 

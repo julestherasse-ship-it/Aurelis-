@@ -631,6 +631,24 @@
         return;
       }
 
+      // Confirmation UI + Ads conversion ONLY when really recorded (or duplicate)
+      // Ignore honeypot placeholder UUID (accepted:false + nil id)
+      var nilId = !data.id || /^0{8}-0{4}-/.test(String(data.id));
+      var reallyStored = !!(
+        data.accepted ||
+        data.duplicate ||
+        data.opportunityId ||
+        (data.id && !nilId)
+      );
+      if (!reallyStored) {
+        showError(
+          lang() === "en"
+            ? "Your request could not be recorded. Please try again or call us."
+            : "Votre demande n’a pas pu être enregistrée. Réessayez ou contactez-nous."
+        );
+        return;
+      }
+
       var formView = document.getElementById("leadFormView");
       var success = document.getElementById("leadSuccess");
       var msg = document.getElementById("leadSuccessMsg");
@@ -655,13 +673,8 @@
           duplicate: data.duplicate,
           qualified: !!(data.opportunityId || data.accepted),
           intent: auditMode ? "audit" : "project",
+          recorded: true,
         });
-        if (window.AurelisAnalytics.track) {
-          window.AurelisAnalytics.track(auditMode ? "audit_submit" : "lead_submit", {
-            offer_name: offer || "",
-            lead_id: data.id || "",
-          });
-        }
       }
       try {
         sessionStorage.removeItem(STORAGE_OFFER);

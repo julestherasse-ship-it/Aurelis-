@@ -2284,6 +2284,20 @@
       color: var(--noir);
     }
 
+    .pricing-limits,
+    .pricing-start {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      line-height: 1.55;
+      margin: 0.65rem 0 0;
+    }
+    .pricing-limits strong,
+    .pricing-start strong {
+      color: var(--blanc-muted);
+      font-weight: 500;
+    }
+    .pricing-start { margin-bottom: 1.1rem; }
+
     .pricing-note {
       margin-top: 2.5rem;
       text-align: center;
@@ -2540,8 +2554,8 @@ body.atelier .footer,
     <div class="hero-shell">
       <div class="hero-copy">
         <p class="hero-eyebrow">Agence de création de sites internet premium</p>
-        <h1>Votre entreprise mérite un site internet <em>exceptionnel.</em></h1>
-        <p class="hero-sub">Nous concevons des sites internet modernes, rapides et sur mesure pour valoriser votre entreprise et transformer vos visiteurs en clients.</p>
+        <h1>Votre entreprise mérite<br>un site internet <em>exceptionnel.</em></h1>
+        <p class="hero-sub">Nous créons des sites internet premium qui valorisent votre entreprise et facilitent la conversion de vos visiteurs en clients.</p>
         <div class="hero-price" role="status">
           <strong>Votre site professionnel dès <span>990&nbsp;€ HTVA</span></strong>
           <span>Offres transparentes · Devis après échange humain</span>
@@ -2642,20 +2656,6 @@ body.atelier .footer,
   </section>
 
 
-  <section class="section section-ink audit-band" id="audit" aria-labelledby="audit-title">
-    <div class="container audit-band__inner reveal">
-      <div class="audit-band__copy">
-        <div class="label">Audit gratuit</div>
-        <h2 class="title" id="audit-title">Vous avez déjà un <em>site</em>&nbsp;?</h2>
-        <p class="desc">Un regard premium sur votre présence digitale : clarté du message, design, mobile, parcours et crédibilité. Vous recevez des pistes concrètes — sans engagement.</p>
-      </div>
-      <div class="audit-band__actions">
-        <a href="#audit" class="btn btn-gold btn-cta-xl" data-audit-open="1" data-track-cta="mid_audit_gratuit">Analyser mon site gratuitement</a>
-        <a href="#offres" class="btn btn-ghost" data-lead-open="1" data-track-cta="mid_creer_mon_site">Pas encore de site&nbsp;? Créer le mien</a>
-      </div>
-    </div>
-  </section>
-
   <section class="section section-ink" id="benefices" aria-labelledby="benefices-title">
     <div class="container">
       <div class="section-head reveal">
@@ -2689,9 +2689,9 @@ body.atelier .footer,
   <section class="section section-ink" id="secteurs" style="padding-top:4rem;padding-bottom:4rem;">
     <div class="container">
       <div class="section-head reveal">
-        <div class="label label-center">Secteurs</div>
-        <h2 class="title">Explorez par <em>métier</em></h2>
-        <p class="desc desc-center">Parcourez les métiers pour lesquels Aurelis a déjà livré des sites consultables en ligne.</p>
+        <div class="label label-center">Secteurs livrés</div>
+        <h2 class="title">Des sites déjà en ligne pour votre <em>métier</em></h2>
+        <p class="desc desc-center">Restaurants, fast-food et transport — uniquement des réalisations consultables, pas de vitrines vides.</p>
       </div>
 
       <div class="roulette-wrap reveal" id="sectorRoulette" tabindex="0" aria-roledescription="carrousel" aria-label="Sélection de secteurs">
@@ -2753,7 +2753,9 @@ body.atelier .footer,
             <li>Intégration des réseaux sociaux</li>
             <li>Une série de corrections</li>
           </ul>
-          <a href="#" class="btn btn-ghost pricing-cta" data-offer="Aurelis Essential" data-price="990 € HTVA" data-lead-open="1" data-track-cta="offer_essential">Choisir cette offre</a>
+          <p class="pricing-limits"><strong>Limites :</strong> une page · pas d’animations avancées · 1 série de corrections</p>
+          <p class="pricing-start"><strong>Démarrer :</strong> Choisissez Essential → décrivez votre activité → réponse sous 24&nbsp;h.</p>
+          <a href="#" class="btn btn-ghost pricing-cta" data-offer="Aurelis Essential" data-price="990 € HTVA" data-lead-open="1" data-track-cta="offer_essential">Démarrer mon projet</a>
         </article>
 
         <article class="pricing-card reveal d2">
@@ -2772,7 +2774,9 @@ body.atelier .footer,
             <li>Outils d’analyse</li>
             <li>Deux séries de corrections</li>
           </ul>
-          <a href="#" class="btn btn-ghost pricing-cta" data-offer="Aurelis Signature" data-price="2 490 € HTVA" data-lead-open="1" data-track-cta="offer_signature">Choisir cette offre</a>
+          <p class="pricing-limits"><strong>Limites :</strong> max. 5 pages · hors e-commerce complexe · 2 séries de corrections</p>
+          <p class="pricing-start"><strong>Démarrer :</strong> Choisissez Signature → précisez pages et objectifs → devis après échange.</p>
+          <a href="#" class="btn btn-ghost pricing-cta" data-offer="Aurelis Signature" data-price="2 490 € HTVA" data-lead-open="1" data-track-cta="offer_signature">Démarrer mon projet</a>
         </article>
 
         <article class="pricing-card pricing-card--featured reveal d3">
@@ -2793,7 +2797,9 @@ body.atelier .footer,
             <li>Intégrations définies au devis</li>
             <li>Trois séries de corrections</li>
           </ul>
-          <a href="#" class="btn btn-gold pricing-cta" data-offer="Aurelis Prestige" data-price="4 490 € HTVA" data-lead-open="1" data-track-cta="offer_prestige">Choisir cette offre</a>
+          <p class="pricing-limits"><strong>Limites :</strong> max. 10 pages · intégrations cadrées avant signature · 3 séries incluses</p>
+          <p class="pricing-start"><strong>Démarrer :</strong> Choisissez Prestige → décrivez l’expérience souhaitée → devis après audit.</p>
+          <a href="#" class="btn btn-gold pricing-cta" data-offer="Aurelis Prestige" data-price="4 490 € HTVA" data-lead-open="1" data-track-cta="offer_prestige">Démarrer mon projet</a>
         </article>
 
         <article class="pricing-card reveal d4">
@@ -2813,11 +2819,13 @@ body.atelier .footer,
             <li>Espace administrateur selon les besoins</li>
             <li>Accompagnement personnalisé</li>
           </ul>
-          <a href="#" class="btn btn-ghost pricing-cta" data-offer="Aurelis Elite" data-price="À partir de 7 490 € HTVA" data-lead-open="1" data-track-cta="offer_elite">Choisir cette offre</a>
+          <p class="pricing-limits"><strong>Limites :</strong> périmètre sur devis uniquement · délais et budget validés avant démarrage</p>
+          <p class="pricing-start"><strong>Démarrer :</strong> Choisissez Elite → exposez vos contraintes → cadrage + devis sur mesure.</p>
+          <a href="#" class="btn btn-ghost pricing-cta" data-offer="Aurelis Elite" data-price="À partir de 7 490 € HTVA" data-lead-open="1" data-track-cta="offer_elite">Démarrer mon projet</a>
         </article>
       </div>
 
-      <p class="pricing-note reveal">Tarifs hors TVA. Hébergement, domaines, maintenance et services tiers facturés séparément selon devis. Acompte proposé : 50&nbsp;% à l’acceptation du devis, 50&nbsp;% avant livraison. Vous démarrez par une demande — devis après échange humain.</p>
+      <p class="pricing-note reveal">Tarifs hors TVA. <strong>Frais supplémentaires :</strong> hébergement, domaines, maintenance et services tiers facturés séparément selon devis. Acompte proposé : 50&nbsp;% à l’acceptation du devis, 50&nbsp;% avant livraison. Vous démarrez par une demande — devis après échange humain. Aucun paiement en ligne tant que le devis n’est pas validé.</p>
 
       <div class="offers-help reveal">
         <h3>Vous ne savez pas quelle offre choisir&nbsp;?</h3>
@@ -2908,6 +2916,7 @@ body.atelier .footer,
               <div><dt>SEO</dt><dd>De base</dd></div>
               <div><dt>Corrections</dt><dd>1 série</dd></div>
             </dl>
+            <a href="#" class="btn btn-ghost" data-offer="Aurelis Essential" data-price="990 € HTVA" data-lead-open="1" data-track-cta="compare_essential">Démarrer</a>
           </article>
           <article class="compare-mobile-card reveal d1">
             <h3>Signature</h3>
@@ -2918,6 +2927,7 @@ body.atelier .footer,
               <div><dt>SEO</dt><dd>Initial</dd></div>
               <div><dt>Corrections</dt><dd>2 séries</dd></div>
             </dl>
+            <a href="#" class="btn btn-ghost" data-offer="Aurelis Signature" data-price="2 490 € HTVA" data-lead-open="1" data-track-cta="compare_signature">Démarrer</a>
           </article>
           <article class="compare-mobile-card is-featured reveal d2">
             <h3>Prestige</h3>
@@ -2928,6 +2938,7 @@ body.atelier .footer,
               <div><dt>SEO</dt><dd>Approfondi</dd></div>
               <div><dt>Corrections</dt><dd>3 séries</dd></div>
             </dl>
+            <a href="#" class="btn btn-gold" data-offer="Aurelis Prestige" data-price="4 490 € HTVA" data-lead-open="1" data-track-cta="compare_prestige">Démarrer</a>
           </article>
           <article class="compare-mobile-card reveal d3">
             <h3>Elite</h3>
@@ -2938,6 +2949,7 @@ body.atelier .footer,
               <div><dt>SEO</dt><dd>Stratégie dédiée</dd></div>
               <div><dt>Corrections</dt><dd>Accompagnement</dd></div>
             </dl>
+            <a href="#" class="btn btn-ghost" data-offer="Aurelis Elite" data-price="À partir de 7 490 € HTVA" data-lead-open="1" data-track-cta="compare_elite">Démarrer</a>
           </article>
         </div>
       </div>
@@ -2947,6 +2959,20 @@ body.atelier .footer,
           Voir la page Offres détaillée
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-ink audit-band" id="audit" aria-labelledby="audit-title">
+    <div class="container audit-band__inner reveal">
+      <div class="audit-band__copy">
+        <div class="label">Audit gratuit</div>
+        <h2 class="title" id="audit-title">Vous avez déjà un <em>site</em>&nbsp;?</h2>
+        <p class="desc">Un regard premium sur votre présence digitale : clarté, design, mobile et crédibilité — sans engagement.</p>
+      </div>
+      <div class="audit-band__actions">
+        <a href="#audit" class="btn btn-gold btn-cta-xl" data-audit-open="1" data-track-cta="mid_audit_gratuit">Analyser mon site gratuitement</a>
+        <a href="#offres" class="btn btn-ghost" data-lead-open="1" data-track-cta="mid_creer_mon_site">Créer mon site</a>
       </div>
     </div>
   </section>

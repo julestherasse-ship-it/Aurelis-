@@ -112,6 +112,21 @@
       setTimeout(function () {
         el.remove();
       }, 350);
+      // Consent Mode v2 update even before analytics scripts load
+      try {
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {
+          window.dataLayer.push(arguments);
+        }
+        gtag("consent", "update", {
+          ad_storage: accept ? "granted" : "denied",
+          ad_user_data: accept ? "granted" : "denied",
+          ad_personalization: accept ? "granted" : "denied",
+          analytics_storage: accept ? "granted" : "denied",
+        });
+      } catch (err) {
+        /* noop */
+      }
       if (accept && window.AurelisAnalytics) window.AurelisAnalytics.enable();
     });
   }

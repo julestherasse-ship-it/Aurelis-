@@ -29,14 +29,46 @@
     window.dataLayer.push(arguments);
   }
 
+  function applyConsentMode(granted) {
+    // Google Consent Mode v2 — defaults denied until user accepts measurement
+    try {
+      gtag("consent", "update", {
+        ad_storage: granted ? "granted" : "denied",
+        ad_user_data: granted ? "granted" : "denied",
+        ad_personalization: granted ? "granted" : "denied",
+        analytics_storage: granted ? "granted" : "denied",
+      });
+    } catch (err) {
+      /* noop */
+    }
+  }
+
   function loadScripts() {
     var c = cfg();
+
+    // Consent Mode v2 defaults (safe) before any Google tags
+    window.dataLayer = window.dataLayer || [];
+    try {
+      gtag("consent", "default", {
+        ad_storage: "denied",
+        ad_user_data: "denied",
+        ad_personalization: "denied",
+        analytics_storage: "denied",
+        wait_for_update: 500,
+      });
+    } catch (err) {
+      /* noop */
+    }
+
     if (!c.ga4MeasurementId && !c.googleAdsId) {
       // Mode prêt : events en dataLayer uniquement (GTM / debug).
       enabled = true;
+      applyConsentMode(true);
       flush();
       return;
     }
+
+    applyConsentMode(true);
 
     if (c.ga4MeasurementId) {
       var s = document.createElement("script");
@@ -44,11 +76,15 @@
       s.src = "https://www.googletagmanager.com/gtag/js?id=" + encodeURIComponent(c.ga4MeasurementId);
       document.head.appendChild(s);
       gtag("js", new Date());
-      gtag("config", c.ga4MeasurementId, { anonymize_ip: true, send_page_view: true });
+      gtag("config", c.ga4MeasurementId, {
+        anonymize_ip: true,
+        send_page_view: true,
+        allow_google_signals: false,
+      });
     }
 
     if (c.googleAdsId) {
-      gtag("config", c.googleAdsId);
+      gtag("config", c.googleAdsId, { allow_enhanced_conversions: false });
     }
 
     enabled = true;
@@ -141,19 +177,25 @@
     },
     formSuccess: function (data) {
       data = data || {};
-      track("generate_lead", {
+      // Primary conversion = demande réellement enregistrée (pas un simple clic CTA)
+      // Pas d’e-mail / téléphone dans les params pubs
+      var base = {
         offer_name: data.offer || "",
         lead_id: data.id || "",
         duplicate: !!data.duplicate,
         currency: "EUR",
         intent: data.intent || "project",
-      });
+      };
+      track("generate_lead", base);
       track(data.intent === "audit" ? "audit_submit" : "lead_submit", {
-        offer_name: data.offer || "",
-        lead_id: data.id || "",
+        offer_name: base.offer_name,
+        lead_id: base.lead_id,
       });
       if (data.qualified) {
-        track("qualified_lead", { lead_id: data.id || "", offer_name: data.offer || "" });
+        track("qualified_lead", {
+          lead_id: base.lead_id,
+          offer_name: base.offer_name,
+        });
       }
     },
     appointment: function (offer) {

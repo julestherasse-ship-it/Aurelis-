@@ -509,8 +509,11 @@ function legalPage(lang) {
     ? `<main class="legal-page"><div class="container">
       <h1>Legal notice</h1>
       <h2>Publisher</h2>
-      <p>Website published by Jules Therasse — Aurelis.</p>
+      <p>Website published by Jules Therasse — Aurelis (Mons, Belgium).</p>
       <p>Email: <a href="mailto:julestherasse@gmail.com">julestherasse@gmail.com</a><br>Phone: <a href="tel:+32495380329">0495 38 03 29</a></p>
+      <p><em>Belgian company number (BCE) and VAT ID will be added after official registration — do not invent numbers.</em></p>
+      <h2>Pricing</h2>
+      <p>Catalogue prices exclude VAT. Applicable Belgian VAT will appear on quotes and invoices once VAT identification is active.</p>
       <h2>Hosting</h2>
       <p>Hosted by Vercel Inc., 440 N Barranca Ave #4133, Covina, CA 91723, USA.</p>
       <h2>Intellectual property</h2>
@@ -521,8 +524,11 @@ function legalPage(lang) {
     : `<main class="legal-page"><div class="container">
       <h1>Mentions légales</h1>
       <h2>Éditeur</h2>
-      <p>Site édité par Jules Therasse — Aurelis.</p>
+      <p>Site édité par Jules Therasse — Aurelis (Mons, Belgique).</p>
       <p>Email : <a href="mailto:julestherasse@gmail.com">julestherasse@gmail.com</a><br>Téléphone : <a href="tel:+32495380329">0495 38 03 29</a></p>
+      <p><em>Numéro d’entreprise (BCE) et numéro de TVA belge : à renseigner après immatriculation — ne pas inventer de numéros.</em></p>
+      <h2>Tarifs</h2>
+      <p>Les prix catalogue sont indiqués hors TVA (HTVA). La TVA applicable sera précisée sur les devis et factures une fois l’identification TVA active.</p>
       <h2>Hébergement</h2>
       <p>Hébergé par Vercel Inc., 440 N Barranca Ave #4133, Covina, CA 91723, USA.</p>
       <h2>Propriété intellectuelle</h2>
