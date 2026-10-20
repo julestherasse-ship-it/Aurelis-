@@ -49,7 +49,6 @@
 | Paiements réels non activés | Pas d’acompte en ligne | **Intentionnel** jusqu’à Stripe live + devis validé |
 | Google Ads non diffusé | Pas de trafic payant | **Intentionnel** — draft only |
 | Mentions sans BCE/TVA | Conformité facturation incomplete | Remplir après Securex |
-| Supabase historiquement saturé | Peut encore limiter CRM | Surveiller quota après ingest secret |
 
 ---
 
@@ -61,6 +60,7 @@
 4. Consent Mode v2 + conversion lead strictement post-enregistrement.
 5. Secrets Vercel `AURELIS_AI_URL` + `AURELIS_WEBSITE_INGEST_SECRET` (aurelis + aurelis-ai).
 6. Docs campagne + checklist.
+7. Commit `eadbece` + deploy prod aurelis.ink + aurelis-ai.
 
 ---
 
@@ -68,29 +68,27 @@
 
 1. [ ] Securex → BCE + TVA obtenus  
 2. [ ] Remplir `config.js` company.* + Aurelis AI Paramètres  
-3. [ ] Redéployer aurelis.ink + aurelis-ai  
-4. [ ] Tester 1 lead fictif → dashboard Sales  
+3. [x] Redéployer aurelis.ink + aurelis-ai  
+4. [x] Tester leads fictifs → `accepted:true` + opportunityId (4 offres)  
 5. [ ] Créer GA4 + Ads → IDs dans config → redéployer  
 6. [ ] Tag Assistant : consent refuse → pas de tags pubs ; accept → OK  
 7. [ ] Conversion Ads = `generate_lead` uniquement  
 8. [ ] Activer campagne Search BE-FR avec plafond budget  
 9. [ ] Stripe : rester en test jusqu’à devis + compte vérifié  
+10. [ ] Vérifier les 4 leads fictifs dans le dashboard Sales (nettoyage si besoin)
 
 ---
 
-## Tests effectués (données fictives)
+## Tests effectués (données fictives) — post-deploy
 
 | Test | Résultat |
 |------|----------|
 | Build production | PASS |
-| E-mail invalide → API | 400 « Adresse e-mail invalide » |
-| Honeypot | 200 `accepted:false` / nil id — UI ne confirme plus |
-| Lead réel (avant secret) | 503 Ingest non configuré → **corrigé par env Vercel** (retest post-deploy requis) |
-| Pas de campagne Ads lancée | Confirmé |
-| Pas de paiement réel | Confirmé |
-
----
-
-## Actions restantes post-deploy
-
-Rejouer les 4 parcours fictifs (Essential / Signature / Prestige / Elite) **après** redeploy aurelis + aurelis-ai pour confirmer `accepted:true` + id réel + dashboard.
+| https://aurelis.ink/ hero + 990 € | PASS (200) |
+| https://aurelis.ink/creation-site-internet/ | PASS (200) |
+| https://aurelis.ink/en/ | PASS (200) |
+| E-mail invalide | 400 |
+| Honeypot | `accepted:false` + nil id |
+| Essential / Signature / Prestige / Elite | **PASS** `accepted:true` + `opportunityId` |
+| Campagne Ads lancée | Non (volontaire) |
+| Paiement réel | Non (volontaire) |
