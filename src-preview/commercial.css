@@ -1,0 +1,23 @@
+/* Existing commercial journeys alongside the 3.0 direction studies. */
+.aurelis-real-work-heading { display: grid; grid-template-columns: 1fr 1fr; align-items: end; gap: 3rem; padding: 6rem 0 3rem; }
+.aurelis-real-work-heading h2, .aurelis-audit h2 { font-size: clamp(3.5rem, 7vw, 7rem); line-height: .9; }
+.aurelis-real-work-heading h2 em, .aurelis-audit h2 em { color: var(--aurelis-champagne); }
+.aurelis-real-work-heading p, .aurelis-audit p:not(.aurelis-kicker) { max-width: 25rem; color: var(--aurelis-dim); line-height: 1.7; }
+.aurelis-real-work-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+.aurelis-real-work-card { border: 1px solid rgba(238,233,221,.14); background: var(--aurelis-panel); }
+.aurelis-real-work-card a { display: block; height: 100%; padding-bottom: 1.5rem; }
+.aurelis-real-work-card img { width: 100%; aspect-ratio: 1.6; object-fit: cover; object-position: top; }
+.aurelis-real-work-card span { display: flex; align-items: center; gap: .5rem; margin: 1.3rem 1.4rem 0; color: var(--aurelis-champagne); font-size: .68rem; letter-spacing: .08em; }
+.aurelis-real-work-card h3 { margin: .6rem 1.4rem 0; font-size: 2.4rem; }
+.aurelis-commercial-links { display: flex; flex-wrap: wrap; gap: 1.5rem; margin-top: 2rem; }
+.aurelis-audit { border-top: 1px solid rgba(238,233,221,.13); }
+.aurelis-audit h2 { margin: 1.5rem 0; }
+.aurelis-audit .aurelis-button { margin-top: 2rem; }
+.preview-notice { position: fixed; right: .75rem; bottom: .75rem; z-index: 10060; max-width: 21rem; padding: .5rem .7rem; border: 1px solid #a98b59; background: #111; color: #f4e9d3; font-size: .7rem; line-height: 1.4; }
+.lead-modal .btn, .consent-banner .btn { display: inline-block; padding: .75rem 1rem; border: 1px solid #d8ba86; cursor: pointer; font: inherit; }
+.lead-modal .btn-gold, .consent-banner .btn-gold { background: #d8ba86; color: #15110a; }
+.lead-modal .btn-ghost, .consent-banner .btn-ghost { background: transparent; color: #f4e9d3; }
+@media (max-width: 720px) {
+  .aurelis-real-work-heading, .aurelis-real-work-grid { grid-template-columns: 1fr; }
+  .aurelis-real-work-heading { padding: 4rem 0 2rem; }
+}

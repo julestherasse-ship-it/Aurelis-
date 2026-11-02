@@ -73,6 +73,18 @@ module.exports = async function handler(req, res) {
     return;
   }
 
+  // Fail closed: preview/dev deployments must never forward to the production
+  // Aurelis AI endpoint, even when preview environment variables contain its URL.
+  // Vercel system environment variables are enabled on the official project.
+  if (process.env.VERCEL_ENV !== "production") {
+    json(res, 503, {
+      ok: false,
+      error: "Prévisualisation : l’envoi des demandes est désactivé.",
+      integration: "preview-disabled",
+    });
+    return;
+  }
+
   if (!allowRate(clientIp(req))) {
     json(res, 429, { ok: false, error: "Trop de demandes. Réessayez un peu plus tard." });
     return;

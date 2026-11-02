@@ -70,6 +70,7 @@
     el.id = "consentBanner";
     el.className = "consent-banner";
     el.setAttribute("role", "dialog");
+    el.setAttribute("aria-label", t.title);
     el.setAttribute("aria-live", "polite");
     el.innerHTML =
       '<div class="consent-banner__inner">' +

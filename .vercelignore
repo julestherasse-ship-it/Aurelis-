@@ -1,0 +1,8 @@
+.git
+.vercel
+node_modules
+.env
+.env.*
+preview-3
+site-classique
+assets/preview-3
