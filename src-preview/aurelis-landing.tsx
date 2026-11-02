@@ -369,7 +369,7 @@ function OfferForm({ offers, selectedOffer, setSelectedOffer }: Props & { select
       attempt.current = null;
       formElement.reset();
       setConsent(false);
-      window.AurelisAnalytics?.formSuccess({ offer: selectedOffer, id: response.id, duplicate: response.duplicate, intent: "project" });
+      if (!response.duplicate) window.AurelisAnalytics?.formSuccess({ offer: selectedOffer, id: response.id, duplicate: false, intent: "project" });
     }
   }
 

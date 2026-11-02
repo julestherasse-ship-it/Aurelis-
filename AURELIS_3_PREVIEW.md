@@ -9,7 +9,7 @@ La vitrine est issue du composant et des styles Aurelis 3.0 de `aurelis-ai`, ren
 - `/api/leads` refuse toute requête POST si `VERCEL_ENV` n'est pas `production`. Le contrôle s'exécute **côté serveur avant toute requête sortante**, même si une URL ou un secret de production sont disponibles en prévisualisation. Les variables système Vercel sont activées sur le projet officiel ; ne pas les désactiver.
 - Les formulaires de prévisualisation indiquent que l'envoi est désactivé. Ils ne valident pas une réception réelle : les réponses positives et les erreurs du backend sont testées avec un faux service local/intercepté, sans écrire dans un CRM ou effectuer de paiement.
 - Les tests ne démontrent pas le fonctionnement de bout en bout d'une réception réelle : pour cela, configurer et confirmer séparément une destination de staging isolée, puis tester sur celle-ci sans modifier la production. Aucun mode de paiement, DNS ou secret n'est modifié ici.
-- Les versions originales non enregistrées dans `C:\Aurelis-public` et `C:\aurelis-ai` n'ont pas été fusionnées dans cette copie. Les changements locaux sur `api/leads.js`, `analytics.js` et `lead-funnel.js` doivent être examinés séparément avant toute intégration future.
+- Les versions originales non enregistrées dans `C:\Aurelis-public` et `C:\aurelis-ai` n'ont pas été fusionnées dans cette copie. Après examen, la gestion des corps déjà analysés par Vercel a été reprise de manière ciblée et testée ; les autres changements locaux sur `api/leads.js`, `analytics.js` et `lead-funnel.js` doivent être examinés séparément avant toute intégration future.
 
 ## Reproduire les contrôles locaux
 

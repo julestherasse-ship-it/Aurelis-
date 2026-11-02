@@ -12,8 +12,9 @@ after(() => {
   }
 });
 
-async function request(method, payload, headers = {}) {
-  const req = Readable.from(payload === undefined ? [] : [Buffer.from(JSON.stringify(payload))]);
+async function request(method, payload, headers = {}, preParsed = false) {
+  const req = Readable.from(payload === undefined || preParsed ? [] : [Buffer.from(JSON.stringify(payload))]);
+  if (preParsed) req.body = payload;
   req.method = method;
   req.headers = headers;
   req.socket = { remoteAddress: '127.0.0.1' };
@@ -68,6 +69,29 @@ test('production proxy returns an error rather than confirming failed delivery',
   assert.equal(response.statusCode, 503);
   assert.equal(response.body.ok, false);
   assert.equal(response.body.error, 'unavailable');
+});
+
+test('production accepts Vercel-parsed JSON without waiting for the request stream', async () => {
+  process.env.VERCEL_ENV = 'production';
+  const payload = { email: 'parsed@example.invalid', offer: 'Aurelis Essential' };
+  let forwarded;
+  global.fetch = async (_url, options) => {
+    forwarded = JSON.parse(options.body);
+    return { ok: true, text: async () => JSON.stringify({ ok: true, accepted: true, id: 'parsed-lead' }) };
+  };
+  const response = await request('POST', payload, { 'x-forwarded-for': 'parsed-body-test' }, true);
+  assert.equal(response.statusCode, 200);
+  assert.deepEqual(forwarded, payload);
+  assert.equal(response.body.id, 'parsed-lead');
+});
+
+test('oversized parsed JSON is rejected without forwarding', async () => {
+  process.env.VERCEL_ENV = 'production';
+  let calls = 0;
+  global.fetch = async () => { calls++; throw new Error('must not call upstream'); };
+  const response = await request('POST', { value: 'x'.repeat(41000) }, { 'x-forwarded-for': 'large-body-test' }, true);
+  assert.equal(response.statusCode, 413);
+  assert.equal(calls, 0);
 });
 
 test('methods and preflight retain the original contract', async () => {

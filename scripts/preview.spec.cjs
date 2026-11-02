@@ -116,18 +116,36 @@ test('project form blocks preview delivery; retries use the same key and only a 
   const sent = [];
   await page.route('**/api/leads', async (route) => {
     sent.push({ body: route.request().postDataJSON(), key: route.request().headers()['x-idempotency-key'] });
-    if (sent.length === 1) return route.fulfill({ status: 200, json: { ok: true, accepted: false, id: '00000000-0000-0000-0000-000000000000' } });
+    if (sent.length === 1) return route.fulfill({ status: 200, json: { ok: true, accepted: false, id: 'unconfirmed-id' } });
+    if (sent.length === 2) return route.fulfill({ status: 200, json: { ok: true, accepted: true, id: '00000000-0000-4000-8000-000000000000' } });
     return route.fulfill({ status: 200, json: { ok: true, accepted: true, id: 'mock-id', duplicate: false, message: 'Demande test enregistrée' } });
   });
   await page.locator('.aurelis-submit').click();
   await expect(page.locator('.aurelis-form-message')).toContainText('n’a pas pu être enregistrée');
   await page.locator('.aurelis-submit').click();
+  await expect(page.locator('.aurelis-form-message')).toContainText('n’a pas pu être enregistrée');
+  await page.locator('.aurelis-submit').click();
   await expect(page.locator('.aurelis-form-message')).toHaveText('Demande test enregistrée');
-  expect(sent).toHaveLength(2);
+  expect(sent).toHaveLength(3);
   expect(sent[0].key).toBe(sent[1].key);
+  expect(sent[1].key).toBe(sent[2].key);
   expect(sent[0].body.idempotencyKey).toBe(sent[0].key);
   expect(sent[0].body.consent).toBe(true);
   expect(sent[0].body.offer).toBe('Aurelis Signature');
+});
+
+test('a duplicate confirms the request without counting another conversion', async ({ page }) => {
+  await page.goto(preview);
+  await dismissConsent(page);
+  await page.evaluate(() => {
+    window.__conversionCount = 0;
+    window.AurelisAnalytics.formSuccess = () => { window.__conversionCount += 1; };
+  });
+  await page.route('**/api/leads', (route) => route.fulfill({ status: 200, json: { ok: true, accepted: true, id: 'mock-id', duplicate: true, message: 'Demande déjà enregistrée' } }));
+  await fillProject(page);
+  await page.locator('.aurelis-submit').click();
+  await expect(page.locator('.aurelis-form-message')).toHaveText('Demande déjà enregistrée');
+  expect(await page.evaluate(() => window.__conversionCount)).toBe(0);
 });
 
 test('existing free-audit modal uses the protected preview API', async ({ page }) => {

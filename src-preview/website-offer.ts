@@ -29,7 +29,7 @@ export async function submitWebsiteOffer(input: Record<string, unknown>): Promis
       return { ok: false, error: data?.error || "La demande n’a pas pu être transmise. Réessayez ou contactez-nous." };
     }
     const hasRealId = data.id && !/^0{8}-0{4}-/.test(String(data.id));
-    if (!(data.accepted || data.duplicate || data.opportunityId || hasRealId)) {
+    if (data.accepted !== true || !hasRealId) {
       return { ok: false, error: "Votre demande n’a pas pu être enregistrée. Réessayez ou contactez-nous." };
     }
     return { ok: true, duplicate: Boolean(data.duplicate), message: data.message || "Votre demande a bien été enregistrée.", id: data.id || null };
