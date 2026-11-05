@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "npx --yes serve -l 3000 .",
     "build": "node scripts/build.mjs && node scripts/build-preview.mjs",
-    "test": "node --test scripts/preview-safety.test.cjs && npm run build",
+    "test": "node --test scripts/preview-safety.test.cjs scripts/release-candidate.test.cjs && npm run build",
     "test:preview": "playwright test --config scripts/playwright-preview.config.cjs",
     "lint": "node scripts/build.mjs && node scripts/build-preview.mjs",
     "start": "npx --yes serve -l 3000 ."

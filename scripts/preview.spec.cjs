@@ -70,7 +70,15 @@ test('mobile navigation, reduced motion and responsive widths', async ({ browser
   await expect(page.locator('.pin-spacer')).toHaveCount(0);
   await page.locator('.aurelis-menu-toggle').tap();
   await expect(page.locator('.aurelis-menu-toggle')).toHaveAttribute('aria-expanded', 'true');
+  await expect(page.locator('.aurelis-nav')).toHaveCSS('opacity', '1');
   await expect(page.getByRole('link', { name: 'Réalisations', exact: true })).toBeVisible();
+  const menuCoversIntro = await page.evaluate(() => {
+    const prelude = document.querySelector('.aurelis-cinema-prelude');
+    const rect = prelude.getBoundingClientRect();
+    const point = document.elementFromPoint(rect.left + 12, Math.min(rect.bottom - 4, rect.top + rect.height / 2));
+    return Boolean(point && point.closest('.aurelis-nav'));
+  });
+  expect(menuCoversIntro).toBe(true);
   await page.locator('.aurelis-menu-toggle').tap();
   await page.emulateMedia({ reducedMotion: 'reduce' });
   await expect(page.locator('.aurelis-cinematic-target')).toHaveCount(0);

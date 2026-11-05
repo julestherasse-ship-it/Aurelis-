@@ -46,4 +46,8 @@ writeFileSync(join(preview, "index.html"), html, "utf8");
 // new homepage is eventually promoted. It is not an additional SEO landing.
 const originalHome = readFileSync(join(root, "index.html"), "utf8");
 writeFileSync(join(classic, "index.html"), originalHome.replace("<head>", '<head>\n  <meta name="robots" content="noindex, nofollow">'), "utf8");
+const preservedHome = readFileSync(join(root, "index.html"), "utf8");
+if (!preservedHome.includes("Création de sites internet premium") || /name="robots" content="noindex/.test(preservedHome)) {
+  throw new Error("L'accueil de production a été modifié par le build de prévisualisation.");
+}
 console.log("Aurelis 3.0 preview and classic home generated; production home unchanged.");
