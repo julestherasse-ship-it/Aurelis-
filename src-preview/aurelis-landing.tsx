@@ -377,12 +377,17 @@ function OfferForm({ offers, selectedOffer, setSelectedOffer }: Props & { select
     <div className="aurelis-contact-layout">
       <div className="aurelis-contact-intro">
         <p className="aurelis-kicker">Un premier échange</p>
-        <h2 className="aurelis-display aurelis-contact-title">Donnons une forme juste à votre prochaine étape.</h2>
+        <h2 className="aurelis-display aurelis-contact-title">Osez voir plus grand. Créons ce qui vous distingue.</h2>
         <p className="aurelis-lead">
           Décrivez votre projet avec vos mots. Nous reviendrons vers vous avec une première lecture claire, sans tunnel
           commercial ni promesse automatique.
         </p>
         <div className="aurelis-contact-details"><span className="aurelis-status-dot" aria-hidden="true" />Réponse humaine sous 24 heures ouvrées.</div>
+        <a className="aurelis-contact-phone" href="tel:+32495380329" aria-label="Appeler Aurelis au 0495 38 03 29">
+          <span>Parlons-en directement</span>
+          <strong>0495 38 03 29</strong>
+          <Arrow diagonal />
+        </a>
         <div className="aurelis-contact-orbit" aria-hidden="true">
           <span className="aurelis-orbit-ring aurelis-orbit-ring-one" />
           <span className="aurelis-orbit-ring aurelis-orbit-ring-two" />
@@ -599,10 +604,49 @@ export function AurelisLanding({ offers }: Props) {
       <section className="aurelis-section aurelis-real-work" id="realisations" aria-labelledby="real-work-title">
         <Reveal className="aurelis-section-intro"><p className="aurelis-kicker">Réalisations</p><p className="aurelis-section-aside">Trois sites livrés.<br />À découvrir en ligne.</p></Reveal>
         <Reveal className="aurelis-real-work-heading"><h2 id="real-work-title" className="aurelis-display">Des projets<br /><em>qui prennent vie.</em></h2><p>Découvrez les réalisations Aurelis, distinctes des études de direction présentées ci-dessus.</p></Reveal>
-        <div className="aurelis-real-work-grid">
-          <Reveal className="aurelis-real-work-card"><a href="/realisations/mr-gaston/" data-track-cta="folio_mr_gaston"><img src="/assets/portfolio/mr-gaston/capture-desktop.jpg" alt="Site Mr Gaston réalisé par Aurelis" width="1600" height="1000" loading="lazy" decoding="async" /><span>Restaurant</span><h3 className="aurelis-display">Mr Gaston</h3><span>Découvrir le projet <Arrow diagonal /></span></a></Reveal>
-          <Reveal className="aurelis-real-work-card"><a href="https://bryan-burger.vercel.app/" target="_blank" rel="noopener noreferrer" data-track-cta="folio_bryan"><img src="/assets/portfolio/bryan-burger/capture-desktop.jpg" alt="Site Bryan Burger réalisé par Aurelis" width="1400" height="900" loading="lazy" decoding="async" /><span>Restauration</span><h3 className="aurelis-display">Bryan Burger</h3><span>Voir le site <Arrow diagonal /></span></a></Reveal>
-          <Reveal className="aurelis-real-work-card"><a href="https://transport-delivery.vercel.app/" target="_blank" rel="noopener noreferrer" data-track-cta="folio_trans"><img src="/assets/portfolio/trans-delivery/capture-desktop.png" alt="Site Trans Delivery réalisé par Aurelis" width="1400" height="900" loading="lazy" decoding="async" /><span>Transport</span><h3 className="aurelis-display">Trans Delivery</h3><span>Voir le site <Arrow diagonal /></span></a></Reveal>
+        <div className="aurelis-orbit-stage" aria-label="Trois réalisations Aurelis autour d'une planète interactive">
+          <div className="aurelis-orbit-universe" aria-hidden="true">
+            <span className="aurelis-orbit-path aurelis-orbit-path-one" />
+            <span className="aurelis-orbit-path aurelis-orbit-path-two" />
+            <span className="aurelis-orbit-star aurelis-orbit-star-one" />
+            <span className="aurelis-orbit-star aurelis-orbit-star-two" />
+            <div className="aurelis-orbit-planet">
+              <svg viewBox="0 0 200 200" className="aurelis-orbit-planet-art" aria-hidden="true" focusable="false">
+                <defs>
+                  <radialGradient id="aurelis-orbit-ocean" cx="30%" cy="23%" r="78%">
+                    <stop offset="0" stopColor="#3a6267" />
+                    <stop offset=".47" stopColor="#17343d" />
+                    <stop offset="1" stopColor="#070d15" />
+                  </radialGradient>
+                  <linearGradient id="aurelis-orbit-land" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0" stopColor="#dbc48e" />
+                    <stop offset="1" stopColor="#7c704f" />
+                  </linearGradient>
+                  <clipPath id="aurelis-orbit-sphere-clip"><circle cx="100" cy="100" r="92" /></clipPath>
+                </defs>
+                <circle cx="100" cy="100" r="92" fill="url(#aurelis-orbit-ocean)" stroke="#d0b782" strokeOpacity=".55" strokeWidth="1.5" />
+                <g clipPath="url(#aurelis-orbit-sphere-clip)" fill="url(#aurelis-orbit-land)" opacity=".65">
+                  <path d="M35 34 54 24 69 30 80 25 89 37 77 45 76 54 64 61 66 75 53 84 44 70 29 65 24 49Z" />
+                  <path d="m65 84 14 7 14 16-4 18-11 18-7 22-13 13-6-27-12-16 4-24Z" />
+                  <path d="m101 27 22-11 19 8 19-3 21 17-7 21-17 9-6 19-17 9-9-18-13-4-9-22-14-13Z" />
+                  <path d="m113 91 22-2 13 15-4 24-10 24-17 16-7-22-12-19 3-23Z" />
+                  <path d="m160 130 17-5 17 16-4 19-18 4-15-14Z" />
+                </g>
+                <g clipPath="url(#aurelis-orbit-sphere-clip)" fill="none" stroke="#d9bf8e" strokeOpacity=".22" strokeWidth="1">
+                  <ellipse cx="100" cy="100" rx="34" ry="92" />
+                  <ellipse cx="100" cy="100" rx="67" ry="92" />
+                  <path d="M8 100h184M19 65c48 17 114 17 162 0M19 135c48-17 114-17 162 0" />
+                </g>
+              </svg>
+              <span className="aurelis-orbit-globe-a">A</span>
+            </div>
+            <span className="aurelis-orbit-caption">AURELIS · DES IDÉES AUX EXPÉRIENCES</span>
+          </div>
+          <div className="aurelis-real-work-grid aurelis-orbit-projects">
+          <Reveal className="aurelis-real-work-card" delay={160}><a href="/realisations/mr-gaston/" data-track-cta="folio_mr_gaston"><img src="/assets/portfolio/mr-gaston/capture-desktop.jpg" alt="Site Mr Gaston réalisé par Aurelis" width="1600" height="1000" loading="lazy" decoding="async" /><span>Restaurant</span><h3 className="aurelis-display">Mr Gaston</h3><span>Découvrir le projet <Arrow diagonal /></span></a></Reveal>
+          <Reveal className="aurelis-real-work-card" delay={320}><a href="https://bryan-burger.vercel.app/" target="_blank" rel="noopener noreferrer" data-track-cta="folio_bryan"><img src="/assets/portfolio/bryan-burger/capture-desktop.jpg" alt="Site Bryan Burger réalisé par Aurelis" width="1400" height="900" loading="lazy" decoding="async" /><span>Restauration</span><h3 className="aurelis-display">Bryan Burger</h3><span>Voir le site <Arrow diagonal /></span></a></Reveal>
+          <Reveal className="aurelis-real-work-card" delay={480}><a href="https://transport-delivery.vercel.app/" target="_blank" rel="noopener noreferrer" data-track-cta="folio_trans"><img src="/assets/portfolio/trans-delivery/capture-desktop.png" alt="Site Trans Delivery réalisé par Aurelis" width="1400" height="900" loading="lazy" decoding="async" /><span>Transport</span><h3 className="aurelis-display">Trans Delivery</h3><span>Voir le site <Arrow diagonal /></span></a></Reveal>
+        </div>
         </div>
       </section>
 
