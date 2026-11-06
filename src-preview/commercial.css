@@ -404,3 +404,21 @@
 }
 .aurelis-contact-phone > svg { grid-row: 1 / span 2; grid-column: 2; width: 18px; height: 18px; }
 .aurelis-contact-phone:hover { border-color: var(--aurelis-champagne); background: rgba(216,186,134,.08); }
+
+/* Suivi de projet post-livraison offert uniquement avec Elite. */
+.aurelis-offer-followup {
+  margin: 1rem 0 1.4rem;
+  padding: .95rem 1.1rem;
+  border-left: 2px solid var(--aurelis-champagne, #d8ba86);
+  background: linear-gradient(105deg, rgba(216,186,134,.10), rgba(216,186,134,.015));
+  color: var(--aurelis-dim,#b8b0a4);
+  font-size: .8rem;
+  line-height: 1.7;
+}
+.aurelis-offer-followup strong {
+  display: block;
+  color: var(--aurelis-champagne,#d8ba86);
+  font-weight: 500;
+  letter-spacing: .02em;
+  margin-bottom: .25rem;
+}
