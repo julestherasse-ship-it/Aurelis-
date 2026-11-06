@@ -35,6 +35,19 @@ function allowRate(ip) {
 }
 
 function readBody(req) {
+  // Vercel can parse the request before the handler receives it. Do not wait
+  // for stream events that may already have fired in that case.
+  if (req.body !== undefined) {
+    const raw = Buffer.isBuffer(req.body)
+      ? req.body.toString("utf8")
+      : typeof req.body === "string"
+        ? req.body
+        : JSON.stringify(req.body);
+    if (Buffer.byteLength(raw || "", "utf8") > MAX_BODY_BYTES) {
+      return Promise.reject(Object.assign(new Error("payload_too_large"), { status: 413 }));
+    }
+    return Promise.resolve(raw);
+  }
   return new Promise((resolve, reject) => {
     const chunks = [];
     let size = 0;
@@ -42,7 +55,6 @@ function readBody(req) {
       size += chunk.length;
       if (size > MAX_BODY_BYTES) {
         reject(Object.assign(new Error("payload_too_large"), { status: 413 }));
-        req.destroy();
         return;
       }
       chunks.push(chunk);
@@ -70,6 +82,18 @@ module.exports = async function handler(req, res) {
 
   if (req.method !== "POST") {
     json(res, 405, { ok: false, error: "Méthode non autorisée." });
+    return;
+  }
+
+  // Fail closed: preview/dev deployments must never forward to the production
+  // Aurelis AI endpoint, even when preview environment variables contain its URL.
+  // Vercel system environment variables are enabled on the official project.
+  if (process.env.VERCEL_ENV !== "production") {
+    json(res, 503, {
+      ok: false,
+      error: "Prévisualisation : l’envoi des demandes est désactivé.",
+      integration: "preview-disabled",
+    });
     return;
   }
 

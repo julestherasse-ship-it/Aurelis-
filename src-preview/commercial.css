@@ -1,0 +1,424 @@
+/* Existing commercial journeys alongside the 3.0 direction studies. */
+.aurelis-real-work-heading { display: grid; grid-template-columns: 1fr 1fr; align-items: end; gap: 3rem; padding: 6rem 0 3rem; }
+.aurelis-real-work-heading h2, .aurelis-audit h2 { font-size: clamp(3.5rem, 7vw, 7rem); line-height: .9; }
+.aurelis-real-work-heading h2 em, .aurelis-audit h2 em { color: var(--aurelis-champagne); }
+.aurelis-real-work-heading p, .aurelis-audit p:not(.aurelis-kicker) { max-width: 25rem; color: var(--aurelis-dim); line-height: 1.7; }
+.aurelis-real-work-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+.aurelis-real-work-card { border: 1px solid rgba(238,233,221,.14); background: var(--aurelis-panel); }
+.aurelis-real-work-card a { display: block; height: 100%; padding-bottom: 1.5rem; }
+.aurelis-real-work-card img { width: 100%; aspect-ratio: 1.6; object-fit: cover; object-position: top; }
+.aurelis-real-work-card span { display: flex; align-items: center; gap: .5rem; margin: 1.3rem 1.4rem 0; color: var(--aurelis-champagne); font-size: .68rem; letter-spacing: .08em; }
+.aurelis-real-work-card h3 { margin: .6rem 1.4rem 0; font-size: 2.4rem; }
+.aurelis-commercial-links { display: flex; flex-wrap: wrap; gap: 1.5rem; margin-top: 2rem; }
+.aurelis-audit { border-top: 1px solid rgba(238,233,221,.13); }
+.aurelis-audit h2 { margin: 1.5rem 0; }
+.aurelis-audit .aurelis-button { margin-top: 2rem; }
+.preview-notice { position: fixed; right: .75rem; bottom: .75rem; z-index: 10060; max-width: 21rem; padding: .5rem .7rem; border: 1px solid #a98b59; background: #111; color: #f4e9d3; font-size: .7rem; line-height: 1.4; }
+.lead-modal .btn, .consent-banner .btn { display: inline-block; padding: .75rem 1rem; border: 1px solid #d8ba86; cursor: pointer; font: inherit; }
+.lead-modal .btn-gold, .consent-banner .btn-gold { background: #d8ba86; color: #15110a; }
+.lead-modal .btn-ghost, .consent-banner .btn-ghost { background: transparent; color: #f4e9d3; }
+@media (max-width: 720px) {
+  .aurelis-real-work-heading, .aurelis-real-work-grid { grid-template-columns: 1fr; }
+  .aurelis-real-work-heading { padding: 4rem 0 2rem; }
+}
+
+
+
+/* AURELIS / Selected work — three bespoke orbital paths (not a slide carousel).
+   Composite-only transform/opacity animation; each project enters from a
+   distinct region of space and recedes. 3 × 8s = 24s revolution. */
+.aurelis-orbit-stage {
+  position: relative;
+  isolation: isolate;
+  width: min(100%, 1250px);
+  height: 720px;
+  margin: 0 auto;
+  overflow: hidden;
+  perspective: 1200px;
+  background: radial-gradient(ellipse 44% 42% at 50% 50%, rgba(206,178,120,.06), transparent 75%);
+}
+.aurelis-orbit-universe {
+  position: absolute;
+  z-index: 1;
+  top: 51%;
+  left: 50%;
+  width: 235px;
+  height: 235px;
+  display: grid;
+  place-items: center;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+.aurelis-orbit-universe::before {
+  content: "";
+  position: absolute;
+  inset: -80px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(210,179,121,.16), rgba(210,179,121,.03) 48%, transparent 75%);
+  animation: aurelis-orbit-aura 9s ease-in-out infinite alternate;
+}
+.aurelis-orbit-path {
+  position: absolute;
+  width: min(82vw, 860px);
+  height: 365px;
+  display: block;
+  border: 1px solid rgba(213,184,129,.14);
+  border-radius: 50%;
+  transform: rotate(-19deg);
+  animation: aurelis-orbit-ring-one 70s linear infinite;
+}
+.aurelis-orbit-path-two {
+  width: min(69vw, 700px);
+  height: 440px;
+  border-color: rgba(213,184,129,.075);
+  transform: rotate(23deg);
+  animation: aurelis-orbit-ring-two 87s linear infinite;
+}
+.aurelis-orbit-star {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: rgba(236,211,165,.8);
+  box-shadow: 0 0 13px 3px rgba(228,195,137,.22);
+  animation: aurelis-orbit-star-glow 4.5s ease-in-out infinite alternate;
+}
+.aurelis-orbit-star-one { top: -8px; right: -150px; }
+.aurelis-orbit-star-two { bottom: -58px; left: -116px; animation-delay: -2.1s; }
+.aurelis-orbit-planet {
+  position: relative;
+  width: 206px;
+  height: 206px;
+  border-radius: 50%;
+  background: #0d1720;
+  box-shadow: 0 0 0 1px rgba(224,192,132,.16), 0 0 58px rgba(198,167,111,.1);
+  animation: aurelis-orbit-hover 8s ease-in-out infinite alternate;
+}
+.aurelis-orbit-planet-art {
+  display: block;
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 0 19px rgba(181,156,113,.12));
+}
+.aurelis-orbit-continents {
+  animation: aurelis-orbit-earth-spin 24s linear infinite;
+  will-change: transform;
+}
+.aurelis-orbit-planet-specular {
+  position: absolute;
+  inset: 1px;
+  border-radius: 50%;
+  pointer-events: none;
+  background: radial-gradient(ellipse 85% 85% at 25% 19%,rgba(255,237,196,.2),transparent 58%),linear-gradient(110deg, transparent 39%, rgba(0,0,0,.47) 93%);
+  box-shadow: inset -18px -17px 28px rgba(2,3,5,.55),inset 1px 1px 3px rgba(255,228,178,.18);
+}
+.aurelis-orbit-caption {
+  position: absolute;
+  top: calc(100% + 25px);
+  color: rgba(220,194,151,.85);
+  font-size: .53rem;
+  letter-spacing: .22em;
+  white-space: nowrap;
+}
+.aurelis-orbit-projects { position: absolute; inset: 0; z-index: 3; pointer-events: none; }
+.aurelis-orbit-card {
+  position: absolute;
+  top: 49%;
+  left: 50%;
+  width: clamp(240px, 27vw, 305px);
+  margin: 0;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  border: 1px solid rgba(221,193,141,.23);
+  border-radius: 3px;
+  background: #0c0c0d;
+  overflow: hidden;
+  box-shadow: 0 26px 64px rgba(0,0,0,.62),0 0 0 1px rgba(0,0,0,.24);
+  backface-visibility: hidden;
+  transform: translate(-50%, -50%) translate3d(0,0,0);
+  animation-duration: 24s;
+  animation-iteration-count: infinite;
+  animation-timing-function: cubic-bezier(.13,.82,.22,1);
+  animation-fill-mode: both;
+  will-change: transform, opacity;
+}
+.aurelis-orbit-card:nth-child(1) { animation-name: aurelis-orbit-desktop-northwest; animation-delay: 0s; }
+.aurelis-orbit-card:nth-child(2) { animation-name: aurelis-orbit-desktop-eastern; animation-delay: -16s; }
+.aurelis-orbit-card:nth-child(3) { animation-name: aurelis-orbit-desktop-southwest; animation-delay: -8s; }
+.aurelis-orbit-card::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 4;
+  content: "";
+  width: 100%;
+  height: 1px;
+  pointer-events: none;
+  background: linear-gradient(90deg, transparent, rgba(234,207,158,.75), transparent);
+}
+.aurelis-orbit-card a { display:block; height:100%; padding-bottom:.85rem; background:linear-gradient(160deg,#1a1a19,#0b0b0e); }
+.aurelis-orbit-card img {
+  width: 100%;
+  aspect-ratio: 16/9;
+  object-fit: cover;
+  object-position: center top;
+  filter: saturate(.88);
+  transition: transform .75s cubic-bezier(.22,1,.36,1);
+}
+.aurelis-orbit-card h3 {
+  margin: .36rem 1.1rem .2rem;
+  font-size: clamp(1.55rem,2.3vw,2.2rem);
+  font-weight: 400;
+  letter-spacing: .01em;
+}
+.aurelis-orbit-card span {
+  margin: .6rem 1.1rem 0;
+  font-size: .63rem;
+  letter-spacing: .08em;
+}
+.aurelis-orbit-card a:focus-visible,
+.aurelis-orbit-index a:focus-visible,
+.aurelis-orbit-pause:focus-visible { outline:2px solid #edd29c; outline-offset:4px; }
+.aurelis-orbit-controls {
+  position: absolute;
+  z-index: 5;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 1.5rem;
+  border-top: 1px solid rgba(216,186,134,.12);
+  color: var(--aurelis-dim);
+}
+.aurelis-orbit-controls p { margin:0; font-size:.7rem; letter-spacing:.05em; }
+.aurelis-orbit-pause {
+  min-height: 44px;
+  padding: .6rem 1rem;
+  border: 1px solid rgba(216,186,134,.27);
+  background: rgba(12,11,10,.83);
+  color: var(--aurelis-champagne);
+  font: inherit;
+  font-size: .72rem;
+  cursor: pointer;
+  transition: background .25s ease, border-color .25s ease;
+}
+.aurelis-orbit-pause:hover { background:rgba(216,186,134,.08); border-color:#d8ba86; }
+.aurelis-orbit-index {
+  display: grid;
+  grid-template-columns: repeat(3,minmax(0,1fr));
+  gap: 1px;
+  width: min(100%,1250px);
+  margin: 0 auto 4rem;
+  border: 1px solid rgba(216,186,134,.16);
+  background: rgba(216,186,134,.16);
+}
+.aurelis-orbit-index a {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  min-height: 60px;
+  padding: 1rem clamp(.7rem,2vw,1.7rem);
+  background: #0b0b0b;
+  color: var(--aurelis-cream,#f4f0e8);
+  font-size: clamp(.75rem,1.5vw,.95rem);
+  text-decoration: none;
+  transition: color .3s ease,background .3s ease;
+}
+.aurelis-orbit-index a span { color:var(--aurelis-champagne); font-size:.63rem; }
+.aurelis-orbit-index a svg { margin-left:auto; width:16px; flex-shrink:0; }
+.aurelis-orbit-index a:hover { background:#191713; color:var(--aurelis-champagne); }
+/* No expensive blur animation; stop offscreen to conserve resources. */
+.aurelis-orbit-stage.is-paused .aurelis-orbit-card,
+.aurelis-orbit-stage.is-paused .aurelis-orbit-continents,
+.aurelis-orbit-stage.is-paused .aurelis-orbit-path,
+.aurelis-orbit-stage.is-paused .aurelis-orbit-planet,
+.aurelis-orbit-stage.is-paused .aurelis-orbit-star,
+.aurelis-orbit-stage.is-paused .aurelis-orbit-universe::before,
+.aurelis-orbit-stage:not(.is-in-view) .aurelis-orbit-card,
+.aurelis-orbit-stage:not(.is-in-view) .aurelis-orbit-continents,
+.aurelis-orbit-stage:not(.is-in-view) .aurelis-orbit-path,
+.aurelis-orbit-stage:not(.is-in-view) .aurelis-orbit-planet,
+.aurelis-orbit-stage:not(.is-in-view) .aurelis-orbit-star,
+.aurelis-orbit-stage:not(.is-in-view) .aurelis-orbit-universe::before {
+  animation-play-state: paused;
+}
+@media (hover:hover) and (pointer:fine) {
+  .aurelis-orbit-card a:hover img { transform:scale(1.035); }
+  .aurelis-orbit-stage:has(.aurelis-orbit-card:hover) .aurelis-orbit-card,
+  .aurelis-orbit-stage:has(.aurelis-orbit-card:focus-within) .aurelis-orbit-card {
+    animation-play-state: paused;
+  }
+}
+@keyframes aurelis-orbit-earth-spin { from { transform:translateX(0); } to { transform:translateX(-200px); } }
+@keyframes aurelis-orbit-ring-one { from { transform:rotate(-19deg); } to { transform:rotate(341deg); } }
+@keyframes aurelis-orbit-ring-two { from { transform:rotate(23deg); } to { transform:rotate(-337deg); } }
+@keyframes aurelis-orbit-hover { from { transform:translateY(-4px); } to { transform:translateY(4px); } }
+@keyframes aurelis-orbit-aura { from { opacity:.7; transform:scale(.93); } to { opacity:1; transform:scale(1.08); } }
+@keyframes aurelis-orbit-star-glow { from { opacity:.35; } to { opacity:.9; } }
+
+@keyframes aurelis-orbit-desktop-northwest {
+  0%, 3%, 33.5%, 100% { opacity: 0; visibility: hidden; pointer-events: none; transform: translate(-50%, -50%) translate3d(-510px, -170px, 0) rotate(-8deg) scale(0.72); }
+  10% { opacity: 1; visibility: visible; pointer-events: auto; transform: translate(-50%, -50%) translate3d(-358px, -91px, 0) rotate(-2deg) scale(0.97); animation-timing-function: cubic-bezier(.3,.1,.3,1); }
+  23% { opacity: 1; visibility: visible; pointer-events: auto; transform: translate(-50%, -50%) translate3d(-315px, -140px, 0) rotate(0deg) scale(1); animation-timing-function: cubic-bezier(.3,.05,.35,1); }
+  28% { opacity: .98; visibility: visible; pointer-events: auto; transform: translate(-50%, -50%) translate3d(-265px, -130px, 0) rotate(1deg) scale(0.98); animation-timing-function: cubic-bezier(.55,.02,.82,.4); }
+  33.333% { opacity: 0; visibility: hidden; pointer-events: none; transform: translate(-50%, -50%) translate3d(-180px, -48px, 0) rotate(4deg) scale(0.69); }
+}
+
+@keyframes aurelis-orbit-desktop-eastern {
+  0%, 3%, 33.5%, 100% { opacity: 0; visibility: hidden; pointer-events: none; transform: translate(-50%, -50%) translate3d(515px, 130px, 0) rotate(9deg) scale(0.67); }
+  10% { opacity: 1; visibility: visible; pointer-events: auto; transform: translate(-50%, -50%) translate3d(350px, -45px, 0) rotate(3deg) scale(0.96); animation-timing-function: cubic-bezier(.3,.1,.3,1); }
+  23% { opacity: 1; visibility: visible; pointer-events: auto; transform: translate(-50%, -50%) translate3d(310px, -117px, 0) rotate(0deg) scale(1); animation-timing-function: cubic-bezier(.3,.05,.35,1); }
+  28% { opacity: .98; visibility: visible; pointer-events: auto; transform: translate(-50%, -50%) translate3d(281px, -126px, 0) rotate(-1deg) scale(0.98); animation-timing-function: cubic-bezier(.55,.02,.82,.4); }
+  33.333% { opacity: 0; visibility: hidden; pointer-events: none; transform: translate(-50%, -50%) translate3d(156px, -62px, 0) rotate(-6deg) scale(0.69); }
+}
+
+@keyframes aurelis-orbit-desktop-southwest {
+  0%, 3%, 33.5%, 100% { opacity: 0; visibility: hidden; pointer-events: none; transform: translate(-50%, -50%) translate3d(-450px, 217px, 0) rotate(-11deg) scale(0.67); }
+  10% { opacity: 1; visibility: visible; pointer-events: auto; transform: translate(-50%, -50%) translate3d(-349px, 104px, 0) rotate(-3deg) scale(0.94); animation-timing-function: cubic-bezier(.3,.1,.3,1); }
+  23% { opacity: 1; visibility: visible; pointer-events: auto; transform: translate(-50%, -50%) translate3d(-305px, 139px, 0) rotate(0deg) scale(1); animation-timing-function: cubic-bezier(.3,.05,.35,1); }
+  28% { opacity: .98; visibility: visible; pointer-events: auto; transform: translate(-50%, -50%) translate3d(-259px, 115px, 0) rotate(2deg) scale(0.98); animation-timing-function: cubic-bezier(.55,.02,.82,.4); }
+  33.333% { opacity: 0; visibility: hidden; pointer-events: none; transform: translate(-50%, -50%) translate3d(-125px, 39px, 0) rotate(6deg) scale(0.71); }
+}
+
+@media (max-width: 980px) {
+  .aurelis-orbit-stage { height:620px; }
+  .aurelis-orbit-universe { top:48%; }
+  .aurelis-orbit-planet { width:190px; height:190px; }
+  .aurelis-orbit-path { width:min(90vw,600px); height:270px; }
+  .aurelis-orbit-path-two { width:min(81vw,525px); height:350px; }
+  .aurelis-orbit-card { width:clamp(220px,32vw,274px); top:44%; }
+  .aurelis-orbit-card:nth-child(1) { animation-name:aurelis-orbit-tablet-northwest; }
+  .aurelis-orbit-card:nth-child(2) { animation-name:aurelis-orbit-tablet-eastern; }
+  .aurelis-orbit-card:nth-child(3) { animation-name:aurelis-orbit-tablet-southwest; }
+}
+@keyframes aurelis-orbit-tablet-northwest {
+  0%, 3%, 33.5%, 100% { opacity: 0; visibility: hidden; pointer-events: none; transform: translate(-50%, -50%) translate3d(-310px, -155px, 0) rotate(-7deg) scale(0.68); }
+  10% { opacity: 1; visibility: visible; pointer-events: auto; transform: translate(-50%, -50%) translate3d(-231px, -99px, 0) rotate(-3deg) scale(0.95); animation-timing-function: cubic-bezier(.3,.1,.3,1); }
+  23% { opacity: 1; visibility: visible; pointer-events: auto; transform: translate(-50%, -50%) translate3d(-210px, -124px, 0) rotate(0deg) scale(1); animation-timing-function: cubic-bezier(.3,.05,.35,1); }
+  28% { opacity: .98; visibility: visible; pointer-events: auto; transform: translate(-50%, -50%) translate3d(-185px, -111px, 0) rotate(2deg) scale(0.97); animation-timing-function: cubic-bezier(.55,.02,.82,.4); }
+  33.333% { opacity: 0; visibility: hidden; pointer-events: none; transform: translate(-50%, -50%) translate3d(-90px, -24px, 0) rotate(4deg) scale(0.65); }
+}
+
+@keyframes aurelis-orbit-tablet-eastern {
+  0%, 3%, 33.5%, 100% { opacity: 0; visibility: hidden; pointer-events: none; transform: translate(-50%, -50%) translate3d(320px, 117px, 0) rotate(8deg) scale(0.67); }
+  10% { opacity: 1; visibility: visible; pointer-events: auto; transform: translate(-50%, -50%) translate3d(228px, -73px, 0) rotate(3deg) scale(0.95); animation-timing-function: cubic-bezier(.3,.1,.3,1); }
+  23% { opacity: 1; visibility: visible; pointer-events: auto; transform: translate(-50%, -50%) translate3d(204px, -121px, 0) rotate(0deg) scale(1); animation-timing-function: cubic-bezier(.3,.05,.35,1); }
+  28% { opacity: .98; visibility: visible; pointer-events: auto; transform: translate(-50%, -50%) translate3d(188px, -96px, 0) rotate(-1deg) scale(0.97); animation-timing-function: cubic-bezier(.55,.02,.82,.4); }
+  33.333% { opacity: 0; visibility: hidden; pointer-events: none; transform: translate(-50%, -50%) translate3d(86px, -27px, 0) rotate(-5deg) scale(0.65); }
+}
+
+@keyframes aurelis-orbit-tablet-southwest {
+  0%, 3%, 33.5%, 100% { opacity: 0; visibility: hidden; pointer-events: none; transform: translate(-50%, -50%) translate3d(-290px, 184px, 0) rotate(-9deg) scale(0.67); }
+  10% { opacity: 1; visibility: visible; pointer-events: auto; transform: translate(-50%, -50%) translate3d(-226px, 98px, 0) rotate(-3deg) scale(0.95); animation-timing-function: cubic-bezier(.3,.1,.3,1); }
+  23% { opacity: 1; visibility: visible; pointer-events: auto; transform: translate(-50%, -50%) translate3d(-190px, 120px, 0) rotate(0deg) scale(1); animation-timing-function: cubic-bezier(.3,.05,.35,1); }
+  28% { opacity: .98; visibility: visible; pointer-events: auto; transform: translate(-50%, -50%) translate3d(-166px, 96px, 0) rotate(2deg) scale(0.98); animation-timing-function: cubic-bezier(.55,.02,.82,.4); }
+  33.333% { opacity: 0; visibility: hidden; pointer-events: none; transform: translate(-50%, -50%) translate3d(-52px, 37px, 0) rotate(5deg) scale(0.69); }
+}
+
+@media (max-width: 720px) {
+  .aurelis-orbit-stage { height:640px; }
+  .aurelis-orbit-universe { top:30%; width:180px; height:180px; }
+  .aurelis-orbit-planet { width:152px; height:152px; }
+  .aurelis-orbit-path { width:min(98vw,430px); height:160px; }
+  .aurelis-orbit-path-two { width:min(82vw,350px); height:206px; }
+  .aurelis-orbit-caption { font-size:.47rem; letter-spacing:.11em; }
+  .aurelis-orbit-star-one { right:12%; }
+  .aurelis-orbit-star-two { left:5%; }
+  .aurelis-orbit-card { width:min(79vw,280px); top:63%; }
+  .aurelis-orbit-card:nth-child(1) { animation-name:aurelis-orbit-mobile-northwest; }
+  .aurelis-orbit-card:nth-child(2) { animation-name:aurelis-orbit-mobile-eastern; }
+  .aurelis-orbit-card:nth-child(3) { animation-name:aurelis-orbit-mobile-southwest; }
+  .aurelis-orbit-controls { padding:.55rem .7rem; }
+  .aurelis-orbit-controls p { font-size:.65rem; max-width:18ch; }
+  .aurelis-orbit-pause { padding:.5rem .7rem; }
+  .aurelis-orbit-index { grid-template-columns:1fr; }
+  .aurelis-orbit-index a { min-height:50px; padding:.7rem 1rem; }
+}
+@keyframes aurelis-orbit-mobile-northwest {
+  0%, 3%, 33.5%, 100% { opacity: 0; visibility: hidden; pointer-events: none; transform: translate(-50%, -50%) translate3d(-185px, -98px, 0) rotate(-7deg) scale(0.72); }
+  10% { opacity: 1; visibility: visible; pointer-events: auto; transform: translate(-50%, -50%) translate3d(-16px, 11px, 0) rotate(-1deg) scale(0.97); animation-timing-function: cubic-bezier(.3,.1,.3,1); }
+  23% { opacity: 1; visibility: visible; pointer-events: auto; transform: translate(-50%, -50%) translate3d(7px, 24px, 0) rotate(0deg) scale(1); animation-timing-function: cubic-bezier(.3,.05,.35,1); }
+  28% { opacity: .98; visibility: visible; pointer-events: auto; transform: translate(-50%, -50%) translate3d(15px, 17px, 0) rotate(1deg) scale(0.98); animation-timing-function: cubic-bezier(.55,.02,.82,.4); }
+  33.333% { opacity: 0; visibility: hidden; pointer-events: none; transform: translate(-50%, -50%) translate3d(141px, -41px, 0) rotate(6deg) scale(0.73); }
+}
+
+@keyframes aurelis-orbit-mobile-eastern {
+  0%, 3%, 33.5%, 100% { opacity: 0; visibility: hidden; pointer-events: none; transform: translate(-50%, -50%) translate3d(182px, -65px, 0) rotate(8deg) scale(0.7); }
+  10% { opacity: 1; visibility: visible; pointer-events: auto; transform: translate(-50%, -50%) translate3d(16px, 11px, 0) rotate(2deg) scale(0.97); animation-timing-function: cubic-bezier(.3,.1,.3,1); }
+  23% { opacity: 1; visibility: visible; pointer-events: auto; transform: translate(-50%, -50%) translate3d(-8px, 22px, 0) rotate(0deg) scale(1); animation-timing-function: cubic-bezier(.3,.05,.35,1); }
+  28% { opacity: .98; visibility: visible; pointer-events: auto; transform: translate(-50%, -50%) translate3d(-16px, 15px, 0) rotate(-1deg) scale(0.98); animation-timing-function: cubic-bezier(.55,.02,.82,.4); }
+  33.333% { opacity: 0; visibility: hidden; pointer-events: none; transform: translate(-50%, -50%) translate3d(-142px, -34px, 0) rotate(-5deg) scale(0.72); }
+}
+
+@keyframes aurelis-orbit-mobile-southwest {
+  0%, 3%, 33.5%, 100% { opacity: 0; visibility: hidden; pointer-events: none; transform: translate(-50%, -50%) translate3d(3px, 198px, 0) rotate(-6deg) scale(0.65); }
+  10% { opacity: 1; visibility: visible; pointer-events: auto; transform: translate(-50%, -50%) translate3d(-10px, 8px, 0) rotate(-1deg) scale(0.97); animation-timing-function: cubic-bezier(.3,.1,.3,1); }
+  23% { opacity: 1; visibility: visible; pointer-events: auto; transform: translate(-50%, -50%) translate3d(12px, 21px, 0) rotate(1deg) scale(1); animation-timing-function: cubic-bezier(.3,.05,.35,1); }
+  28% { opacity: .98; visibility: visible; pointer-events: auto; transform: translate(-50%, -50%) translate3d(0px, 10px, 0) rotate(0deg) scale(0.98); animation-timing-function: cubic-bezier(.55,.02,.82,.4); }
+  33.333% { opacity: 0; visibility: hidden; pointer-events: none; transform: translate(-50%, -50%) translate3d(90px, -110px, 0) rotate(5deg) scale(0.69); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .aurelis-orbit-stage { height:auto; min-height:0; overflow:visible; display:flex; flex-direction:column; align-items:center; gap:2rem; }
+  .aurelis-orbit-universe { position:relative; top:auto; left:auto; transform:none; width:250px; height:250px; }
+  .aurelis-orbit-planet,.aurelis-orbit-continents,.aurelis-orbit-path,.aurelis-orbit-universe::before,.aurelis-orbit-star { animation:none!important; }
+  .aurelis-orbit-projects { position:relative; inset:auto; width:100%; display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:1rem; pointer-events:auto; }
+  .aurelis-orbit-card { position:relative; top:auto; left:auto; width:100%; opacity:1!important;visibility:visible!important;pointer-events:auto!important; transform:none!important;animation:none!important;will-change:auto; }
+  .aurelis-orbit-controls { position:relative; width:100%; }
+  .aurelis-orbit-pause { display:none; }
+}
+@media (prefers-reduced-motion: reduce) and (max-width:720px) {
+  .aurelis-orbit-projects { grid-template-columns:1fr; }
+  .aurelis-orbit-card { max-width:480px; margin:0 auto; }
+}
+
+.aurelis-contact-phone {
+  display: inline-grid;
+  grid-template-columns: auto auto;
+  align-items: center;
+  column-gap: 1rem;
+  margin-top: 1.6rem;
+  padding: 1rem 1.3rem;
+  min-height: 65px;
+  max-width: 100%;
+  border: 1px solid rgba(216,186,134,.36);
+  color: var(--aurelis-champagne);
+  text-decoration: none;
+  transition: border-color .3s ease, background .3s ease;
+}
+.aurelis-contact-phone > span {
+  grid-column: 1;
+  color: var(--aurelis-dim);
+  font-size: .7rem;
+  letter-spacing: .06em;
+}
+.aurelis-contact-phone > strong {
+  grid-column: 1;
+  font-size: clamp(1rem,2vw,1.3rem);
+  letter-spacing: .05em;
+  font-weight: 500;
+}
+.aurelis-contact-phone > svg { grid-row: 1 / span 2; grid-column: 2; width: 18px; height: 18px; }
+.aurelis-contact-phone:hover { border-color: var(--aurelis-champagne); background: rgba(216,186,134,.08); }
+
+/* Suivi de projet post-livraison offert uniquement avec Elite. */
+.aurelis-offer-followup {
+  margin: 1rem 0 1.4rem;
+  padding: .95rem 1.1rem;
+  border-left: 2px solid var(--aurelis-champagne, #d8ba86);
+  background: linear-gradient(105deg, rgba(216,186,134,.10), rgba(216,186,134,.015));
+  color: var(--aurelis-dim,#b8b0a4);
+  font-size: .8rem;
+  line-height: 1.7;
+}
+.aurelis-offer-followup strong {
+  display: block;
+  color: var(--aurelis-champagne,#d8ba86);
+  font-weight: 500;
+  letter-spacing: .02em;
+  margin-bottom: .25rem;
+}

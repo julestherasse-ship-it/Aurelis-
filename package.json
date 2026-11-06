@@ -5,9 +5,19 @@
   "description": "Aurelis — Agence web premium",
   "scripts": {
     "dev": "npx --yes serve -l 3000 .",
-    "build": "node scripts/build.mjs",
-    "test": "node scripts/build.mjs",
-    "lint": "node scripts/build.mjs",
+    "build": "node scripts/build.mjs && node scripts/build-preview.mjs && node scripts/publish-v3.mjs",
+    "test": "node --test scripts/preview-safety.test.cjs scripts/release-candidate.test.cjs && npm run build",
+    "test:preview": "playwright test --config scripts/playwright-preview.config.cjs",
+    "lint": "node scripts/build.mjs && node scripts/build-preview.mjs && node scripts/publish-v3.mjs",
     "start": "npx --yes serve -l 3000 ."
+  },
+  "dependencies": {
+    "esbuild": "0.25.0",
+    "gsap": "3.13.0",
+    "react": "19.2.8",
+    "react-dom": "19.2.8"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.55.1"
   }
 }

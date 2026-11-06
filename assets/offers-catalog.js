@@ -223,6 +223,7 @@
           "Automatisations",
           "Espace administrateur selon les besoins",
           "Accompagnement personnalisé",
+          "12 mois de suivi régulier offerts après mise en ligne",
         ],
         en: [
           "Bespoke architecture",
@@ -232,6 +233,7 @@
           "Automations",
           "Admin area as needed",
           "Personalised support",
+          "12 months of regular follow-up included after launch",
         ],
       },
       budgetHint: { fr: "Plus de 10 000 €", en: "Over €10,000" },
@@ -241,11 +243,13 @@
           "Périmètre défini sur devis uniquement",
           "Délais et budget validés avant démarrage",
           "Pas de prix catalogue fixe",
+          "Suivi régulier offert : modalités et fréquence précisées au devis ; hébergement, maintenance et développements non inclus",
         ],
         en: [
           "Scope defined by quote only",
           "Timeline and budget approved before start",
           "No fixed catalogue price",
+          "Complimentary follow-up: schedule and scope defined in the quote; hosting, maintenance and development not included",
         ],
       },
       howToStart: {

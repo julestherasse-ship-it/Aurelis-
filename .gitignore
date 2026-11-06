@@ -4,3 +4,7 @@
 .env.*.local
 !.env.example
 node_modules
+# Générés à partir des sources pendant le build ; jamais déployés tels quels.
+/preview-3/
+/site-classique/
+/assets/preview-3/
