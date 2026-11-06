@@ -510,6 +510,27 @@ export function AurelisLanding({ offers }: Props) {
     };
   }, []);
 
+  // Démarrer l'animation uniquement lorsque le portfolio est proche de l'écran.
+  // Les mouvements sont gérés par CSS (transform + opacity), sans boucle JS.
+  useLayoutEffect(() => {
+    const stage = document.querySelector<HTMLElement>(".aurelis-orbit-stage");
+    if (!stage) return;
+    if (!("IntersectionObserver" in window)) {
+      stage.classList.add("is-in-view");
+      return;
+    }
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.target === stage) stage.classList.toggle("is-in-view", entry.isIntersecting);
+        }
+      },
+      { rootMargin: "120px 0px 120px 0px", threshold: 0.01 },
+    );
+    observer.observe(stage);
+    return () => observer.disconnect();
+  }, []);
+
   function closeMenu() {
     setMenuOpen(false);
   }
@@ -651,7 +672,7 @@ export function AurelisLanding({ offers }: Props) {
                 </g>
                 <circle cx="100" cy="100" r="92" fill="url(#aurelis-orbit-luminous-shell)" pointerEvents="none" />
               </svg>
-              <span className="aurelis-orbit-globe-a">A</span>
+              <span className="aurelis-orbit-planet-specular" aria-hidden="true" />
             </div>
             <span className="aurelis-orbit-caption">AURELIS · UN MONDE DE POSSIBILITÉS</span>
           </div>
@@ -676,7 +697,7 @@ export function AurelisLanding({ offers }: Props) {
             </article>
           </div>
           <div className="aurelis-orbit-controls">
-            <p>Une rotation. Trois univers. Des projets bien réels.</p>
+            <p>Des projets sélectionnés, des expériences singulières.</p>
             <button type="button" className="aurelis-orbit-pause" onClick={() => setOrbitPaused(!orbitPaused)} aria-pressed={orbitPaused}>
               {orbitPaused ? "Reprendre l’animation" : "Mettre en pause"}
             </button>
