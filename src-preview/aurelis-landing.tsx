@@ -742,6 +742,7 @@ export function AurelisLanding({ offers }: Props) {
               <p className="aurelis-offer-description">{offer.description}</p>
               <div className="aurelis-offer-price"><small>{offer.pricePrefix ?? "Tarif catalogue"}</small><strong>{formatPrice(offer.priceEuros)} <sup>€</sup></strong><span>HTVA</span></div>
               <ul>{offer.features.map((feature) => <li key={feature}><span>+</span>{feature}</li>)}</ul>
+              {offer.name === "Aurelis Elite" ? <p className="aurelis-offer-followup"><strong>12 mois de suivi offerts.</strong> Points réguliers et recommandations après mise en ligne, selon le devis. Hébergement, maintenance et développements supplémentaires non inclus.</p> : null}
               <a className="aurelis-offer-link" href="#project-form" onClick={() => { setSelectedOffer(offer.name); window.AurelisAnalytics?.offerClick(offer.name); }}>Parler de cette formule <Arrow /></a>
             </Reveal>
           ))}
