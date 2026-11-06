@@ -70,12 +70,18 @@
 
     applyConsentMode(true);
 
-    if (c.ga4MeasurementId) {
+    // Charger gtag.js avec GA4 OU Google Ads : une conversion Ads autonome
+    // ne doit pas dépendre de l'existence d'une propriété Analytics.
+    var tagId = c.ga4MeasurementId || c.googleAdsId;
+    if (tagId) {
       var s = document.createElement("script");
       s.async = true;
-      s.src = "https://www.googletagmanager.com/gtag/js?id=" + encodeURIComponent(c.ga4MeasurementId);
+      s.src = "https://www.googletagmanager.com/gtag/js?id=" + encodeURIComponent(tagId);
       document.head.appendChild(s);
       gtag("js", new Date());
+    }
+
+    if (c.ga4MeasurementId) {
       gtag("config", c.ga4MeasurementId, {
         anonymize_ip: true,
         send_page_view: true,
@@ -177,6 +183,8 @@
     },
     formSuccess: function (data) {
       data = data || {};
+      // Ne pas compter une demande déjà enregistrée comme une nouvelle conversion.
+      if (data.duplicate || data.recorded === false) return;
       // Primary conversion = demande réellement enregistrée (pas un simple clic CTA)
       // Pas d’e-mail / téléphone dans les params pubs
       var base = {
