@@ -377,12 +377,17 @@ function OfferForm({ offers, selectedOffer, setSelectedOffer }: Props & { select
     <div className="aurelis-contact-layout">
       <div className="aurelis-contact-intro">
         <p className="aurelis-kicker">Un premier échange</p>
-        <h2 className="aurelis-display aurelis-contact-title">Donnons une forme juste à votre prochaine étape.</h2>
+        <h2 className="aurelis-display aurelis-contact-title">Osez voir plus grand. Créons ce qui vous distingue.</h2>
         <p className="aurelis-lead">
           Décrivez votre projet avec vos mots. Nous reviendrons vers vous avec une première lecture claire, sans tunnel
           commercial ni promesse automatique.
         </p>
         <div className="aurelis-contact-details"><span className="aurelis-status-dot" aria-hidden="true" />Réponse humaine sous 24 heures ouvrées.</div>
+        <a className="aurelis-contact-phone" href="tel:+32495380329" aria-label="Appeler Aurelis au 0495 38 03 29">
+          <span>Parlons-en directement</span>
+          <strong>0495 38 03 29</strong>
+          <Arrow diagonal />
+        </a>
         <div className="aurelis-contact-orbit" aria-hidden="true">
           <span className="aurelis-orbit-ring aurelis-orbit-ring-one" />
           <span className="aurelis-orbit-ring aurelis-orbit-ring-two" />
@@ -449,6 +454,7 @@ function OfferForm({ offers, selectedOffer, setSelectedOffer }: Props & { select
 export function AurelisLanding({ offers }: Props) {
   const [menuOpen, setMenuOpen] = useState(false);
   const [selectedOffer, setSelectedOffer] = useState(offers[1]?.name ?? offers[0]?.name ?? "Aurelis Signature");
+  const [orbitPaused, setOrbitPaused] = useState(false);
 
   useLayoutEffect(() => {
     const root = document.querySelector<HTMLElement>(".aurelis-site");
@@ -502,6 +508,27 @@ export function AurelisLanding({ offers }: Props) {
       cleanupPointer();
       cleanupScrollScenes();
     };
+  }, []);
+
+  // Démarrer l'animation uniquement lorsque le portfolio est proche de l'écran.
+  // Les mouvements sont gérés par CSS (transform + opacity), sans boucle JS.
+  useLayoutEffect(() => {
+    const stage = document.querySelector<HTMLElement>(".aurelis-orbit-stage");
+    if (!stage) return;
+    if (!("IntersectionObserver" in window)) {
+      stage.classList.add("is-in-view");
+      return;
+    }
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.target === stage) stage.classList.toggle("is-in-view", entry.isIntersecting);
+        }
+      },
+      { rootMargin: "120px 0px 120px 0px", threshold: 0.01 },
+    );
+    observer.observe(stage);
+    return () => observer.disconnect();
   }, []);
 
   function closeMenu() {
@@ -599,11 +626,88 @@ export function AurelisLanding({ offers }: Props) {
       <section className="aurelis-section aurelis-real-work" id="realisations" aria-labelledby="real-work-title">
         <Reveal className="aurelis-section-intro"><p className="aurelis-kicker">Réalisations</p><p className="aurelis-section-aside">Trois sites livrés.<br />À découvrir en ligne.</p></Reveal>
         <Reveal className="aurelis-real-work-heading"><h2 id="real-work-title" className="aurelis-display">Des projets<br /><em>qui prennent vie.</em></h2><p>Découvrez les réalisations Aurelis, distinctes des études de direction présentées ci-dessus.</p></Reveal>
-        <div className="aurelis-real-work-grid">
-          <Reveal className="aurelis-real-work-card"><a href="/realisations/mr-gaston/" data-track-cta="folio_mr_gaston"><img src="/assets/portfolio/mr-gaston/capture-desktop.jpg" alt="Site Mr Gaston réalisé par Aurelis" width="1600" height="1000" loading="lazy" decoding="async" /><span>Restaurant</span><h3 className="aurelis-display">Mr Gaston</h3><span>Découvrir le projet <Arrow diagonal /></span></a></Reveal>
-          <Reveal className="aurelis-real-work-card"><a href="https://bryan-burger.vercel.app/" target="_blank" rel="noopener noreferrer" data-track-cta="folio_bryan"><img src="/assets/portfolio/bryan-burger/capture-desktop.jpg" alt="Site Bryan Burger réalisé par Aurelis" width="1400" height="900" loading="lazy" decoding="async" /><span>Restauration</span><h3 className="aurelis-display">Bryan Burger</h3><span>Voir le site <Arrow diagonal /></span></a></Reveal>
-          <Reveal className="aurelis-real-work-card"><a href="https://transport-delivery.vercel.app/" target="_blank" rel="noopener noreferrer" data-track-cta="folio_trans"><img src="/assets/portfolio/trans-delivery/capture-desktop.png" alt="Site Trans Delivery réalisé par Aurelis" width="1400" height="900" loading="lazy" decoding="async" /><span>Transport</span><h3 className="aurelis-display">Trans Delivery</h3><span>Voir le site <Arrow diagonal /></span></a></Reveal>
+        <div className={`aurelis-orbit-stage${orbitPaused ? " is-paused" : ""}`} aria-label="Une planète animée présente successivement trois réalisations Aurelis">
+          <div className="aurelis-orbit-universe" aria-hidden="true">
+            <span className="aurelis-orbit-path aurelis-orbit-path-one" />
+            <span className="aurelis-orbit-path aurelis-orbit-path-two" />
+            <span className="aurelis-orbit-star aurelis-orbit-star-one" />
+            <span className="aurelis-orbit-star aurelis-orbit-star-two" />
+            <div className="aurelis-orbit-planet">
+              <svg viewBox="0 0 200 200" className="aurelis-orbit-planet-art" focusable="false" aria-hidden="true">
+                <defs>
+                  <radialGradient id="aurelis-orbit-ocean" cx="30%" cy="23%" r="78%">
+                    <stop offset="0" stopColor="#3a6267" />
+                    <stop offset=".47" stopColor="#17343d" />
+                    <stop offset="1" stopColor="#070d15" />
+                  </radialGradient>
+                  <radialGradient id="aurelis-orbit-luminous-shell" cx="28%" cy="21%" r="90%">
+                    <stop offset="0" stopColor="#eddfb8" stopOpacity=".15" />
+                    <stop offset=".6" stopColor="#08141e" stopOpacity="0" />
+                    <stop offset="1" stopColor="#02050b" stopOpacity=".8" />
+                  </radialGradient>
+                  <linearGradient id="aurelis-orbit-land" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0" stopColor="#dbc48e" />
+                    <stop offset="1" stopColor="#7c704f" />
+                  </linearGradient>
+                  <clipPath id="aurelis-orbit-sphere-clip"><circle cx="100" cy="100" r="92" /></clipPath>
+                  <g id="aurelis-orbit-world-map">
+                    <path d="M35 34 54 24 69 30 80 25 89 37 77 45 76 54 64 61 66 75 53 84 44 70 29 65 24 49Z" />
+                    <path d="m65 84 14 7 14 16-4 18-11 18-7 22-13 13-6-27-12-16 4-24Z" />
+                    <path d="m101 27 22-11 19 8 19-3 21 17-7 21-17 9-6 19-17 9-9-18-13-4-9-22-14-13Z" />
+                    <path d="m113 91 22-2 13 15-4 24-10 24-17 16-7-22-12-19 3-23Z" />
+                    <path d="m160 130 17-5 17 16-4 19-18 4-15-14Z" />
+                  </g>
+                </defs>
+                <circle cx="100" cy="100" r="92" fill="url(#aurelis-orbit-ocean)" stroke="#d0b782" strokeOpacity=".55" strokeWidth="1.5" />
+                <g clipPath="url(#aurelis-orbit-sphere-clip)">
+                  <g className="aurelis-orbit-continents" fill="url(#aurelis-orbit-land)" opacity=".8">
+                    <use href="#aurelis-orbit-world-map" />
+                    <use href="#aurelis-orbit-world-map" transform="translate(200 0)" />
+                  </g>
+                </g>
+                <g clipPath="url(#aurelis-orbit-sphere-clip)" fill="none" stroke="#d9bf8e" strokeOpacity=".22" strokeWidth="1">
+                  <ellipse cx="100" cy="100" rx="34" ry="92" />
+                  <ellipse cx="100" cy="100" rx="67" ry="92" />
+                  <path d="M8 100h184M19 65c48 17 114 17 162 0M19 135c48-17 114-17 162 0" />
+                </g>
+                <circle cx="100" cy="100" r="92" fill="url(#aurelis-orbit-luminous-shell)" pointerEvents="none" />
+              </svg>
+              <span className="aurelis-orbit-planet-specular" aria-hidden="true" />
+            </div>
+            <span className="aurelis-orbit-caption">AURELIS · UN MONDE DE POSSIBILITÉS</span>
+          </div>
+          <div className="aurelis-orbit-projects" role="group" aria-label="Aperçus animés des réalisations">
+            <article className="aurelis-orbit-card aurelis-real-work-card">
+              <a href="/realisations/mr-gaston/" data-track-cta="folio_mr_gaston">
+                <img src="/assets/portfolio/mr-gaston/capture-desktop.jpg" alt="Capture du site Mr Gaston" width="1600" height="1000" loading="lazy" decoding="async" />
+                <span>Restaurant · Mons</span><h3 className="aurelis-display">Mr Gaston</h3><span>Découvrir le projet <Arrow diagonal /></span>
+              </a>
+            </article>
+            <article className="aurelis-orbit-card aurelis-real-work-card">
+              <a href="https://bryan-burger.vercel.app/" target="_blank" rel="noopener noreferrer" data-track-cta="folio_bryan">
+                <img src="/assets/portfolio/bryan-burger/capture-desktop.jpg" alt="Capture du site Bryan Burger" width="1400" height="900" loading="lazy" decoding="async" />
+                <span>Restauration · Mons</span><h3 className="aurelis-display">Bryan Burger</h3><span>Voir le site <Arrow diagonal /></span>
+              </a>
+            </article>
+            <article className="aurelis-orbit-card aurelis-real-work-card">
+              <a href="https://transport-delivery.vercel.app/" target="_blank" rel="noopener noreferrer" data-track-cta="folio_trans">
+                <img src="/assets/portfolio/trans-delivery/capture-desktop.png" alt="Capture du site Trans Delivery" width="1400" height="900" loading="lazy" decoding="async" />
+                <span>Transport & logistique</span><h3 className="aurelis-display">Trans Delivery</h3><span>Voir le site <Arrow diagonal /></span>
+              </a>
+            </article>
+          </div>
+          <div className="aurelis-orbit-controls">
+            <p>Des projets sélectionnés, des expériences singulières.</p>
+            <button type="button" className="aurelis-orbit-pause" onClick={() => setOrbitPaused(!orbitPaused)} aria-pressed={orbitPaused}>
+              {orbitPaused ? "Reprendre l’animation" : "Mettre en pause"}
+            </button>
+          </div>
         </div>
+        <nav className="aurelis-orbit-index" aria-label="Accès direct aux trois réalisations">
+          <a href="/realisations/mr-gaston/" data-track-cta="folio_mr_gaston_index"><span>01</span> Mr Gaston <Arrow diagonal /></a>
+          <a href="https://bryan-burger.vercel.app/" target="_blank" rel="noopener noreferrer" data-track-cta="folio_bryan_index"><span>02</span> Bryan Burger <Arrow diagonal /></a>
+          <a href="https://transport-delivery.vercel.app/" target="_blank" rel="noopener noreferrer" data-track-cta="folio_trans_index"><span>03</span> Trans Delivery <Arrow diagonal /></a>
+        </nav>
       </section>
 
       <section className="aurelis-section aurelis-expertise" id="expertise">
@@ -638,6 +742,7 @@ export function AurelisLanding({ offers }: Props) {
               <p className="aurelis-offer-description">{offer.description}</p>
               <div className="aurelis-offer-price"><small>{offer.pricePrefix ?? "Tarif catalogue"}</small><strong>{formatPrice(offer.priceEuros)} <sup>€</sup></strong><span>HTVA</span></div>
               <ul>{offer.features.map((feature) => <li key={feature}><span>+</span>{feature}</li>)}</ul>
+              {offer.name === "Aurelis Elite" ? <p className="aurelis-offer-followup"><strong>12 mois de suivi offerts.</strong> Points réguliers et recommandations après mise en ligne, selon le devis. Hébergement, maintenance et développements supplémentaires non inclus.</p> : null}
               <a className="aurelis-offer-link" href="#project-form" onClick={() => { setSelectedOffer(offer.name); window.AurelisAnalytics?.offerClick(offer.name); }}>Parler de cette formule <Arrow /></a>
             </Reveal>
           ))}

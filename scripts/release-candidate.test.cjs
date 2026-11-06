@@ -25,6 +25,8 @@ test("the production candidate drops preview gates without touching the live hom
   assert.match(html, /4[\s\u202f\u00a0]?490/);
   assert.match(html, /7[\s\u202f\u00a0]?490/);
   assert.match(html, /\/api\/leads|lead-funnel\.js/);
+  assert.match(html, /12 mois de suivi régulier offerts après mise en ligne/);
+  assert.match(html, /12 mois de suivi offerts/);
   assert.match(css, /#070706/);
   assert.doesNotMatch(css, /\.preview-notice/);
 });
